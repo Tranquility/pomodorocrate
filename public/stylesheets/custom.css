@@ -1,0 +1,23 @@
+body { background-color: #eee; }
+.container { background-color: #fff; padding: 12px; width: 960px; }
+.top_nav { float: right; margin-top: -100px; }
+	.top_nav li { display: inline; margin-left: 10px; }
+	
+#logo { display: block; float: left; height: 100px; width: 80px; }	
+	#logo img { height: 100px; }
+	
+header { margin-bottom: 30px; }
+	header h1 { font-size: 60px; margin: 0 0 10px; }
+	header h2 { font-size: 17px; }
+	
+p { font-size: 14px; }
+
+.pomodoros_icons { margin-top: -12px; }
+.deadline { margin-top: -18px; }
+
+.past { color: red; }
+.present { color: orange; }
+.future { color: green; }
+
+.active_pomodoro { border: 1px solid #333; background-color: #e5ecf9; padding: 4px; margin-bottom: 16px; }
+.timer { font-size: 14px; margin-bottom: 14px; }

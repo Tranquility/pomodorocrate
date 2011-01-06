@@ -2,13 +2,33 @@
 <html>
 <head>
   <title>Ketchup</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<%= stylesheet_link_tag "blueprint/screen", :media => :screen %>
+	<%= stylesheet_link_tag "custom", 					:media => :screen %>
+	<%= stylesheet_link_tag "blueprint/print", 	:media => :print %>
+	<!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
+	
+	<%= javascript_include_tag :all %>
+	
+	<%= csrf_meta_tag %>
 </head>
 <body>
+	<div class="container">
+		<header>
+			<%= link_to(image_tag("logo.jpg", :alt => "Ketchup"), root_path, :id => "logo") %>
+			<h1>Ketchup</h1>
+			<h2>Pomodoro time management</h2>
+			<%= render 'shared/menu' %>
+		</header>
+		<% flash.each do |key, value| %>
+			<%= content_tag(:div, value, :class => "flash #{key}") %>
+		<% end %>
 
-<%= yield %>
+		<%= yield %>
 
+		<%= debug(params) if Rails.env.development? %>
+	</div>
 </body>
 </html>

@@ -11,9 +11,9 @@
         <text>logo</text>
       </controlProperties>
     </control>
-    <control controlID="3" controlTypeID="com.balsamiq.mockups::LinkBar" x="967" y="91" w="-1" h="-1" measuredW="438" measuredH="23" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::LinkBar" x="892" y="91" w="-1" h="-1" measuredW="513" measuredH="23" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Home%2C%20Activity%20list%2C%20Todo%20Today%2C%20Analytics%2C%20Settings%2C%20Logout</text>
+        <text>Home%2C%20Projects%2C%20Activity%20list%2C%20Todo%20Today%2C%20Analytics%2C%20Settings%2C%20Logout</text>
       </controlProperties>
     </control>
     <control controlID="4" controlTypeID="com.balsamiq.mockups::BreadCrumbs" x="476" y="185" w="-1" h="-1" measuredW="129" measuredH="23" zOrder="5" locked="false" isInGroup="-1">
@@ -21,9 +21,9 @@
         <text>Home%2C%20Activity%20List</text>
       </controlProperties>
     </control>
-    <control controlID="5" controlTypeID="com.balsamiq.mockups::DataGrid" x="476" y="423" w="929" h="452" measuredW="620" measuredH="204" zOrder="6" locked="false" isInGroup="-1">
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::DataGrid" x="476" y="423" w="929" h="452" measuredW="642" measuredH="204" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Status%2C%20Activity%20name%2C%20Pomodoros%2C%20Deadline%2C%20Project%2C%20Actions%0A%5B%5D%2C%20Giacomo%20Guilizzoni%5CrFounder%20%26%20CEO%2C%2034%2C%20Today%2C%20ValueChecker%2C%20Do%20Today%20%7C%20Edit%20%7C%20Delete%0A%5B%5D%2C%20Guido%20Jack%20Guilizzoni%2C%204%2C%20Today%2C%20Ketchup%2C%20Do%20Today%20%7C%20Edit%20%7C%20Delete%0A%5B%5D%2C%20Marco%20Botton%5CrTuttofare%2C%2031%2C%20Tomorrow%2C%20Reveloper%2C%20Do%20Today%20%7C%20Edit%20%7C%20Delete%0A%5B%5D%2C%20Mariah%20Maclachlan%5CrBetter%20Half%2C%2035%2C%20Next%20week%2C%20Ketchup%2C%20Do%20Today%20%7C%20Edit%20%7C%20Delete%0A%5B%5D%2C%20Valerie%20Liberty%5CrCOO%5C%2C%20WOW%21%20Division%2C%20%3A%29%2C%20Next%20month%2C%20Reveloper%2C%20Do%20Today%20%7C%20Edit%20%7C%20Delete%0A%7B0C%2C%2045L%2C%207R%2C%200C%7D</text>
+        <text>Completed%2C%20Activity%20name%2C%20Pomodoros%2C%20Deadline%2C%20Project%2C%20Actions%0A%5B%5D%2C%20Giacomo%20Guilizzoni%5CrFounder%20%26%20CEO%2C%2034%2C%20Today%2C%20ValueChecker%2C%20Do%20Today%20%7C%20Edit%20%7C%20Delete%0A%5B%5D%2C%20Guido%20Jack%20Guilizzoni%2C%204%2C%20Today%2C%20Ketchup%2C%20Do%20Today%20%7C%20Edit%20%7C%20Delete%0A%5B%5D%2C%20Marco%20Botton%5CrTuttofare%2C%2031%2C%20Tomorrow%2C%20Reveloper%2C%20Do%20Today%20%7C%20Edit%20%7C%20Delete%0A%5B%5D%2C%20Mariah%20Maclachlan%5CrBetter%20Half%2C%2035%2C%20Next%20week%2C%20Ketchup%2C%20Do%20Today%20%7C%20Edit%20%7C%20Delete%0A%5B%5D%2C%20Valerie%20Liberty%5CrCOO%5C%2C%20WOW%21%20Division%2C%20%3A%29%2C%20Next%20month%2C%20Reveloper%2C%20Do%20Today%20%7C%20Edit%20%7C%20Delete%0A%7B0C%2C%2045L%2C%207R%2C%200C%7D</text>
       </controlProperties>
     </control>
     <control controlID="6" controlTypeID="com.balsamiq.mockups::Title" x="476" y="215" w="-1" h="-1" measuredW="219" measuredH="56" zOrder="7" locked="false" isInGroup="-1">
