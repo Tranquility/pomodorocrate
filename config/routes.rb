@@ -1,5 +1,7 @@
 Ketchup::Application.routes.draw do
 
+  resources :settings
+
   resources :activities
   resources :todotodays,  :only => [:index, :create, :destroy]
   resources :pomodoros

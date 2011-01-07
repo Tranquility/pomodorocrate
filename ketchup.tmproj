@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>public/stylesheets/custom.css</string>
+	<string>public/javascripts/application.js</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -26,23 +26,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>58</integer>
 				<key>line</key>
-				<integer>60</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/controllers/pomodoros_controller.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>11</integer>
-				<key>line</key>
-				<integer>4</integer>
+				<integer>5</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -58,75 +44,65 @@
 				<key>line</key>
 				<integer>6</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>app/helpers/application_helper.rb</key>
-		<dict>
-			<key>caret</key>
+			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>2</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/helpers/pomodoros_helper.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>5</integer>
+				<integer>4</integer>
 				<key>line</key>
 				<integer>5</integer>
 			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>57</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
 		</dict>
 		<key>app/models/pomodoro.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>54</integer>
+				<integer>16</integer>
 				<key>line</key>
-				<integer>3</integer>
+				<integer>7</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>app/views/activities/_form.html.erb</key>
-		<dict>
-			<key>caret</key>
+			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>35</integer>
+				<integer>9</integer>
 				<key>line</key>
-				<integer>40</integer>
+				<integer>7</integer>
 			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>33</integer>
+				<key>line</key>
+				<integer>7</integer>
+			</dict>
 		</dict>
-		<key>app/views/activities/edit.html.erb</key>
+		<key>app/models/todotoday.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>20</integer>
+				<integer>47</integer>
 				<key>line</key>
-				<integer>1</integer>
+				<integer>9</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -138,23 +114,37 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>36</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>17</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/layouts/application.html.erb</key>
+		<key>app/views/shared/_current_pomodoro.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>33</integer>
+				<integer>9</integer>
 				<key>line</key>
-				<integer>12</integer>
+				<integer>33</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/views/todotodays/_todotoday_list.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>24</integer>
+				<key>line</key>
+				<integer>1</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -166,9 +156,23 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>60</integer>
+				<integer>30</integer>
 				<key>line</key>
-				<integer>7</integer>
+				<integer>4</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>public/javascripts/application.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>21</integer>
+				<key>line</key>
+				<integer>25</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -180,9 +184,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>43</integer>
+				<integer>104</integer>
 				<key>line</key>
-				<integer>22</integer>
+				<integer>21</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -192,18 +196,16 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>app/models/pomodoro.rb</string>
-		<string>app/controllers/pomodoros_controller.rb</string>
-		<string>app/controllers/todotodays_controller.rb</string>
-		<string>app/helpers/application_helper.rb</string>
-		<string>app/controllers/activities_controller.rb</string>
-		<string>app/helpers/pomodoros_helper.rb</string>
-		<string>app/views/activities/index.html.erb</string>
 		<string>app/views/todotodays/index.html.erb</string>
-		<string>app/views/activities/edit.html.erb</string>
-		<string>app/views/activities/_form.html.erb</string>
+		<string>app/views/todotodays/_todotoday_list.html.erb</string>
+		<string>app/controllers/todotodays_controller.rb</string>
+		<string>app/controllers/activities_controller.rb</string>
+		<string>app/views/shared/_current_pomodoro.html.erb</string>
+		<string>app/views/activities/index.html.erb</string>
+		<string>public/javascripts/application.js</string>
+		<string>app/models/pomodoro.rb</string>
+		<string>app/models/todotoday.rb</string>
 		<string>public/stylesheets/custom.css</string>
-		<string>app/views/layouts/application.html.erb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
@@ -251,6 +253,13 @@
 							<key>subItems</key>
 							<dict>
 								<key>activities</key>
+								<dict>
+									<key>isExpanded</key>
+									<true/>
+									<key>subItems</key>
+									<dict/>
+								</dict>
+								<key>dummies</key>
 								<dict>
 									<key>isExpanded</key>
 									<true/>
@@ -332,6 +341,13 @@
 					<true/>
 					<key>subItems</key>
 					<dict>
+						<key>javascripts</key>
+						<dict>
+							<key>isExpanded</key>
+							<true/>
+							<key>subItems</key>
+							<dict/>
+						</dict>
 						<key>stylesheets</key>
 						<dict>
 							<key>isExpanded</key>

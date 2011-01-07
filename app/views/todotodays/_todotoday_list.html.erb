@@ -1,0 +1,28 @@
+<% unless @todotodays.empty? %>
+	<table class="todotoday">
+		<tr>
+			<th>Completed</th>
+			<th>Activity name</th>
+			<th>Pomodoros</th>
+			<th>Deadline</th>
+			<th>Project</th>
+			<th>Actions</th>
+		</tr>
+		<% @todotodays.each do |td| %>
+		<% a = td.activity %>
+		<tr>
+			<td><%= check_box_tag( "activity_completed_" + a.id.to_s, a.completed, a.completed ) %></td>
+			<td><%= a.name %></td>
+			<td><%= a.pomodoros.successful_and_completed.count %> / <%= a.estimated_pomodoros %></td>
+			<td><%= due_at_status(a.deadline) %></td>
+			<td>-</td>
+			<td>
+				<%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post) %> | 
+				<%= link_to("Do it another day", td, :confirm => "Are you sure?", :method => :delete) %>
+			</td>
+		</tr>
+		<% end %>
+	</table>
+	
+	<%= will_paginate @todotodays %>
+<% end %>

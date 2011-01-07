@@ -4,6 +4,8 @@ class ActivitiesController < ApplicationController
   # GET /dummies.xml
   def index
     @activities = Activity.paginate :page => params[:page]
+    @todotodays = Todotoday.where(:today => Date.today).paginate :page => params[:page]
+    @pomodoro = Pomodoro.where( :completed => nil ).first
   end
   
   # GET /dummies/1

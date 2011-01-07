@@ -1,5 +1,4 @@
 <h1>Activities list</h1>
-
 <div class="toolbar">
 	<%= link_to "[+] New activity", new_activity_path %>
 </div>
@@ -18,7 +17,7 @@
 		<tr>
 			<td><%= check_box_tag( "activity_completed_" + a.id.to_s, a.completed, a.completed, :disabled => true ) %></td>
 			<td><%= a.name %></td>
-			<td><%= a.estimated_pomodoros %></td>
+			<td><%= a.pomodoros.successful_and_completed.count %> / <%= a.estimated_pomodoros %></td>
 			<td><%= due_at_status(a.deadline) %></td>
 			<td>-</td>
 			<td>
