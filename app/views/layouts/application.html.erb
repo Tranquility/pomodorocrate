@@ -25,7 +25,9 @@
 		<% flash.each do |key, value| %>
 			<%= content_tag(:div, value, :class => "flash #{key}") %>
 		<% end %>
-
+		
+		<%= render 'shared/current_pomodoro' %>
+		
 		<%= yield %>
 
 		<%= debug(params) if Rails.env.development? %>
