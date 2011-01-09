@@ -13,7 +13,7 @@ body { 	background: #fff; color: #898989;
 
 header { height: 60px; }
 	#logo { display: block; width: 187px; }
-		#logo h2 { 	background: url("images/logo.png") top left no-repeat;
+		#logo h2 { 	background: url("../images/logo.png") top left no-repeat;
 					text-indent: -999px;
 					height: 26px; margin-top: 15px; width: 187px; }
 	header nav { float: right; }
@@ -37,7 +37,7 @@ header { height: 60px; }
 		.toolbar form input[type=text], .toolbar form select { 	background: #f5f5f5; color: #898989;
 																border: 0; margin-left: 10px; padding: 2px; width: 120px; }
 																
-input.submit { 	background: #fff; color: #ef4832; cursor: pointer; font-weight: bold; 
+input.submit { 	background: #fff; color: #ef4832; cursor: pointer; font-size: 12px; font-weight: bold; 
 				border: 0; padding: 2px 14px; }
 				
 section.group {  }
@@ -46,30 +46,68 @@ section.group {  }
 		
 .activityList { list-style: none; }
 	.activityList li { 	background: #fff;
-						border-bottom: 2px solid #e7e7e7; padding: 6px 10px; }
+						border-bottom: 2px solid #e7e7e7; padding: 6px 0 6px 10px; }
 		.activityList li:last-child { border-bottom: 0; }
 .quickView {  }						
 input.checkbox { 	border: 2px solid #e7e7e7; float: left; height: 15px; margin-right: 10px; width: 15px;
-	 				background: #fff;}
-.activityName {  }
-.pomodorosCount { float: right; margin-top: -16px; }
-.detailsView { padding: 6px 6px 2px 26px; }
+	 				background: #fff; cursor: pointer; }
+.activityName { cursor: pointer; font-weight: bold; }
+.pomodorosCount { float: right; margin: -16px 10px; }
+	.pomodorosCount img { margin-left: 2px; }
+.detailsView { padding: 6px 10px 2px 26px; display: none; }
 
 .actionsBar { list-style: none; margin: 6px 0 0 -12px; }
-	.actionsBar li { border: none; display: inline; }
+	.actionsBar li { 	border: none; display: inline;
+		 				font-weight: bold; }
 	
 .infoBar { float: right; list-style: none; margin-top: -18px; }
 	.infoBar li { 	border: none; display: inline;
 		 			color: #898989;}
+
+#sidebar { float: right; width: 231px; }
 		
 aside { float: right; margin-bottom: 12px; padding: 2px; width: 231px;
 	 	background: #E7E7E7;}
 
 .widgetBox { 	background: #fff; border-top: 2px solid #e7e7e7; padding: 12px;
 	 			font-weight: bold; }
-	.widgetBox .pomodorosCount { 	float: none; margin: 16px;
+	.widgetBox .pomodorosCount { 	clear: both; float: none; margin: 16px;
 		 							text-align: center;}
-.time { font-size: 80px; font-weight: bold; line-height: 74px; }
+	.widgetBox .submit, .formContainer .submit { 	margin-top: 10px; padding: 0;
+		 											text-decoration: underline; }
+	.widgetBox textarea { 	border: 1px solid #e7e7e7; height: 80px; padding: 4px; width: 196px; 
+							color: #898989; font-family: Arial; font-size: 12px;  }
+	.widgetBox a.button { float: right; margin-top: -20px; }
+.time { font-size: 82px; font-weight: bold; line-height: 74px; }
+
+.tickbox { margin-top: 10px; }
+
+.flash { 	border: 2px solid #e7e7e7; margin-bottom: 10px; padding: 6px 10px;
+	 		background: #f5f5f5;
+	 		font-weight: bold; }
+	.flash.notice { color: #898989; }
+	.flash.error { color: #EBB000; }
+	.flash.success { color: #008FE7; }
+		
+.formContainer { background: #fff; }
+	.formContainer form { padding: 6px 12px; }
+	.formContainer .field { margin-bottom: 12px; }
+	.formContainer label { 	font-weight: bold; }
+	.formContainer input[type=text] { 	background: #F5F5F5; color: #898989;
+		 								border: 0; padding: 4px; width: 99%;}
+	.formContainer select {	background: #F5F5F5; color: #898989;
+							border: 0; padding: 4px; }
+	.formContainer input.numeric { width: 30px; }
+	.formContainer textarea { 	background: #F5F5F5; color: #898989;
+								border: 0; height: 100px; padding: 4px; width: 99%;
+								font-family: Arial, sans-serif; font-size: 12px; }
+								
+.activity_details { font-weight: normal;
+	 				margin-bottom: 20px; }
+	
+.past { color: red; }
+.present {  }
+.future {  }
 		
 .boxShadow {
   -moz-box-shadow: 0px -8px 15px -3px #333; /* Firefox */

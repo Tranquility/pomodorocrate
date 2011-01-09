@@ -1,0 +1,8 @@
+<nav>
+	<ul>
+		<li <%= is_current_page?(:activities) ? 'class=active' : '' %>><%= link_to "Activities", activities_path, :class => "tabs"%></li>
+		<li <%= is_current_page?(:todotodays) ? 'class=active' : '' %>><%= link_to "Todo Today", todotodays_path, :class => "tabs"%></li>
+		<li <%= is_current_page?(:projects) ? 'class=active' : '' %>><a href="#" class="tabs">Projects</a></li>
+		<li <%= is_current_page?(:analytics) ? 'class=active' : '' %>><a href="#" class="tabs">Analytics</a></li>
+	</ul>
+</nav>

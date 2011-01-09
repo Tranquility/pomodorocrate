@@ -5,6 +5,7 @@ class ActivitiesController < ApplicationController
   def index
     @activities = Activity.paginate :page => params[:page]
     @todotodays = Todotoday.where(:today => Date.today).paginate :page => params[:page]
+    
     @pomodoro = Pomodoro.where( :completed => nil ).first
   end
   
@@ -13,6 +14,7 @@ class ActivitiesController < ApplicationController
   def show
     begin
       @activity = Activity.find(params[:id])
+      @pomodoro = Pomodoro.where( :completed => nil ).first
     rescue
       flash[:error] = "There is no activity with id #{params[:id]}"
       redirect_to (activities_url) and return
@@ -28,6 +30,7 @@ class ActivitiesController < ApplicationController
   # GET /dummies/new.xml
   def new
     @activity = Activity.new
+    @pomodoro = Pomodoro.where( :completed => nil ).first
 
     respond_to do |format|
       format.html # new.html.erb
@@ -54,6 +57,7 @@ class ActivitiesController < ApplicationController
   # GET /dummies/1/edit
   def edit
     @activity = Activity.find(params[:id])
+    @pomodoro = Pomodoro.where( :completed => nil ).first
   end
   
   # PUT /dummies/1

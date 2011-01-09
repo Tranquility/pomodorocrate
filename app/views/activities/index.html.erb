@@ -1,34 +1,48 @@
-<h1>Activities list</h1>
-<div class="toolbar">
-	<%= link_to "[+] New activity", new_activity_path %>
-</div>
+<ul class="toolbar">
+	<li><%= link_to "New activity", new_activity_path, :class => "button" %></li>
+</ul>
 
 <% unless @activities.empty? %>
-	<table>
-		<tr>
-			<th>Completed</th>
-			<th>Activity name</th>
-			<th>Pomodoros</th>
-			<th>Deadline</th>
-			<th>Project</th>
-			<th>Actions</th>
-		</tr>
-		<% @activities.each do |a| %>
-		<tr>
-			<td><%= check_box_tag( "activity_completed_" + a.id.to_s, a.completed, a.completed, :disabled => true ) %></td>
-			<td><%= a.name %></td>
-			<td><%= pomodoros_completed_ratio(a.pomodoros.successful_and_completed.count, a.estimated_pomodoros) %></td>
-			<td><%= due_at_status(a.deadline) %></td>
-			<td>-</td>
-			<td>
-				<%= link_to_if( a.todotoday.nil?, "Do Today", todotodays_path(:activity_id => a), :method => :post) %> | 
-				<%= link_to("Show", a) %> | 
-				
-				<%= link_to("Edit", edit_activity_path(a)) %> | <%= link_to("Delete", a, :confirm => "Are you sure?", :method => :delete) %>
-			</td>
-		</tr>
-		<% end %>
-	</table>
 	
+	<%= render "shared/filter_toolbar" %>
+
+	<section class="group">
+		<h6>Today</h6>
+		<ul class="activityList">
+		
+			<% @activities.each do |a| %>
+			
+			<li>
+				<div class="quickView">
+					<%= form_for a do |f| %>
+						<%= f.submit "", :class => "checkbox" %>
+						<div class="activityName"><%= a.name %></div>
+						<div class="pomodorosCount">
+							<%= pomodoros_completed_ratio(a.pomodoros.successful_and_completed.count, a.estimated_pomodoros) %>
+						</div>
+					<% end %>
+				</div>
+				
+				<div class="detailsView">
+					<%= a.description %>
+					
+					<ul class="actionsBar">
+						<li><%= link_to_if( a.todotoday.nil?, "Do Today", todotodays_path(:activity_id => a), :method => :post, :class => :button) %></li>
+						<!--<li><%= link_to("Show", a, :class => :button) %></li>-->
+						<li><%= link_to("Edit", edit_activity_path(a), :class => :button) %></li>
+						<li><%= link_to("Delete", a, :confirm => "Are you sure?", :method => :delete, :class => :button) %></li>
+					</ul>
+					<ul class="infoBar">
+						<li>Project name</li>
+						<li><%= raw a.completed ? "Completed" : "Due at #{due_at_status a.deadline}" %></li>
+						<li>Created at Sat, Jan 8 2011</li>
+					</ul>
+				</div>
+			</li>
+			<% end %>
+		
+		</ul>
+	</section>
+
 	<%= will_paginate @activities %>
 <% end %>

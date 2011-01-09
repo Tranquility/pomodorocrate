@@ -1,23 +1,34 @@
-<h1><%= @activity.name %></h1>
-
-<p class="pomodoros_icons">
-	<% for i in 1..@activity.estimated_pomodoros %>
-		<%= image_tag( "tomato.jpg", :alt => "Pomodoro", :size => "18x18" ) %>
-		<% if i%4 == 0 %>
-			&nbsp;&nbsp;
-		<% end %>
-	<% end %>
-</p>
-
-<p class="deadline">
-	<%= raw @activity.completed ? "Completed" : "Due at #{due_at_status @activity.deadline}" %>
-</p>
-
-<p class="toolbar">
-	<%= link_to_if(@activity.todotoday.nil?, "Do Today", todotodays_path(:activity_id => @activity), :method => :post) %>
-	<%= link_to("Edit", edit_activity_path(@activity)) %>
-	<%= link_to("Back to list", activities_path) %>
-	<%= link_to("Delete", @activity, :method => :delete, :confirm => "Are you sure?") %>
-</p>
-
-<p><%= @activity.description %></p>
+<section class="group">
+	<h6><%= @activity.name %></h6>
+	<ul class="activityList">
+		
+		<li>
+			<div class="quickView">
+				<%= form_for @activity do |f| %>
+					<%= f.submit "", :class => "checkbox" %>
+					<div class="activityName"><%= @activity.name %></div>
+					<div class="pomodorosCount">
+						<%= pomodoros_completed_ratio(@activity.pomodoros.successful_and_completed.count, @activity.estimated_pomodoros) %>
+					</div>
+				<% end %>
+			</div>
+			
+			<div class="detailsView">
+				<%= @activity.description %>
+				
+				<ul class="actionsBar">
+					<li><%= link_to_if( @activity.todotoday.nil?, "Do Today", todotodays_path(:activity_id => @activity), :method => :post, :class => :button) %></li>
+					<li><%= link_to("Edit", edit_activity_path(@activity), :class => :button) %></li>
+					<li><%= link_to("Back to list", activities_path, :class => :button) %></li>
+					<li><%= link_to("Delete", @activity, :confirm => "Are you sure?", :method => :delete, :class => :button) %></li>
+				</ul>
+				<ul class="infoBar">
+					<li>Project name</li>
+					<li><%= raw @activity.completed ? "Completed" : "Due at #{due_at_status @activity.deadline}" %></li>
+					<li>Created at <%= @activity.created_at %></li>
+				</ul>
+			</div>
+		</li>
+	
+	</ul>
+</section>

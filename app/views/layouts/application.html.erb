@@ -1,36 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ketchup</title>
+  <title><%= request.path_parameters[:controller].capitalize %> | Pomodoro Crates</title>
+
 	<!--[if lt IE 9]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<%= stylesheet_link_tag "blueprint/screen", :media => :screen %>
-	<%= stylesheet_link_tag "custom", 					:media => :screen %>
+	<%= stylesheet_link_tag "blueprint/reset", 	:media => :screen %>
+	<%= stylesheet_link_tag "screen", 					:media => :screen %>
 	<%= stylesheet_link_tag "blueprint/print", 	:media => :print %>
 	<!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
 	
 	<%= javascript_include_tag :all %>
-	
 	<%= csrf_meta_tag %>
 </head>
+
 <body>
-	<div class="container">
-		<header>
-			<%= link_to(image_tag("logo.jpg", :alt => "Ketchup"), root_path, :id => "logo") %>
-			<h1>Ketchup</h1>
-			<h2>Pomodoro time management</h2>
-			<%= render 'shared/menu' %>
-		</header>
+<div id="site">
+	<div id="page" class="boxShadow">
+
+		<%= render 'shared/header' %>
+		
 		<% flash.each do |key, value| %>
 			<%= content_tag(:div, value, :class => "flash #{key}") %>
 		<% end %>
 		
-		<%= render 'shared/current_pomodoro' %>
+		<% render 'shared/current_pomodoro' %>
 		
-		<%= yield %>
-
-		<%= debug(params) if Rails.env.development? %>
+		<section id="content" class="contentBoxNav">
+			
+			<%= render "shared/main_menu" %>
+			
+			<%= yield %>
+			
+		</section>
+		
+		<section id="sidebar">
+			<%= render "shared/active_pomodoro" %>
+			<%= render "shared/activity_status" %>
+		</section>
+		
 	</div>
+</div>
+
+<%= debug(params) if Rails.env.development? %>
+
 </body>
 </html>
