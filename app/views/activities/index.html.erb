@@ -7,53 +7,77 @@
 	<%= render "shared/filter_toolbar" %>
 
 	<section class="group">
-		<h6>Today</h6>
-		<ul class="activityList">
 		
-			<% @activities.each do |a| %>
-			
-			<li>
-				<div class="quickView">
-					<%= form_for a do |f| %>
-						<%= hidden_field "activity", :completed, :value => (a.completed ? false : true) %>
-						<%= hidden_field "activity", "force_update", :value => :true %>
-						<%= f.submit (a.completed ? '&times;'.html_safe : ""), :class => "checkbox" %>
-						<div class="activityName">
-							<%= content_tag_for(:span, a, :class => (a.completed ? 'activityCompleted' : "") ) do %>
-								<%= a.name %>
-							<% end %>
-							<%= in_progress_marker(@pomodoro, a) %>
-							<%= todotoday_marker(a) %>
-						</div>
-						<div class="pomodorosCount">
-							<%= pomodoros_completed_ratio(a.pomodoros.successful_and_completed.count, a.estimated_pomodoros) %>
-						</div>
-					<% end %>
-				</div>
+		<% prev_deadline = "" %>
+		<% completed_activities = false %>
+		<% opened_ul = false %>
+		
+		<% @activities.each do |a| %>
+		
+			<% unless a.completed %>
+				<% if a.deadline != prev_deadline %>
 				
-				<div class="detailsView">
-					<%= a.description %>
-					
-					<ul class="actionsBar">
-						<% if a.todotoday.nil? %>
-							<li><%= link_to( "Do Today", todotodays_path(:activity_id => a), :method => :post, :class => :button) %></li>
-						<% elsif !in_progress?(@pomodoro, a) %>
-							<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => :button) %></li>
-						<% end %>
-						<li><%= link_to("Edit", edit_activity_path(a), :class => :button) %></li>
-						<li><%= link_to("Delete", a, :confirm => "Are you sure?", :method => :delete, :class => :button) %></li>
-						<li><%= link_to("Clone", clone_activity_path(:id => a.id), :class => :button) %></li>
+					<% unless prev_deadline.blank? %>
 					</ul>
-					<ul class="infoBar">
-						<li>Project name</li>
-						<li><%= raw a.completed ? "Completed" : "Due at #{due_at_status a.deadline}" %></li>
-						<li>Created at Sat, Jan 8 2011</li>
-					</ul>
-				</div>
-			</li>
+					<% end %>
+				
+					<h6><%= distance_of_time_in_words Time.now, a.deadline %><%= (Time.now > a.deadline) ? " ago" : " from now" %></h6>
+					<ul class="activityList">
+					<% prev_deadline = a.deadline %>
+					<% opened_ul = true %>
+				<% end %>
+			<% else %>
+				<% unless completed_activities %>
+					<%= "</ul>".html_safe if opened_ul %>
+					<h6>completed</h6>
+					<ul class="activityList">
+					<% completed_activities = true %>
+				<% end %>
 			<% end %>
+			
+						<li>
+							<div class="quickView">
+								<%= form_for a do |f| %>
+									<%= hidden_field "activity", :completed, :value => (a.completed ? false : true) %>
+									<%= hidden_field "activity", "force_update", :value => :true %>
+									<%= f.submit (a.completed ? '&times;'.html_safe : ""), :class => "checkbox" %>
+									<div class="activityName">
+										<%= content_tag_for(:span, a, :class => (a.completed ? 'activityCompleted' : "") ) do %>
+											<%= a.name %>
+										<% end %>
+										<%= in_progress_marker(@pomodoro, a) %>
+										<%= todotoday_marker(a) %>
+									</div>
+									<div class="pomodorosCount">
+										<%= pomodoros_completed_ratio(a.pomodoros.successful_and_completed.count, a.estimated_pomodoros) %>
+									</div>
+								<% end %>
+							</div>
+				
+							<div class="detailsView">
+								<%= a.description %>
+					
+								<ul class="actionsBar">
+									<% if a.todotoday.nil? %>
+										<li><%= link_to( "Do Today", todotodays_path(:activity_id => a), :method => :post, :class => :button) %></li>
+									<% elsif !in_progress?(@pomodoro, a) %>
+										<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => :button) %></li>
+									<% end %>
+									<li><%= link_to("Edit", edit_activity_path(a), :class => :button) %></li>
+									<li><%= link_to("Delete", a, :confirm => "Are you sure?", :method => :delete, :class => :button) %></li>
+									<li><%= link_to("Clone", clone_activity_path(:id => a.id), :class => :button) %></li>
+								</ul>
+								<ul class="infoBar">
+									<li>Project name</li>
+									<li><%= raw a.completed ? "Completed" : "Due at #{due_at_status a.deadline}" %></li>
+									<li>Created at Sat, Jan 8 2011</li>
+								</ul>
+							</div>
+						</li>
+			
+	<% end %>
+					</ul>
 		
-		</ul>
 	</section>
 
 	<%= will_paginate @activities %>

@@ -102,3 +102,8 @@ $(document).ready(function(){
 	
 	if( $('#content .activityName').length == 1 ) $('#content .activityName').click();
 })
+
+// formattings
+$(document).ready(function(){
+	$('.field_with_errors').parent().addClass("container_of_field_with_errors");
+})
