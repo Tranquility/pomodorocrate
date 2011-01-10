@@ -11,7 +11,7 @@ class Activity < ActiveRecord::Base
                                   :inclusion => { :in => 0..8 }
   validate :deadline_can_not_be_in_the_past
   
-  default_scope :order => "activities.deadline ASC"
+  default_scope :order => "activities.completed ASC, activities.deadline ASC"
   
   def deadline_can_not_be_in_the_past
     errors.add(:deadline, "can't be in the past") unless ( deadline == Date.today or deadline.future? )

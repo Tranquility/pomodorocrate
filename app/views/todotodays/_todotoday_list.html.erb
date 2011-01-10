@@ -2,13 +2,13 @@
 	<li><%= link_to "New activity", new_activity_path, :class => "button" %></li>
 </ul>
 
+<section class="group">
+	<h6>Today</h6>
+	
 <% unless @todotodays.empty? %>
 	
 	<%= render "shared/filter_toolbar" %>
-
-	<section class="group">
-		<h6>Today</h6>
-		<ul class="activityList">
+		<ul class="activityList withSeparator">
 		
 			<% @todotodays.each do |td| %>
 			<% a = td.activity %>
@@ -16,8 +16,15 @@
 			<li>
 				<div class="quickView">
 					<%= form_for a do |f| %>
-						<%= f.submit "", :class => "checkbox" %>
-						<div class="activityName"><%= a.name %></div>
+						<%= hidden_field "activity", :completed, :value => (a.completed ? false : true) %>
+						<%= hidden_field "activity", "force_update", :value => :true %>
+						<%= f.submit (a.completed ? '&times;'.html_safe : ""), :class => "checkbox" %>
+						<div class="activityName">
+							<%= content_tag_for(:span, a, :class => (a.completed ? 'activityCompleted' : "") ) do %>
+								<%= a.name %>
+							<% end %>
+							<%= in_progress_marker(@pomodoro, a) %>
+						</div>
 						<div class="pomodorosCount">
 							<%= pomodoros_completed_ratio(a.pomodoros.successful_and_completed.count, a.estimated_pomodoros) %>
 						</div>
@@ -42,7 +49,16 @@
 			<% end %>
 		
 		</ul>
-	</section>
 
 	<%= will_paginate @todotodays %>
+
+<% else %>
+	<p class="pageContainer">
+		You haven't picked any activities to work on today.
+	</p>
+	<p class="pageContainer">
+		Use the <%= link_to("Activities", activities_path, :class => :button) %> list or the "Recent activities" widget to pick your "Todo today" activities.
+	</p>
 <% end %>
+
+</section>

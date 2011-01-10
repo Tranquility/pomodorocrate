@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= request.path_parameters[:controller].capitalize %> | Pomodoro Crates</title>
+  <title><%= request.path_parameters[:controller].capitalize %> | Pomodoro Crate</title>
 
 	<!--[if lt IE 9]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -36,14 +36,15 @@
 		</section>
 		
 		<section id="sidebar">
-			<%= render "shared/active_pomodoro" %>
-			<%= render "shared/activity_status" %>
+			<%= render "widgets/active_pomodoro" %>
+			<%= render "widgets/recent_activities" %>
+			<%= render "widgets/activity_status" %>
 		</section>
 		
 	</div>
 </div>
 
-<% debug(params) if Rails.env.development? %>
+<%= debug(params) if Rails.env.development? %>
 
 </body>
 </html>

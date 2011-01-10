@@ -1,10 +1,9 @@
 Ketchup::Application.routes.draw do
 
-  resources :settings
-
-  resources :activities
+  resources :activities, :pomodoros, :settings
   resources :todotodays,  :only => [:index, :create, :destroy]
-  resources :pomodoros
+  
+  match 'activities/:id/clone' => 'activities#clone', :as => :clone_activity
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

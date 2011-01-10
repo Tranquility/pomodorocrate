@@ -1,12 +1,9 @@
 class ActivitiesController < ApplicationController
-
+  
   # GET /dummies
   # GET /dummies.xml
   def index
     @activities = Activity.paginate :page => params[:page]
-    @todotodays = Todotoday.where(:today => Date.today).paginate :page => params[:page]
-    
-    @pomodoro = Pomodoro.where( :completed => nil ).first
   end
   
   # GET /dummies/1
@@ -14,7 +11,6 @@ class ActivitiesController < ApplicationController
   def show
     begin
       @activity = Activity.find(params[:id])
-      @pomodoro = Pomodoro.where( :completed => nil ).first
     rescue
       flash[:error] = "There is no activity with id #{params[:id]}"
       redirect_to (activities_url) and return
@@ -30,8 +26,7 @@ class ActivitiesController < ApplicationController
   # GET /dummies/new.xml
   def new
     @activity = Activity.new
-    @pomodoro = Pomodoro.where( :completed => nil ).first
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @activity }
@@ -57,7 +52,6 @@ class ActivitiesController < ApplicationController
   # GET /dummies/1/edit
   def edit
     @activity = Activity.find(params[:id])
-    @pomodoro = Pomodoro.where( :completed => nil ).first
   end
   
   # PUT /dummies/1
@@ -66,8 +60,20 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
 
     respond_to do |format|
-      if @activity.update_attributes(params[:activity])
-        format.html { redirect_to(@activity, :notice => 'Activity was successfully updated.') }
+      if params[:activity][:force_update]
+        
+        params[:activity][:force_update] = nil
+        @activity.completed = params[:activity][:completed]
+        
+        if @activity.save(:validate => false)
+          flash[:success] = "Activity updated"
+          format.html { redirect_to(request.env["HTTP_REFERER"]) }
+          format.xml  { head :ok }
+        end
+        
+      elsif @activity.update_attributes(params[:activity])
+        flash[:success] = "Activity updated"
+        format.html { redirect_to(activities_path, :success => 'Activity updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -86,6 +92,23 @@ class ActivitiesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(activities_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  def clone
+    @activity = Activity.find(params[:id])
+    @activity.id = nil
+    
+    @clone = @activity.clone
+
+    respond_to do |format|
+      if @clone.save
+        format.html { redirect_to(@clone, :notice => 'Activity cloned') }
+        format.xml  { render :xml => @clone, :status => :created, :location => @clone }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @clone.errors, :status => :unprocessable_entity }
+      end
     end
   end
   

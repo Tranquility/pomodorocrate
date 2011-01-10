@@ -23,4 +23,21 @@ module ApplicationHelper
     false
   end
   
+  def setup_widgets
+    @recent_pomodoros = Pomodoro.order("created_at DESC").group("activity_id").limit(5)
+  end
+  
+  def in_progress_marker(pomodoro, activity)
+    return raw '<span class="inProgressMarker">in progress</span>' unless pomodoro.nil? or pomodoro.activity != activity
+		return
+  end
+  
+  def in_progress?(pomodoro, activity)
+    return (!pomodoro.nil? && pomodoro.activity == activity) 
+  end
+  
+  def todotoday_marker(activity)
+    return raw '<span class="todotodayMarker">todo today</span>' unless activity.todotoday.nil? or activity.completed
+  end
+
 end

@@ -19,7 +19,7 @@ class PomodorosController < ApplicationController
     
     if pomodoro_in_progress?
       flash[:error] = "A pomodoro is already in progress"
-      redirect_to(pomodoros_path) and return
+      redirect_to(activities_path) and return
     end
     
     @pomodoro = Pomodoro.new(:activity_id => params[:activity_id])

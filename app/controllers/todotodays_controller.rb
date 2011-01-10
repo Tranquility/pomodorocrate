@@ -4,9 +4,8 @@ class TodotodaysController < ApplicationController
   # GET /dummies.xml
   def index
     @todotodays = Todotoday.where(:today => Date.today).paginate :page => params[:page]
-    @pomodoro = Pomodoro.where( :completed => nil ).first
-
-    respond_to do |format|
+   
+   respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @todotodays }
     end

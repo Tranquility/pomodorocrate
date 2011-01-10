@@ -31,7 +31,7 @@
 					<% if Time.now - @pomodoro.created_at < Pomodoro.length.minutes %>
 						<%= hidden_field_tag("pomodoro[successful]", false) %>
 						<div class="field">
-							<%= f.submit("Void", :class => :submit) %>
+							<%= f.submit("Void", :class => :submit, :confirm => "Are you sure? You will lose all progress!") %>
 						</div>
 					<% else %>
 						<div class="field">

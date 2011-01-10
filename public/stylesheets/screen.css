@@ -2,7 +2,9 @@
 orange: #ef4832 
 gray: #898989
 lighter gray: #e7e7e7
-light gray: $f5f5f5
+light gray: #f5f5f5
+mustard: #DFB538
+blue: #3861DF
 */
 
 body { 	background: #fff; color: #898989;
@@ -50,8 +52,10 @@ section.group {  }
 		.activityList li:last-child { border-bottom: 0; }
 .quickView {  }						
 input.checkbox { 	border: 2px solid #e7e7e7; float: left; height: 15px; margin-right: 10px; width: 15px;
-	 				background: #fff; cursor: pointer; }
-.activityName { cursor: pointer; font-weight: bold; }
+	 				background: #fff; cursor: pointer; 
+					padding-bottom: 2px;
+					color: #898989; font-size: 9px; font-weight: bold; line-height: 1%;}
+#content .activityName { cursor: pointer; font-weight: bold; }
 .pomodorosCount { float: right; margin: -16px 10px; }
 	.pomodorosCount img { margin-left: 2px; }
 .detailsView { padding: 6px 10px 2px 26px; display: none; }
@@ -108,6 +112,22 @@ aside { float: right; margin-bottom: 12px; padding: 2px; width: 231px;
 .past { color: red; }
 .present {  }
 .future {  }
+
+.pageContainer { background: #fff; padding: 6px 12px; }
+.withSeparator { border-top: 2px solid #E7E7E7; }
+
+.widgetBox .actionsBar { clear: both; height: 6px; margin-top: 20px; }
+	.widgetBox .actionsBar li a { margin-left: 6px; }
+.widgetBox .activityList li { padding: 6px 0 0 0; }
+
+.inProgressMarker { 	font-size: 8px; text-transform: uppercase; white-space: nowrap;
+						background: #3AA5E7; color: #fff;
+						margin-right: 2px; padding: 2px;}
+.todotodayMarker { 	font-size: 8px; text-transform: uppercase; white-space: nowrap;
+					background: #DFB538; color: #fff;
+					margin-right: 2px; padding: 2px;}
+
+.activityCompleted { 	text-decoration: line-through; }
 		
 .boxShadow {
   -moz-box-shadow: 0px -8px 15px -3px #333; /* Firefox */

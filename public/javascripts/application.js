@@ -96,7 +96,9 @@ function stopClockSound() {
 
 // event
 $(document).ready(function(){
-	$('.activityName').click(function(){
-		$(this).parent().parent().parent().find('.detailsView').toggle("fast");
-	})
+	$('#content .activityName').click(function(){
+		$(this).parent().parent().parent().find('.detailsView').toggle();
+	});
+	
+	if( $('#content .activityName').length == 1 ) $('#content .activityName').click();
 })
