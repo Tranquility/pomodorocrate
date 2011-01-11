@@ -18,10 +18,12 @@ class TodotodaysController < ApplicationController
 
     respond_to do |format|
       if @todotoday.save
-        format.html { redirect_to(todotodays_path, :success => 'Todo today was successfully created.') }
+        flash[:success] = 'Activity has been scheduled for today'
+        
+        format.html { redirect_to(request.env["HTTP_REFERER"]) }
         format.xml  { render :xml => @todotoday, :status => :created, :location => @todotoday }
       else
-        format.html { redirect_to(activities_path, :error => 'Adding the new todo today has failed.') }
+        format.html { redirect_to(activities_path, :error => 'Adding the new todo today has failed') }
         format.xml  { render :xml => @todotoday.errors, :status => :unprocessable_entity }
       end
     end

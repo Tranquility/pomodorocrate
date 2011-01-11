@@ -35,9 +35,9 @@
 					<li><%= link_to("Delete", @activity, :confirm => "Are you sure?", :method => :delete, :class => :button) %></li>
 				</ul>
 				<ul class="infoBar">
-					<li>Project name</li>
+					<li>Project: <%= @activity.project.nil? ? "none" : link_to(@activity.project.name, @activity.project) %></li>
 					<li><%= raw @activity.completed ? "Completed" : "Due at #{due_at_status @activity.deadline}" %></li>
-					<li>Created at <%= @activity.created_at %></li>
+					<li>Created at <%= @activity.created_at.to_date %></li>
 				</ul>
 			</div>
 		</li>

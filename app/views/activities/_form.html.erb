@@ -32,6 +32,11 @@
 	</div>
 	
 	<div class="field">
+	  <%= f.label :project %><br />
+	  <%= collection_select(:activity, :project_id, Project.all, :id, :name) %>
+	</div>
+	
+	<div class="field">
 	  <%= f.label :completed %><br />
 	  <%= f.check_box :completed %>
 	</div>

@@ -68,9 +68,9 @@
 									<li><%= link_to("Clone", clone_activity_path(:id => a.id), :class => :button) %></li>
 								</ul>
 								<ul class="infoBar">
-									<li>Project name</li>
+									<li>Project: <%= a.project.nil? ? "none" : link_to(a.project.name, a.project) %></li>
 									<li><%= raw a.completed ? "Completed" : "Due at #{due_at_status a.deadline}" %></li>
-									<li>Created at Sat, Jan 8 2011</li>
+									<li>Created at <%= a.created_at.to_date %></li>
 								</ul>
 							</div>
 						</li>

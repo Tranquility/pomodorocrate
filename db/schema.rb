@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110106142251) do
+ActiveRecord::Schema.define(:version => 20110111140059) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -20,15 +20,12 @@ ActiveRecord::Schema.define(:version => 20110106142251) do
     t.boolean  "completed"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "project_id"
   end
 
   add_index "activities", ["completed"], :name => "index_activities_on_completed"
   add_index "activities", ["deadline"], :name => "index_activities_on_deadline"
-
-  create_table "dummies", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "activities", ["project_id"], :name => "index_activities_on_project_id"
 
   create_table "pomodoros", :force => true do |t|
     t.integer  "activity_id"
@@ -42,6 +39,13 @@ ActiveRecord::Schema.define(:version => 20110106142251) do
   add_index "pomodoros", ["activity_id"], :name => "index_pomodoros_on_activity_id"
   add_index "pomodoros", ["completed"], :name => "index_pomodoros_on_completed"
   add_index "pomodoros", ["successful"], :name => "index_pomodoros_on_successful"
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "settings", :force => true do |t|
     t.string   "name"

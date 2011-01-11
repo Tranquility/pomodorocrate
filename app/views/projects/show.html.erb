@@ -1,0 +1,49 @@
+<section class="group">
+	<h6><%= @project.name %></h6>
+	<ul class="activityList">
+		<li>
+			<div>
+				<div class="quickView">
+					<div class="activityName">
+						<%= @project.name %>
+						<% # in_progress_marker(@pomodoro, project.activities.first) %>
+						<% # todotoday_marker(project.activities.first) %>
+					</div>
+					
+					<div class="pomodorosCount">
+						
+						<div class="projectDetails" title="Completed pomodoros">
+							<%= @project.completed_pomodoros %>
+							<span class="explanation">&#9679;</span>
+						</div>
+						
+						<div class="projectDetails" title="Left pomodoros">
+							<%= @project.total_pomodoros - @project.completed_pomodoros %>
+							<span class="explanation">&#9675;</span>
+						</div>
+						
+						<div class="projectDetails" title="Project completness">
+							<%= @project.completness %>%
+						</div>
+					
+					</div>
+					
+				</div>
+			</div>
+
+			<div class="detailsView">
+				<%= @project.description %>
+
+				<ul class="actionsBar">
+					<li><%= link_to("Edit", edit_project_path(@project), :class => :button) %></li>
+					<li><%= link_to("Delete", @project, :confirm => "Are you sure?", :method => :delete, :class => :button) %></li>
+				</ul>
+				<ul class="infoBar">
+					<li>Created at <%= @project.created_at.to_date %></li>
+					<li>Started at <%= @project.started_at %></li>
+					<li>Deadline <%= @project.deadline %></li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+</section>

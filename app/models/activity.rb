@@ -1,9 +1,10 @@
 class Activity < ActiveRecord::Base
   
-  has_one :todotoday
-  has_many :pomodoros
+  has_one     :todotoday, :dependent => :destroy
+  has_many    :pomodoros, :dependent => :destroy
+  belongs_to  :project
   
-  attr_accessible :name, :description, :estimated_pomodoros, :deadline, :completed
+  attr_accessible :name, :description, :estimated_pomodoros, :deadline, :completed, :project_id
   
   validates :name,  :presence => true,
                     :length => { :maximum => 100 }
