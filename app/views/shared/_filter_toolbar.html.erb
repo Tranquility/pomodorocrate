@@ -1,11 +1,26 @@
-<div class="toolbar">
-	<form>
+<div class="toolbar" id="activityFilter">
+	
+	<%= form_tag(activities_path, :method => "get") do %>
 		Filter by
-		<input type="text" value="Activity name" />
-		<select>
-			<option>Project name</option>
-		</select>
-		<input type="text" value="Due date" />
-		<input type="submit" value="Filter" class="submit" />
-	</form>
+		
+	  <%= label_tag(:q_name, "Activity.") %>
+	  <%= text_field_tag(:q_name, params[:q_name]) %>
+		
+	  <%= label_tag(:q_project, "Project") %>
+		<% 
+		projects = [["..Any..", "__none__"]] 
+		Project.all.each do |p|
+			projects << [p.name, p.id]
+		end
+		%>
+	  <%= select_tag(:q_project, options_for_select(projects, params[:q_project])) %>
+		
+		<!--
+		<%= label_tag(:q_deadline, "Deadline.") %>
+	  <%= text_field_tag(:q_deadline, params[:q_deadline]) %>
+		-->
+
+	  <%= submit_tag("Filter", :class => :submit) %>
+	<% end %>
+	
 </div>

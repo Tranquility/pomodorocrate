@@ -31,6 +31,7 @@ GEM
     annotate-models (1.0.4)
     arel (2.0.6)
     builder (2.1.2)
+    chronic (0.3.0)
     configuration (1.2.0)
     diff-lcs (1.1.2)
     erubis (2.6.6)
@@ -112,6 +113,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate-models (= 1.0.4)
+  chronic
   factory_girl_rails (= 1.0)
   faker
   gravatar_image_tag

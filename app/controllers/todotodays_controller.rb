@@ -3,7 +3,7 @@ class TodotodaysController < ApplicationController
   # GET /dummies
   # GET /dummies.xml
   def index
-    @todotodays = Todotoday.where(:today => Date.today).paginate :page => params[:page]
+    @todotodays = Todotoday.where(:today => Date.today).paginate :page => params[:page], :conditions => search_conditions
    
    respond_to do |format|
       format.html # index.html.erb

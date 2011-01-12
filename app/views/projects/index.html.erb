@@ -17,16 +17,17 @@
 						
 						<div class="pomodorosCount">
 							
-							<div class="projectDetails" title="Completed pomodoros">
+							<div class="projectDetails" title="<%= pluralize(project.completed_pomodoros, 'pomodoro') %> completed">
 								<%= project.completed_pomodoros %>
 								<span class="explanation">&#9679;</span>
 							</div>
-							
-							<div class="projectDetails" title="Left pomodoros">
-								<%= project.total_pomodoros - project.completed_pomodoros %>
+
+							<% left_pomodoros = project.total_pomodoros - project.completed_pomodoros %>
+							<div class="projectDetails" title="<%= pluralize(left_pomodoros, 'pomodoro') %> left">
+								<%= left_pomodoros %>
 								<span class="explanation">&#9675;</span>
 							</div>
-							
+
 							<div class="projectDetails" title="Project completness">
 								<%= project.completness %>%
 							</div>

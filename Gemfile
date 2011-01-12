@@ -11,6 +11,10 @@ gem 'gravatar_image_tag'
 gem 'will_paginate', '3.0.pre2'
 gem 'jquery-rails', '>= 0.2.6'
 gem 'heroku'
+gem 'chronic'
+
+#gem 'scoped_search'
+#gem 'resource_search', '100.0', :git => 'git://github.com/rubaidh/resource_search'
 
 group :development do
   gem 'rspec-rails', '2.3.0'

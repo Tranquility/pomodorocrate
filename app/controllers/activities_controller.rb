@@ -3,7 +3,13 @@ class ActivitiesController < ApplicationController
   # GET /dummies
   # GET /dummies.xml
   def index
-    @activities = Activity.paginate :page => params[:page]
+    @activities = Activity.paginate :page => params[:page], :conditions => search_conditions
+    
+    #@orders = Order.paginate(:all,
+    #:order => 'orders.created_at',
+    #:page => params[:page],
+    #:conditions => search_conditions,
+    #:joins => :user)
   end
   
   # GET /dummies/1
@@ -112,5 +118,4 @@ class ActivitiesController < ApplicationController
     end
   end
   
-
 end

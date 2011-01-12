@@ -106,4 +106,11 @@ $(document).ready(function(){
 // formattings
 $(document).ready(function(){
 	$('.field_with_errors').parent().addClass("container_of_field_with_errors");
+	$('#activityFilter input[type=text]').inline_label();
+	$('input, select, textarea, submit, button, checkbox').focus(function() {
+		$(this).addClass("activeInput");
+	});
+	$('input, select, textarea, submit, button, checkbox').blur(function() {
+		$(this).removeClass("activeInput");
+	});
 })

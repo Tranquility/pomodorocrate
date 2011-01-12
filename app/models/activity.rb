@@ -6,6 +6,8 @@ class Activity < ActiveRecord::Base
   
   attr_accessible :name, :description, :estimated_pomodoros, :deadline, :completed, :project_id
   
+  #searchable_on :name, :project, :deadline
+  
   validates :name,  :presence => true,
                     :length => { :maximum => 100 }
   validates :estimated_pomodoros, :numericality => true,
