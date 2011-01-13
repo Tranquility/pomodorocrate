@@ -1,5 +1,7 @@
 class ActivitiesController < ApplicationController
   
+  @@per_page = 60
+  
   # GET /dummies
   # GET /dummies.xml
   def index

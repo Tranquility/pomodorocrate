@@ -24,7 +24,7 @@ class PomodorosController < ApplicationController
     end
     
     if break_in_progress?
-      Break.where( :completed => nil ).first.update_attributes(params[:break])
+      Break.where( :completed => nil ).first.update_attributes(:completed => true)
     end
     
     @pomodoro = Pomodoro.new(:activity_id => params[:activity_id])

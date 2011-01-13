@@ -7,6 +7,8 @@ class Project < ActiveRecord::Base
   validates :name,  :presence => true,
                     :length => { :maximum => 100 }, 
                     :uniqueness => true
+                    
+  default_scope :order => "projects.name ASC"
      
   def total_pomodoros
     total_pomodoros = 0

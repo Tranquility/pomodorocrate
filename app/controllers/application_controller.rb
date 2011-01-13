@@ -7,6 +7,14 @@ class ApplicationController < ActionController::Base
     @pomodoro = Pomodoro.where( :completed => nil ).first
     @break = Break.where( :completed => nil ).first
     @recent_pomodoros = Pomodoro.order("created_at DESC").group("activity_id").limit(5)
+    @upcoming_activities = Activity.where(:deadline => Time.now.midnight..(Time.now.midnight + 7.days), :completed => false)
+    
+    @today_remaining_pomodoros = 0
+    Todotoday.all.each do |t|
+      next if t.activity.completed
+      @today_remaining_pomodoros += t.activity.estimated_pomodoros - t.activity.pomodoros.successful_and_completed.count
+    end
+    @today_completed_pomodoros = Pomodoro.successful_and_completed.where("date(created_at) = '#{Date.today}'").count
   end
   
   protected

@@ -8,6 +8,9 @@
 	<![endif]-->
 	<%= stylesheet_link_tag "blueprint/reset", 	:media => :screen %>
 	<%= stylesheet_link_tag "screen", 					:media => :screen %>
+	<% stylesheet_link_tag "basic",						:media => :screen %>
+	<%= stylesheet_link_tag "visualize",				:media => :screen %>
+	<%= stylesheet_link_tag "visualize-light",	:media => :screen %>
 	<%= stylesheet_link_tag "blueprint/print", 	:media => :print %>
 	<!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
 	
@@ -39,6 +42,7 @@
 			<%= render "widgets/active_pomodoro" %>
 			<%= render "widgets/recent_activities" %>
 			<%= render "widgets/activity_status" %>
+			<%= render "widgets/upcoming_activities" %>
 		</section>
 		
 	</div>

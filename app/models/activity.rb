@@ -16,6 +16,9 @@ class Activity < ActiveRecord::Base
   
   default_scope :order => "activities.completed ASC, activities.deadline ASC"
   
+  cattr_reader :per_page
+  @@per_page = 60
+  
   def deadline_can_not_be_in_the_past
     errors.add(:deadline, "can't be in the past") unless ( deadline == Date.today or deadline.future? )
   end

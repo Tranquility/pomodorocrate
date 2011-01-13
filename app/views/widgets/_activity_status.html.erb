@@ -3,13 +3,17 @@
 	<section id="activityStatus" class="contentBoxNav">
 		<nav>
 			<ul>
-				<li class="active"><a href="#" class="tabs">Today</a></li>
-				<li><a href="#" class="tabs">7 days</a></li>
-				<li><a href="#" class="tabs">30 days</a></li>
+				<li class="active"><a href="#" class="tabs">Daily stats</a></li>
 			</ul>
 		</nav>
 		<div class="widgetBox">
-			moo ha
+			<section class="group">
+				<h6>Remaining pomodoros: <%= @today_remaining_pomodoros %></h6>
+				<div class="pomodorosCount"><%= pomodoros_as_image(@today_remaining_pomodoros, true) %></div>
+				
+				<h6>Completed pomodoros: <%= @today_completed_pomodoros %></h6>
+				<div class="pomodorosCount"><%= pomodoros_as_image(@today_completed_pomodoros) %></div>
+			</section>
 		</div>
 	</section>
 	

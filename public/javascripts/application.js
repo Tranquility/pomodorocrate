@@ -21,9 +21,9 @@ $(document).ready(function(){
 function decreaseTimer() {
 	currentTime = parseInt ( $(".timer .time").attr("data-seconds") ) -1;
 	
-	if(currentTime < 0){
+	if(currentTime <= 0){
 		currentTime = 0;
-		if( $('#pomodoro_submit[value="Complete"]').length == 0 ) window.location.reload();
+		if( $('#pomodoro_submit[value="Complete"]').length == 0 && $('#break_submit[value="End break"]').length == 0 ) window.location.reload();
 	} else {
 		setTimeout("decreaseTimer()", 1000);
 	}
@@ -42,13 +42,6 @@ function decreaseTimer() {
 	$(".timer .time").attr("data-seconds", currentTime);
 	$(".timer .time").html(minutes + ":" + seconds);
 }
-
-// add autoupdate functionality for checkboxes
-$(document).ready(function(){
-	$('.todotoday input:checkbox').change(function(){
-		console.log('moo');
-	})
-});
 
 
 function testSounds() {
@@ -114,3 +107,13 @@ $(document).ready(function(){
 		$(this).removeClass("activeInput");
 	});
 })
+
+// graphs
+// Run the script on DOM ready:
+$(function(){
+	$('.analytics').visualize({type: 'pie', width: '629px'});
+	$('.analytics').visualize({type: 'bar', width: '629px'});
+	//$('.analytics').visualize({type: 'area', width: '629px'});
+	//$('.analytics').visualize({type: 'line', width: '629px'});
+	$('.analytics').hide();
+});

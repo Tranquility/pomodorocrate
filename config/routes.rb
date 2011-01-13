@@ -1,11 +1,8 @@
 Ketchup::Application.routes.draw do
 
-  resources :breaks
-
-  resources :projects
-
-  resources :activities, :pomodoros, :settings
+  resources :activities, :pomodoros, :settings, :projects, :breaks
   resources :todotodays,  :only => [:index, :create, :destroy]
+  resources :analytics,   :only => [:index]
   
   match 'activities/:id/clone' => 'activities#clone', :as => :clone_activity
   

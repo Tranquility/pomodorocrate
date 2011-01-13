@@ -1,0 +1,47 @@
+<% unless @recent_pomodoros.nil? %>
+	<aside>
+	
+		<section id="upcomingActivities" class="contentBoxNav">
+			<nav>
+				<ul>
+					<li class="active"><a class="tabs">Upcoming deadlines</a></li>
+				</ul>
+			</nav>
+			<div class="widgetBox">
+				
+				<ul class="activityList">
+
+					<% @upcoming_activities.each do |a| %>
+
+					<li>
+						<div class="quickView">
+							<div class="activityName">
+								<% time_distance = (Date.today - a.deadline.to_date == 0 ? "Today" : distance_of_time_in_words(Date.today, a.deadline.to_date) + " from now" ) %>
+								<%= a.name %>
+								<span class="deadlineMarker"><%= time_distance %></span>
+								<%= in_progress_marker(@pomodoro, a) %>
+								<%= todotoday_marker(a) %>
+							</div>
+						</div>
+
+						<ul class="actionsBar">
+							<li><%= link_to("Show", activity_path(a), :class => :button) %></li>
+							<li><%= link_to("Clone", clone_activity_path(:id => a.id), :class => :button) %></li>
+							<% if @pomodoro.nil? %>
+								<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => :button) %></li>
+							<% end %>
+							<% if a.todotoday.nil? %>
+								<li><%= link_to("Do Today", todotodays_path(:activity_id => a), :method => :post, :class => :button) %></li>
+							<% end %>
+						</ul>
+						
+					</li>
+					<% end %>
+
+				</ul>
+				
+			</div>
+		</section>
+
+	</aside>
+<% end %>

@@ -40,7 +40,8 @@ class BreaksController < ApplicationController
   # POST /breaks
   # POST /breaks.xml
   def create
-    @break = Break.new(params[:break])
+    duration = params[:duration].nil? ? Break.duration : params[:duration]
+    @break = Break.new( :duration => duration )
 
     respond_to do |format|
       if @break.save

@@ -1,6 +1,4 @@
-<ul class="toolbar">
-	<li><%= link_to "New activity", new_activity_path, :class => "button" %></li>
-</ul>
+<%= render "shared/upper_toolbar" %>
 
 <% unless @activities.empty? %>
 	
