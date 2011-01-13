@@ -1,6 +1,6 @@
 <% unless @pomodoro.nil? %>
 	<div class="active_pomodoro">
-		<h1>In progress</h3>
+		<h1>In progress</h1>
 		<h3><%= @pomodoro.activity.name %> | <%= link_to("Edit activity", edit_activity_path(@pomodoro.activity) ) %></h3>
 		
 		<p class="pomodoros_icons"><%= pomodoros_completed_ratio(@pomodoro.activity.pomodoros.successful_and_completed.count, @pomodoro.activity.estimated_pomodoros) %></p>
@@ -34,5 +34,4 @@
 			<% end %>
 		<% end %>
 	</div>
-
 <% end %>

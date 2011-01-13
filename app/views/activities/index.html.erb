@@ -21,7 +21,14 @@
 					</ul>
 					<% end %>
 				
-					<h6><%= distance_of_time_in_words Time.now, a.deadline %><%= (Time.now > a.deadline) ? " ago" : " from now" %></h6>
+					<h6>
+						<% if Date.today == a.deadline.to_date %>
+								Today
+						<% else %>
+								<%= distance_of_time_in_words Date.today, a.deadline.to_date %>
+								<%= (Time.now > a.deadline) ? " ago" : " from now" %>
+						<% end %>
+					</h6>
 					<ul class="activityList">
 					<% prev_deadline = a.deadline %>
 					<% opened_ul = true %>
@@ -40,7 +47,7 @@
 								<%= form_for a do |f| %>
 									<%= hidden_field "activity", :completed, :value => (a.completed ? false : true) %>
 									<%= hidden_field "activity", "force_update", :value => :true %>
-									<%= f.submit (a.completed ? '&times;'.html_safe : ""), :class => "checkbox" %>
+									<%= f.submit (a.completed ? '&#10003;'.html_safe : ""), :class => "checkbox" %>
 									<div class="activityName">
 										<%= content_tag_for(:span, a, :class => (a.completed ? 'activityCompleted' : "") ) do %>
 											<%= a.name %>

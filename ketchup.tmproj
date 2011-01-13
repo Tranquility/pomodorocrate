@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>currentDocument</key>
-	<string>app/views/shared/_filter_toolbar.html.erb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -20,41 +18,7 @@
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>361</integer>
 	<key>metaData</key>
-	<dict>
-		<key>app/controllers/activities_controller.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>11</integer>
-				<key>line</key>
-				<integer>71</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/views/shared/_filter_toolbar.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>5</integer>
-				<key>line</key>
-				<integer>1</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-	</dict>
-	<key>openDocuments</key>
-	<array>
-		<string>app/views/shared/_filter_toolbar.html.erb</string>
-		<string>app/controllers/activities_controller.rb</string>
-	</array>
+	<dict/>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
@@ -150,6 +114,21 @@
 									<dict/>
 								</dict>
 							</dict>
+						</dict>
+					</dict>
+				</dict>
+				<key>config</key>
+				<dict>
+					<key>isExpanded</key>
+					<true/>
+					<key>subItems</key>
+					<dict>
+						<key>environments</key>
+						<dict>
+							<key>isExpanded</key>
+							<true/>
+							<key>subItems</key>
+							<dict/>
 						</dict>
 					</dict>
 				</dict>

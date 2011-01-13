@@ -19,7 +19,7 @@
 					<%= form_for a do |f| %>
 						<%= hidden_field "activity", :completed, :value => (a.completed ? false : true) %>
 						<%= hidden_field "activity", "force_update", :value => :true %>
-						<%= f.submit (a.completed ? '&times;'.html_safe : ""), :class => "checkbox" %>
+						<%= f.submit (a.completed ? '&#10003;'.html_safe : ""), :class => "checkbox" %>
 						<div class="activityName">
 							<%= content_tag_for(:span, a, :class => (a.completed ? 'activityCompleted' : "") ) do %>
 								<%= a.name %>

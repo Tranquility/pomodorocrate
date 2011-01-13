@@ -1,5 +1,7 @@
 Ketchup::Application.routes.draw do
 
+  resources :breaks
+
   resources :projects
 
   resources :activities, :pomodoros, :settings

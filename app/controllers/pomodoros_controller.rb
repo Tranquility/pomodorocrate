@@ -1,6 +1,7 @@
 class PomodorosController < ApplicationController
   
   include PomodorosHelper
+  include BreaksHelper
   
   def index
   end
@@ -20,6 +21,10 @@ class PomodorosController < ApplicationController
     if pomodoro_in_progress?
       flash[:error] = "A pomodoro is already in progress"
       redirect_to(activities_path) and return
+    end
+    
+    if break_in_progress?
+      Break.where( :completed => nil ).first.update_attributes(params[:break])
     end
     
     @pomodoro = Pomodoro.new(:activity_id => params[:activity_id])

@@ -149,6 +149,8 @@ aside { float: right; margin-bottom: 12px; padding: 2px; width: 231px;
 .activeInput { outline: 1px solid #898989 !important; }
 
 #activityFilter label { margin-left: 16px; }
+
+#timedBreak .timer { padding-top: 28px; }
 		
 .boxShadow {
   -moz-box-shadow: 0px -8px 15px -3px #333; /* Firefox */
@@ -169,5 +171,5 @@ a.tabs { 	color: #898989; font-weight: bold; text-decoration: none;
 	a.tabs:hover { background: #e7e7e7; color: #ef4832; }
 	
 a.button { 	color: #ef4832; font-weight: bold;
-		 	padding: 2px;}
+		 	padding: 2px; }
 	a.button:hover { background: #ef4832; color: #fff; text-decoration: none; }

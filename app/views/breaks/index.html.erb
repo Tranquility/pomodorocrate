@@ -1,0 +1,23 @@
+<h1>Listing breaks</h1>
+
+<table>
+  <tr>
+    <th>Completed</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @breaks.each do |break| %>
+  <tr>
+    <td><%= break.completed %></td>
+    <td><%= link_to 'Show', break %></td>
+    <td><%= link_to 'Edit', edit_break_path(break) %></td>
+    <td><%= link_to 'Destroy', break, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Break', new_break_path %>

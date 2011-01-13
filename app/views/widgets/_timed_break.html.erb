@@ -1,0 +1,46 @@
+<% if @break.nil? and @pomodoro.nil? %>
+	
+	<aside>
+	
+		<section id="timedBreak" class="contentBoxNav">
+			<nav>
+				<ul>
+					<li class="active"><a class="tabs">Timed break</a></li>
+				</ul>
+			</nav>
+			<div class="widgetBox timer">
+				
+				<%= link_to("25 minutes break", breaks_path(:duration => 25), :method => :post, :class => :button) %>
+				<%= link_to("5 minutes break", breaks_path(:duration => 5), :method => :post, :class => :button) %>
+				
+			</div>
+		</section>
+
+	</aside>
+
+<% elsif !@break.nil? %>
+
+	<aside>
+	
+		<section id="activePomodoro" class="contentBoxNav">
+			<nav>
+				<ul>
+					<li class="active"><a class="tabs">Timed break</a></li>
+				</ul>
+			</nav>
+			<div class="widgetBox timer">
+			
+				<span class="time" data-seconds="<%= (@break.duration * 60) - ((Time.now - @break.created_at)).to_i %>"><%= @break.duration - ((Time.now - @break.created_at) / 60).to_i %></span>
+				
+				<%= form_for(@break, :url => break_path(@break)) do |f| %>
+					<%= hidden_field_tag("break[completed]", true) %>
+					<div class="field">
+						<%= f.submit("End break", :class => :submit) %>
+					</div>
+				<% end %>
+			</div>
+		</section>
+
+	</aside>
+
+<% end %>

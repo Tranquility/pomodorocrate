@@ -1,0 +1,21 @@
+<%= form_for(@break) do |f| %>
+  <% if @break.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@break.errors.count, "error") %> prohibited this break from being saved:</h2>
+
+      <ul>
+      <% @break.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :completed %><br />
+    <%= f.check_box :completed %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
