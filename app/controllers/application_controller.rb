@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   def setup_widgets
     @pomodoro = Pomodoro.where( :completed => nil ).first
     @break = Break.where( :completed => nil ).first
-    @recent_pomodoros = Pomodoro.select('*, activity_id').order("created_at DESC").group("activity_id").limit(5)
+    @recent_pomodoros = Pomodoro.select('*, activity_id, pomodoros.id').order("created_at DESC").group("activity_id").limit(5)
     @upcoming_activities = Activity.where(:deadline => Time.now.midnight..(Time.now.midnight + 7.days), :completed => false)
     
     @today_remaining_pomodoros = 0
