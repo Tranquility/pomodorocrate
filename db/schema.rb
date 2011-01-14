@@ -36,6 +36,11 @@ ActiveRecord::Schema.define(:version => 20110113091852) do
 
   add_index "breaks", ["completed"], :name => "index_breaks_on_completed"
 
+  create_table "dummies", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "pomodoros", :force => true do |t|
     t.integer  "activity_id"
     t.datetime "created_at"

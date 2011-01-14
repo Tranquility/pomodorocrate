@@ -17,13 +17,13 @@
 			<tr>
 				<th scope="col">Completed</th>
 				<% (@start_date..@end_date).each do |d| %>
-					<td><%= @complete_pomodoros[d.to_s].blank? ? 0 : @complete_pomodoros[d.to_s] %></td>
+					<td class="values"><%= @complete_pomodoros[d.to_s].blank? ? 0 : @complete_pomodoros[d.to_s] %></td>
 				<% end %>
 			</tr>
 			<tr>
 				<th scope="col">Void</th>
 				<% (@start_date..@end_date).each do |d| %>
-					<td><%= @void_pomodoros[d.to_s].blank? ? 0 : @void_pomodoros[d.to_s] %></td>
+					<td class="values"><%= @void_pomodoros[d.to_s].blank? ? 0 : @void_pomodoros[d.to_s] %></td>
 				<% end %>
 			</tr>
 		</tbody>
