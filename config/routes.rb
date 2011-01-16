@@ -1,5 +1,7 @@
 Ketchup::Application.routes.draw do
 
+  get "users/new"
+
   resources :activities, :pomodoros, :settings, :projects, :breaks
   resources :todotodays,  :only => [:index, :create, :destroy]
   resources :analytics,   :only => [:index]

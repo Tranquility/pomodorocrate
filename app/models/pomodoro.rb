@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 20110116094444
+#
+# Table name: pomodoros
+#
+#  id          :integer         not null, primary key
+#  activity_id :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  successful  :boolean
+#  comments    :text
+#  completed   :boolean
+#
+
 class Pomodoro < ActiveRecord::Base
   
   belongs_to :activity

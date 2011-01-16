@@ -1,3 +1,16 @@
+# == Schema Information
+# Schema version: 20110116094444
+#
+# Table name: todotodays
+#
+#  id          :integer         not null, primary key
+#  comments    :text
+#  activity_id :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  today       :string(255)
+#
+
 class Todotoday < ActiveRecord::Base
   
   belongs_to :activity

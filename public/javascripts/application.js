@@ -59,24 +59,30 @@ function testSounds() {
 
 function announceTimeLeft(minutes) {
 	
+	minutes = parseInt(minutes);
 	if(played_sounds[minutes] !== undefined && !played_sounds[minutes]) {
 		
-		sound_file = "sounds/text-to-speech/" + (parseInt(minutes) +1) + ".ogg";
+		sound_file = base_url + "sounds/text-to-speech/" + (parseInt(minutes) +1) + ".ogg";
 		if(minutes == 0 && $('#pomodoro_submit[value="Complete"]').length == 0) {
-			sound_file = "sounds/text-to-speech/0.ogg";
+			sound_file = base_url + "sounds/text-to-speech/0.ogg";
 		} 
 		
-		console.log(sound_file);
+		//console.log(sound_file);
 		
 		audio = new Audio(sound_file);
 		audio.play();
 	  	
 		played_sounds[minutes] = true;
+	} else {
+		//console.log(minutes);
+		//console.log(played_sounds[minutes]);
+		//console.log(played_sounds[minutes]);
+		//console.log("moo");
 	}
 }
 
 function playClockSound() {
-	sound_file = "/sounds/clocks/egg_timer.ogg"
+	sound_file = "sounds/clocks/egg_timer.ogg"
 	
 	clock_audio = new Audio(sound_file);
 	clock_audio.play();

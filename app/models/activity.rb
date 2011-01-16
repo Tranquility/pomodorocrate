@@ -1,3 +1,19 @@
+# == Schema Information
+# Schema version: 20110116094444
+#
+# Table name: activities
+#
+#  id                  :integer         not null, primary key
+#  name                :string(255)
+#  description         :text
+#  estimated_pomodoros :integer
+#  deadline            :date
+#  completed           :boolean
+#  created_at          :datetime
+#  updated_at          :datetime
+#  project_id          :integer
+#
+
 class Activity < ActiveRecord::Base
   
   has_one     :todotoday, :dependent => :destroy

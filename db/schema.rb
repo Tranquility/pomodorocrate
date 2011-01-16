@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110113091852) do
+ActiveRecord::Schema.define(:version => 20110116094444) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -35,11 +35,6 @@ ActiveRecord::Schema.define(:version => 20110113091852) do
   end
 
   add_index "breaks", ["completed"], :name => "index_breaks_on_completed"
-
-  create_table "dummies", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "pomodoros", :force => true do |t|
     t.integer  "activity_id"
@@ -79,5 +74,12 @@ ActiveRecord::Schema.define(:version => 20110113091852) do
   add_index "todotodays", ["activity_id", "today"], :name => "index_todotodays_on_activity_id_and_today", :unique => true
   add_index "todotodays", ["activity_id"], :name => "index_todotodays_on_activity_id"
   add_index "todotodays", ["today"], :name => "index_todotodays_on_today"
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

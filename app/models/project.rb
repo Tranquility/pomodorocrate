@@ -1,3 +1,15 @@
+# == Schema Information
+# Schema version: 20110116094444
+#
+# Table name: projects
+#
+#  id          :integer         not null, primary key
+#  name        :string(255)
+#  description :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class Project < ActiveRecord::Base
   
   has_many :activities, :dependent => :destroy
