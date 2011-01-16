@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     @break = Break.where( :completed => nil ).first
     
     if Rails.env.production?
-      @recent_pomodoros = Pomodoro.successful_and_completed.select("activity_id, created_at, *").group("activity_id").order("pomodoros.created_at DESC").limit(5)
+      @recent_pomodoros = Pomodoro.successful_and_completed.select("activity_id, MAX(created_at), *").group("activity_id").order("pomodoros.created_at DESC").limit(5)
     else
       @recent_pomodoros = Pomodoro.successful_and_completed.group("activity_id").order("pomodoros.created_at DESC").limit(5)
     end
