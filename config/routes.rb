@@ -1,12 +1,13 @@
 Ketchup::Application.routes.draw do
 
-  get "users/new"
+  match 'pomodoros/update_current_form' => 'pomodoros#update_current_form'
 
-  resources :activities, :pomodoros, :settings, :projects, :breaks
+  resources :activities, :pomodoros, :settings, :projects, :breaks, :users
   resources :todotodays,  :only => [:index, :create, :destroy]
   resources :analytics,   :only => [:index]
   
-  match 'activities/:id/clone' => 'activities#clone', :as => :clone_activity
+  match 'activities/:id/clone'          => 'activities#clone', :as => :clone_activity
+  match '/signup',  :to => 'users#new'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

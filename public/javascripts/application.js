@@ -23,7 +23,17 @@ function decreaseTimer() {
 	
 	if(currentTime <= 0){
 		currentTime = 0;
-		if( $('#pomodoro_submit[value="Complete"]').length == 0 && $('#break_submit[value="End break"]').length == 0 ) window.location.reload();
+		if( $('#pomodoro_submit[value="Complete"]').length == 0 && $('#break_submit[value="End break"]').length == 0 ) {
+			//window.location.reload();
+			$.ajax({
+				type: "GET",
+				url: base_url + "pomodoros/update_current_form",
+				dataType: "text/html",
+				success: function(html){
+					$('#currentPomodoroForm').html(html);
+				}
+			});
+		}
 	} else {
 		setTimeout("decreaseTimer()", 1000);
 	}

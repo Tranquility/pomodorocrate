@@ -23,27 +23,10 @@
 					<%= pomodoros_completed_ratio(@pomodoro.activity.pomodoros.successful_and_completed.count, @pomodoro.activity.estimated_pomodoros) %>
 				</div>
 				
-				<%= form_for(@pomodoro, :url => pomodoro_path(@pomodoro)) do |f| %>
-					<%= hidden_field_tag("pomodoro[completed]", true) %>
-					<div class="field">
-						<%= f.text_area :comments %>
-					</div>
-					<% if Time.now - @pomodoro.created_at < Pomodoro.length.minutes %>
-						<%= hidden_field_tag("pomodoro[successful]", false) %>
-						<div class="field">
-							<%= f.submit("Void", :class => :submit, :confirm => "Are you sure? You will lose all progress!") %>
-						</div>
-					<% else %>
-						<div class="field">
-							<%= f.label :successful %>
-							<%= f.check_box :successful, :checked => true, :class => :tickbox %>
-						</div>
-						<div class="field">
-							<%= f.submit("Complete", :class => :submit) %>
-						</div>
-					<% end %>
-					<%= link_to("Edit activity", edit_activity_path(@pomodoro.activity), :class => :button) %>
-				<% end %>
+				<div id="currentPomodoroForm">
+					<%= render "pomodoros/update_current_form" %>
+				</div>
+				
 			</div>
 		</section>
 

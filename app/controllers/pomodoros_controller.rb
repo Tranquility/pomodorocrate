@@ -58,5 +58,12 @@ class PomodorosController < ApplicationController
 
   def destroy
   end
-
+  
+  # GET /pomodoros/update_current_form
+  def update_current_form
+    respond_to do |format|
+      format.html { render :layout => false }
+    end
+  end
+  
 end
