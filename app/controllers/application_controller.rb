@@ -1,13 +1,14 @@
 class ApplicationController < ActionController::Base
   
   protect_from_forgery
+  include SessionsHelper
   before_filter :setup_widgets
   
   def setup_widgets
     @pomodoro = Pomodoro.where( :completed => nil ).first
     @break = Break.where( :completed => nil ).first
     
-    if Rails.env.production?
+    if Rails.env.production? and ActiveRecord::Base.configurations[Rails.env]['adapter'] == :postgresql
       @recent_pomodoros = Pomodoro.successful_and_completed.select("activity_id, id, created_at, successful, completed").group("activity_id, pomodoros.id, created_at, successful, completed").order("pomodoros.created_at DESC").limit(5)
     else
       @recent_pomodoros = Pomodoro.successful_and_completed.group("activity_id").order("pomodoros.created_at DESC").limit(5)

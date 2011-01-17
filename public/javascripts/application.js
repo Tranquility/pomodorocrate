@@ -40,14 +40,15 @@ function decreaseTimer() {
 	
 	minutes = parseInt(currentTime / 60);
 	seconds = currentTime % 60;
-	if(minutes < 10) minutes = '0' + minutes;
-	if(seconds < 10) seconds = '0' + seconds;
 	
 	if(minutes > 0) {
 		announceTimeLeft(minutes);
 	} else if(currentTime == 0) {
 		announceTimeLeft(0);
 	}
+	
+	if(minutes < 10) minutes = '0' + minutes;
+	if(seconds < 10) seconds = '0' + seconds;
 	
 	$(".timer .time").attr("data-seconds", currentTime);
 	$(".timer .time").html(minutes + ":" + seconds);

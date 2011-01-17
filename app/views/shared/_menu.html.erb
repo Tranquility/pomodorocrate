@@ -1,8 +1,18 @@
 <nav>
 	<ul>
-		<li class="name">Welcome Adrian</li>
+		<li class="name">
+			<% if signed_in? %>
+	      <%= link_to "Welcome " + current_user.name, current_user, :class => :nav %>
+			<% end %>
+		</li>
 		<li><a href="#" class="nav">Settings</a></li>
 		<li><a href="#" class="nav">Help</a></li>
-		<li class="last"><a href="#" class="nav">Log off</a></li>
+		<li class="last">
+			<% if signed_in? %>
+				<%= link_to "Sign out", signout_path, :method => :delete, :class => :nav %>
+			<% else %>
+				<%= link_to "Sign in", signin_path, :class => :nav %>
+			<% end %>
+		</li>
 	</ul>
 </nav>
