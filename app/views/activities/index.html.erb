@@ -1,8 +1,7 @@
 <%= render "shared/upper_toolbar" %>
+<%= render "shared/filter_toolbar" %>
 
 <% unless @activities.empty? %>
-	
-	<%= render "shared/filter_toolbar" %>
 
 	<section class="group">
 		
@@ -86,4 +85,15 @@
 	</section>
 
 	<%= will_paginate @activities %>
+<% else %>
+	<section class="group">
+		<h6>Activities</h6>
+	
+		<p class="pageContainer">
+			You haven't added any activities yet.
+		</p>
+		<p class="pageContainer">
+			Use the <%= link_to_unless(Project.where(:user_id => current_user).empty?, "New activity", new_activity_path, :class => :button) %> button to add your first activities and start enjoying the pomodoro technique.
+		</p>
+	</section>
 <% end %>

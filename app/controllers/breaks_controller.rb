@@ -1,4 +1,8 @@
 class BreaksController < ApplicationController
+  
+  before_filter :authenticate
+  #before_filter :correct_user
+  
   # GET /breaks
   # GET /breaks.xml
   def index
@@ -41,7 +45,7 @@ class BreaksController < ApplicationController
   # POST /breaks.xml
   def create
     duration = params[:duration].nil? ? Break.duration : params[:duration]
-    @break = Break.new( :duration => duration )
+    @break = Break.new( :duration => duration, :user_id => current_user )
 
     respond_to do |format|
       if @break.save

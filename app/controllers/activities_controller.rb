@@ -1,11 +1,14 @@
 class ActivitiesController < ApplicationController
   
+  before_filter :authenticate
+  #before_filter :correct_user
+  
   @@per_page = 60
   
   # GET /dummies
   # GET /dummies.xml
   def index
-    @activities = Activity.paginate :page => params[:page], :conditions => search_conditions
+    @activities = Activity.paginate :page => params[:page], :conditions => search_conditions, :joins => :project
     
     #@orders = Order.paginate(:all,
     #:order => 'orders.created_at',

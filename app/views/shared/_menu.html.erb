@@ -1,15 +1,15 @@
 <nav>
 	<ul>
-		<li class="name">
-			<% if signed_in? %>
-	      <%= link_to "Welcome " + current_user.name, current_user, :class => :nav %>
-			<% end %>
-		</li>
-		<li>
-			<% if signed_in? %>
+		<% if signed_in? %>
+			<li class="name">
+      	<%= gravatar_for current_user, :size => 18 %><%= link_to current_user.name, current_user, :class => :nav %>
+			</li>
+		<% end %>
+		<% if signed_in? %>
+			<li>
 				<%= link_to "Settings", edit_user_path(current_user), :class => :nav %>
-			<% end %>
-		</li>
+			</li>
+		<% end %>
 		<li><a href="#" class="nav">Help</a></li>
 		<li class="last">
 			<% if signed_in? %>

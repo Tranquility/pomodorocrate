@@ -14,12 +14,13 @@
 class Todotoday < ActiveRecord::Base
   
   belongs_to :activity
+  #has_one :project, :through => :activity
   
   attr_accessible :activity_id, :comments, :today
   
   validates_presence_of :activity_id, :today
   validates_uniqueness_of :activity_id, :scope => :today
   
-  default_scope :order => "todotodays.today ASC", :conditions => { :today => Date.today }
+  default_scope :order => "todotodays.today ASC", :conditions => { :today => Date.today }, :joins => "JOIN activities ON activities.id = todotodays.activity_id JOIN projects ON projects.id = activities.project_id"
   
 end

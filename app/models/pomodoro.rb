@@ -20,7 +20,9 @@ class Pomodoro < ActiveRecord::Base
   
   validates :activity_id, :presence => true
   
-  scope :successful_and_completed, :conditions => { :successful => true, :completed => true }
+  pomodoro_joins = "JOIN activities ON activities.id = pomodoros.activity_id JOIN projects ON projects.id = activities.project_id"
+  default_scope :select => "pomodoros.*", :joins => pomodoro_joins
+  scope :successful_and_completed, :select => "pomodoros.*", :conditions => { :successful => true, :completed => true }, :joins => pomodoro_joins
   
   def self.length
     25

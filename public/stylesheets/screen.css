@@ -99,7 +99,7 @@ aside { float: right; margin-bottom: 12px; padding: 2px; width: 231px;
 	.formContainer form { padding: 6px 12px; }
 	.formContainer .field { margin-bottom: 12px; }
 	.formContainer label { 	font-weight: bold; }
-	.formContainer input[type=text] { 	background: #F5F5F5; color: #898989;
+	.formContainer input[type=text], .formContainer input[type=password] { 	background: #F5F5F5; color: #898989;
 		 								border: 0; padding: 4px; width: 99%;}
 	.formContainer select {	background: #F5F5F5; color: #898989;
 							border: 0; padding: 4px; }
@@ -107,6 +107,8 @@ aside { float: right; margin-bottom: 12px; padding: 2px; width: 231px;
 	.formContainer textarea { 	background: #F5F5F5; color: #898989;
 								border: 0; height: 100px; padding: 4px; width: 99%;
 								font-family: Arial, sans-serif; font-size: 12px; }
+								
+	.signUpForm input[type=text], .signUpForm input[type=password] { width: 250px !important; }
 								
 .activity_details { font-weight: normal;
 	 				margin-bottom: 20px; }
@@ -164,6 +166,14 @@ aside { float: right; margin-bottom: 12px; padding: 2px; width: 231px;
 	 			width: 100%;}
 	
 #activityStatus .widgetBox { padding: 0 0 1px 0; }
+
+.signUpForm { height: 280px; }
+	.signUpForm p { padding: 6px 10px; }
+	.signUpForm form { float: left; width: 300px; }
+div.gravatar { float: left; padding: 12px; }
+	div.gravatar a { display: block; }
+	
+nav .name img { margin: 0 4px -5px 0; }
 		
 .boxShadow {
   -moz-box-shadow: 0px -8px 15px -3px #333; /* Firefox */

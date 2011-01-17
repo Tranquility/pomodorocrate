@@ -4,6 +4,8 @@
 
 <section class="group">
 	<h6>Projects</h6>
+	
+	<% unless @projects.empty? %>
 	<ul class="activityList">
 		<% @projects.each do |project| %>
 			<li>
@@ -53,4 +55,12 @@
 			</li>
 		<% end %>
 	</ul>
+	<% else %>	
+		<p class="pageContainer">
+			You haven't created any projects yet.
+		</p>
+		<p class="pageContainer">
+			Use the <%= link_to("New project", new_project_path, :class => :button) %> button to add your first projects.
+		</p>
+	<% end %>
 </section>

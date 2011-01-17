@@ -1,17 +1,17 @@
-<% unless @upcoming_activities.empty? %>
+<% unless @overdue_activities.empty? %>
 	<aside>
 	
 		<section id="upcomingActivities" class="contentBoxNav">
 			<nav>
 				<ul>
-					<li class="active"><a class="tabs">Upcoming deadlines</a></li>
+					<li class="active"><a class="tabs">Overdue deadlines</a></li>
 				</ul>
 			</nav>
 			<div class="widgetBox">
 				
 				<ul class="activityList">
 
-					<% @upcoming_activities.each do |a| %>
+					<% @overdue_activities.each do |a| %>
 
 					<li>
 						<div class="quickView">

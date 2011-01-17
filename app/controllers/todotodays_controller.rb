@@ -1,5 +1,8 @@
 class TodotodaysController < ApplicationController
   
+  before_filter :authenticate
+  #before_filter :correct_user
+  
   # GET /dummies
   # GET /dummies.xml
   def index

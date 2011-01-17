@@ -1,4 +1,26 @@
-<header>
-	<%= link_to( raw("<h2>Pomodoro Crate - Pomodoro time management</h2>"), root_path, :id => "logo") %>
-	<%= render "shared/menu" %>
-</header>
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= request.path_parameters[:controller].capitalize %> | Pomodoro Crate</title>
+	
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<%= stylesheet_link_tag "blueprint/reset", 	:media => :screen %>
+	<%= stylesheet_link_tag "screen", 					:media => :screen %>
+	<% stylesheet_link_tag "basic",						:media => :screen %>
+	<%= stylesheet_link_tag "visualize",				:media => :screen %>
+	<%= stylesheet_link_tag "visualize-light",	:media => :screen %>
+	<%= stylesheet_link_tag "blueprint/print", 	:media => :print %>
+	<!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
+	
+	<%= csrf_meta_tag %>
+</head>
+
+<body>
+<div id="site">
+	<div id="page" class="boxShadow">
+		<header>
+			<%= link_to( raw("<h2>Pomodoro Crate - Pomodoro time management</h2>"), root_path, :id => "logo") %>
+			<%= render "shared/menu" %>
+		</header>

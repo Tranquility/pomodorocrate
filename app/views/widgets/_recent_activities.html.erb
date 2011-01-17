@@ -1,4 +1,4 @@
-<% unless @recent_pomodoros.nil? %>
+<% unless @recent_pomodoros.nil? or @recent_pomodoros.length == 0 %>
 	<aside>
 	
 		<section id="activePomodoro" class="contentBoxNav">
@@ -28,7 +28,7 @@
 						<ul class="actionsBar">
 							<li><%= link_to("Show", activity_path(a), :class => :button) %></li>
 							<li><%= link_to("Clone", clone_activity_path(:id => a.id), :class => :button) %></li>
-							<% if @pomodoro.nil? %>
+							<% if @pomodoro.nil? and !a.todotoday.nil? %>
 								<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => :button) %></li>
 							<% end %>
 							<% if a.todotoday.nil? %>

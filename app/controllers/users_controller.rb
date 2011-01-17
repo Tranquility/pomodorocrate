@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
+    render :layout => "site"
   end
   
   def index
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to Pomodoro Crate!"
       redirect_to @user
     else
-      render 'new'
+      render 'new', :layout => "site"
     end
   end
   
@@ -50,15 +51,6 @@ class UsersController < ApplicationController
   end
   
   private
-
-    def authenticate
-      deny_access unless signed_in?
-    end
-    
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user)
-    end
     
     def admin_user
       redirect_to(root_path) unless current_user.admin?

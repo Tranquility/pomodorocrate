@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110117124230) do
+ActiveRecord::Schema.define(:version => 20110117193343) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -32,9 +32,11 @@ ActiveRecord::Schema.define(:version => 20110117124230) do
     t.integer  "duration",   :default => 5
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "breaks", ["completed"], :name => "index_breaks_on_completed"
+  add_index "breaks", ["user_id"], :name => "index_breaks_on_user_id"
 
   create_table "pomodoros", :force => true do |t|
     t.integer  "activity_id"
@@ -54,7 +56,10 @@ ActiveRecord::Schema.define(:version => 20110117124230) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
 
   create_table "settings", :force => true do |t|
     t.string   "name"

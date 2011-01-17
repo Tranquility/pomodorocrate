@@ -1,8 +1,12 @@
 class ProjectsController < ApplicationController
+  
+  before_filter :authenticate
+  #before_filter :correct_user
+  
   # GET /projects
   # GET /projects.xml
   def index
-    @projects = Project.all
+    @projects = Project.where(:user_id => current_user)
 
     respond_to do |format|
       format.html # index.html.erb

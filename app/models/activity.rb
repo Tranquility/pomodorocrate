@@ -22,15 +22,14 @@ class Activity < ActiveRecord::Base
   
   attr_accessible :name, :description, :estimated_pomodoros, :deadline, :completed, :project_id
   
-  #searchable_on :name, :project, :deadline
-  
   validates :name,  :presence => true,
                     :length => { :maximum => 100 }
   validates :estimated_pomodoros, :numericality => true,
                                   :inclusion => { :in => 0..8 }
+  validates :project, :presence => true
   validate :deadline_can_not_be_in_the_past
   
-  default_scope :order => "activities.completed ASC, activities.deadline ASC"
+  default_scope :order => "activities.completed ASC, activities.deadline ASC"#, :conditions => "projects.user_id = #{@current_user.id}", :joins => :project
   
   cattr_reader :per_page
   @@per_page = 60
