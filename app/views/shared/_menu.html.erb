@@ -5,7 +5,11 @@
 	      <%= link_to "Welcome " + current_user.name, current_user, :class => :nav %>
 			<% end %>
 		</li>
-		<li><a href="#" class="nav">Settings</a></li>
+		<li>
+			<% if signed_in? %>
+				<%= link_to "Settings", edit_user_path(current_user), :class => :nav %>
+			<% end %>
+		</li>
 		<li><a href="#" class="nav">Help</a></li>
 		<li class="last">
 			<% if signed_in? %>
