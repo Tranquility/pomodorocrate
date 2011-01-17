@@ -16,7 +16,7 @@
 					<li>
 						<div class="quickView">
 							<div class="activityName">
-								<% time_distance = (Date.today - a.deadline.to_date == 0 ? "Today" : distance_of_time_in_words(Date.today, a.deadline.to_date) + " from now" ) %>
+								<% time_distance = (Date.today - a.deadline.to_date == 0 ? "Today" : distance_of_time_in_words(Date.today, a.deadline.to_date) + " ago" ) %>
 								<%= a.name %>
 								<span class="deadlineMarker"><%= time_distance %></span>
 								<%= in_progress_marker(@pomodoro, a) %>
