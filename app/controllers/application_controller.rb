@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     end
     
     @upcoming_activities = Activity.where("projects.user_id = ?", current_user).where(:deadline => Time.now.midnight..(Time.now.midnight + 7.days), :completed => false).joins(:project).limit(5)
-    @overdue_activities = Activity.where("projects.user_id = ?", current_user).where("deadline < '#{Time.now.midnight}'").where(:completed => false).joins(:project).limit(5)
+    @overdue_activities = Activity.where("projects.user_id = ?", current_user).where("deadline < '#{Date.today}'").where(:completed => false).joins(:project).limit(5)
     
     @today_remaining_pomodoros = 0
     Todotoday.where("projects.user_id = ?", current_user).each do |t|

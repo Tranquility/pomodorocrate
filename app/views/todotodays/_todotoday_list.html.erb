@@ -34,8 +34,12 @@
 					<%= a.description %>
 					
 					<ul class="actionsBar">
-						<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => :button) %></li>
-						<li><%= link_to("Do it another day", td, :confirm => "Are you sure?", :method => :delete, :class => :button) %></li>
+						<% if @pomodoro.nil? %>
+							<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => :button) %></li>
+						<% end %>
+						<% unless in_progress?(@pomodoro, a) %>
+							<li><%= link_to("Do it another day", td, :confirm => "Are you sure?", :method => :delete, :class => :button) %></li>
+						<% end %>
 						<li><%= link_to("Edit", edit_activity_path(a), :class => :button) %></li>
 					</ul>
 					<ul class="infoBar">
