@@ -45,7 +45,7 @@ class BreaksController < ApplicationController
   # POST /breaks.xml
   def create
     duration = params[:duration].nil? ? Break.duration : params[:duration]
-    @break = Break.new( :duration => duration, :user_id => current_user )
+    @break = Break.new( :duration => duration, :user_id => current_user.id )
 
     respond_to do |format|
       if @break.save

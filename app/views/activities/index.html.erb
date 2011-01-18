@@ -44,8 +44,8 @@
 								<%= form_for a do |f| %>
 									<%= hidden_field "activity", :completed, :value => (a.completed ? false : true) %>
 									<%= hidden_field "activity", "force_update", :value => :true %>
-									<%= f.submit (a.completed ? '&#10003;'.html_safe : ""), :class => "checkbox" %>
-									<div class="activityName">
+									<%= f.submit (a.completed ? '&#10003;'.html_safe : ""), :class => "checkbox", :title => "Click to complete / reopen activity" %>
+									<div class="activityName" title="Click to show / hide activity details">
 										<%= content_tag_for(:span, a, :class => (a.completed ? 'activityCompleted' : "") ) do %>
 											<%= a.name %>
 										<% end %>
