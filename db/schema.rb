@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110117193343) do
+ActiveRecord::Schema.define(:version => 20110120165915) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -21,11 +21,13 @@ ActiveRecord::Schema.define(:version => 20110117193343) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "project_id"
+    t.integer  "user_id"
   end
 
   add_index "activities", ["completed"], :name => "index_activities_on_completed"
   add_index "activities", ["deadline"], :name => "index_activities_on_deadline"
   add_index "activities", ["project_id"], :name => "index_activities_on_project_id"
+  add_index "activities", ["user_id"], :name => "index_activities_on_user_id"
 
   create_table "breaks", :force => true do |t|
     t.boolean  "completed"
@@ -45,11 +47,13 @@ ActiveRecord::Schema.define(:version => 20110117193343) do
     t.boolean  "successful"
     t.text     "comments"
     t.boolean  "completed"
+    t.integer  "user_id"
   end
 
   add_index "pomodoros", ["activity_id"], :name => "index_pomodoros_on_activity_id"
   add_index "pomodoros", ["completed"], :name => "index_pomodoros_on_completed"
   add_index "pomodoros", ["successful"], :name => "index_pomodoros_on_successful"
+  add_index "pomodoros", ["user_id"], :name => "index_pomodoros_on_user_id"
 
   create_table "projects", :force => true do |t|
     t.string   "name"
@@ -74,11 +78,13 @@ ActiveRecord::Schema.define(:version => 20110117193343) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "today"
+    t.integer  "user_id"
   end
 
   add_index "todotodays", ["activity_id", "today"], :name => "index_todotodays_on_activity_id_and_today", :unique => true
   add_index "todotodays", ["activity_id"], :name => "index_todotodays_on_activity_id"
   add_index "todotodays", ["today"], :name => "index_todotodays_on_today"
+  add_index "todotodays", ["user_id"], :name => "index_todotodays_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

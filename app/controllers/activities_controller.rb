@@ -1,14 +1,13 @@
 class ActivitiesController < ApplicationController
   
   before_filter :authenticate
-  #before_filter :correct_user
   
   @@per_page = 60
   
   # GET /dummies
   # GET /dummies.xml
   def index
-    @activities = Activity.paginate :page => params[:page], :conditions => search_conditions, :joins => :project
+    @activities = Activity.paginate :page => params[:page], :conditions => search_conditions
     
     #@orders = Order.paginate(:all,
     #:order => 'orders.created_at',
@@ -21,7 +20,7 @@ class ActivitiesController < ApplicationController
   # GET /dummies/1.xml
   def show
     begin
-      @activity = Activity.find(params[:id])
+      @activity = Activity.where(:user_id => current_user.id).find(params[:id])
     rescue
       flash[:error] = "There is no activity with id #{params[:id]}"
       redirect_to (activities_url) and return
@@ -48,6 +47,7 @@ class ActivitiesController < ApplicationController
   # POST /dummies.xml
   def create
     @activity = Activity.new(params[:activity])
+    @activity.user_id = current_user.id
 
     respond_to do |format|
       if @activity.save
@@ -68,7 +68,7 @@ class ActivitiesController < ApplicationController
   # PUT /dummies/1
   # PUT /dummies/1.xml
   def update
-    @activity = Activity.find(params[:id])
+    @activity = Activity.where(:user_id => current_user.id).find(params[:id])
 
     respond_to do |format|
       if params[:activity][:force_update]
@@ -96,7 +96,7 @@ class ActivitiesController < ApplicationController
   # DELETE /dummies/1
   # DELETE /dummies/1.xml
   def destroy
-    @activity = Activity.find(params[:id])
+    @activity = Activity.where(:user_id => current_user.id).find(params[:id])
     @activity.destroy
     flash[:success] = "Activity deleted"
 
@@ -107,7 +107,7 @@ class ActivitiesController < ApplicationController
   end
   
   def clone
-    @activity = Activity.find(params[:id])
+    @activity = Activity.where(:user_id => current_user.id).find(params[:id])
     @activity.id = nil
     
     @clone = @activity.clone

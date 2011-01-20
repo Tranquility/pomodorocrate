@@ -17,7 +17,7 @@ class TodotodaysController < ApplicationController
   # POST /dummies
   # POST /dummies.xml
   def create
-    @todotoday = Todotoday.new(:activity_id => params[:activity_id], :today => Date.today)
+    @todotoday = Todotoday.new(:activity_id => params[:activity_id], :today => Date.today, :user_id => current_user.id)
 
     respond_to do |format|
       if @todotoday.save
@@ -35,7 +35,7 @@ class TodotodaysController < ApplicationController
   # DELETE /dummies/1
   # DELETE /dummies/1.xml
   def destroy
-    @todotoday = Todotoday.find(params[:id])
+    @todotoday = Todotoday.where(:user_id => current_user.id).find(params[:id])
     @todotoday.destroy
     flash[:success] = "Activity was removed from the todo today list"
 

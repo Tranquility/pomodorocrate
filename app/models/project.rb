@@ -19,8 +19,8 @@ class Project < ActiveRecord::Base
   attr_accessible :name, :description
   
   validates :name,  :presence => true,
-                    :length => { :maximum => 100 }, 
-                    :uniqueness => true
+                    :length => { :maximum => 100 }
+                    # :uniqueness => true
                     
   default_scope :order => "projects.name ASC"
      

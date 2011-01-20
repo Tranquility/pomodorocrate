@@ -14,13 +14,20 @@
 class Todotoday < ActiveRecord::Base
   
   belongs_to :activity
+  belongs_to :user
   #has_one :project, :through => :activity
   
-  attr_accessible :activity_id, :comments, :today
+  attr_accessible :activity_id, :comments, :today, :user_id
   
   validates_presence_of :activity_id, :today
   validates_uniqueness_of :activity_id, :scope => :today
+  validates :user_id, :presence => true
+  validate  :user_must_own_activity
   
-  default_scope :order => "todotodays.today ASC", :conditions => { :today => Date.today }, :joins => "JOIN activities ON activities.id = todotodays.activity_id JOIN projects ON projects.id = activities.project_id"
+  default_scope :order => "today ASC", :conditions => { :today => Date.today }
+  
+  def user_must_own_activity
+    errors.add(:activity, "is not valid") unless ( self.activity.user_id == user_id )
+  end
   
 end

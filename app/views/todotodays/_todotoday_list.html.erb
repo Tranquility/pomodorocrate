@@ -60,7 +60,7 @@
 		You haven't picked any activities to work on today.
 	</p>
 	<p class="pageContainer">
-		Use the <%= link_to("Activities", activities_path, :class => :button) %> list or the "Recent activities" widget to pick your "Todo today" activities.
+		Use the <%= link_to("Activities", activities_path, :class => :button) %> list <%= @recent_pomodoros.length == 0 ? "" : 'or the "Recent activities" widget' %> to pick your "Todo today" activities.
 	</p>
 <% end %>
 

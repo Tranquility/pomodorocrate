@@ -1,7 +1,6 @@
 class PomodorosController < ApplicationController
   
   before_filter :authenticate
-  #before_filter :correct_user
   
   include PomodorosHelper
   include BreaksHelper
@@ -30,7 +29,7 @@ class PomodorosController < ApplicationController
       Break.where( :completed => nil ).first.update_attributes(:completed => true)
     end
     
-    @pomodoro = Pomodoro.new(:activity_id => params[:activity_id])
+    @pomodoro = Pomodoro.new(:activity_id => params[:activity_id], :user_id => current_user.id)
 
     respond_to do |format|
       if @pomodoro.save
@@ -46,7 +45,7 @@ class PomodorosController < ApplicationController
   # PUT /dummies/1
   # PUT /dummies/1.xml
   def update
-    @pomodoro = Pomodoro.find(params[:id])
+    @pomodoro = Pomodoro.where(:user_id => current_user.id).find(params[:id])
 
     respond_to do |format|
       if @pomodoro.update_attributes(params[:pomodoro])

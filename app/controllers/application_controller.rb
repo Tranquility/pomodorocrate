@@ -2,27 +2,32 @@ class ApplicationController < ActionController::Base
   
   protect_from_forgery
   include SessionsHelper
-  before_filter :setup_widgets
+  
+  before_filter :setup_widgets, :unless => :load_user_settings?
+  
+  def load_user_settings?
+    current_user.blank?
+  end
   
   def setup_widgets
-    @pomodoro = Pomodoro.where( :completed => nil ).where("projects.user_id = ?", current_user).first
-    @break = Break.where( :user_id => current_user, :completed => nil ).first
+    @pomodoro = Pomodoro.where( :completed => nil, :user_id => current_user.id ).first
+    @break = Break.where( :user_id => current_user.id, :completed => nil ).first
     
     if Rails.env.production? and ActiveRecord::Base.configurations[Rails.env]['adapter'] == :postgresql
-      @recent_pomodoros = Pomodoro.successful_and_completed.select("activity_id, id, created_at, successful, completed").where("projects.user_id = ?", current_user).group("activity_id, pomodoros.id, created_at, successful, completed").order("pomodoros.created_at DESC").limit(5)
+      @recent_pomodoros = Pomodoro.successful_and_completed.select("activity_id, id, created_at, successful, completed").where(:user_id, current_user.id).group("activity_id, pomodoros.id, created_at, successful, completed").order("pomodoros.created_at DESC").limit(5)
     else
-      @recent_pomodoros = Pomodoro.successful_and_completed.where("projects.user_id = ?", current_user).group("activity_id").order("pomodoros.created_at DESC").limit(5)
+      @recent_pomodoros = Pomodoro.successful_and_completed.group(:activity_id).order("created_at DESC").limit(5).find_all_by_user_id(current_user.id)
     end
     
-    @upcoming_activities = Activity.where("projects.user_id = ?", current_user).where(:deadline => Time.now.midnight..(Time.now.midnight + 7.days), :completed => false).joins(:project).limit(5)
-    @overdue_activities = Activity.where("projects.user_id = ?", current_user).where("deadline < '#{Date.today}'").where(:completed => false).joins(:project).limit(5)
+    @upcoming_activities = Activity.where(:user_id => current_user.id, :deadline => Time.now.midnight..(Time.now.midnight + 7.days), :completed => false).limit(5)
+    @overdue_activities = Activity.where("deadline < '#{Date.today}'").where(:user_id => current_user.id, :completed => false).limit(5)
     
     @today_remaining_pomodoros = 0
-    Todotoday.where("projects.user_id = ?", current_user).each do |t|
+    Todotoday.find_all_by_user_id(current_user.id).each do |t|
       next if t.activity.completed
-      @today_remaining_pomodoros += t.activity.estimated_pomodoros - t.activity.pomodoros.successful_and_completed.where("projects.user_id = ?", current_user).count
+      @today_remaining_pomodoros += ( t.activity.estimated_pomodoros - t.activity.pomodoros.successful_and_completed.count )
     end
-    @today_completed_pomodoros = Pomodoro.successful_and_completed.where("date(pomodoros.created_at) = '#{Date.today}' AND projects.user_id = ?", current_user).count
+    @today_completed_pomodoros = Pomodoro.successful_and_completed.where("date(pomodoros.created_at) = '#{Date.today}' AND user_id = ?", current_user.id).count
   end
   
   protected
@@ -49,7 +54,7 @@ class ApplicationController < ActionController::Base
         end
         
         # filter by logged user
-        strings << "projects.user_id = #{current_user.id}"
+        strings << "user_id = #{current_user.id}"
       
       end
       cond_strings.any? ? [ cond_strings.join(' and '), cond_params ] : nil

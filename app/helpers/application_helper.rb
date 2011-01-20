@@ -2,6 +2,8 @@ module ApplicationHelper
   
   def pomodoros_as_image(nr_of_pomodoros, inactive = false)
     output = ""
+    return output if nr_of_pomodoros.nil?
+    
     nr_of_pomodoros.times do |i|
       output += image_tag("pomodoro" + (inactive ? "_not_started" : "_completed") + ".png", :size => "14x14" )
     end

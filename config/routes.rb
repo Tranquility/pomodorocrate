@@ -2,7 +2,8 @@ Ketchup::Application.routes.draw do
   
   match 'pomodoros/update_current_form' => 'pomodoros#update_current_form'
 
-  resources :activities,  :pomodoros, :settings, :projects, :breaks, :users
+  resources :activities,  :pomodoros, :settings, :projects, :users
+  resources :breaks,      :only => [:create, :update]
   resources :todotodays,  :only => [:index, :create, :destroy]
   resources :analytics,   :only => [:index]
   resources :sessions,    :only => [:new, :create, :destroy]

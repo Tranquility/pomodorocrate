@@ -167,13 +167,15 @@ aside { float: right; margin-bottom: 12px; padding: 2px; width: 231px;
 	
 #activityStatus .widgetBox { padding: 0 0 1px 0; }
 
-.signUpForm { height: 280px; }
+.signUpForm {  }
 	.signUpForm p { padding: 6px 10px; }
-	.signUpForm form { float: left; width: 300px; }
+	.signUpForm form { width: 300px; }
 div.gravatar { float: left; padding: 12px; }
 	div.gravatar a { display: block; }
 	
 nav .name img { margin: 0 4px -5px 0; }
+
+.breaksBox { text-align: center; }
 		
 .boxShadow {
   -moz-box-shadow: 0px -8px 15px -3px #333; /* Firefox */
