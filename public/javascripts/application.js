@@ -134,3 +134,43 @@ $(function(){
 	//$('.analytics').visualize({type: 'line', width: '629px'});
 	$('.analytics').hide();
 });
+
+
+// usability
+$(function(){ // autofocus first form input
+	$('.formContainer form input[type=text]:first').focus();
+	
+	$('#hiddendp_').datepicker({
+	   beforeShow: readSelected, onSelect: updateSelected, 
+		//dateFormat: 'MM/dd/yy',
+    minDate: new Date(), 
+    showOn: 'both', buttonImageOnly: true, buttonImage: base_url + 'images/calendar_empty.png'});
+	
+	$( "#slider" ).slider({
+		value: $('#activity_estimated_pomodoros').val(),
+		min: 0,
+		max: 8,
+		step: 1,
+		slide: function( event, ui ) {
+			$( "#activity_estimated_pomodoros" ).val( ui.value );
+		}
+	});
+	$( "#activity_estimated_pomodoros" ).val( $( "#slider" ).slider( "value" ) );
+	
+	$('a.external').attr('target', '_blank');
+})
+     
+// Prepare to show a date picker linked to three select controls 
+function readSelected() { 
+    $('#hiddendp_').val($('#activity_deadline_2i').val() + '/' + 
+        $('#activity_deadline_3i').val() + '/' + $('#activity_deadline_1i').val()); 
+    return {}; 
+} 
+ 
+// Update three select controls to match a date picker selection 
+function updateSelected(date) { 
+		//alert(date);
+    $('#activity_deadline_2i').val( parseInt(date.substring(0, 2)) );
+    $('#activity_deadline_3i').val(date.substring(3, 5)); 
+    $('#activity_deadline_1i').val(date.substring(6, 10)); 
+}

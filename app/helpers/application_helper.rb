@@ -41,5 +41,9 @@ module ApplicationHelper
   def todotoday_marker(activity)
     return raw '<span class="todotodayMarker">todo today</span>' unless activity.todotoday.nil? or activity.completed
   end
+  
+  def text_format(text)
+    return simple_format( auto_link text, :all, :class => :external ).html_safe
+  end
 
 end

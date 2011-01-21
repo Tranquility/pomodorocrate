@@ -11,7 +11,7 @@
 			</span> minutes left
 		</div>
 		
-		<p><%= @pomodoro.activity.description %></p>
+		<p><%= simple_format(@pomodoro.activity.description) %></p>
 		
 		<%= form_for(@pomodoro, :url => pomodoro_path(@pomodoro)) do |f| %>
 			<%= hidden_field_tag("pomodoro[completed]", true) %>

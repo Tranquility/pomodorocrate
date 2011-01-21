@@ -24,7 +24,7 @@
 			</div>
 			
 			<div class="detailsView">
-				<%= @activity.description %>
+				<%= text_format(@activity.description) %>
 				
 				<ul class="actionsBar">
 					<% if @activity.todotoday.nil? %>

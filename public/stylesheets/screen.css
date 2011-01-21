@@ -176,6 +176,14 @@ div.gravatar { float: left; padding: 12px; }
 nav .name img { margin: 0 4px -5px 0; }
 
 .breaksBox { text-align: center; }
+
+#slider { float: right; margin: 5px 430px 0 0; width: 200px; }
+.ui-datepicker-trigger { height: 24px; margin-bottom: -8px; width: 24px; }
+table.punymce { width: 99%; }
+
+a.external { 	color: #30B1FF;
+	 						padding: 2px; }
+	a.external:hover { background: #30B1FF; color: #fff; text-decoration: none; }
 		
 .boxShadow {
   -moz-box-shadow: 0px -8px 15px -3px #333; /* Firefox */

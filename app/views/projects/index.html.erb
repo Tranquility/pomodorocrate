@@ -40,7 +40,7 @@
 				</div>
 
 				<div class="detailsView">
-					<%= project.description %>
+					<%= text_format(project.description) %>
 
 					<ul class="actionsBar">
 						<li><%= link_to("Edit", edit_project_path(project), :class => :button) %></li>

@@ -24,11 +24,13 @@
 	<div class="field">
 	  <%= f.label :estimated_pomodoros %><br />
 	  <%= f.text_field :estimated_pomodoros, :size => 1, :class => :numeric %>
+		<div id="slider"></div>
 	</div>
 	
 	<div class="field">
 	  <%= f.label :deadline %><br />
 	  <%= f.date_select :deadline %>
+		<%= hidden_field "hiddendp", nil, :disabled => "disabled", :size => 10 %>
 	</div>
 	
 	<div class="field">

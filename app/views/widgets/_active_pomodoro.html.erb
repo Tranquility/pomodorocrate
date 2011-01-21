@@ -14,7 +14,7 @@
 				
 				<% unless @pomodoro.activity.description.blank? %>
 					<div class="activity_details">
-						<%= @pomodoro.activity.description %>
+						<%= text_format(@pomodoro.activity.description) %>
 					</div>
 					<%= link_to("Details", activity_path(@pomodoro.activity), :class => :button) %>
 				<% end %>
