@@ -4,45 +4,7 @@
 	<h6><%= @activity.name %></h6>
 	<ul class="activityList">
 		
-		<li>
-			<div class="quickView">
-				<%= form_for @activity do |f| %>
-					<%= hidden_field "activity", :completed, :value => (@activity.completed ? false : true) %>
-					<%= hidden_field "activity", "force_update", :value => :true %>
-					<%= f.submit (@activity.completed ? '&times;'.html_safe : ""), :class => "checkbox" %>
-					<div class="activityName">
-						<%= content_tag_for(:span, @activity, :class => (@activity.completed ? 'activityCompleted' : "") ) do %>
-							<%= @activity.name %>
-						<% end %>
-						<%= in_progress_marker(@pomodoro, @activity) %>
-						<%= todotoday_marker(@activity) %>
-					</div>
-					<div class="pomodorosCount">
-						<%= pomodoros_completed_ratio(@activity.pomodoros.successful_and_completed.count, @activity.estimated_pomodoros) %>
-					</div>
-				<% end %>
-			</div>
-			
-			<div class="detailsView">
-				<%= text_format(@activity.description) %>
-				
-				<ul class="actionsBar">
-					<% if @activity.todotoday.nil? %>
-						<li><%= link_to( "Do Today", todotodays_path(:activity_id => @activity), :method => :post, :class => :button) %></li>
-					<% elsif !in_progress?(@pomodoro, @activity) %>
-						<li><%= link_to("Do it now", pomodoros_path(:activity_id => @activity), :method => :post, :class => :button) %></li>
-					<% end %>
-					<li><%= link_to("Edit", edit_activity_path(@activity), :class => :button) %></li>
-					<li><%= link_to("Back to list", activities_path, :class => :button) %></li>
-					<li><%= link_to("Delete", @activity, :confirm => "Are you sure?", :method => :delete, :class => :button) %></li>
-				</ul>
-				<ul class="infoBar">
-					<li>Project: <%= @activity.project.nil? ? "none" : link_to(@activity.project.name, @activity.project) %></li>
-					<li><%= raw @activity.completed ? "Completed" : "Due at #{due_at_status @activity.deadline}" %></li>
-					<li>Created at <%= @activity.created_at.to_date %></li>
-				</ul>
-			</div>
-		</li>
+		<%= render :partial => "shared/activity", :locals => { :a => @activity } %>
 	
 	</ul>
 </section>
