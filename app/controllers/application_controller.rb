@@ -25,7 +25,9 @@ class ApplicationController < ActionController::Base
     @today_remaining_pomodoros = 0
     Todotoday.find_all_by_user_id(current_user.id).each do |t|
       next if t.activity.completed
-      @today_remaining_pomodoros += ( t.activity.estimated_pomodoros - t.activity.pomodoros.successful_and_completed.count )
+      difference = ( t.activity.estimated_pomodoros - t.activity.pomodoros.successful_and_completed.count )
+      logger.debug("difference: " + difference.to_s)
+      @today_remaining_pomodoros += (difference < 0 ? 0 : difference)
     end
     @today_completed_pomodoros = Pomodoro.successful_and_completed.where("date(pomodoros.created_at) = '#{Date.today}' AND user_id = ?", current_user.id).count
   end

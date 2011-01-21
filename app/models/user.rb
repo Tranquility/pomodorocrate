@@ -13,7 +13,7 @@
 class User < ActiveRecord::Base
   
   attr_accessor :password
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :confirmation_hash, :reset_password_hash
   
   has_many :projects,   :dependent => :destroy
   has_many :activities, :dependent => :destroy
@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
                        :confirmation => true,
                        :length       => { :within => 6..40 }
                        
-  before_save :encrypt_password
+  before_save :encrypt_password, :check_account_confirmed
   
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
@@ -52,6 +52,10 @@ class User < ActiveRecord::Base
   end
 
   private
+  
+    def check_account_confirmed
+      self.confirmation_hash = encrypt(email) if new_record?
+    end
 
     def encrypt_password
       self.salt = make_salt if new_record?

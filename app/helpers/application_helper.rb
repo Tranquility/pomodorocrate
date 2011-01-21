@@ -43,7 +43,7 @@ module ApplicationHelper
   end
   
   def text_format(text)
-    return simple_format( auto_link text, :all, :class => :external ).html_safe
+    return text.blank? ? "" : simple_format( auto_link text, :all, :class => :external ).html_safe
   end
 
 end

@@ -26,11 +26,11 @@
 
 							<% left_pomodoros = project.total_pomodoros - project.completed_pomodoros %>
 							<div class="projectDetails" title="<%= pluralize(left_pomodoros, 'pomodoro') %> left">
-								<%= left_pomodoros %>
+								<%= left_pomodoros >= 0 ? left_pomodoros : 0 %>
 								<span class="explanation">&#9675;</span>
 							</div>
 
-							<div class="projectDetails" title="Project completness">
+							<div class="projectDetails" title="Project completeness">
 								<%= project.completness %>%
 							</div>
 						

@@ -54,34 +54,28 @@ function decreaseTimer() {
 	$(".timer .time").html(minutes + ":" + seconds);
 }
 
-
-function testSounds() {
-	for(var i in played_sounds) {
-		if(!played_sounds[i]) {
-			console.log("starting " + i);
-			
-			announceTimeLeft(i);
-			played_sounds[i] = true;
-			setTimeout("testSounds()", 5000);
-			break;
-		}
-	}
-}
-
 function announceTimeLeft(minutes) {
 	
 	minutes = parseInt(minutes);
 	if(played_sounds[minutes] !== undefined && !played_sounds[minutes]) {
 		
-		sound_file = base_url + "sounds/text-to-speech/" + (parseInt(minutes) +1) + ".ogg";
+		sound_file = base_url + "sounds/text-to-speech/" + (parseInt(minutes) +1) + ".";
 		if(minutes == 0 && $('#pomodoro_submit[value="Complete"]').length == 0) {
-			sound_file = base_url + "sounds/text-to-speech/0.ogg";
+			sound_file = base_url + "sounds/text-to-speech/0.";
 		} 
 		
 		//console.log(sound_file);
+		soundType = "";
+		if($.support.audio.ogg) {
+			soundType = "ogg"
+		} else if($.support.audio.mp3) {
+			soundType = "mp3"
+		}
 		
-		audio = new Audio(sound_file);
-		audio.play();
+		if( soundType ) {
+			audio = new Audio(sound_file + soundType);
+			audio.play();
+		}
 	  	
 		played_sounds[minutes] = true;
 	} else {
@@ -92,17 +86,25 @@ function announceTimeLeft(minutes) {
 	}
 }
 
-function playClockSound() {
-	sound_file = "sounds/clocks/egg_timer.ogg"
-	
-	clock_audio = new Audio(sound_file);
-	clock_audio.play();
-}
-
-function stopClockSound() {
-	clock_audio.stop();
-}
-
+// extend jquery support for audio and audio type
+/**
+* Clean way of testing for HTML5 audio support for jQuery.
+*
+* Example:
+* if(jQuery.support.audio.mp3){
+* alert('Thanks guy. Enjoy the mp3 party in your browser.');
+* } else {
+* alert('MP3 native playback not supported.');
+* }
+*
+*/
+(function() {
+    var a = document.createElement("audio");
+    function t(m){
+        return (a && jQuery.isFunction(a.canPlayType) && a.canPlayType(m) != "" && a.canPlayType(m) != "no");
+    };
+    jQuery.extend(jQuery.support, {audio:{mp3: t('audio/mpeg'), aac: t('audio/aac'), ogg: t('audio/ogg')}});
+})();
 
 // event
 $(document).ready(function(){
@@ -174,3 +176,6 @@ function updateSelected(date) {
     $('#activity_deadline_3i').val(date.substring(3, 5)); 
     $('#activity_deadline_1i').val(date.substring(6, 10)); 
 }
+
+// nonsemantic 
+$('#site').wrap('<div id="nonsemanticBg" />');

@@ -44,7 +44,11 @@ class Project < ActiveRecord::Base
                     
   def completness
     return 0 if self.total_pomodoros == 0
-    self.completed_pomodoros * 100 / self.total_pomodoros
+    if (c = self.completed_pomodoros * 100 / self.total_pomodoros) < 100
+      return c
+    else
+      return 100
+    end
   end
   
   def deadline
