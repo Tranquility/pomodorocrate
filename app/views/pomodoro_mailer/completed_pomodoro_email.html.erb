@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Dear <%= @user.name %>,</h1>
+    <p>
+      You have just finished your pomodoro for 
+      "<%= @pomodoro.activity.name %>".<br/>
+    </p>
+		<p>
+			<%= text_format(@pomodoro.activity.description) %>
+		</p>
+    <p>
+      To login to the site, just follow this link: <%= @url %>.
+    </p>
+    <p>Wishing you lots and lots of successful pomodoros!</p>
+		<p>The Pomodoro Crate Team</p>
+  </body>
+</html>

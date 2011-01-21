@@ -49,6 +49,13 @@ class PomodorosController < ApplicationController
 
     respond_to do |format|
       if @pomodoro.update_attributes(params[:pomodoro])
+        
+        #if(params[:pomodoro][:successful] == true)
+        #  PomodoroMailer.successful_pomodoro_email(current_user, @pomodoro).deliver
+        #else
+        #  PomodoroMailer.voided_pomodoro_email(current_user, @pomodoro).deliver
+        #end
+        
         format.html { redirect_to(todotodays_path, :notice => 'Pomodoro was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -63,6 +70,8 @@ class PomodorosController < ApplicationController
   
   # GET /pomodoros/update_current_form
   def update_current_form
+    PomodoroMailer.completed_pomodoro_email(current_user, @pomodoro).deliver
+    
     respond_to do |format|
       format.html { render :layout => false }
     end
