@@ -51,6 +51,42 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
   
+  def email_reset_password
+    
+    @user = User.find_by_email(params[:user][:email])
+    
+    unless @user
+      flash[:error] = "Email is not valid or no user exists with this address"
+      redirect_to reset_password_path and return
+    end
+    
+    @user.make_reset_password_hash
+    if @user.update_attribute(:reset_password_hash, @user.reset_password_hash)
+      
+      UserMailer.reset_password_email(@user, edit_password_url(:reset_password_hash => @user.reset_password_hash)).deliver
+      
+      flash[:success] = "The password confirmation email has been sent. Follow the instructions from the email."
+      redirect_to signin_path
+    else
+      flash[:error] = "An error has occured while trying to initiate the password reset"
+      redirect_to reset_password_path
+    end
+  end
+  
+  def edit_password
+    @user = User.find_by_reset_password_hash(params[:reset_password_hash])
+    if @user
+      @user.update_attribute(:reset_password_hash, nil)
+      
+      sign_in @user
+      flash[:message] = "Please edit your password"
+      redirect_to edit_user_path(@user)
+    else
+      flash[:error] = "Invalid reset password hash"
+      redirect_to reset_password_path
+    end
+  end
+  
   def timezone
     @user = User.find(params[:id])
     
@@ -60,10 +96,6 @@ class UsersController < ApplicationController
       flash[:error] = "Profile update failed."
     end
     render 'edit'
-  end
-  
-  def confirm
-    
   end
   
   private

@@ -10,8 +10,11 @@ Ketchup::Application.routes.draw do
   resources :sessions,    :only => [:new, :create, :destroy]
   
   match 'activities/:id/clone'  => 'activities#clone',  :as => :clone_activity
-  match 'users/confirm'         => 'users#confirm',     :as => :confirm_user
-  match 'users/:id/timezone'    => 'users#timezone',    :as => :timezone_user
+  match '/reset_password'       => 'sessions#reset_password',    :as => :reset_password
+  match '/email_reset_password'  => 'users#email_reset_password',    :as => :email_reset_password
+  match '/edit_password'        => 'users#edit_password',   :as => :edit_password
+  #match 'users/confirm'         => 'users#confirm',     :as => :confirm_user
+  #match 'users/:id/timezone'    => 'users#timezone',    :as => :timezone_user
   
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'

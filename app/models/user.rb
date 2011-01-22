@@ -52,9 +52,13 @@ class User < ActiveRecord::Base
     user = find_by_id(id)
     (user && user.salt == cookie_salt) ? user : nil
   end
+  
+  def make_reset_password_hash
+    self.reset_password_hash = encrypt(email)
+  end
 
   private
-  
+    
     def check_account_confirmed
       self.confirmation_hash = encrypt(email) if new_record?
     end

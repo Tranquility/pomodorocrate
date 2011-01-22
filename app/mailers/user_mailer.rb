@@ -5,4 +5,12 @@ class UserMailer < ActionMailer::Base
     
   end
   
+  def reset_password_email(user, url)
+    @user = user
+    @url = url
+    
+    mail( :to => user.email,
+          :subject => "Password reset")
+  end
+  
 end
