@@ -56,6 +56,8 @@ function decreaseTimer() {
 
 function announceTimeLeft(minutes) {
 	
+	if(!voice_notifications) return;
+	
 	minutes = parseInt(minutes);
 	if(played_sounds[minutes] !== undefined && !played_sounds[minutes]) {
 		

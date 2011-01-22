@@ -4,11 +4,9 @@
 			<li class="name">
       	<%= link_to current_user.name, edit_user_path(current_user), :class => :nav %>
 			</li>
-		<% end %>
-		<% if signed_in? %>
-			<li>
-				<%= link_to "Settings", "#", :class => :nav %>
-			</li>
+			<!--li>
+				<% link_to "Settings", "#", :class => :nav %>
+			</li-->
 		<% end %>
 		<li><a href="#" class="nav">Help</a></li>
 		<li class="last">

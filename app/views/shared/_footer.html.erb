@@ -3,6 +3,7 @@
 <%= javascript_include_tag :all %>
 <script>
 	base_url = "<%= root_url %>";
+	voice_notifications = <%= current_user.nil? ? "false" : current_user.voice_notifications %>
 </script>
 
 </body>
