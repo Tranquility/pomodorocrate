@@ -123,6 +123,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport
   annotate-models (= 1.0.4)
   chronic
   factory_girl_rails (= 1.0)

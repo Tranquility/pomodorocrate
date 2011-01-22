@@ -13,7 +13,7 @@
 class User < ActiveRecord::Base
   
   attr_accessor :password
-  attr_accessible :name, :email, :password, :password_confirmation, :confirmation_hash, :reset_password_hash
+  attr_accessible :name, :email, :password, :password_confirmation, :confirmation_hash, :reset_password_hash, :time_zone, :email_notifications
   
   has_many :projects,   :dependent => :destroy
   has_many :activities, :dependent => :destroy
@@ -33,6 +33,8 @@ class User < ActiveRecord::Base
   validates :password, :presence     => true,
                        :confirmation => true,
                        :length       => { :within => 6..40 }
+                       
+  validates_inclusion_of :time_zone, :in => ActiveSupport::TimeZone.all.map { |z| z.name }, :message => "is not a valid time zone" #, :allow_nil => true, :allow_blank => true
                        
   before_save :encrypt_password, :check_account_confirmed
   

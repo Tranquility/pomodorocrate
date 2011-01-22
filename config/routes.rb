@@ -2,13 +2,16 @@ Ketchup::Application.routes.draw do
   
   match 'pomodoros/update_current_form' => 'pomodoros#update_current_form'
 
-  resources :activities,  :pomodoros, :settings, :projects, :users
+  resources :activities,  :pomodoros, :settings, :projects
+  resources :users,       :except => [:show]
   resources :breaks,      :only => [:create, :update]
   resources :todotodays,  :only => [:index, :create, :destroy]
   resources :analytics,   :only => [:index]
   resources :sessions,    :only => [:new, :create, :destroy]
   
-  match 'activities/:id/clone'          => 'activities#clone', :as => :clone_activity
+  match 'activities/:id/clone'  => 'activities#clone',  :as => :clone_activity
+  match 'users/confirm'         => 'users#confirm',     :as => :confirm_user
+  match 'users/:id/timezone'    => 'users#timezone',    :as => :timezone_user
   
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'

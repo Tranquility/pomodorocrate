@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110121140945) do
+ActiveRecord::Schema.define(:version => 20110122133113) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -96,6 +96,8 @@ ActiveRecord::Schema.define(:version => 20110121140945) do
     t.boolean  "admin",               :default => false
     t.string   "confirmation_hash"
     t.string   "reset_password_hash"
+    t.string   "time_zone"
+    t.boolean  "email_notifications", :default => false
   end
 
   add_index "users", ["confirmation_hash"], :name => "index_users_on_confirmation_hash"

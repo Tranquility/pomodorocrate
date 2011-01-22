@@ -24,7 +24,7 @@ class Todotoday < ActiveRecord::Base
   validates :user_id, :presence => true
   validate  :user_must_own_activity
   
-  default_scope :order => "today ASC", :conditions => { :today => Date.today }
+  default_scope :order => "today ASC", :conditions => { :today => Time.now.to_date }
   
   def user_must_own_activity
     errors.add(:activity, "is not valid") unless ( self.activity.user_id == user_id )

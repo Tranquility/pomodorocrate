@@ -70,7 +70,7 @@ class PomodorosController < ApplicationController
   
   # GET /pomodoros/update_current_form
   def update_current_form
-    PomodoroMailer.completed_pomodoro_email(current_user, @pomodoro).deliver
+    PomodoroMailer.completed_pomodoro_email(current_user, @pomodoro).deliver if @pomodoro.user.email_notifications
     
     respond_to do |format|
       format.html { render :layout => false }

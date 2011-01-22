@@ -3,7 +3,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   include SessionsHelper
   
-  before_filter :setup_widgets, :unless => :load_user_settings?
+  before_filter :set_timezone, :setup_widgets, :unless => :load_user_settings?
+  
+  def set_timezone
+    Time.zone = current_user.time_zone unless current_user.time_zone.blank?
+  end
   
   def load_user_settings?
     current_user.blank?

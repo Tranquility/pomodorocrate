@@ -2,7 +2,7 @@
 	<ul>
 		<% if signed_in? %>
 			<li class="name">
-      	<%= gravatar_for current_user, :size => 18 %><%= link_to current_user.name, edit_user_path(current_user), :class => :nav %>
+      	<%= link_to current_user.name, edit_user_path(current_user), :class => :nav %>
 			</li>
 		<% end %>
 		<% if signed_in? %>

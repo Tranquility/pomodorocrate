@@ -21,6 +21,10 @@
 	    <%= f.label :password_confirmation, "Confirmation" %><br />
 	    <%= f.password_field :password_confirmation %>
 	  </div>
+		<div class="field">
+	    <%= f.label :time_zone %><br />
+	    <%= time_zone_select :user, :time_zone, nil, :include_blank => true %>
+	  </div>
 	  <div class="actions">
 	    <%= f.submit "Sign up", :class => :submit %>
 	  </div>

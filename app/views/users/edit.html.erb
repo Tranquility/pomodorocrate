@@ -20,11 +20,21 @@
 	    <%= f.label :password_confirmation, "Confirmation" %><br />
 	    <%= f.password_field :password_confirmation %>
 	  </div>
+		<div class="field">
+	    <%= f.label :time_zone %><br />
+	    <%= time_zone_select :user, :time_zone, nil, :include_blank => true %>
+	  </div>
+		<div class="field">
+	    <%= f.label :email_notifications %><br />
+	    <%= f.check_box :email_notifications %>
+	  </div>
 	  <div class="actions">
 	    <%= f.submit "Update", :class => :submit %>
 	  </div>
+		
 	<% end %>
 	
+	<h6>Avatar</h6>
 	<div class="gravatar">
 	  <%= gravatar_for @user, :size => 205 %>
 	  <a href="http://gravatar.com/emails" class="button">change</a>

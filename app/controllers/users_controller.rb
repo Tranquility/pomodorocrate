@@ -23,7 +23,8 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to Pomodoro Crate!"
-      redirect_to @user
+      redirect_to edit_user_path(@user)
+      #redirect_to user_confirm_path
     else
       render 'new', :layout => "site"
     end
@@ -38,7 +39,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile updated."
-      redirect_to @user
+      redirect_to edit_user_path(@user)
     else
       render 'edit'
     end
@@ -48,6 +49,21 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "User destroyed."
     redirect_to users_path
+  end
+  
+  def timezone
+    @user = User.find(params[:id])
+    
+    if @user.update_attribute(:time_zone, params[:user][:time_zone])
+      flash[:success] = "Profile updated."
+    else
+      flash[:error] = "Profile update failed."
+    end
+    render 'edit'
+  end
+  
+  def confirm
+    
   end
   
   private
