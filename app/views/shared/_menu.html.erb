@@ -2,18 +2,18 @@
 	<ul>
 		<% if signed_in? %>
 			<li class="name">
-      	<%= link_to current_user.name, edit_user_path(current_user), :class => :nav %>
+      	<%= link_to current_user.name, edit_user_path(current_user), :class => [:top_nav] %>
 			</li>
 			<!--li>
-				<% link_to "Settings", "#", :class => :nav %>
+				<% link_to "Settings", "#", :class => :top_nav %>
 			</li-->
 		<% end %>
-		<li><a href="#" class="nav">Help</a></li>
+		<li><a href="#" class="top_nav">Help</a></li>
 		<li class="last">
 			<% if signed_in? %>
-				<%= link_to "Sign out", signout_path, :method => :delete, :class => :nav %>
+				<%= link_to "Sign out", signout_path, :method => :delete, :class => :top_nav %>
 			<% else %>
-				<%= link_to "Sign in", signin_path, :class => :nav %>
+				<%= link_to "Sign in", signin_path, :class => :top_nav %>
 			<% end %>
 		</li>
 	</ul>

@@ -1,0 +1,69 @@
+@font-face {
+	/* This declaration targets Internet Explorer */
+	font-family: 'MetaPlusMediumRomanRegular';
+	src: url('../fonts/mpmrr/mepmr___-webfont.eot');
+}
+
+@font-face {
+	/* This declaration targets everything else */
+	font-family: 'MetaPlusMediumRomanRegular';
+	src: url(//:) format('no404'), url('../fonts/mpmrr/mepmr___-webfont.woff') format('woff'), url('../fonts/mpmrr/mepmr___-webfont.ttf') format('truetype'), url('../fonts/mpmrr/mepmr___-webfont.svg#webfontArxv16So') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	/* This declaration targets Internet Explorer */
+	font-family: 'MetaPlusBoldCapsRegular';
+	src: url('../fonts/mepbc/mepbc___-webfont.eot');
+}
+
+@font-face {
+	/* This declaration targets everything else */
+	font-family: 'MetaPlusBoldCapsRegular';
+	src: url(//:) format('no404'), url('../fonts/mepbc/mepbc___-webfont.woff') format('woff'), url('../fonts/mepbc/mepbc___-webfont.ttf') format('truetype'), url('../fonts/mepbc/mepbc___-webfont.svg#webfontKjITcNcj') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	/* This declaration targets Internet Explorer */
+	font-family: 'MetaPlusNormalItalicRegular';
+	src: url('../fonts/mepni/mepni___-webfont.eot');
+}
+
+@font-face {
+	/* This declaration targets everything else */
+	font-family: 'MetaPlusNormalItalicRegular';
+	src: url(//:) format('no404'), url('../fonts/mepni/mepni___-webfont.woff') format('woff'), url('../fonts/mepni/mepni___-webfont.ttf') format('truetype'), url('../fonts/mepni/mepni___-webfont.svg#webfontPv7wEeKB') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	/* This declaration targets Internet Explorer */
+	font-family: 'MetaPlusNormalRomanRegular';
+	src: url('../fonts/mepnr/mepnr___-webfont.eot');
+}
+
+@font-face {
+	/* This declaration targets everything else */
+	font-family: 'MetaPlusNormalRomanRegular';
+	src: url(//:) format('no404'), url('../fonts/mepnr/mepnr___-webfont.woff') format('woff'), url('../fonts/mepnr/mepnr___-webfont.ttf') format('truetype'), url('../fonts/mepnr/mepnr___-webfont.svg#webfontoVmNU45c') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	/* This declaration targets Internet Explorer */
+	font-family: 'MetaPlusMediumCapsRegular';
+	src: url('../fonts/mepmc/mepmc___-webfont.eot');
+}
+
+@font-face {
+	/* This declaration targets everything else */
+	font-family: 'MetaPlusMediumCapsRegular';
+	src: url(//:) format('no404'), url('../fonts/mepmc/mepmc___-webfont.woff') format('woff'), url('../fonts/mepmc/mepmc___-webfont.ttf') format('truetype'), url('../fonts/mepmc/mepmc___-webfont.svg#webfontjSgBz87w') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

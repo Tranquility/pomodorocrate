@@ -1,9 +1,9 @@
-<li>
+<li <%= a.completed ? 'class="completed_task"'.html_safe : '' %>>
 	<div class="quickView">
 		<%= form_for a do |f| %>
 			<%= hidden_field "activity", :completed, :value => (a.completed ? false : true) %>
 			<%= hidden_field "activity", "force_update", :value => :true %>
-			<%= f.submit (a.completed ? '&#10003;'.html_safe : ""), :class => "checkbox", :title => "Click to complete / reopen activity" %>
+			<%= image_submit_tag (a.completed ? "checkbox_ticked.png" : "checkbox.png"), :class => "checkbox", :title => "Click to complete / reopen activity" %>
 			<div class="activityName" title="Click to show / hide activity details">
 				<%= content_tag_for(:span, a, :class => (a.completed ? 'activityCompleted' : "") ) do %>
 					<%= a.name %>
@@ -21,23 +21,24 @@
 
 	<div class="detailsView">
 		<%= text_format(a.description) %>
+		
+		<ul class="infoBar">
+			<li>PROJECT: <%= a.project.nil? ? "none" : link_to(a.project.name, a.project) %></li>
+			<li class="clear_me"><%= raw a.completed ? "Completed" : "DUE AT: #{due_at_status a.deadline}" %></li>
+			<li>CREATED AT: <%= a.created_at.to_date %></li>
+		</ul>
 
 		<ul class="actionsBar">
 			<% unless a.completed %>
 				<% if a.todotoday.nil? %>
-					<li><%= link_to( "Do Today", todotodays_path(:activity_id => a), :method => :post, :class => :button) %></li>
+					<li><%= link_to( "Do Today", todotodays_path(:activity_id => a), :method => :post, :class => [:activity_toolbar_button, :dotoday]) %></li>
 				<% elsif !in_progress?(@pomodoro, a) %>
-					<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => :button) %></li>
+					<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => [:activity_toolbar_button, :doitnow]) %></li>
 				<% end %>
 			<% end %>
-			<li><%= link_to("Edit", edit_activity_path(a), :class => :button) %></li>
-			<li><%= link_to("Delete", a, :confirm => "Are you sure?", :method => :delete, :class => :button) %></li>
-			<li><%= link_to("Clone", clone_activity_path(:id => a.id), :class => :button) %></li>
-		</ul>
-		<ul class="infoBar">
-			<li>Project: <%= a.project.nil? ? "none" : link_to(a.project.name, a.project) %></li>
-			<li><%= raw a.completed ? "Completed" : "Due at #{due_at_status a.deadline}" %></li>
-			<li>Created at <%= a.created_at.to_date %></li>
+			<li><%= link_to("Edit", edit_activity_path(a), :class => [:activity_toolbar_button, :edit]) %></li>
+			<li><%= link_to("Delete", a, :confirm => "Are you sure?", :method => :delete, :class => [:activity_toolbar_button, :delete]) %></li>
+			<li><%= link_to("Clone", clone_activity_path(:id => a.id), :class => [:activity_toolbar_button, :clone]) %></li>
 		</ul>
 	</div>
 </li>

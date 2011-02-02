@@ -1,12 +1,12 @@
 <div class="toolbar" id="activityFilter">
 	
 	<%= form_tag(activities_path, :method => "get") do %>
-		Filter by
+		Filter by:
 		
 	  <%= label_tag(:q_name, "Activity.") %>
 	  <%= text_field_tag(:q_name, params[:q_name]) %>
 		
-	  <%= label_tag(:q_project, "Project") %>
+	  <%= label_tag(:q_project, "Project:") %>
 		<% 
 		projects = [["..Any..", "__none__"]] 
 		Project.where("user_id = ?", current_user).each do |p|
@@ -20,7 +20,7 @@
 	  <%= text_field_tag(:q_deadline, params[:q_deadline]) %>
 		-->
 
-	  <%= submit_tag("Filter", :class => :submit) %>
+	  <%= submit_tag("Filter", :class => [:submit, :filter]) %>
 	<% end %>
 	
 </div>

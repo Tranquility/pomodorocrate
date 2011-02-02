@@ -111,7 +111,7 @@ function announceTimeLeft(minutes) {
 // event
 $(document).ready(function(){
 	$('#content .activityName').click(function(){
-		$(this).parent().parent().parent().find('.detailsView').toggle();
+		$(this).parent().parent().parent().find('.detailsView').toggle().parent().toggleClass("opened");
 	});
 	
 	if( $('#content .activityName').length == 1 ) $('#content .activityName').click();
