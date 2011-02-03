@@ -25,7 +25,7 @@
 		<ul class="infoBar">
 			<li>PROJECT: <%= a.project.nil? ? "none" : link_to(a.project.name, a.project) %></li>
 			<li class="clear_me"><%= raw a.completed ? "Completed" : "DUE AT: #{due_at_status a.deadline}" %></li>
-			<li>CREATED AT: <%= a.created_at.to_date %></li>
+			<li>CREATED AT: <%= a.created_at.to_date.to_s(:rfc822) %></li>
 		</ul>
 
 		<ul class="actionsBar">

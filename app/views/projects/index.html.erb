@@ -1,6 +1,4 @@
-<ul class="toolbar">
-	<li><%= link_to "New project", new_project_path, :class => "button" %></li>
-</ul>
+<%= render "shared/upper_toolbar" %>
 
 <section class="group">
 	<h6>Projects</h6>
@@ -21,13 +19,13 @@
 							
 							<div class="projectDetails" title="<%= pluralize(project.completed_pomodoros, 'pomodoro') %> completed">
 								<%= project.completed_pomodoros %>
-								<span class="explanation">&#9679;</span>
+								<span class="explanation"><%= image_tag "pomodoro_completed.png", :alt => "Completed pomodoros" %></span>
 							</div>
 
 							<% left_pomodoros = project.total_pomodoros - project.completed_pomodoros %>
 							<div class="projectDetails" title="<%= pluralize(left_pomodoros, 'pomodoro') %> left">
 								<%= left_pomodoros >= 0 ? left_pomodoros : 0 %>
-								<span class="explanation">&#9675;</span>
+								<span class="explanation"><%= image_tag "pomodoro_not_started.png", :alt => "Left pomodoros" %></span>
 							</div>
 
 							<div class="projectDetails" title="Project completeness">
@@ -43,13 +41,13 @@
 					<%= text_format(project.description) %>
 
 					<ul class="actionsBar">
-						<li><%= link_to("Edit", edit_project_path(project), :class => :button) %></li>
-						<li><%= link_to("Delete", project, :confirm => "Are you sure?", :method => :delete, :class => :button) %></li>
+						<li><%= link_to("Edit", edit_project_path(project), :class => [:activity_toolbar_button, :edit]) %></li>
+						<li><%= link_to("Delete", project, :confirm => "Are you sure?", :method => :delete, :class => [:activity_toolbar_button, :delete]) %></li>
 					</ul>
 					<ul class="infoBar">
-						<li>Created at <%= project.created_at.to_date %></li>
-						<li>Started at <%= project.started_at %></li>
-						<li>Deadline <%= project.deadline %></li>
+						<li class="clear_me">CREATED AT: <%= project.created_at.to_date.to_s(:rfc822) %></li>
+						<li class="clear_me">STARTED AT: <%= project.started_at %></li>
+						<li>DEADLINE: <%= project.deadline %></li>
 					</ul>
 				</div>
 			</li>

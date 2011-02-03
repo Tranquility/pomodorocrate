@@ -8,7 +8,7 @@ module ActivitiesHelper
     elsif date > Date.today then output += "future"
     end
     
-    raw output += "\">#{date}</span>"
+    raw output += "\">#{date.to_date.to_s(:rfc822)}</span>"
   end
   
 end

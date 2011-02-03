@@ -52,11 +52,13 @@ class Project < ActiveRecord::Base
   end
   
   def deadline
-    return self.activities.maximum(:deadline)
+    deadline =  self.activities.maximum(:deadline)
+    deadline.nil? ? nil : deadline.to_date.to_s(:rfc822)
   end
   
   def started_at
-    return self.activities.minimum(:deadline)
+    started_at = self.activities.minimum(:deadline)
+    started_at.nil? ? nil : started_at.to_date.to_s(:rfc822) 
   end
   
   def activity_in_progress

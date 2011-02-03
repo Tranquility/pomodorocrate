@@ -33,11 +33,12 @@ a.top_nav { color: #c4bca2; font-family: MetaPlusMediumRomanRegular, Arial, sans
 				
 #content { 	background-color: #96917d;
 						float: left; padding: 1px; width: 710px; }
-	.contentBoxNav nav ul { background: #c2bda7; height: 32px; /*float: left;*/ list-style: none; width: 100%; }
+	.contentBoxNav nav ul { background: #e5e2d2; height: 32px; /*float: left;*/ list-style: none; width: 100%; }
 		.contentBoxNav nav ul li { 	display: inline; float: left;
-			 													font-family: Georgia, Times, Times New Roman, serif; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+			 													font-family: Georgia, Times, Times New Roman, serif; font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+			 													background: #c2bda7; }
 			.contentBoxNav nav ul li.active { background: #a39e89; }
-				.contentBoxNav nav ul li.active a.tabs { color: #faf9f4; }
+				.contentBoxNav nav ul li.active a.tabs { 	color: #faf9f4; }
 				
 .toolbar { 	background: #a39e89; list-style: none;
 						clear: both; height: 44px; width: 100%; }
@@ -83,10 +84,10 @@ input.checkbox { 	float: left; margin: 1px 10px 0 0;
 
 #sidebar { float: right; width: 231px; }
 		
-aside { float: right; margin-bottom: 12px; padding: 2px; width: 231px;
-	 	background: #E7E7E7;}
+aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
+	 			background: #918c77;}
 
-.widgetBox { 	background: #fff; border-top: 2px solid #e7e7e7; padding: 12px; }
+.widgetBox { 	background: #fff; border-top: 1px solid #918c77; padding: 12px; }
 	.widgetBox .pomodorosCount { 	clear: both; float: none; margin: 16px;
 		 							text-align: center;}
 	.widgetBox .submit, .formContainer .submit, .toolbar .submit { 	background: url(../images/icon_apply.png) 8px center no-repeat #e24630; color: #ffe1dd; 
@@ -97,7 +98,9 @@ aside { float: right; margin-bottom: 12px; padding: 2px; width: 231px;
 	.widgetBox textarea { 	border: 1px solid #e7e7e7; height: 80px; padding: 4px; width: 196px; 
 							color: #898989; font-family: Arial; font-size: 12px;  }
 	.widgetBox a.button { float: right; margin-top: -20px; }
-.time { color: #a39e89; font-family: "MetaPlusMediumCapsRegular"; font-size: 82px; font-weight: bold; line-height: 74px; }
+.time { color: #a39e89; font-family: "MetaPlusMediumCapsRegular"; font-size: 88px; font-weight: bold; line-height: 74px; letter-spacing: -2px;
+ 				display: block; margin-left: -12px; padding-bottom: 24px; padding-left: 12px; width: 221px;
+ 				background: url(../images/bg_timer.png) bottom left repeat-x; }
 
 .tickbox { margin-top: 10px; }
 
@@ -163,10 +166,10 @@ aside { float: right; margin-bottom: 12px; padding: 2px; width: 231px;
 .hoverActivity { background: #f5f5f5 !important; }
 
 .projectProgress { font-size: 22px; font-weight: bold; margin-top: -25px; }
-.projectDetails { 	float: right; margin: -4px 0 0 10px; min-width: 40px;
-	 									font-size: 14px; font-weight: bold; text-align: left; }
+.projectDetails { 	float: right; margin: -7px 0 0 10px; min-width: 40px;
+	 									font-size: 16px; font-weight: normal; text-align: left; }
 .explanation { 	color: #ef4832; font-size: 28px; font-weight: bold;
-	 			display: block; float: left; margin: -12px 2px 0 0;}
+	 							display: block; float: left; margin: -10px 6px 0 0;}
 	
 .activeInput { outline: 1px solid #898989 !important; }
 
