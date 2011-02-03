@@ -146,8 +146,8 @@ $(function(){ // autofocus first form input
 	$('.formContainer form input[type=text]:first').focus();
 	
 	$('#hiddendp_').datepicker({
-	   beforeShow: readSelected, onSelect: updateSelected, 
-		//dateFormat: 'MM/dd/yy',
+	  beforeShow: readSelected, onSelect: updateSelected, 
+		dateFormat: 'm/d/yy',
     minDate: new Date(), 
     showOn: 'both', buttonImageOnly: true, buttonImage: base_url + 'images/calendar_empty.png'});
 	
@@ -175,9 +175,10 @@ function readSelected() {
 // Update three select controls to match a date picker selection 
 function updateSelected(date) { 
 		//alert(date);
-    $('#activity_deadline_2i').val( parseInt(date.substring(0, 2)) );
-    $('#activity_deadline_3i').val(date.substring(3, 5)); 
-    $('#activity_deadline_1i').val(date.substring(6, 10)); 
+		dateParts = date.split("/");
+    $('#activity_deadline_2i').val( dateParts[0] );
+    $('#activity_deadline_3i').val( dateParts[1] ); 
+    $('#activity_deadline_1i').val( dateParts[2] ); 
 }
 
 // nonsemantic 

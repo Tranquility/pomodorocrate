@@ -8,7 +8,7 @@
 
 		<%= hidden_field_tag("pomodoro[successful]", false) %>
 		<div class="field">
-			<%= f.submit("Void", :class => :submit, :confirm => "Are you sure? You will lose all progress!") %>
+			<%= f.submit("Void", :id => :btn_void_pomodoro, :confirm => "Are you sure? You will lose all progress!") %>
 		</div>
 
 	<% else %>
@@ -23,5 +23,5 @@
 
 	<% end %>
 
-	<%= link_to("Edit activity", edit_activity_path(@pomodoro.activity), :class => :button) %>
+	<%= link_to("Edit activity", edit_activity_path(@pomodoro.activity), :id => :btn_edit_current_pomodoro) %>
 <% end %>

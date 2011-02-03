@@ -13,7 +13,7 @@
 					<%= todotoday_marker(a) %>
 				<% end %>
 			</div>
-			<div class="pomodorosCount">
+			<div class="pomodorosCount listPomodorosCount">
 				<%= pomodoros_completed_ratio(a.pomodoros.successful_and_completed.count, a.estimated_pomodoros) %>
 			</div>
 		<% end %>
@@ -32,7 +32,7 @@
 			<% unless a.completed %>
 				<% if a.todotoday.nil? %>
 					<li><%= link_to( "Do Today", todotodays_path(:activity_id => a), :method => :post, :class => [:activity_toolbar_button, :dotoday]) %></li>
-				<% elsif !in_progress?(@pomodoro, a) %>
+				<% elsif !in_progress?(@pomodoro, a) and @pomodoro.nil? %>
 					<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => [:activity_toolbar_button, :doitnow]) %></li>
 				<% end %>
 			<% end %>

@@ -68,8 +68,9 @@ input.checkbox { 	float: left; margin: 1px 10px 0 0;
 	 								cursor: pointer; 
 									padding-bottom: 2px; }
 #content .activityName { cursor: pointer; color: #787465; }
-.pomodorosCount { float: right; margin: -16px 10px; }
+.pomodorosCount { padding: 16px 6px 10px; }
 	.pomodorosCount img { margin-left: 2px; }
+.listPomodorosCount { float: right; margin-top: -34px; }
 .detailsView { 	padding: 6px 10px 2px 26px; display: none;
 	 							color: #a39e89; }
 
@@ -87,9 +88,9 @@ input.checkbox { 	float: left; margin: 1px 10px 0 0;
 aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 	 			background: #918c77;}
 
-.widgetBox { 	background: #fff; border-top: 1px solid #918c77; padding: 12px; }
-	.widgetBox .pomodorosCount { 	clear: both; float: none; margin: 16px;
-		 							text-align: center;}
+.widgetBox { 	background: #fff; border-top: 1px solid #918c77; }
+	.widgetBox .pomodorosCount { 	border-top: 1px solid #d6d4c9; border-bottom: 1px solid #d6d4c9; 
+		 														text-align: center;}
 	.widgetBox .submit, .formContainer .submit, .toolbar .submit { 	background: url(../images/icon_apply.png) 8px center no-repeat #e24630; color: #ffe1dd; 
 																																	font-family: "MetaPlusBoldCapsRegular"; font-size: 11px; font-weight: normal; letter-spacing: 1px;
 																																	text-align: right; text-decoration: none; text-shadow: 1px 1px 0px #a52618; text-transform: uppercase;
@@ -97,19 +98,22 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 																																	-moz-border-radius: 2px; border-radius: 2px; }
 	.widgetBox textarea { 	border: 1px solid #e7e7e7; height: 80px; padding: 4px; width: 196px; 
 							color: #898989; font-family: Arial; font-size: 12px;  }
-	.widgetBox a.button { float: right; margin-top: -20px; }
+	.widgetBox a.button { float: right; margin-top: -16px;
+		 										color: #a39e89; font-family: "MetaPlusMediumCapsRegular"; font-size: 11px; font-weight: normal; text-decoration: none; text-transform: uppercase;
+		 										white-space: nowrap; }
 .time { color: #a39e89; font-family: "MetaPlusMediumCapsRegular"; font-size: 88px; font-weight: bold; line-height: 74px; letter-spacing: -2px;
- 				display: block; margin-left: -12px; padding-bottom: 24px; padding-left: 12px; width: 221px;
+ 				display: block; padding: 12px 12px 24px 12px; width: 209px;
  				background: url(../images/bg_timer.png) bottom left repeat-x; }
 
 .tickbox { margin-top: 10px; }
 
-.flash { 	margin-bottom: 2px; margin-top: 20px; padding: 6px 10px;
+.flash { 	margin-bottom: 10px; margin-top: 28px; padding: 6px 10px;
 	 				background: transparent;
-	 				font-weight: bold; }
-	.flash.notice { color: #898989; }
-	.flash.error { color: #EBB000; }
-	.flash.success { color: #008FE7; }
+	 				font-family: Georgia, Times, serif; font-size: 13px; font-weight: bold; 
+					-moz-border-radius: 4px; border-radius: 4px; }
+	.flash.notice { background-color: #ab9777; color: #f7e0b0; }
+	.flash.error { background-color: #ab77aa; color: #f7b0db; }
+	.flash.success { background-color: #8cab77; color: #ccf7b0; }
 		
 .formContainer { background: #fff; }
 	.formContainer form { padding: 6px 12px; }
@@ -125,9 +129,11 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 								font-family: Arial, sans-serif; font-size: 12px; }
 								
 	.signUpForm input[type=text], .signUpForm input[type=password] { width: 250px !important; }
-								
-.activity_details { font-weight: normal;
-	 				margin-bottom: 20px; }
+
+.activity_name { 	background-color: #f1efe5; color: #858174; font-family: "MetaPlusNormalRomanRegular"; font-size: 13px;
+ 									padding: 2px 12px; }
+.activity_details { background-color: #f1efe5; color: #a39e89; font-weight: normal; font-family: "MetaPlusNormalRomanRegular"; font-size: 13px;
+	 									padding: 2px 12px 14px; }
 	
 .past { color: red; }
 .present {  }
@@ -138,7 +144,7 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 
 .widgetBox .actionsBar { clear: both; height: 6px; margin-top: 20px; }
 	.widgetBox .actionsBar li a { margin-left: 6px; }
-.widgetBox .activityList li { padding: 6px 0 0 0; }
+.widgetBox .activityList li { padding: 6px 12px 0 12px; }
 
 .inProgressMarker { 	font-family: "MetaPlusBoldCapsRegular"; font-size: 9px; text-transform: uppercase; white-space: nowrap;
 											background: #3AA5E7; color: #fff;
@@ -166,7 +172,7 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 .hoverActivity { background: #f5f5f5 !important; }
 
 .projectProgress { font-size: 22px; font-weight: bold; margin-top: -25px; }
-.projectDetails { 	float: right; margin: -7px 0 0 10px; min-width: 40px;
+.projectDetails { 	float: right; margin: -7px 0 0 10px; min-width: 50px;
 	 									font-size: 16px; font-weight: normal; text-align: left; }
 .explanation { 	color: #ef4832; font-size: 28px; font-weight: bold;
 	 							display: block; float: left; margin: -10px 6px 0 0;}
@@ -175,8 +181,9 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 
 #activityFilter label { margin-left: 16px; }
 
-#timedBreak .timer { padding-top: 28px; }
-#timedBreak .button:last-child { margin-right: 6px; }
+#timedBreak .timer { padding: 26px 0 2px; }
+#timedBreak .button { display: block; float: none; margin-bottom: 8px;
+											font-size: 20px; text-align: center; }
 
 .pagination { padding: 6px 16px; }
 
@@ -226,11 +233,12 @@ a.tabs { 	color: #faf9f4; font-weight: normal; text-decoration: none;
 	
 a.button { 	color: #ef4832; font-weight: bold;
 		 				padding: 2px; }
-	a.button:hover { background: #ef4832; color: #fff; text-decoration: none; }
+	a.button:hover { 	background: #A39E89; color: #fff; text-decoration: none;
+		 								-moz-border-radius: 2px; border-radius: 2px; }
 	
-.pagination a { 	color: #ef4832; font-weight: bold;
+.pagination a { 	color: #fff; font-family: "MetaPlusNormalRomanRegular"; font-size: 14px; text-decoration: none;
 			 						padding: 2px; }
-			.pagination a:hover { background: #ef4832; color: #fff; text-decoration: none; }
+			.pagination a:hover { color: #000; text-decoration: none; }
 			
 a.toolbar_button { 	display: block; height: 24px; padding: 8px 0 0 36px; width: 88px;
 	 									background: url(../images/icon_add.png) 4px center no-repeat #858174;
@@ -256,3 +264,18 @@ a.toolbar_button { 	display: block; height: 24px; padding: 8px 0 0 36px; width: 
 .clone { background: url(../images/icon_clone.png) 8px center no-repeat #b4b09f; padding-left: 36px; }
 
 li.completed_task { background-color: #f5f3ea; }
+
+#currentPomodoroForm .field { padding: 2px 14px 8px 14px; }
+	#currentPomodoroForm .field textarea { margin-top: 10px; }
+#currentPomodoroForm .button { margin-top: -30px; margin-right: 12px; }
+
+#btn_void_pomodoro { 	background: url(../images/icon_void_pomodoro.png) left center no-repeat; color: #a39e89; font-family: "MetaPlusMediumCapsRegular"; font-size: 14px; text-transform: lowercase;
+	 										border: 0; padding-left: 18px;
+	 										cursor: pointer; }
+#btn_edit_current_pomodoro { background: url(../images/icon_edit_pomodoro.png) 6px center no-repeat; color: #a39e89; font-family: "MetaPlusMediumCapsRegular"; font-size: 14px; text-transform: lowercase; text-decoration: none;
+												 		border: 0; float: right; margin-top: -28px; margin-right: 12px; padding-left: 28px;
+												 		cursor: pointer; }
+												
+.pagination { color: #f4f4ee; font-family: "MetaPlusNormalRomanRegular"; font-size: 14px; }
+
+.projectInfo { float: right; margin-top: -15px; }

@@ -10,13 +10,15 @@
 			<div class="widgetBox timer">
 			
 				<span class="time" data-seconds="<%= (Pomodoro.length * 60) - ((Time.now - @pomodoro.created_at)).to_i %>"><%= Pomodoro.length - ((Time.now - @pomodoro.created_at) / 60).to_i %></span>
-				<%= @pomodoro.activity.name %>
+				<div class="activity_name"><%= @pomodoro.activity.name %></div>
 				
 				<% unless @pomodoro.activity.description.blank? %>
 					<div class="activity_details">
 						<%= text_format(@pomodoro.activity.description) %>
 					</div>
-					<%= link_to("Details", activity_path(@pomodoro.activity), :class => :button) %>
+					<div class="activity_details">
+						<%= link_to("&#9658; Details".html_safe, activity_path(@pomodoro.activity), :class => :button) %>
+					</div>
 				<% end %>
 				
 				<div class="pomodorosCount">
