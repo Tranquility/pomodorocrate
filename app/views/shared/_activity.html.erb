@@ -1,4 +1,4 @@
-<li <%= a.completed ? 'class="completed_task"'.html_safe : '' %>>
+<li data-activity="a_<%= a.id %>" <%= a.completed ? 'class="completed_task"'.html_safe : '' %>>
 	<div class="quickView">
 		<%= form_for a do |f| %>
 			<%= hidden_field "activity", :completed, :value => (a.completed ? false : true) %>

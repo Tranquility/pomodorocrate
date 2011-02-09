@@ -7,12 +7,12 @@ mustard: #DFB538
 blue: #3861DF
 */
 
-body { 	background: url(../images/bg_page_texture.jpg) #fff; color: #898989;
-	 	font-family: Arial, Verdana, sans-serif; font-size: 12px; }
+body { 	background: #e5e2d2; color: #898989;
+	 			font-family: Arial, Verdana, sans-serif; font-size: 12px; }
 
 #site { margin: 0 auto; width: 980px; }
 #page { background: url(../images/bg_app_texture.jpg) #fff;
-				float: left; padding: 5px 15px 25px 15px; width: 960px; }
+				float: left; padding: 5px 15px 15px 15px; width: 960px; }
 
 header { 	border-bottom: 10px solid #edecea; height: 50px; margin: -5px 0 0 -15px; padding: 0 15px; width: 960px;
 	 				background: #696558; }
@@ -26,7 +26,7 @@ header { 	border-bottom: 10px solid #edecea; height: 50px; margin: -5px 0 0 -15p
 				header nav ul li.name {  }
 				header nav ul li.last { border-right: 0; padding-right: 0; }
 				
-a.top_nav { color: #c4bca2; font-family: MetaPlusMediumRomanRegular, Arial, sans-serif; font-size: 13px; text-decoration: none; 
+a.top_nav { color: #c4bca2; font-family: MetaProNormal, Arial, sans-serif; font-size: 13px; text-decoration: none; 
 	 					display: block; padding: 5px 7px;
 	 					-moz-border-radius: 10px; border-radius: 10px; }
 	a.top_nav:hover { background: #4e4b41; color: #ece2c3; text-shadow: 1px 1px 0px #333; }
@@ -35,7 +35,7 @@ a.top_nav { color: #c4bca2; font-family: MetaPlusMediumRomanRegular, Arial, sans
 						float: left; padding: 1px; width: 710px; }
 	.contentBoxNav nav ul { background: #e5e2d2; height: 32px; /*float: left;*/ list-style: none; width: 100%; }
 		.contentBoxNav nav ul li { 	display: inline; float: left;
-			 													font-family: Georgia, Times, Times New Roman, serif; font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+			 													font-family: Georgia, Times, Times New Roman, serif; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; text-shadow: 1px 1px 0 #6b685d;
 			 													background: #c2bda7; }
 			.contentBoxNav nav ul li.active { background: #a39e89; }
 				.contentBoxNav nav ul li.active a.tabs { 	color: #faf9f4; }
@@ -46,28 +46,28 @@ a.top_nav { color: #c4bca2; font-family: MetaPlusMediumRomanRegular, Arial, sans
 	.toolbar form { padding: 7px 10px; }
 		.toolbar form input[type=text], .toolbar form select { 	background: #e5e2d2; color: #aaa693;
 																														border: 0; margin-left: 10px; padding: 4px; width: 120px;
-																														font-family: "MetaPlusNormalItalicRegular"; font-size: 14px; }
+																														font-family: MetaProNormal; font-size: 14px; }
 																
 input.submit { 	background: #fff; color: #ef4832; cursor: pointer; font-size: 12px; font-weight: bold; 
 				border: 0; padding: 2px 14px; }
 				
 section.group {  }
-	section.group h6, .visualize-title { 	background: #e5e2d2; color: #827d6a; font-family: Georgia, Times, serif; font-size: 14px; font-weight: bold;
-		 																		border-top: 1px solid #c8c5b7; border-bottom: 1px solid #c8c5b7; padding: 2px 0 2px 10px; }
+	section.group h6, .visualize-title { 	background: #e5e2d2; color: #827d6a; font-family: MetaProNormal; font-size: 17px; 
+		 																		border-top: 1px solid #c8c5b7; border-bottom: 1px solid #c8c5b7; padding: 0 0 1px 10px; }
 		
 .visualize-title { padding-right: 10px; }
 		
 .activityList { list-style: none; }
 	.activityList li { 	background: #fff; color: #787465;
 											border-bottom: 2px solid #e7e7e7; padding: 6px 0 6px 10px;
-											font-family: "MetaPlusNormalRomanRegular"; font-size: 14px; }
+											font-family: MetaProNormal; font-size: 14px; }
 		.activityList li:last-child { border-bottom: 0; }
 		.activityList li.opened { background-color: #f4f4ee; }
 .quickView {  }						
-input.checkbox { 	float: left; margin: 1px 10px 0 0;
+input.checkbox { 	float: left; margin: 1px 8px 0 0;
 	 								cursor: pointer; 
 									padding-bottom: 2px; }
-#content .activityName { cursor: pointer; color: #787465; }
+#content .activityName { cursor: pointer; color: #787465; max-width: 560px; }
 .pomodorosCount { padding: 16px 6px 10px; }
 	.pomodorosCount img { margin-left: 2px; }
 .listPomodorosCount { float: right; margin-top: -34px; }
@@ -92,18 +92,18 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 	.widgetBox .pomodorosCount { 	border-top: 1px solid #d6d4c9; border-bottom: 1px solid #d6d4c9; 
 		 														text-align: center;}
 	.widgetBox .submit, .formContainer .submit, .toolbar .submit { 	background: url(../images/icon_apply.png) 8px center no-repeat #e24630; color: #ffe1dd; 
-																																	font-family: "MetaPlusBoldCapsRegular"; font-size: 11px; font-weight: normal; letter-spacing: 1px;
+																																	font-family: MetaProBold; font-size: 11px; font-weight: normal; letter-spacing: 1px;
 																																	text-align: right; text-decoration: none; text-shadow: 1px 1px 0px #a52618; text-transform: uppercase;
 																																	height: 28px; padding: 4px 4px 4px 24px; 
 																																	-moz-border-radius: 2px; border-radius: 2px; }
 	.widgetBox textarea { 	border: 1px solid #e7e7e7; height: 80px; padding: 4px; width: 196px; 
 							color: #898989; font-family: Arial; font-size: 12px;  }
 	.widgetBox a.button { float: right; margin-top: -16px;
-		 										color: #a39e89; font-family: "MetaPlusMediumCapsRegular"; font-size: 11px; font-weight: normal; text-decoration: none; text-transform: uppercase;
+		 										color: #a39e89; font-family: MetaPlusMediumRomanRegular; font-size: 11px; font-weight: normal; text-decoration: none; text-transform: uppercase;
 		 										white-space: nowrap; }
-.time { color: #a39e89; font-family: "MetaPlusMediumCapsRegular"; font-size: 88px; font-weight: bold; line-height: 74px; letter-spacing: -2px;
- 				display: block; padding: 12px 12px 24px 12px; width: 209px;
- 				background: url(../images/bg_timer.png) bottom left repeat-x; }
+	.widgetBox a.details_button { font-family: MetaProBold; font-size: 10px; }
+.time { color: #a39e89; font-family: MetaPlusMediumCapsRegular; font-size: 84px; font-weight: bold; line-height: 74px; letter-spacing: -2px; text-align: center;
+ 				display: block; padding: 12px; width: 209px; }
 
 .tickbox { margin-top: 10px; }
 
@@ -118,11 +118,13 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 .formContainer { background: #fff; }
 	.formContainer form { padding: 6px 12px; }
 	.formContainer .field { margin-bottom: 12px; }
-	.formContainer label { 	font-weight: bold; }
+	.formContainer label { 	font-size: 14px; font-weight: normal; }
 	.formContainer input[type=text], .formContainer input[type=password] { 	background: #F5F5F5; color: #898989;
-		 								border: 0; padding: 4px; width: 99%;}
+		 																																			border: 0; padding: 4px; width: 99%;
+																																					font-family: MetaProNormal; font-size: 12px; }
 	.formContainer select {	background: #F5F5F5; color: #898989;
-							border: 0; padding: 4px; }
+													border: 0; padding: 4px;
+													font-family: MetaProNormal; font-size: 12px; }
 	.formContainer input.numeric { width: 30px; }
 	.formContainer textarea { 	background: #F5F5F5; color: #898989;
 								border: 0; height: 100px; padding: 4px; width: 99%;
@@ -130,9 +132,9 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 								
 	.signUpForm input[type=text], .signUpForm input[type=password] { width: 250px !important; }
 
-.activity_name { 	background-color: #f1efe5; color: #858174; font-family: "MetaPlusNormalRomanRegular"; font-size: 13px;
- 									padding: 2px 12px; }
-.activity_details { background-color: #f1efe5; color: #a39e89; font-weight: normal; font-family: "MetaPlusNormalRomanRegular"; font-size: 13px;
+.activity_name { 	background: url(../images/bg_timer.png) top left repeat-x #f1efe5; color: #858174; font-family: MetaProNormal; font-size: 13px;
+ 									padding: 16px 12px 12px; }
+.activity_details { background-color: #f1efe5; color: #a39e89; font-weight: normal; font-family: MetaProNormal; font-size: 13px;
 	 									padding: 2px 12px 14px; }
 	
 .past { color: red; }
@@ -146,17 +148,17 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 	.widgetBox .actionsBar li a { margin-left: 6px; }
 .widgetBox .activityList li { padding: 6px 12px 0 12px; }
 
-.inProgressMarker { 	font-family: "MetaPlusBoldCapsRegular"; font-size: 9px; text-transform: uppercase; white-space: nowrap;
+.inProgressMarker { 	font-family: MetaProBold; font-size: 10px; text-transform: uppercase; white-space: nowrap;
 											background: #3AA5E7; color: #fff;
-											margin-right: 2px; padding: 2px;
+											margin-right: 2px; padding: 2px 4px;
 											-moz-border-radius: 2px; border-radius: 2px; }
-.todotodayMarker { 	font-family: "MetaPlusBoldCapsRegular"; font-size: 9px; text-transform: uppercase; white-space: nowrap;
+.todotodayMarker { 	font-family: MetaProBold; font-size: 10px; text-transform: uppercase; white-space: nowrap;
 										background: #DFB538; color: #fff;
-										margin-right: 2px; padding: 2px;
+										margin-right: 2px; padding: 2px 4px;
 										-moz-border-radius: 2px; border-radius: 2px; }
-.deadlineMarker { 	font-size: 10px; text-transform: uppercase; white-space: nowrap;
-					background: #fff; color: #898989;
-					padding: 2px; }
+.deadlineMarker { 	font-family: MetaPlusMediumRomanRegular; font-size: 11px; text-transform: uppercase; white-space: nowrap;
+										color: #898989;
+										padding: 2px 4px; }
 
 .activityCompleted { 	text-decoration: line-through; }
 
@@ -213,12 +215,18 @@ a.external { 	color: #30B1FF;
 .standard_shadow { text-shadow: 1px 1px 0px #333; }
 		
 .boxShadow {
-  -moz-box-shadow: 0px -8px 15px -3px #333; /* Firefox */
-  -webkit-box-shadow: 0px -8px 15px -3px #333; /* Safari, Chrome */
-  box-shadow: 0px -8px 15px -3px #333; /* CSS3 */
+  -moz-box-shadow: 0px 0px 15px -3px #333; /* Firefox */
+  -webkit-box-shadow: 0px 0px 15px -3px #333; /* Safari, Chrome */
+  box-shadow: 0px 0px 15px -3px #333; /* CSS3 */
+	
+	-moz-border-radius-bottomright: 10px;
+	border-bottom-right-radius: 10px;
+	
+	-moz-border-radius-bottomleft: 10px;
+	border-bottom-left-radius: 10px;
 }
 
-.infoBar a { 	color: #e3533e; font-family: "MetaPlusNormalRomanRegular";
+.infoBar a { 	color: #e3533e; font-family: MetaProNormal;
 	 						padding: 2px; }
 	.infoBar a:hover { 	background: #b4b09f; color: #fff; text-decoration: none;
 		 									-moz-border-radius: 2px; border-radius: 2px; }
@@ -227,7 +235,7 @@ a.nav { color: #ef4832; text-decoration: none;
 	 	padding: 2px;}
 	a.nav:hover { background: #ef4832; color: #fff; }
 	
-a.tabs { 	color: #faf9f4; font-weight: normal; text-decoration: none;
+a.tabs { 	color: #faf9f4; font-weight: bold; text-decoration: none;
 	 		display: block; float: left; height: 20px; padding: 6px 10px;}
 	a.tabs:hover { background: #a39e89; }
 	
@@ -236,27 +244,27 @@ a.button { 	color: #ef4832; font-weight: bold;
 	a.button:hover { 	background: #A39E89; color: #fff; text-decoration: none;
 		 								-moz-border-radius: 2px; border-radius: 2px; }
 	
-.pagination a { 	color: #fff; font-family: "MetaPlusNormalRomanRegular"; font-size: 14px; text-decoration: none;
+.pagination a { 	color: #fff; font-family: MetaProNormal; font-size: 14px; text-decoration: none;
 			 						padding: 2px; }
 			.pagination a:hover { color: #000; text-decoration: none; }
 			
 a.toolbar_button { 	display: block; height: 24px; padding: 8px 0 0 36px; width: 88px;
 	 									background: url(../images/icon_add.png) 4px center no-repeat #858174;
-	 									color: #e4dfbf; font-family: 'MetaPlusBoldCapsRegular'; font-size: 11px; letter-spacing: 1px; text-decoration: none; text-transform: uppercase; 
+	 									color: #e4dfbf; font-family: MetaProBold; font-size: 11px; letter-spacing: 1px; text-decoration: none; text-transform: uppercase; 
 										-moz-border-radius: 2px; border-radius: 2px; }
 	a.toolbar_button:hover { background-color: #7a776a; color: #ece2c3; }
 	
-#activityFilter { background: #fff; color: #a39e89; font-family: 'MetaPlusBoldCapsRegular'; font-size: 11px; text-transform: uppercase; }
+#activityFilter { background: #fff; color: #a39e89; font-family: MetaProBold; font-size: 11px; text-transform: uppercase; }
 
 .clear_me { float: left; margin-right: 30px; }
 
 .activity_toolbar_button { 	color: #f4f4ee;
-														font-family: "MetaPlusBoldCapsRegular"; font-size: 12px; font-weight: normal;
+														font-family: MetaProBold; font-size: 12px; font-weight: normal;
 														text-decoration: none; text-transform: uppercase;
 	 													padding: 4px 10px 4px 28px;
 														-moz-border-radius: 2px; border-radius: 2px; 
-														text-shadow: 1px 1px 0px #817c6c; }
-	.activity_toolbar_button:hover { color: #fff; }
+														/*text-shadow: 1px 1px 0px #817c6c;*/ }
+	.activity_toolbar_button:hover { background-color: #9a9788; }
 .dotoday { background: url(../images/icon_do_today.png) 8px center no-repeat #b4b09f; }
 .doitnow { background: url(../images/icon_do_it_now.png) 8px center no-repeat #b4b09f; }
 .edit { background: url(../images/icon_edit.png) 8px center no-repeat #b4b09f; }
@@ -266,16 +274,32 @@ a.toolbar_button { 	display: block; height: 24px; padding: 8px 0 0 36px; width: 
 li.completed_task { background-color: #f5f3ea; }
 
 #currentPomodoroForm .field { padding: 2px 14px 8px 14px; }
-	#currentPomodoroForm .field textarea { margin-top: 10px; }
+	#currentPomodoroForm .field label {  }
+	#currentPomodoroForm .field textarea { 	margin-top: 4px;
+		 																			background-color: #e5e2d2; color: #6b685d;
+		 																			font-family: MetaProNormal; }
 #currentPomodoroForm .button { margin-top: -30px; margin-right: 12px; }
 
-#btn_void_pomodoro { 	background: url(../images/icon_void_pomodoro.png) left center no-repeat; color: #a39e89; font-family: "MetaPlusMediumCapsRegular"; font-size: 14px; text-transform: lowercase;
+#btn_void_pomodoro { 	background: url(../images/icon_void_pomodoro.png) left center no-repeat; color: #a39e89; font-family: MetaProBold; font-size: 12px; text-transform: uppercase;
 	 										border: 0; padding-left: 18px;
 	 										cursor: pointer; }
-#btn_edit_current_pomodoro { background: url(../images/icon_edit_pomodoro.png) 6px center no-repeat; color: #a39e89; font-family: "MetaPlusMediumCapsRegular"; font-size: 14px; text-transform: lowercase; text-decoration: none;
+#btn_edit_current_pomodoro { background: url(../images/icon_edit_pomodoro.png) 6px center no-repeat; color: #a39e89; font-family: MetaProBold; font-size: 12px; text-transform: uppercase; text-decoration: none;
 												 		border: 0; float: right; margin-top: -28px; margin-right: 12px; padding-left: 28px;
 												 		cursor: pointer; }
 												
-.pagination { color: #f4f4ee; font-family: "MetaPlusNormalRomanRegular"; font-size: 14px; }
+.pagination { color: #f4f4ee; font-family: MetaProNormal; font-size: 14px; }
 
 .projectInfo { float: right; margin-top: -15px; }
+
+.break_toolbar { background-color: #F1EFE5; padding: 12px; }
+
+.odd { background-color: #f4f4ee !important; }
+
+.time_is_up { color: #ef4832; 
+							margin-bottom: 10px; padding-bottom: 52px; 
+							background: url(../images/time_is_up.png) bottom center no-repeat;}
+							
+#pomodoro_submit { 	background-image: url(../images/icon_complete_pomodoro.png);
+	 									width: 96px; }
+	
+label { font-family: MetaProNormal; }

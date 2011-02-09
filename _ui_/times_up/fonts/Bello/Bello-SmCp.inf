@@ -1,0 +1,22 @@
+FontName (Bello-SmCp)
+FullName (Bello SmCp)
+AppleName (Bello-SmCp)
+AppleFONDID 7000
+FamilyName (Bello)
+Version (001.010)
+isFixedPitch false
+CharacterSet (custom)
+Encoding (SpecificEncoding)
+Pi false
+ItalicAngle 0
+CapHeight 700
+UnderlinePosition -100
+UnderlineThickness 20
+StemWidth 92
+Serif false
+MSMenuName (Bello-SmCp)
+VPMenuName (Bello-SmCp)
+WORDMenuName (Bello-SmCp)
+VPStyle (N)
+WindowsFirstChar 5
+WindowsLastChar 255

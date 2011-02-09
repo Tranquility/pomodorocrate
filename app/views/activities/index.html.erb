@@ -22,8 +22,8 @@
 						<% if Date.today == a.deadline.to_date %>
 								Today
 						<% else %>
-								<%= distance_of_time_in_words Date.today, a.deadline.to_date %>
-								<%= (Time.now > a.deadline) ? " ago" : " from now" %>
+								<%= distance_of_time_in_words(Date.today, a.deadline.to_date).titleize %>
+								<%= (Time.now > a.deadline) ? " ago".titleize : " from now".titleize %>
 						<% end %>
 					</h6>
 					<ul class="activityList">

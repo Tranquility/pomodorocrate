@@ -23,8 +23,9 @@ function decreaseTimer() {
 	
 	if(currentTime <= 0){
 		currentTime = 0;
+		$('.time').addClass('time_is_up');
+
 		if( $('#pomodoro_submit[value="Complete"]').length == 0 && $('#break_submit[value="End break"]').length == 0 ) {
-			//window.location.reload();
 			$.ajax({
 				type: "GET",
 				url: base_url + "pomodoros/update_current_form",
@@ -34,6 +35,8 @@ function decreaseTimer() {
 				}
 			});
 		}
+		
+		return;
 	} else {
 		setTimeout("decreaseTimer()", 1000);
 	}
@@ -52,6 +55,15 @@ function decreaseTimer() {
 	
 	$(".timer .time").attr("data-seconds", currentTime);
 	$(".timer .time").html(minutes + ":" + seconds);
+	
+	if( !isNaN(minutes) && !isNaN(seconds) ) {
+		if( $('title:contains("[")').length > 0 ) {
+			$('title').html( $('title').html().replace(/\[(.*)\]/, '[' + minutes + ":" + seconds + ']') );
+		} else {
+			$('title').html( '[' + minutes + ":" + seconds + '] ' + $('title').html() );
+		}
+	}
+	
 }
 
 function announceTimeLeft(minutes) {
@@ -110,18 +122,25 @@ function announceTimeLeft(minutes) {
 
 // event
 $(document).ready(function(){
+	// activity item click
 	$('#content .activityName').click(function(){
 		$('.opened').find('.detailsView').toggle().parent().toggleClass("opened");
 		$(this).parent().parent().parent().find('.detailsView').toggle().parent().toggleClass("opened");
+			window.location.hash = $(this).parent().parent().parent().attr('data-activity');
 	});
 	
-	if( $('#content .activityName').length == 1 ) $('#content .activityName').click();
+	if( $('#content .activityName').length == 1 ) {
+		$('#content .activityName').click();
+	} else {
+		$( 'li[data-activity="' + window.location.hash.replace("#", '') + '"] .activityName' ).click();
+	}
 })
 
 // formattings
 $(document).ready(function(){
 	$('.field_with_errors').parent().addClass("container_of_field_with_errors");
 	$('#activityFilter input[type=text]').inline_label();
+	$('#pomodoro_comments').inline_label();
 	$('input, select, textarea, submit, button, checkbox').focus(function() {
 		$(this).addClass("activeInput");
 	});

@@ -34,7 +34,7 @@
 				
 				<%= form_for(@break, :url => break_path(@break)) do |f| %>
 					<%= hidden_field_tag("break[completed]", true) %>
-					<div class="field">
+					<div class="field break_toolbar">
 						<%= f.submit("End break", :class => :submit) %>
 					</div>
 				<% end %>

@@ -13,7 +13,7 @@
 
 					<% @overdue_activities.each do |a| %>
 
-					<li>
+					<li class="<%= cycle("even", "odd") %>">
 						<div class="quickView">
 							<div class="activityName">
 								<% time_distance = (Date.today - a.deadline.to_date == 0 ? "Today" : distance_of_time_in_words(Date.today, a.deadline.to_date) + " ago" ) %>

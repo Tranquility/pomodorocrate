@@ -16,10 +16,10 @@
 					<div class="activity_details">
 						<%= text_format(@pomodoro.activity.description) %>
 					</div>
-					<div class="activity_details">
-						<%= link_to("&#9658; Details".html_safe, activity_path(@pomodoro.activity), :class => :button) %>
-					</div>
 				<% end %>
+				<div class="activity_details">
+					<%= link_to("&#9658; Details".html_safe, activity_path(@pomodoro.activity), :class => [:button, :details_button]) %>
+				</div>
 				
 				<div class="pomodorosCount">
 					<%= pomodoros_completed_ratio(@pomodoro.activity.pomodoros.successful_and_completed.count, @pomodoro.activity.estimated_pomodoros) %>

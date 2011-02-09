@@ -15,7 +15,7 @@
 					<% a = rp.activity %>
 					<% next if a.nil? %>
 
-					<li>
+					<li class="<%= cycle("even", "odd") %>">
 						<div class="quickView">
 							<div class="activityName">
 								<%= content_tag_for(:span, a, :class => (a.completed ? 'activityCompleted' : "") ) do %>

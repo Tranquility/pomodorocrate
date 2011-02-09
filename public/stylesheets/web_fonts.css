@@ -67,3 +67,50 @@
 	font-weight: normal;
 	font-style: normal;
 }
+
+
+/* ================================================================== */
+
+@font-face {
+    font-family: 'MetaProNormal';
+    src: url('../fonts/metapro/metapro-normal-webfont.eot?') format('eot'),
+         url('../fonts/metapro/metapro-normal-webfont.woff') format('woff'),
+         url('../fonts/metapro/metapro-normal-webfont.ttf') format('truetype'),
+         url('../fonts/metapro/metapro-normal-webfont.svg#webfontphF9Wr36') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'MetaProNormalItalic';
+    src: url('../fonts/metapro/metapro-normalitalic-webfont.eot?') format('eot'),
+         url('../fonts/metapro/metapro-normalitalic-webfont.woff') format('woff'),
+         url('../fonts/metapro/metapro-normalitalic-webfont.ttf') format('truetype'),
+         url('../fonts/metapro/metapro-normalitalic-webfont.svg#webfontdKnRbMoV') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'MetaProBoldItalic';
+    src: url('../fonts/metapro/metapro-bolditalic-webfont.eot?') format('eot'),
+         url('../fonts/metapro/metapro-bolditalic-webfont.woff') format('woff'),
+         url('../fonts/metapro/metapro-bolditalic-webfont.ttf') format('truetype'),
+         url('../fonts/metapro/metapro-bolditalic-webfont.svg#webfontkmslv2Tp') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'MetaProBold';
+    src: url('../fonts/metapro/metapro-bold-webfont.eot?') format('eot'),
+         url('../fonts/metapro/metapro-bold-webfont.woff') format('woff'),
+         url('../fonts/metapro/metapro-bold-webfont.ttf') format('truetype'),
+         url('../fonts/metapro/metapro-bold-webfont.svg#webfontRnXn0xLh') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
