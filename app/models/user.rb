@@ -36,14 +36,17 @@ class User < ActiveRecord::Base
                        
   validates_inclusion_of :time_zone, :in => ActiveSupport::TimeZone.all.map { |z| z.name }, :message => "is not a valid time zone" #, :allow_nil => true, :allow_blank => true
   
-  validates :pomodoro_length, :presence => true,
-                              :length => { :minimum => 5, :maximum => 60 }
+  validates_numericality_of :pomodoro_length, :only_integer => true,
+                                              :greater_than_or_equal_to => 5,
+                                              :less_than_or_equal_to => 60
   
-  validates :short_break_length,  :presence => true,
-                                  :length => { :minimum => 5, :maximum => 60 }
+  validates_numericality_of :short_break_length,  :only_integer => true,
+                                                  :greater_than_or_equal_to => 5,
+                                                  :less_than_or_equal_to => 60
                                   
-  validates :long_break_length,  :presence => true,
-                                 :length => { :minimum => 5, :maximum => 60 }                                
+  validates_numericality_of :long_break_length, :only_integer => true,
+                                                :greater_than_or_equal_to => 5,
+                                                :less_than_or_equal_to => 60
                        
   before_save :encrypt_password, :check_account_confirmed
   

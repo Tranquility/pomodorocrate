@@ -5,7 +5,7 @@
 		<%= f.text_area :comments %>
 	</div>
 	
-	<% if Time.now - @pomodoro.created_at < Pomodoro.length.minutes %>
+	<% if Time.now - @pomodoro.created_at < current_user.pomodoro_length.minutes %>
 
 		<%= hidden_field_tag("pomodoro[successful]", false) %>
 		<div class="field">

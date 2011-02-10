@@ -198,7 +198,7 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 .breakButtons { list-style: none; }			
 	.breakButtons li { 	background-color: #858174; color: #e5e2d2;
 	 										display: inline; float: left; height: 84px; margin: 3px 5px; overflow: hidden; width: 105px;
-	 										font-family: MetaProNormal; font-size: 14px; 
+	 										font-family: MetaProBold; font-size: 14px; 
 											-moz-border-radius: 5px; border-radius: 5px; 
 											text-shadow: 1px 1px 0px #736e60;
 											cursor: pointer;
