@@ -11,11 +11,11 @@
 			<div class="widgetBox timer">
 				<ul class="breakButtons">
 					<li id="shortBreak">
-						<%= link_to("#{Break.duration}", breaks_path(:duration => Break.duration), :method => :post) %> min
+						<%= link_to("#{current_user.short_break_length}", breaks_path(:duration => current_user.short_break_length), :method => :post) %> min
 						<span>break</span>
 					</li>
 					<li id="longBreak">
-						<%= link_to("#{Break.long_duration}", breaks_path(:duration => Break.long_duration), :method => :post) %> min
+						<%= link_to("#{current_user.long_break_length}", breaks_path(:duration => current_user.long_break_length), :method => :post) %> min
 						<span>break</span>
 					</li>
 				</ul>

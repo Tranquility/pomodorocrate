@@ -44,9 +44,9 @@ a.top_nav { color: #c4bca2; font-family: MetaProNormal, Arial, sans-serif; font-
 						clear: both; height: 44px; width: 100%; }
 	.toolbar li { display: inline; float: left; padding: 6px 10px; }
 	.toolbar form { padding: 7px 10px; }
-		.toolbar form input[type=text], .toolbar form select { 	background: #e5e2d2; color: #aaa693;
+		.toolbar form input[type=text], .toolbar form select { 	background: #E5E2D2; color: #6B685D;
 																														border: 0; margin-left: 10px; padding: 4px; width: 120px;
-																														font-family: MetaProNormal; font-size: 14px; }
+																														font-family: MetaProNormal; font-size: 14px; text-transform: none; }
 																
 input.submit { 	background: #fff; color: #ef4832; cursor: pointer; font-size: 12px; font-weight: bold; 
 				border: 0; padding: 2px 14px; }
@@ -54,6 +54,10 @@ input.submit { 	background: #fff; color: #ef4832; cursor: pointer; font-size: 12
 section.group {  }
 	section.group h6, .visualize-title { 	background: #e5e2d2; color: #827d6a; font-family: MetaProNormal; font-size: 17px; 
 		 																		border-top: 1px solid #c8c5b7; border-bottom: 1px solid #c8c5b7; padding: 0 0 1px 10px; }
+		
+		section.group h6.settings { font-family: MetaProBold; font-size: 14px;
+			 													border: 1px solid #c8c5b7; margin: 10px 0;
+			 													background-color: #a39e89; color: #fff; }
 		
 .visualize-title { padding-right: 10px; }
 		
@@ -119,16 +123,16 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 	.formContainer form { padding: 6px 12px; }
 	.formContainer .field { margin-bottom: 12px; }
 	.formContainer label { 	font-size: 14px; font-weight: normal; }
-	.formContainer input[type=text], .formContainer input[type=password] { 	background: #F5F5F5; color: #898989;
+	.formContainer input[type=text], .formContainer input[type=password] { 	background: #E5E2D2; color: #6B685D;
 		 																																			border: 0; padding: 4px; width: 99%;
 																																					font-family: MetaProNormal; font-size: 12px; }
-	.formContainer select {	background: #F5F5F5; color: #898989;
+	.formContainer select {	background: #E5E2D2; color: #6B685D;
 													border: 0; padding: 4px;
 													font-family: MetaProNormal; font-size: 12px; }
 	.formContainer input.numeric { width: 30px; }
-	.formContainer textarea { 	background: #F5F5F5; color: #898989;
-								border: 0; height: 100px; padding: 4px; width: 99%;
-								font-family: Arial, sans-serif; font-size: 12px; }
+	.formContainer textarea { 	background: #E5E2D2; color: #6B685D;
+															border: 0; height: 100px; padding: 4px; width: 99%;
+															font-family: Arial, sans-serif; font-size: 12px; }
 								
 	.signUpForm input[type=text], .signUpForm input[type=password] { width: 250px !important; }
 
@@ -324,3 +328,8 @@ li.completed_task { background-color: #f5f3ea; }
 	 									width: 96px; }
 	
 label { font-family: MetaProNormal; }
+fieldset { 	border: 1px solid #96917d; padding: 6px 0 6px 16px; -moz-border-radius: 10px; border-radius: 10px; }
+form.edit_user { width: auto !important; }
+
+#user_pomodoro_length, #user_short_break_length, #user_long_break_length { width: 30px !important; }
+#user_pomodoro_length_slider, #user_short_break_length_slider, #user_long_break_length_slider { float: right; margin: 6px 430px 0 0; width: 200px; }

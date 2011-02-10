@@ -36,7 +36,6 @@ function decreaseTimer() {
 			});
 		}
 		
-		return;
 	} else {
 		setTimeout("decreaseTimer()", 1000);
 	}
@@ -175,6 +174,7 @@ $(function(){ // autofocus first form input
 		min: 0,
 		max: 8,
 		step: 1,
+		animate: true,
 		slide: function( event, ui ) {
 			$( "#activity_estimated_pomodoros" ).val( ui.value );
 		}
@@ -220,3 +220,53 @@ $( function(){
 		}
 	);
 })
+
+$( function() {
+	
+	$('.signUpForm input.numeric').each(
+		
+		function() {
+			input_id = $(this).attr('id');
+			slider_id = $(this).attr('id') + '_slider';
+			
+			$(this).after('<div id="' + slider_id + '" class="user_slider"></div>');
+			
+			$( ("#" + slider_id) ).slider({
+				value: $(this).val(),
+				min: 5,
+				max: 60,
+				step: 5,
+				animate: true, 
+				slide: function( event, ui ) {
+					$( "#" + $(this).attr('id').replace('_slider', '') ).val( ui.value );
+				}
+			});
+			
+			$( "#" + input_id ).val( $("#" + slider_id).slider( "value" ) );
+		}
+		
+	)
+})
+
+
+// This sets up the proper header for rails to understand the request type,
+// and therefore properly respond to js requests (via respond_to block, for example)
+$.ajaxSetup({ 
+  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+})
+
+$(document).ready(function() {
+
+  // UJS authenticity token fix: add the authenticy_token parameter
+  // expected by any Rails POST request.
+  $(document).ajaxSend(function(event, request, settings) {
+    // do nothing if this is a GET request. Rails doesn't need
+    // the authenticity token, and IE converts the request method
+    // to POST, just because - with love from redmond.
+    if (settings.type == 'GET') return;
+    if (typeof(AUTH_TOKEN) == "undefined") return;
+    settings.data = settings.data || "";
+    settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
+  });
+
+});

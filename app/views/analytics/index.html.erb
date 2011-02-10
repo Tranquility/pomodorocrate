@@ -9,7 +9,7 @@
 			<tr>
 				<td></td>
 				<% ( @start_date..(@end_date -1.day) ).each do |d| %>
-					<th scope="row"><%= d.to_date %></th>
+					<th scope="row"><%= d.to_date.to_s(:rfc822) %></th>
 				<% end %>
 			</tr>
 		</thead>

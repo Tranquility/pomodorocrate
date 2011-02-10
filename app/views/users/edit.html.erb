@@ -1,9 +1,10 @@
 <section class="group formContainer signUpForm">
-	<h6>My details</h6>
+	<h6>My settings</h6>
 	
 	<%= form_for(@user) do |f| %>
 	  <%= render 'shared/error_messages', :object => f.object %>
-
+		
+		<h6 class="settings">User info</h6>
 	  <div class="field">
 	    <%= f.label :name %><br />
 	    <%= f.text_field :name %>
@@ -24,6 +25,8 @@
 	    <%= f.label :time_zone %><br />
 	    <%= time_zone_select :user, :time_zone, nil, :include_blank => true %>
 	  </div>
+		
+		<h6 class="settings">Notifications</h6>
 		<div class="field">
 	    <%= f.label :email_notifications %><br />
 	    <%= f.check_box :email_notifications %>
@@ -32,6 +35,21 @@
 	    <%= f.label :voice_notifications %><br />
 	    <%= f.check_box :voice_notifications %>
 	  </div>
+	
+		<h6 class="settings">Pomodoro settings</h6>
+		<div class="field">
+	    <%= f.label :pomodoro_length %><br />
+	    <%= f.text_field :pomodoro_length, :class => :numeric %>
+	  </div>
+		<div class="field">
+	    <%= f.label :short_break_length %><br />
+	    <%= f.text_field :short_break_length, :class => :numeric %>
+	  </div>
+		<div class="field">
+	    <%= f.label :long_break_length %><br />
+	    <%= f.text_field :long_break_length, :class => :numeric %>
+	  </div>
+	
 	  <div class="actions">
 	    <%= f.submit "Update", :class => :submit %>
 	  </div>
@@ -41,7 +59,7 @@
 	<h6>Avatar</h6>
 	<div class="gravatar">
 	  <%= gravatar_for @user, :size => 205 %>
-	  <a href="http://gravatar.com/emails" class="button">change</a>
+	  <a href="http://gravatar.com/emails" class="submit">Change your avatar</a>
 	</div>
 	
 </section>

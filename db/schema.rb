@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110122151732) do
+ActiveRecord::Schema.define(:version => 20110210155331) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20110122151732) do
     t.datetime "updated_at"
     t.string   "today"
     t.integer  "user_id"
+    t.integer  "position"
   end
 
   add_index "todotodays", ["activity_id", "today"], :name => "index_todotodays_on_activity_id_and_today", :unique => true
@@ -99,6 +100,9 @@ ActiveRecord::Schema.define(:version => 20110122151732) do
     t.string   "time_zone"
     t.boolean  "email_notifications", :default => false
     t.boolean  "voice_notifications", :default => false
+    t.integer  "pomodoro_length",     :default => 25
+    t.integer  "short_break_length",  :default => 5
+    t.integer  "long_break_length",   :default => 25
   end
 
   add_index "users", ["confirmation_hash"], :name => "index_users_on_confirmation_hash"

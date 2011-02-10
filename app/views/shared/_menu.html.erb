@@ -2,11 +2,8 @@
 	<ul>
 		<% if signed_in? %>
 			<li class="name">
-      	<%= link_to current_user.name, edit_user_path(current_user), :class => [:top_nav] %>
+      	<%= link_to "Settings", edit_user_path(current_user), :class => [:top_nav] %>
 			</li>
-			<!--li>
-				<% link_to "Settings", "#", :class => :top_nav %>
-			</li-->
 		<% end %>
 		<li><a href="#" class="top_nav">Help</a></li>
 		<li class="last">
