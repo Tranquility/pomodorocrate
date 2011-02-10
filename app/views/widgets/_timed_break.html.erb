@@ -9,10 +9,16 @@
 				</ul>
 			</nav>
 			<div class="widgetBox timer">
-				
-				<%= link_to("#{Break.long_duration} minutes break", breaks_path(:duration => Break.long_duration), :method => :post, :class => :button) %>
-				<%= link_to("#{Break.duration} minutes break", breaks_path(:duration => Break.duration), :method => :post, :class => :button) %>
-				
+				<ul class="breakButtons">
+					<li id="shortBreak">
+						<%= link_to("#{Break.duration}", breaks_path(:duration => Break.duration), :method => :post) %> min
+						<span>break</span>
+					</li>
+					<li id="longBreak">
+						<%= link_to("#{Break.long_duration}", breaks_path(:duration => Break.long_duration), :method => :post) %> min
+						<span>break</span>
+					</li>
+				</ul>
 			</div>
 		</section>
 

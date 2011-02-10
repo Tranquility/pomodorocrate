@@ -202,3 +202,21 @@ function updateSelected(date) {
 
 // nonsemantic 
 $('#site').wrap('<div id="nonsemanticBg" />');
+
+$( function(){
+	
+	$('.breakButtons li').click( function() {
+		$(this).unbind('click');
+		$(this).find('a').click();
+		return;
+	});
+	
+	$('.breakButtons li').hover(
+		function() {
+			$(this).addClass('breakButtonHover');
+		},
+		function() {
+			$(this).removeClass('breakButtonHover');
+		}
+	);
+})

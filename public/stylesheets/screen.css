@@ -181,11 +181,32 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 	
 .activeInput { outline: 1px solid #898989 !important; }
 
-#activityFilter label { margin-left: 16px; }
+#activityFilter label { margin-left: 16px;
+	 											font-family: MetaProBold; }
 
+#timedBreak .widgetBox { 	background-color: #a39e89;
+	 												text-align: center;
+	 												height: 100px; padding: 14px 0 0 2px !important; }
 #timedBreak .timer { padding: 26px 0 2px; }
 #timedBreak .button { display: block; float: none; margin-bottom: 8px;
 											font-size: 20px; text-align: center; }
+									
+.breakButtons { list-style: none; }			
+	.breakButtons li { 	background-color: #858174; color: #e5e2d2;
+	 										display: inline; float: left; height: 84px; margin: 3px 5px; overflow: hidden; width: 105px;
+	 										font-family: MetaProNormal; font-size: 14px; 
+											-moz-border-radius: 5px; border-radius: 5px; 
+											text-shadow: 1px 1px 0px #736e60;
+											cursor: pointer;
+										}
+	.breakButtons li span { display: block; margin-top: 12px;
+		 											background-color: #736e60; 
+													font-family: MetaProBold; text-transform: uppercase;
+													-moz-border-radius-bottomright: 5px; border-bottom-right-radius: 5px;
+													-moz-border-radius-bottomleft: 5px; border-bottom-left-radius: 5px; }
+	.breakButtons li a { color: #e5e2d2; font-family: MetaProBold; font-size: 50px; line-height: 50px; text-decoration: none; }
+
+.breakButtonHover { background: url(../images/break_hover_marker.png) top center no-repeat; }
 
 .pagination { padding: 6px 16px; }
 
