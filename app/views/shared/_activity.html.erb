@@ -37,7 +37,9 @@
 					<li><%= link_to( "Do Today", todotodays_path(:activity_id => a), :method => :post, :class => [:activity_toolbar_button, :dotoday]) %></li>
 				<% elsif !in_progress?(@pomodoro, a) and @pomodoro.nil? %>
 					<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => [:activity_toolbar_button, :doitnow]) %></li>
-				<% elsif !a.todotoday.nil? and params[:controller] == 'todotodays' and !td.nil? and !in_progress?(@pomodoro, a) %>
+				<% end %>
+				
+				<% if !a.todotoday.nil? and params[:controller] == 'todotodays' and !td.nil? and !in_progress?(@pomodoro, a) %>
 					<li><%= link_to("Do another day", td, :confirm => "Are you sure?", :method => :delete, :class => [:activity_toolbar_button, :delete]) %></li>
 				<% end %>
 			<% end %>
