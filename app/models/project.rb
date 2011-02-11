@@ -16,13 +16,13 @@ class Project < ActiveRecord::Base
   has_many :todotodays, :through =>:activities
   belongs_to :user
   
-  attr_accessible :name, :description
+  attr_accessible :name, :description, :completed
   
   validates :name,  :presence => true,
                     :length => { :maximum => 100 }
                     # :uniqueness => true
                     
-  default_scope :order => "projects.name ASC"
+  default_scope :order => "completed ASC, projects.name ASC"
      
   def total_pomodoros
     total_pomodoros = 0

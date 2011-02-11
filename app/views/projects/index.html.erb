@@ -6,11 +6,13 @@
 	<% unless @projects.empty? %>
 	<ul class="activityList">
 		<% @projects.each do |project| %>
-			<li>
+			<li<%= project.completed ? ' class="completed_project"'.html_safe : '' %>>
 				<div>
 					<div class="quickView">
 						<div class="activityName">
-							<%= project.name %>
+							<%= content_tag_for(:span, project, :class => (project.completed ? 'projectCompleted' : "") ) do %>
+								<%= project.name %>
+							<% end %>
 							<% # in_progress_marker(@pomodoro, project.activities.first) %>
 							<% # todotoday_marker(project.activities.first) %>
 						</div>

@@ -164,7 +164,7 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 										color: #898989;
 										padding: 2px 4px; }
 
-.activityCompleted { 	text-decoration: line-through; }
+.activityCompleted, .projectCompleted { 	text-decoration: line-through; }
 
 #error_explanation { 	border: 2px solid #ef4832; margin-bottom: 12px; padding: 6px;
 	 										font-family: MetaProNormal, Arial, Verdana, sans-serif;}
@@ -296,7 +296,7 @@ a.toolbar_button { 	display: block; height: 24px; padding: 8px 0 0 36px; width: 
 .delete { background: url(../images/icon_delete.png) 8px center no-repeat #b4b09f; }
 .clone { background: url(../images/icon_clone.png) 8px center no-repeat #b4b09f; padding-left: 36px; }
 
-li.completed_task { background-color: #f5f3ea; }
+li.completed_task, li.completed_project { background-color: #f5f3ea; }
 
 #currentPomodoroForm .field { padding: 2px 14px 8px 14px; }
 	#currentPomodoroForm .field label {  }

@@ -9,7 +9,7 @@
 	  <%= label_tag(:q_project, "Project:") %>
 		<% 
 		projects = [["..Any..", "__none__"]] 
-		Project.where("user_id = ?", current_user).each do |p|
+		Project.where("user_id = ?", current_user).where(:completed => false).each do |p|
 			projects << [p.name, p.id]
 		end
 		%>

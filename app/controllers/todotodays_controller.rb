@@ -28,7 +28,7 @@ class TodotodaysController < ApplicationController
 
     respond_to do |format|
       if @todotoday.save
-        flash[:success] = "Activity has been scheduled for today #{position}"
+        flash[:success] = "Activity has been scheduled for today"
         
         format.html { redirect_to(request.env["HTTP_REFERER"]) }
         format.xml  { render :xml => @todotoday, :status => :created, :location => @todotoday }

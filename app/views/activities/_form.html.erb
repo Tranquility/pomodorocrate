@@ -35,7 +35,7 @@
 	
 	<div class="field">
 	  <%= f.label :project %><br />
-	  <%= collection_select(:activity, :project_id, Project.where(:user_id => current_user), :id, :name) %>
+	  <%= collection_select(:activity, :project_id, Project.where(:user_id => current_user, :completed => false), :id, :name) %>
 	</div>
 	
 	<div class="field">

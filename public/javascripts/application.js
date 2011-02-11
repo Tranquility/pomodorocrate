@@ -37,7 +37,7 @@ function decreaseTimer() {
 			});
 		}
 		
-	} else {
+	} else if( $('.timer .time').length > 0 ) {
 		
 		setTimeout("decreaseTimer()", 1000);
 		

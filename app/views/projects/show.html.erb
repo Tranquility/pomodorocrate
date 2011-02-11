@@ -36,10 +36,10 @@
 
 			<div class="detailsView">
 				<%= text_format(@project.description) %>
-
+				
 				<ul class="actionsBar">
-					<li><%= link_to("Edit", edit_project_path(@project), :class => :button) %></li>
-					<li><%= link_to("Delete", @project, :confirm => "Are you sure?", :method => :delete, :class => :button) %></li>
+					<li><%= link_to("Edit", edit_project_path(@project), :class => [:activity_toolbar_button, :edit]) %></li>
+					<li><%= link_to("Delete", @project, :confirm => "Are you sure?", :method => :delete, :class => [:activity_toolbar_button, :delete]) %></li>
 				</ul>
 				<ul class="infoBar">
 					<li>Created at <%= @project.created_at.to_date %></li>
