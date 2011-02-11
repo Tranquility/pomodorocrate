@@ -22,6 +22,7 @@ function decreaseTimer() {
 	currentTime = parseInt ( $(".timer .time").attr("data-seconds") ) -1;
 	
 	if(currentTime <= 0){
+		
 		currentTime = 0;
 		$('.time').addClass('time_is_up');
 
@@ -37,25 +38,27 @@ function decreaseTimer() {
 		}
 		
 	} else {
+		
 		setTimeout("decreaseTimer()", 1000);
+		
 	}
 	
 	minutes = parseInt(currentTime / 60);
 	seconds = currentTime % 60;
-	
+
 	if(minutes > 0) {
 		announceTimeLeft(minutes);
 	} else if(currentTime == 0) {
 		announceTimeLeft(0);
 	}
-	
+
 	if(minutes < 10) minutes = '0' + minutes;
 	if(seconds < 10) seconds = '0' + seconds;
-	
+
 	$(".timer .time").attr("data-seconds", currentTime);
 	$(".timer .time").html(minutes + ":" + seconds);
 	
-	if( !isNaN(minutes) && !isNaN(seconds) ) {
+	if( typeof(minutes) !== 'undefined' && typeof(seconds) !== 'undefined' && !isNaN(minutes) && !isNaN(seconds) ) {
 		if( $('title:contains("[")').length > 0 ) {
 			$('title').html( $('title').html().replace(/\[(.*)\]/, '[' + minutes + ":" + seconds + ']') );
 		} else {
@@ -123,9 +126,15 @@ function announceTimeLeft(minutes) {
 $(document).ready(function(){
 	// activity item click
 	$('#content .activityName').click(function(){
-		$('.opened').find('.detailsView').toggle().parent().toggleClass("opened");
-		$(this).parent().parent().parent().find('.detailsView').toggle().parent().toggleClass("opened");
+		
+		if( $(this).parent().parent().parent().hasClass("opened") ) {
+			$(this).parent().parent().parent().find('.detailsView').toggle().parent().toggleClass("opened");
+		} else {
+			$('.opened').find('.detailsView').toggle().parent().toggleClass("opened");
+			$(this).parent().parent().parent().find('.detailsView').toggle().parent().toggleClass("opened");
 			window.location.hash = $(this).parent().parent().parent().attr('data-activity');
+		}
+		
 	});
 	
 	if( $('#content .activityName').length == 1 ) {
@@ -248,25 +257,19 @@ $( function() {
 	)
 })
 
-
-// This sets up the proper header for rails to understand the request type,
-// and therefore properly respond to js requests (via respond_to block, for example)
-$.ajaxSetup({ 
-  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+$(function(){
+	$('#todotodays').sortable({
+		handle: '.drag_handle',
+		update: function(event, ui) {
+			$.ajax({
+				type: "POST",
+				url: base_url + "todotodays/save_sort",
+				data: $('#todotodays').sortable("serialize"), 
+				dataType: "text/html",
+				success: function(html){
+					
+				}
+			});
+		}
+	});
 })
-
-$(document).ready(function() {
-
-  // UJS authenticity token fix: add the authenticy_token parameter
-  // expected by any Rails POST request.
-  $(document).ajaxSend(function(event, request, settings) {
-    // do nothing if this is a GET request. Rails doesn't need
-    // the authenticity token, and IE converts the request method
-    // to POST, just because - with love from redmond.
-    if (settings.type == 'GET') return;
-    if (typeof(AUTH_TOKEN) == "undefined") return;
-    settings.data = settings.data || "";
-    settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
-  });
-
-});

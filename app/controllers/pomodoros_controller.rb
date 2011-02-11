@@ -29,7 +29,7 @@ class PomodorosController < ApplicationController
       Break.where( :completed => nil ).first.update_attributes(:completed => true)
     end
     
-    @pomodoro = Pomodoro.new(:activity_id => params[:activity_id], :user_id => current_user.id)
+    @pomodoro = Pomodoro.new(:activity_id => params[:activity_id], :user_id => current_user.id, :duration => current_user.pomodoro_length)
 
     respond_to do |format|
       if @pomodoro.save

@@ -35,7 +35,7 @@ a.top_nav { color: #c4bca2; font-family: MetaProNormal, Arial, sans-serif; font-
 						float: left; padding: 1px; width: 710px; }
 	.contentBoxNav nav ul { background: #e5e2d2; height: 32px; /*float: left;*/ list-style: none; width: 100%; }
 		.contentBoxNav nav ul li { 	display: inline; float: left;
-			 													font-family: Georgia, Times, Times New Roman, serif; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; text-shadow: 1px 1px 0 #6b685d;
+			 													font-family: Georgia, Times, "Times New Roman", serif; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; text-shadow: 1px 1px 0 #6b685d;
 			 													background: #c2bda7; }
 			.contentBoxNav nav ul li.active { background: #a39e89; }
 				.contentBoxNav nav ul li.active a.tabs { 	color: #faf9f4; }
@@ -71,7 +71,7 @@ section.group {  }
 input.checkbox { 	float: left; margin: 1px 8px 0 0;
 	 								cursor: pointer; 
 									padding-bottom: 2px; }
-#content .activityName { cursor: pointer; color: #787465; max-width: 560px; }
+#content .activityName { cursor: pointer; color: #787465; max-width: 550px; }
 .pomodorosCount { padding: 16px 6px 10px; }
 	.pomodorosCount img { margin-left: 2px; }
 .listPomodorosCount { float: right; margin-top: -34px; }
@@ -115,7 +115,7 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 	 				background: transparent;
 	 				font-family: Georgia, Times, serif; font-size: 13px; font-weight: bold; 
 					-moz-border-radius: 4px; border-radius: 4px; }
-	.flash.notice { background-color: #ab9777; color: #f7e0b0; }
+	.flash.notice { background-color: #858174; color: #E5E2D2; }
 	.flash.error { background-color: #ab77aa; color: #f7b0db; }
 	.flash.success { background-color: #8cab77; color: #ccf7b0; }
 		
@@ -125,20 +125,20 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 	.formContainer label { 	font-size: 14px; font-weight: normal; }
 	.formContainer input[type=text], .formContainer input[type=password] { 	background: #E5E2D2; color: #6B685D;
 		 																																			border: 0; padding: 4px; width: 99%;
-																																					font-family: MetaProNormal; font-size: 12px; }
+																																					font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 12px; }
 	.formContainer select {	background: #E5E2D2; color: #6B685D;
 													border: 0; padding: 4px;
-													font-family: MetaProNormal; font-size: 12px; }
+													font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 12px; }
 	.formContainer input.numeric { width: 30px; }
 	.formContainer textarea { 	background: #E5E2D2; color: #6B685D;
 															border: 0; height: 100px; padding: 4px; width: 99%;
-															font-family: Arial, sans-serif; font-size: 12px; }
+															font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 12px; }
 								
 	.signUpForm input[type=text], .signUpForm input[type=password] { width: 250px !important; }
 
-.activity_name { 	background: url(../images/bg_timer.png) top left repeat-x #f1efe5; color: #858174; font-family: MetaProNormal; font-size: 13px;
+.activity_name { 	background: url(../images/bg_timer.png) top left repeat-x #f1efe5; color: #858174; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 13px;
  									padding: 16px 12px 12px; }
-.activity_details { background-color: #f1efe5; color: #a39e89; font-weight: normal; font-family: MetaProNormal; font-size: 13px;
+.activity_details { background-color: #f1efe5; color: #a39e89; font-weight: normal; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 13px;
 	 									padding: 2px 12px 14px; }
 	
 .past { color: red; }
@@ -152,27 +152,27 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 	.widgetBox .actionsBar li a { margin-left: 6px; }
 .widgetBox .activityList li { padding: 6px 12px 0 12px; }
 
-.inProgressMarker { 	font-family: MetaProBold; font-size: 10px; text-transform: uppercase; white-space: nowrap;
+.inProgressMarker { 	font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 10px; text-transform: uppercase; white-space: nowrap;
 											background: #3AA5E7; color: #fff;
 											margin-right: 2px; padding: 2px 4px;
 											-moz-border-radius: 2px; border-radius: 2px; }
-.todotodayMarker { 	font-family: MetaProBold; font-size: 10px; text-transform: uppercase; white-space: nowrap;
+.todotodayMarker { 	font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 10px; text-transform: uppercase; white-space: nowrap;
 										background: #DFB538; color: #fff;
 										margin-right: 2px; padding: 2px 4px;
 										-moz-border-radius: 2px; border-radius: 2px; }
-.deadlineMarker { 	font-family: MetaPlusMediumRomanRegular; font-size: 11px; text-transform: uppercase; white-space: nowrap;
+.deadlineMarker { 	font-family: MetaPlusMediumRomanRegular, Arial, Verdana, sans-serif; font-size: 11px; text-transform: uppercase; white-space: nowrap;
 										color: #898989;
 										padding: 2px 4px; }
 
 .activityCompleted { 	text-decoration: line-through; }
 
 #error_explanation { 	border: 2px solid #ef4832; margin-bottom: 12px; padding: 6px;
-	 					font-family: Arial, sans-serif;}
+	 										font-family: MetaProNormal, Arial, Verdana, sans-serif;}
 	#error_explanation ul { list-style: none; }
 		#error_explanation ul li { color: #ef4832; }
 
 .field_with_errors { color: #ef4832; }
-	.field_with_errors input, .field_with_errors select, .field_with_errors textarea { border: 2px solid #ef4832 !important; }
+	.field_with_errors input, .field_with_errors select, .field_with_errors textarea { border: 2px solid #ef4832 !important; width: 98% !important; }
 .container_of_field_with_errors { border: 2px solid #ef4832; padding: 6px; }
 
 .hoverActivity { background: #f5f5f5 !important; }
@@ -186,7 +186,7 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 .activeInput { outline: 1px solid #898989 !important; }
 
 #activityFilter label { margin-left: 16px;
-	 											font-family: MetaProBold; }
+	 											font-family: MetaProBold, Arial, Verdana, sans-serif; }
 
 #timedBreak .widgetBox { 	background-color: #a39e89;
 	 												text-align: center;
@@ -198,17 +198,17 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 .breakButtons { list-style: none; }			
 	.breakButtons li { 	background-color: #858174; color: #e5e2d2;
 	 										display: inline; float: left; height: 84px; margin: 3px 5px; overflow: hidden; width: 105px;
-	 										font-family: MetaProBold; font-size: 14px; 
+	 										font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 14px; 
 											-moz-border-radius: 5px; border-radius: 5px; 
 											text-shadow: 1px 1px 0px #736e60;
 											cursor: pointer;
 										}
 	.breakButtons li span { display: block; margin-top: 12px;
 		 											background-color: #736e60; 
-													font-family: MetaProBold; text-transform: uppercase;
+													font-family: MetaProBold, Arial, Verdana, sans-serif; text-transform: uppercase;
 													-moz-border-radius-bottomright: 5px; border-bottom-right-radius: 5px;
 													-moz-border-radius-bottomleft: 5px; border-bottom-left-radius: 5px; }
-	.breakButtons li a { color: #e5e2d2; font-family: MetaProBold; font-size: 50px; line-height: 50px; text-decoration: none; }
+	.breakButtons li a { color: #e5e2d2; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 50px; line-height: 50px; text-decoration: none; }
 
 .breakButtonHover { background: url(../images/break_hover_marker.png) top center no-repeat; }
 
@@ -251,7 +251,7 @@ a.external { 	color: #30B1FF;
 	border-bottom-left-radius: 10px;
 }
 
-.infoBar a { 	color: #e3533e; font-family: MetaProNormal;
+.infoBar a { 	color: #e3533e; font-family: MetaProNormal, Arial, Verdana, sans-serif;
 	 						padding: 2px; }
 	.infoBar a:hover { 	background: #b4b09f; color: #fff; text-decoration: none;
 		 									-moz-border-radius: 2px; border-radius: 2px; }
@@ -269,22 +269,22 @@ a.button { 	color: #ef4832; font-weight: bold;
 	a.button:hover { 	background: #A39E89; color: #fff; text-decoration: none;
 		 								-moz-border-radius: 2px; border-radius: 2px; }
 	
-.pagination a { 	color: #fff; font-family: MetaProNormal; font-size: 14px; text-decoration: none;
+.pagination a { 	color: #fff; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 14px; text-decoration: none;
 			 						padding: 2px; }
 			.pagination a:hover { color: #000; text-decoration: none; }
 			
 a.toolbar_button { 	display: block; height: 24px; padding: 8px 0 0 36px; width: 88px;
 	 									background: url(../images/icon_add.png) 4px center no-repeat #858174;
-	 									color: #e4dfbf; font-family: MetaProBold; font-size: 11px; letter-spacing: 1px; text-decoration: none; text-transform: uppercase; 
+	 									color: #e4dfbf; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 11px; letter-spacing: 1px; text-decoration: none; text-transform: uppercase; 
 										-moz-border-radius: 2px; border-radius: 2px; }
 	a.toolbar_button:hover { background-color: #7a776a; color: #ece2c3; }
 	
-#activityFilter { background: #fff; color: #a39e89; font-family: MetaProBold; font-size: 11px; text-transform: uppercase; }
+#activityFilter { background: #fff; color: #a39e89; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 11px; text-transform: uppercase; }
 
 .clear_me { float: left; margin-right: 30px; }
 
 .activity_toolbar_button { 	color: #f4f4ee;
-														font-family: MetaProBold; font-size: 12px; font-weight: normal;
+														font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 12px; font-weight: normal;
 														text-decoration: none; text-transform: uppercase;
 	 													padding: 4px 10px 4px 28px;
 														-moz-border-radius: 2px; border-radius: 2px; 
@@ -302,17 +302,17 @@ li.completed_task { background-color: #f5f3ea; }
 	#currentPomodoroForm .field label {  }
 	#currentPomodoroForm .field textarea { 	margin-top: 4px;
 		 																			background-color: #e5e2d2; color: #6b685d;
-		 																			font-family: MetaProNormal; }
+		 																			font-family: MetaProNormal, Arial, Verdana, sans-serif; }
 #currentPomodoroForm .button { margin-top: -30px; margin-right: 12px; }
 
-#btn_void_pomodoro { 	background: url(../images/icon_void_pomodoro.png) left center no-repeat; color: #a39e89; font-family: MetaProBold; font-size: 12px; text-transform: uppercase;
+#btn_void_pomodoro { 	background: url(../images/icon_void_pomodoro.png) left center no-repeat; color: #a39e89; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 12px; text-transform: uppercase;
 	 										border: 0; padding-left: 18px;
 	 										cursor: pointer; }
-#btn_edit_current_pomodoro { background: url(../images/icon_edit_pomodoro.png) 6px center no-repeat; color: #a39e89; font-family: MetaProBold; font-size: 12px; text-transform: uppercase; text-decoration: none;
+#btn_edit_current_pomodoro { background: url(../images/icon_edit_pomodoro.png) 6px center no-repeat; color: #a39e89; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 12px; text-transform: uppercase; text-decoration: none;
 												 		border: 0; float: right; margin-top: -28px; margin-right: 12px; padding-left: 28px;
 												 		cursor: pointer; }
 												
-.pagination { color: #f4f4ee; font-family: MetaProNormal; font-size: 14px; }
+.pagination { color: #f4f4ee; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 14px; }
 
 .projectInfo { float: right; margin-top: -15px; }
 
@@ -327,9 +327,13 @@ li.completed_task { background-color: #f5f3ea; }
 #pomodoro_submit { 	background-image: url(../images/icon_complete_pomodoro.png);
 	 									width: 96px; }
 	
-label { font-family: MetaProNormal; }
+label { font-family: MetaProNormal, Arial, Verdana, sans-serif; }
 fieldset { 	border: 1px solid #96917d; padding: 6px 0 6px 16px; -moz-border-radius: 10px; border-radius: 10px; }
 form.edit_user { width: auto !important; }
 
 #user_pomodoro_length, #user_short_break_length, #user_long_break_length { width: 30px !important; }
 #user_pomodoro_length_slider, #user_short_break_length_slider, #user_long_break_length_slider { float: right; margin: 6px 430px 0 0; width: 200px; }
+
+.drag_handle { 	float: right; margin: -3px -4px 0 6px; width: 10px;
+	 							font-size: 14px; letter-spacing: -0.5px; text-shadow: 1px 1px 0px #aaa;
+	 							cursor: move; }

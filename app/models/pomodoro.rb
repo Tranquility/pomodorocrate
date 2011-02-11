@@ -17,10 +17,14 @@ class Pomodoro < ActiveRecord::Base
   belongs_to :activity
   belongs_to :user
   
-  attr_accessible :activity_id, :successful, :comments, :completed, :user_id
+  attr_accessible :activity_id, :successful, :comments, :completed, :user_id, :duration
   
   validates :activity_id, :presence => true
   validates :user_id, :presence => true
+  validates :duration, :presence => true
+  validates_numericality_of :duration,  :only_integer => true,
+                                        :greater_than_or_equal_to => 5,
+                                        :less_than_or_equal_to => 60
   
   scope :successful_and_completed, :conditions => { :successful => true, :completed => true }
   

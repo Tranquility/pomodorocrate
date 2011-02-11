@@ -13,18 +13,21 @@
 
 class Todotoday < ActiveRecord::Base
   
+  acts_as_list :scope => :user
+  
   belongs_to :activity
   belongs_to :user
   #has_one :project, :through => :activity
   
-  attr_accessible :activity_id, :comments, :today, :user_id
+  attr_accessible :activity_id, :comments, :today, :user_id, :position
   
   validates_presence_of :activity_id, :today
   validates_uniqueness_of :activity_id, :scope => :today
   validates :user_id, :presence => true
   validate  :user_must_own_activity
+  validates_numericality_of :position, :only_integer => true
   
-  default_scope :order => "today ASC", :conditions => { :today => Time.now.to_date }
+  default_scope :order => "today ASC, position ASC", :conditions => { :today => Time.now.to_date }
   
   def user_must_own_activity
     errors.add(:activity, "is not valid") unless ( self.activity.user_id == user_id )

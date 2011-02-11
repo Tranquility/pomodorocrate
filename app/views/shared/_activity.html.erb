@@ -1,4 +1,4 @@
-<li data-activity="a_<%= a.id %>" <%= a.completed ? 'class="completed_task"'.html_safe : '' %>>
+<li id="act_<%= a.id %>" data-activity="a_<%= a.id %>" <%= a.completed ? 'class="completed_task"'.html_safe : '' %>>
 	<div class="quickView">
 		<%= form_for a do |f| %>
 			<%= hidden_field "activity", :completed, :value => (a.completed ? false : true) %>
@@ -15,6 +15,9 @@
 			</div>
 			<div class="pomodorosCount listPomodorosCount">
 				<%= pomodoros_completed_ratio(a.pomodoros.successful_and_completed.count, a.estimated_pomodoros) %>
+				<% if params[:controller] == 'todotodays' %>
+					<div class="drag_handle" title="Drag to sort">|||</div>
+				<% end %>
 			</div>
 		<% end %>
 	</div>

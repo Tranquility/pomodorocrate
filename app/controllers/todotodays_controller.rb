@@ -17,11 +17,18 @@ class TodotodaysController < ApplicationController
   # POST /dummies
   # POST /dummies.xml
   def create
-    @todotoday = Todotoday.new(:activity_id => params[:activity_id], :today => Date.today, :user_id => current_user.id)
+
+    if Todotoday.where(:user_id => current_user.id).count > 0 
+      position = Todotoday.where(:user_id => current_user.id).count + 1
+    else 
+      position = 1
+    end
+    
+    @todotoday = Todotoday.new(:activity_id => params[:activity_id], :today => Date.today, :user_id => current_user.id, :position => position)
 
     respond_to do |format|
       if @todotoday.save
-        flash[:success] = 'Activity has been scheduled for today'
+        flash[:success] = "Activity has been scheduled for today #{position}"
         
         format.html { redirect_to(request.env["HTTP_REFERER"]) }
         format.xml  { render :xml => @todotoday, :status => :created, :location => @todotoday }
@@ -42,6 +49,16 @@ class TodotodaysController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(todotodays_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  def save_sort
+    params[:act].each_with_index do |activity_id, index|
+      Todotoday.where(:activity_id => activity_id, :user_id => current_user.id).first.update_attribute(:position, index + 1)
+    end
+    
+    respond_to do |format|
+      format.html { render :nothing => true }
     end
   end
 

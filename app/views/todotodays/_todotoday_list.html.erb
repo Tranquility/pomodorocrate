@@ -6,7 +6,7 @@
 <% unless @todotodays.empty? %>
 	
 	<% # render "shared/filter_toolbar" %>
-		<ul class="activityList withSeparator">
+		<ol class="activityList withSeparator" id="todotodays">
 		
 			<% @todotodays.each do |td| %>
 			<% a = td.activity %>
@@ -16,7 +16,7 @@
 			
 			<% end %>
 		
-		</ul>
+		</ol>
 
 	<%= will_paginate @todotodays %>
 

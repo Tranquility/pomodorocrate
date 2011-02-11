@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>public/javascripts/application.js</string>
+	<string>public/stylesheets/screen.css</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,26 +21,40 @@
 	<integer>361</integer>
 	<key>metaData</key>
 	<dict>
-		<key>app/models/activity.rb</key>
+		<key>app/controllers/activities_controller.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>16</integer>
+				<integer>27</integer>
 				<key>line</key>
-				<integer>37</integer>
+				<integer>70</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/activities/index.html.erb</key>
+		<key>app/models/pomodoro.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>76</integer>
+				<integer>35</integer>
+				<key>line</key>
+				<integer>14</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/models/todotoday.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
 				<key>line</key>
 				<integer>25</integer>
 			</dict>
@@ -48,69 +62,55 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>app/models/user.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>48</integer>
+				<key>line</key>
+				<integer>48</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>17</integer>
 		</dict>
 		<key>app/views/pomodoros/_update_current_form.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>25</integer>
+				<integer>69</integer>
 				<key>line</key>
-				<integer>3</integer>
+				<integer>7</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/pomodoros/update_current_form.html.erb</key>
+		<key>app/views/shared/_footer.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>105</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>7</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/shared/_activity.html.erb</key>
+		<key>app/views/todotodays/_todotoday_list.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/views/shared/_header.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>24</integer>
-				<key>line</key>
-				<integer>18</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/views/widgets/_active_pomodoro.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>116</integer>
+				<integer>33</integer>
 				<key>line</key>
 				<integer>20</integer>
 			</dict>
@@ -119,42 +119,14 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/widgets/_overdue_activities.html.erb</key>
+		<key>db/migrate/20110210155331_add_position_to_todotodays.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>44</integer>
+				<integer>30</integer>
 				<key>line</key>
-				<integer>15</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/views/widgets/_recent_activities.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>29</integer>
-				<key>line</key>
-				<integer>18</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/views/widgets/_upcoming_activities.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>44</integer>
-				<key>line</key>
-				<integer>15</integer>
+				<integer>4</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -166,75 +138,42 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>114</integer>
+				<integer>3</integer>
 				<key>line</key>
-				<integer>27</integer>
+				<integer>271</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>13</integer>
+			<integer>5</integer>
 		</dict>
 		<key>public/stylesheets/screen.css</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>49</integer>
+				<integer>36</integer>
 				<key>line</key>
-				<integer>279</integer>
+				<integer>200</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>248</integer>
-		</dict>
-		<key>public/stylesheets/web_fonts.css</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>32</integer>
-				<key>line</key>
-				<integer>8</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>15</integer>
-				<key>line</key>
-				<integer>8</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>41</integer>
-				<key>line</key>
-				<integer>8</integer>
-			</dict>
+			<integer>169</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>public/stylesheets/screen.css</string>
-		<string>app/views/pomodoros/_update_current_form.html.erb</string>
+		<string>app/views/shared/_footer.html.erb</string>
 		<string>public/javascripts/application.js</string>
-		<string>app/views/shared/_header.html.erb</string>
-		<string>app/views/shared/_activity.html.erb</string>
-		<string>app/views/pomodoros/update_current_form.html.erb</string>
-		<string>app/models/activity.rb</string>
-		<string>app/views/widgets/_recent_activities.html.erb</string>
-		<string>app/views/widgets/_overdue_activities.html.erb</string>
-		<string>app/views/widgets/_upcoming_activities.html.erb</string>
-		<string>app/views/widgets/_active_pomodoro.html.erb</string>
-		<string>app/views/activities/index.html.erb</string>
-		<string>public/stylesheets/web_fonts.css</string>
+		<string>public/stylesheets/screen.css</string>
+		<string>db/migrate/20110210155331_add_position_to_todotodays.rb</string>
+		<string>app/models/todotoday.rb</string>
+		<string>app/views/todotodays/_todotoday_list.html.erb</string>
+		<string>app/views/pomodoros/_update_current_form.html.erb</string>
+		<string>app/models/pomodoro.rb</string>
+		<string>app/models/user.rb</string>
+		<string>app/controllers/activities_controller.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
@@ -288,6 +227,13 @@
 									<key>subItems</key>
 									<dict/>
 								</dict>
+								<key>analytics</key>
+								<dict>
+									<key>isExpanded</key>
+									<true/>
+									<key>subItems</key>
+									<dict/>
+								</dict>
 								<key>layouts</key>
 								<dict>
 									<key>isExpanded</key>
@@ -316,6 +262,20 @@
 									<key>subItems</key>
 									<dict/>
 								</dict>
+								<key>todotodays</key>
+								<dict>
+									<key>isExpanded</key>
+									<true/>
+									<key>subItems</key>
+									<dict/>
+								</dict>
+								<key>users</key>
+								<dict>
+									<key>isExpanded</key>
+									<true/>
+									<key>subItems</key>
+									<dict/>
+								</dict>
 								<key>widgets</key>
 								<dict>
 									<key>isExpanded</key>
@@ -324,6 +284,21 @@
 									<dict/>
 								</dict>
 							</dict>
+						</dict>
+					</dict>
+				</dict>
+				<key>db</key>
+				<dict>
+					<key>isExpanded</key>
+					<true/>
+					<key>subItems</key>
+					<dict>
+						<key>migrate</key>
+						<dict>
+							<key>isExpanded</key>
+							<true/>
+							<key>subItems</key>
+							<dict/>
 						</dict>
 					</dict>
 				</dict>

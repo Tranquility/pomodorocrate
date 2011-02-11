@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110210155331) do
+ActiveRecord::Schema.define(:version => 20110211110242) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20110210155331) do
     t.text     "comments"
     t.boolean  "completed"
     t.integer  "user_id"
+    t.integer  "duration",    :default => 25
   end
 
   add_index "pomodoros", ["activity_id"], :name => "index_pomodoros_on_activity_id"
