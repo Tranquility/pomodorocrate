@@ -35,7 +35,7 @@ a.top_nav { color: #c4bca2; font-family: MetaProNormal, Arial, sans-serif; font-
 						float: left; padding: 1px; width: 710px; }
 	.contentBoxNav nav ul { background: #e5e2d2; height: 32px; /*float: left;*/ list-style: none; width: 100%; }
 		.contentBoxNav nav ul li { 	display: inline; float: left;
-			 													font-family: Georgia, Times, "Times New Roman", serif; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; text-shadow: 1px 1px 0 #6b685d;
+			 													font-family: MetaProBold, Arial, sans-serif; font-size: 14px; 
 			 													background: #c2bda7; }
 			.contentBoxNav nav ul li.active { background: #a39e89; }
 				.contentBoxNav nav ul li.active a.tabs { 	color: #faf9f4; }
@@ -139,7 +139,7 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 .activity_name { 	background: url(../images/bg_timer.png) top left repeat-x #f1efe5; color: #858174; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 13px;
  									padding: 16px 12px 12px; }
 .activity_details { background-color: #f1efe5; color: #a39e89; font-weight: normal; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 13px;
-	 									padding: 2px 12px 14px; }
+	 									overflow: hidden; padding: 2px 12px 14px; }
 	
 .past { color: red; }
 .present {  }
@@ -260,8 +260,8 @@ a.nav { color: #ef4832; text-decoration: none;
 	 	padding: 2px;}
 	a.nav:hover { background: #ef4832; color: #fff; }
 	
-a.tabs { 	color: #faf9f4; font-weight: bold; text-decoration: none;
-	 		display: block; float: left; height: 20px; padding: 6px 10px;}
+a.tabs { 	color: #faf9f4; text-decoration: none;
+	 				display: block; float: left; height: 20px; padding: 6px 10px;}
 	a.tabs:hover { background: #a39e89; }
 	
 a.button { 	color: #ef4832; font-weight: bold;

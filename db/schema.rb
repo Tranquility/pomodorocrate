@@ -10,7 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110211173217) do
+ActiveRecord::Schema.define(:version => 20110215170424) do
+
+  create_table "accounts", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -105,6 +111,7 @@ ActiveRecord::Schema.define(:version => 20110211173217) do
     t.integer  "pomodoro_length",     :default => 25
     t.integer  "short_break_length",  :default => 5
     t.integer  "long_break_length",   :default => 25
+    t.integer  "account_id"
   end
 
   add_index "users", ["confirmation_hash"], :name => "index_users_on_confirmation_hash"

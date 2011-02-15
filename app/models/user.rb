@@ -13,12 +13,14 @@
 class User < ActiveRecord::Base
   
   attr_accessor :password
-  attr_accessible :name, :email, :password, :password_confirmation, :confirmation_hash, :reset_password_hash, :time_zone, :email_notifications, :voice_notifications, :pomodoro_length, :short_break_length, :long_break_length
+  attr_accessible :name, :email, :password, :password_confirmation, :confirmation_hash, :reset_password_hash, :time_zone, :email_notifications, :voice_notifications, :pomodoro_length, :short_break_length, :long_break_length, :account_id
   
   has_many :projects,   :dependent => :destroy
   has_many :activities, :dependent => :destroy
   has_many :todotodays, :dependent => :destroy
   has_many :pomodoros,  :dependent => :destroy
+
+  belongs_to :account
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
