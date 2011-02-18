@@ -1,7 +1,7 @@
 set :application, "pomodorocrate"
 set :repository,  "git://github.com/reveloper/ketchup.git"
 set :deploy_to, "/var/www/vhosts/pomodorocrate.com/rails/#{application}"
-set :user, "asalceanu"  # The server's user for deploys
+set :user, "pomodorocrate"  # The server's user for deploys
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
