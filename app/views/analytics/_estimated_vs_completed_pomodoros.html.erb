@@ -1,0 +1,28 @@
+<table class="analytics bar">
+	<caption>Estimated pomodoros / completed pomodoros - last <%= ((@end_date -1.day) - @start_date).to_i %> days (completed activities only)</caption>
+	
+	<thead>
+		<tr>
+			<td></td>
+			<% ( @start_date..(@end_date -1.day) ).each_with_index do |d, index| %>
+				<th scope="row"><%= (@graph_interval > 20 and index % 5 != 0) ? '' : d.to_date.to_s(:rfc822) %></th>
+			<% end %>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr>
+			<th scope="col">Completed</th>
+			<% (@start_date..@end_date).each do |d| %>
+				<td class="values"><%= @complete_pomodoros[d.to_s].blank? ? 0 : @complete_pomodoros[d.to_s] %></td>
+			<% end %>
+		</tr>
+		<tr>
+			<th scope="col">Estimated</th>
+			<% ( @start_date..(@end_date -1.day) ).each do |d| %>
+				<td class="values"><%= @estimated_pomodoros[d.to_s].blank? ? 0 : @estimated_pomodoros[d.to_s] %></td>
+			<% end %>
+		</tr>
+	</tbody>
+	
+</table>

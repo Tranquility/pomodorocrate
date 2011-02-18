@@ -1,0 +1,28 @@
+<table class="analytics pie bar">
+	<caption>Completed pomodoros / voided pomodoros - last <%= ((@end_date -1.day) - @start_date).to_i %> days</caption>
+	
+	<thead>
+		<tr>
+			<td></td>
+			<% ( @start_date..(@end_date -1.day) ).each_with_index do |d, index| %>
+				<th scope="row"><%= (@graph_interval > 20 and index % 5 != 0) ? '' : d.to_date.to_s(:rfc822) %></th>
+			<% end %>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr>
+			<th scope="col">Completed</th>
+			<% ( @start_date..(@end_date -1.day) ).each do |d| %>
+				<td class="values"><%= @complete_pomodoros[d.to_s].blank? ? 0 : @complete_pomodoros[d.to_s] %></td>
+			<% end %>
+		</tr>
+		<tr>
+			<th scope="col">Void</th>
+			<% (@start_date..@end_date).each do |d| %>
+				<td class="values"><%= @void_pomodoros[d.to_s].blank? ? 0 : @void_pomodoros[d.to_s] %></td>
+			<% end %>
+		</tr>
+	</tbody>
+	
+</table>

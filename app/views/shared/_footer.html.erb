@@ -4,6 +4,9 @@
 <script>
 	base_url = "<%= root_url %>";
 	voice_notifications = <%= current_user.nil? ? "false" : current_user.voice_notifications %>
+	<% unless @start_date.nil? %>
+	chart_interval = <%= @graph_interval %>
+	<% end %>
 </script>
 <%= javascript_tag "var AUTH_TOKEN =  #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 

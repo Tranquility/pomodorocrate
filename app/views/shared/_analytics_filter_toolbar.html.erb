@@ -1,0 +1,15 @@
+<div class="toolbar" id="activityFilter">
+	
+	<%= form_tag(analytics_path, :method => "get") do %>
+		Filter by:
+		
+	  <%= label_tag(:q_interval, "Time interval:") %>
+		<% 
+		intervals = [["7 days", "7"], ["30 days", "30"]] 
+		%>
+	  <%= select_tag(:q_interval, options_for_select(intervals, params[:q_interval])) %>
+
+	  <%= submit_tag("Filter", :class => [:submit, :filter]) %>
+	<% end %>
+	
+</div>

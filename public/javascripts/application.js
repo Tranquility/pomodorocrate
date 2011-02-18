@@ -160,8 +160,14 @@ $(document).ready(function(){
 // graphs
 // Run the script on DOM ready:
 $(function(){
-	$('.analytics').visualize({type: 'pie', width: '629px'});
-	$('.analytics').visualize({type: 'bar', width: '629px'});
+	$('.pie').visualize({type: 'pie', width: '629px'});
+	if( typeof(chart_interval) === 'undefined' || chart_interval < 20 ) {
+		$('.bar').visualize({type: 'bar', width: '629px'});
+	} else {
+		$('.bar').visualize({type: 'line', width: '629px'});
+	}
+	//$('.area').visualize({type: 'area', width: '629px'});
+	//$('.line').visualize({type: 'line', width: '629px'});
 	//$('.analytics').visualize({type: 'area', width: '629px'});
 	//$('.analytics').visualize({type: 'line', width: '629px'});
 	$('.analytics').hide();

@@ -1,0 +1,28 @@
+<table class="analytics bar">
+	<caption>Completed pomodoros / worked time - last <%= ((@end_date -1.day) - @start_date).to_i %> days</caption>
+	
+	<thead>
+		<tr>
+			<td></td>
+			<% ( @start_date..(@end_date -1.day) ).each_with_index do |d, index| %>
+				<th scope="row"><%= (@graph_interval > 20 and index % 5 != 0) ? '' : d.to_date.to_s(:rfc822) %></th>
+			<% end %>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr>
+			<th scope="col">Completed pomodoros</th>
+			<% (@start_date..@end_date).each do |d| %>
+				<td class="values"><%= @complete_pomodoros[d.to_s].blank? ? 0 : @complete_pomodoros[d.to_s] %></td>
+			<% end %>
+		</tr>
+		<tr>
+			<th scope="col">Worked time</th>
+			<% ( @start_date..(@end_date -1.day) ).each do |d| %>
+				<td class="values"><%= @worked_time[d.to_s].blank? ? 0 : (@worked_time[d.to_s] / 60).round %></td>
+			<% end %>
+		</tr>
+	</tbody>
+	
+</table>
