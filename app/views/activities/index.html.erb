@@ -50,12 +50,24 @@
 <% else %>
 	<section class="group">
 		<h6>Activities</h6>
-	
-		<p class="pageContainer">
-			You haven't added any activities yet.
-		</p>
-		<p class="pageContainer">
-			Use the <%= link_to_unless(Project.where(:user_id => current_user).empty?, "New activity", new_activity_path, :class => :button) %> button to add your first activities and start enjoying the pomodoro technique.
-		</p>
+		
+		<% if Project.where(:user_id => current_user).empty? %>
+			<p class="pageContainer">
+				You haven't added any activities yet.
+			</p>
+			<p class="pageContainer">
+				Before you can do that, please create your first project - you will use it to easily group and filter your activities by it.
+			</p>
+			<p class="pageContainer">
+				Use the <%= link_to "New project", new_project_path, :class => :button %> button to add your first project.
+			</p>
+		<% else %>
+			<p class="pageContainer">
+				You haven't added any activities yet.
+			</p>
+			<p class="pageContainer">
+				Use the <%= link_to_unless(Project.where(:user_id => current_user).empty?, "New activity", new_activity_path, :class => :button) %> button to add your first activities and start enjoying the pomodoro technique.
+			</p>
+		<% end %>
 	</section>
 <% end %>

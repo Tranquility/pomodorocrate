@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   
   before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
   before_filter :correct_user, :only => [:edit, :update]
-  before_filter :admin_user,   :only => :destroy
+  before_filter :admin_user,   :only => [:index, :destroy]
   
   def new
     @user = User.new
@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
+    @user.account = Account.find(5) # hard coded beta
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to Pomodoro Crate!"

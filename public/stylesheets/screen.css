@@ -27,7 +27,7 @@ header { 	border-bottom: 10px solid #edecea; height: 50px; margin: -5px 0 0 -15p
 				header nav ul li.last { border-right: 0; padding-right: 0; }
 				
 a.top_nav { color: #c4bca2; font-family: MetaProNormal, Arial, sans-serif; font-size: 13px; text-decoration: none; 
-	 					display: block; padding: 5px 7px;
+	 					display: block; margin-top: -4px; padding: 5px 7px;
 	 					-moz-border-radius: 10px; border-radius: 10px; }
 	a.top_nav:hover { background: #4e4b41; color: #ece2c3; text-shadow: 1px 1px 0px #333; }
 				
@@ -336,6 +336,6 @@ form.edit_user { width: auto !important; }
 #user_pomodoro_length, #user_short_break_length, #user_long_break_length { width: 30px !important; }
 #user_pomodoro_length_slider, #user_short_break_length_slider, #user_long_break_length_slider { float: right; margin: 6px 430px 0 0; width: 200px; }
 
-.drag_handle { 	float: right; margin: -3px -4px 0 6px; width: 10px;
-	 							font-size: 14px; letter-spacing: -0.5px; text-shadow: 1px 1px 0px #aaa;
+.drag_handle { 	float: right; padding-top: 2px; margin: -3px 0 0 6px; width: 10px;
+	 							font-size: 14px;
 	 							cursor: move; }

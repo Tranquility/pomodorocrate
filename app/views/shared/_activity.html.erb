@@ -16,7 +16,7 @@
 			<div class="pomodorosCount listPomodorosCount">
 				<%= pomodoros_completed_ratio(a.pomodoros.successful_and_completed.count, a.estimated_pomodoros) %>
 				<% if params[:controller] == 'todotodays' %>
-					<div class="drag_handle" title="Drag to sort">|||</div>
+					<div class="drag_handle" title="Drag to sort"><%= image_tag 'handle.png' %></div>
 				<% end %>
 			</div>
 		<% end %>

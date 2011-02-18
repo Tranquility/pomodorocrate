@@ -256,3 +256,33 @@ vendor
   External libraries that the application depends on. Also includes the plugins
   subdirectory. If the app has frozen rails, those gems also go here, under
   vendor/rails/. This directory is in the load path.
+
+	9:18:50 PM Claudiu EasyMedia: /var/www/vhosts/pomodorocrate.com/conf
+	9:18:57 PM Claudiu EasyMedia: aici pui: vhost.conf
+	9:19:05 PM Claudiu EasyMedia: [root@thereveloper conf]# cat vhost.conf
+	DocumentRoot /var/www/vhosts/pomodorocrate.com/rails/pomodorocrate/releases/20110217164857/public/
+	#RailsBaseURI /app
+	Options +FollowSymLinks
+
+	9:19:19 PM Claudiu EasyMedia: in mod normal trebuia sa mearga cu RailsBaseURI /app
+	9:19:25 PM Claudiu EasyMedia: care prima oara mi-a mers
+	9:19:29 PM Claudiu EasyMedia: dupa a refuzat
+	9:19:42 PM Adrian Salceanu: ciudat
+	9:19:44 PM Adrian Salceanu: ah - asta o s-o modific eu - tb pus current/public
+	9:19:58 PM Adrian Salceanu: ca la fiecare release, se mai adauga o versiune
+	9:20:14 PM Claudiu EasyMedia: iar app e un symlink in /var/www/vhosts/pomodorocrate.com/httpdocs catre var/www/vhosts/pomodorocrate.com/rails/pomodorocrate/releases/20110217164857/public/
+	9:20:22 PM Claudiu EasyMedia: da
+	9:20:30 PM Claudiu EasyMedia: dupa ce modifici fisierul asta
+	9:20:38 PM Claudiu EasyMedia: dai asa: /usr/local/psa/admin/sbin/websrvmng --reconfigure-vhost --vhost-name=pomodorocrate.com
+	9:20:52 PM Claudiu EasyMedia: --vhost-name = pomo....
+	9:21:00 PM Adrian Salceanu: am inteles
+	9:21:14 PM Adrian Salceanu: pentru o aplicatie noua, pe un nou domeniu, mai trebuie sa fac ceva nebunii?
+	9:21:19 PM Adrian Salceanu: sau doar sa creez domeniul
+	9:21:24 PM Adrian Salceanu: sa pun aplicatia si conful pt vhost?
+	9:21:34 PM Claudiu EasyMedia: si orice modificare la configuratia de apache se face per domeniu in fisierul  /var/www/vhosts/domeniu.ro/conf/vhost.conf
+	9:21:44 PM Claudiu EasyMedia: il creezi daca nu e si scrii acolo ce vrei
+	9:21:51 PM Adrian Salceanu: ok
+	9:21:54 PM Claudiu EasyMedia: creezi domeniu
+	9:22:00 PM Claudiu EasyMedia: creezi vhost.conf
+	9:22:11 PM Claudiu EasyMedia: usr/local/psa/admin/sbin/websrvmng --reconfigure-vhost --vhost-name = domeniu.ro
+	9:22:13 PM Claudiu EasyMedia: si gata

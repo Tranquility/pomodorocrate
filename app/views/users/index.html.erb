@@ -1,9 +1,9 @@
-<h1>All users</h1>
+<section class="group">
+	<h6>All users</h6>
 
-<%= will_paginate %>
+	<ul class="activityList">
+  	<%= render @users %>
+	</ul>
 
-<ul class="users">
-  <%= render @users %>
-</ul>
-
+</section>
 <%= will_paginate %>
