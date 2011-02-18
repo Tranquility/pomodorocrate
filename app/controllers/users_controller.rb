@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       redirect_to edit_user_path(@user)
       #redirect_to user_confirm_path
     else
-      render 'new', :layout => "site"
+      render 'new', :layout => "login"
     end
   end
   
