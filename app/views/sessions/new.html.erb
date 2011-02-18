@@ -1,5 +1,5 @@
 <section class="group formContainer signUpForm">
-	<h6>Sign in</h6>
+	<h6>Hello! <strong>Sign in</strong> to get started!</h6>
 	
 	<%= form_for(:session, :url => sessions_path) do |f| %>
 	  <div class="field">
@@ -11,11 +11,9 @@
 	    <%= f.password_field :password %>
 	  </div>
 	  <div class="actions">
-	    <%= f.submit "Sign in", :class => :submit %>
+			<%= link_to "Forgot your password?", reset_password_path, :class => :button %>
+	    <%= f.submit "Sign in", :class => [:submit, :login] %>
 	  </div>
 	<% end %>
-
-	<p>New user? <%= link_to "Sign up now!", signup_path, :class => :button %></p>
-	<p>Forgot password? <%= link_to "Reset it!", reset_password_path, :class => :button %></p>
 	
 </section>

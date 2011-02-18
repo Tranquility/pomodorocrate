@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
-    render :layout => "site"
+    render :layout => "login"
   end
   
   def index

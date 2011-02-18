@@ -1,0 +1,26 @@
+#site { width: 494px !important; }
+#login_page { background: url(../images/bg_app_texture.jpg) #fff;
+							float: left; margin-top: 30px; padding: 5px 15px 15px 15px; width: 494px;
+							 -moz-border-radius: 10px !important; border-radius: 10px !important; }
+	#login_page header { 	margin-bottom: 32px; width: 494px;
+		 										-moz-border-radius-topright: 10px;
+												border-top-right-radius: 10px;
+												-moz-border-radius-topleft: 10px;
+												border-top-left-radius: 10px; }
+	#login_page #content { width: 492px; }
+	#login_page section.group h6 { 	border: 0; height: 50px;
+		 															background-color: #a39e89; color: #ffe1dd;
+		 															font-size: 20px; line-height: 48px; }
+	#login_page .signUpForm input[type="text"], .signUpForm input[type="password"] { 	width: 460px !important;
+		 																																								font-size: 15px; }
+	#login_page .formContainer label { font-size: 15px; }
+	#login_page .actions { min-height: 20px; padding: 10px 0; width: 468px; }
+	.login { 	float: right; height: 35px !important; margin-top: -10px; width: 122px;
+		 				background: url(../images/icon_go.png) 26px 12px no-repeat #E24630 !important;
+						font-size: 12px !important; text-align: center !important; }
+						
+	.signup { float: left; margin-top: 20px; width: 100%;
+		 				text-align: center; }
+		.signup a { display: block; height: 101px; margin: 0 auto; overflow: hidden; width: 102px;
+								text-indent: -9999px;
+								background: url(../images/btn_sign_up.png) top left no-repeat; }

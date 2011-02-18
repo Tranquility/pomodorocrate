@@ -1,4 +1,4 @@
-		<%= render 'shared/header' %>
+		<%= render 'shared/login_header' %>
 		
 		<% flash.each do |key, value| %>
 			<%= content_tag(:div, value, :class => "flash #{key}") %>
@@ -10,6 +10,10 @@
 			
 		</section>
 		
+	</div>
+	
+	<div class="signup">
+		<%= link_to "Sign up now!", signup_path if params[:controller] == 'sessions' and params[:action] == 'new' %>
 	</div>
 </div>
 

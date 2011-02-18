@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   
-  layout "site"
+  layout "login"
   
   def new
     @title = "Sign in"
