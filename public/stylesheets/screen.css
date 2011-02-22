@@ -125,15 +125,15 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 	.formContainer .field { margin-bottom: 12px; }
 	.formContainer label { 	font-size: 14px; font-weight: normal; }
 	.formContainer input[type=text], .formContainer input[type=password] { 	background: #E5E2D2; color: #6B685D;
-		 																																			border: 0; padding: 4px; width: 99%;
-																																					font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 12px; }
+		 																																			border: 0; padding: 6px; width: 98%;
+																																					font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 15px; }
 	.formContainer select {	background: #E5E2D2; color: #6B685D;
-													border: 0; padding: 4px;
-													font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 12px; }
+													border: 0; padding: 6px;
+													font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 15px; }
 	.formContainer input.numeric { width: 30px; }
 	.formContainer textarea { 	background: #E5E2D2; color: #6B685D;
-															border: 0; height: 100px; padding: 4px; width: 99%;
-															font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 12px; }
+															border: 0; height: 100px; padding: 6px; width: 98%;
+															font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 15px; }
 								
 	.signUpForm input[type=text], .signUpForm input[type=password] { width: 250px !important; }
 
@@ -173,8 +173,8 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 		#error_explanation ul li { color: #ef4832; }
 
 .field_with_errors { color: #ef4832; }
-	.field_with_errors input, .field_with_errors select, .field_with_errors textarea { border: 2px solid #ef4832 !important; width: 98% !important; }
-.container_of_field_with_errors { border: 2px solid #ef4832; padding: 6px; }
+	.field_with_errors input, .field_with_errors select, .field_with_errors textarea { border: 1px solid #ef4832 !important; width: 98% !important; }
+.container_of_field_with_errors { border: 1px solid #ef4832; padding: 2px; }
 
 .hoverActivity { background: #f5f5f5 !important; }
 
@@ -230,7 +230,7 @@ nav .name img { margin: 0 4px -5px 0; }
 
 .breaksBox { text-align: center; }
 
-#slider { float: right; margin: 5px 430px 0 0; width: 200px; }
+#slider { float: right; margin: 10px 430px 0 0; width: 200px; }
 .ui-datepicker-trigger { height: 24px; margin-bottom: -8px; width: 24px; }
 table.punymce { width: 99%; }
 
@@ -331,11 +331,42 @@ li.completed_task, li.completed_project { background-color: #f5f3ea; }
 	
 label { font-family: MetaProNormal, Arial, Verdana, sans-serif; }
 fieldset { 	border: 1px solid #96917d; padding: 6px 0 6px 16px; -moz-border-radius: 10px; border-radius: 10px; }
-form.edit_user { width: auto !important; }
+form.edit_user { width: auto !important; padding: 0 !important; }
+	form.edit_user section { padding: 20px 12px; }
+		form.edit_user input[type="text"], form.edit_user input[type="password"] { /* font-size: 15px !important;
+			 																																																padding: 6px; */ width: 425px !important; }
+		form.edit_user .field label { /* font-size: 15px; */ }
 
 #user_pomodoro_length, #user_short_break_length, #user_long_break_length { width: 30px !important; }
-#user_pomodoro_length_slider, #user_short_break_length_slider, #user_long_break_length_slider { float: right; margin: 6px 430px 0 0; width: 200px; }
+#user_pomodoro_length_slider, #user_short_break_length_slider, #user_long_break_length_slider { float: right; margin: 10px 430px 0 0; width: 200px; }
 
 .drag_handle { 	float: right; padding-top: 2px; margin: -3px 0 0 6px; width: 10px;
 	 							font-size: 14px;
 	 							cursor: move; }
+	
+#gravatar { float: left; height: 205px; margin: 0 22px 70px 10px; width: 200px;
+	 					background: url(../images/gravatar_bg.jpg) top left no-repeat; }
+	#gravatar a.submit { 	float: left; height: 21px; margin: 30px 0 0 5px; padding: 7px 10px 4px 45px;
+		 										background: url(../images/icon_change_avatar.png) 14px center no-repeat #e24630; 
+												font-size: 12px; }
+	
+img.gravatar { float: left; margin: 19px 0 0 16px; }
+
+#pomodoro_settings input[type="text"] { -moz-border-radius: 25px; border-radius: 25px;
+	 																			height: 25px; width: 25px !important;
+	 																			font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 20px; text-align: center; vertical-align: middle;
+	 																			background-color: #98917e; color: #fff; }
+#pomodoro_length { border-bottom: 1px solid #c8c5b7; padding-bottom: 18px; }
+#short_break_length { float: left; width: 50%; }
+	#user_short_break_length_slider, #user_long_break_length_slider { margin-right: 85px; }
+	
+.edit_user .actions { border-top: 1px solid #c8c5b7; padding: 12px 18px;
+	 										text-align: right; }
+	#user_submit { 	background: url(../images/icon_update_user.png) 12px center no-repeat #e24630;
+		 							height: 34px; padding: 9px 10px 20px 40px; }
+
+#user_details { overflow: hidden; width: 460px; }
+	#user_details input { margin-left: 1px; }
+#user_info .container_of_field_with_errors { overflow: hidden; width: 439px; }
+
+#user_info { padding-right: 6px; }

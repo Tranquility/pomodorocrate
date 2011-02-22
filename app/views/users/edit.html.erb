@@ -1,70 +1,79 @@
 <section class="group formContainer signUpForm">
-	<h6>My settings</h6>
 	
 	<%= form_for(@user) do |f| %>
 	  <%= render 'shared/error_messages', :object => f.object %>
 		
-		<h6 class="settings">User info</h6>
-	  <div class="field">
-	    <%= f.label :name %><br />
-	    <%= f.text_field :name %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :email %><br />
-	    <%= f.text_field :email %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :password %><br />
-	    <%= f.password_field :password %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :password_confirmation, "Confirmation" %><br />
-	    <%= f.password_field :password_confirmation %>
-	  </div>
-		<div class="field">
-	    <%= f.label :time_zone %><br />
-	    <%= time_zone_select :user, :time_zone, nil, :include_blank => true %>
-	  </div>
+		<h6>User info</h6>
+		<section id="user_info">
+			
+			<div id="gravatar">
+				<%= gravatar_for @user, :size => 168 %>
+				<a href="http://gravatar.com/emails" class="submit">Change your avatar</a>
+			</div>
+			
+			<div id="user_details">
+	  		<div class="field">
+			    <%= f.label :name %><br />
+			    <%= f.text_field :name %>
+			  </div>
+			  <div class="field">
+			    <%= f.label :email %><br />
+			    <%= f.text_field :email %>
+			  </div>
+			  <div class="field">
+			    <%= f.label :password %><br />
+			    <%= f.password_field :password %>
+			  </div>
+			  <div class="field">
+			    <%= f.label :password_confirmation, "Confirmation" %><br />
+			    <%= f.password_field :password_confirmation %>
+			  </div>
+				<div class="field">
+			    <%= f.label :time_zone %><br />
+			    <%= time_zone_select :user, :time_zone, nil, :include_blank => true %>
+			  </div>
+			</div>
+		</section>
 		
-		<h6 class="settings">Notifications</h6>
-		<div class="field">
-	    <%= f.label :email_notifications %><br />
-	    <%= f.check_box :email_notifications %>
-	  </div>
-		<div class="field">
-	    <%= f.label :voice_notifications %><br />
-	    <%= f.check_box :voice_notifications %>
-	  </div>
+		<h6>Notifications</h6>
+		<section id="notifications">
+			<div class="field">
+		    <%= f.label :email_notifications %>
+		    <%= f.check_box :email_notifications %>
+		  </div>
+			<div class="field">
+		    <%= f.label :voice_notifications %>
+		    <%= f.check_box :voice_notifications %>
+		  </div>
+		</section>
 	
-		<h6 class="settings">Pomodoro settings</h6>
-		<div class="field">
-	    <%= f.label :pomodoro_length %><br />
-	    <%= f.text_field :pomodoro_length, :class => :numeric %>
-	  </div>
-		<div class="field">
-	    <%= f.label :short_break_length %><br />
-	    <%= f.text_field :short_break_length, :class => :numeric %>
-	  </div>
-		<div class="field">
-	    <%= f.label :long_break_length %><br />
-	    <%= f.text_field :long_break_length, :class => :numeric %>
-	  </div>
+		<h6>Pomodoro settings</h6>
+		<section id="pomodoro_settings">
+			<div class="field" id="pomodoro_length">
+		    <%= f.label :pomodoro_length %><br />
+		    <%= f.text_field :pomodoro_length, :class => :numeric %>
+		  </div>
+			<div class="field" id="short_break_length">
+		    <%= f.label :short_break_length %><br />
+		    <%= f.text_field :short_break_length, :class => :numeric %>
+		  </div>
+			<div class="field" id="long_break_length">
+		    <%= f.label :long_break_length %><br />
+		    <%= f.text_field :long_break_length, :class => :numeric %>
+		  </div>
+		</section>
 	
-		<h6 class="settings">Account type</h6>
-		<div class="field">
-	    <%= content_tag(:label, current_user.account.name.titleize) %>
-	  </div>
+		<h6>Account type</h6>
+		<section id="account_type">
+			<div class="field">
+		    <%= content_tag(:label, current_user.account.name.titleize) %>
+		  </div>
+		</section>
 	
 	  <div class="actions">
-	    <%= f.submit "Update", :class => :submit %>
+	    <%= f.submit "Update settings", :class => :submit %>
 	  </div>
 		
 	<% end %>
-	
-	<h6>Avatar</h6>
-	<div class="gravatar">
-	  <%= gravatar_for @user, :size => 205 %>
-	  <a href="http://gravatar.com/emails" class="submit">Change your avatar</a>
-	</div>
 	
 </section>

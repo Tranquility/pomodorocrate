@@ -1,7 +1,6 @@
 <%= render "shared/analytics_filter_toolbar" %>
 
 <section class="group">
-	<h6>Pomodoros</h6>
 	
 	<% unless @complete_pomodoros.empty? and @void_pomodoros.empty? and @estimated_pomodoros.empty? %>
 		<%= render "completed_vs_voided_pomodoros" %>
