@@ -1,6 +1,6 @@
 class AddVoiceNotificationsToUsers < ActiveRecord::Migration
   def self.up
-    add_column :users, :voice_notifications, :boolean, :default => :false
+    add_column :users, :voice_notifications, :boolean, :default => 0
   end
 
   def self.down
