@@ -38,6 +38,17 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
+    
+    if @user.id != current_user.id
+      flash[:error] = "Illegal access attempt."
+      redirect_to activities_path and return
+    end
+    
+    if params[:user][:settings_page] and params[:user][:password].empty?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
+    
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile updated."
       redirect_to edit_user_path(@user)

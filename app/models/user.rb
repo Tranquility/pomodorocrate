@@ -12,7 +12,7 @@
 
 class User < ActiveRecord::Base
   
-  attr_accessor :password
+  attr_accessor :password, :settings_page
   attr_accessible :name, :email, :password, :password_confirmation, :confirmation_hash, :reset_password_hash, :time_zone, :email_notifications, :voice_notifications, :pomodoro_length, :short_break_length, :long_break_length, :account_id
   
   has_many :projects,   :dependent => :destroy
@@ -34,7 +34,8 @@ class User < ActiveRecord::Base
   # Automatically create the virtual attribute 'password_confirmation'.
   validates :password, :presence     => true,
                        :confirmation => true,
-                       :length       => { :within => 6..40 }
+                       :length       => { :within => 6..40 },
+                       :if           => :update_from_settings?
                        
   validates_inclusion_of :time_zone, :in => ActiveSupport::TimeZone.all.map { |z| z.name }, :message => "is not a valid time zone" #, :allow_nil => true, :allow_blank => true
   
@@ -72,6 +73,10 @@ class User < ActiveRecord::Base
   end
 
   private
+  
+    def update_from_settings?
+      return true #self.settings_page == 1
+    end
     
     def check_account_confirmed
       self.confirmation_hash = encrypt(email) if new_record?

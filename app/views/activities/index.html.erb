@@ -63,10 +63,10 @@
 			</p>
 		<% else %>
 			<p class="pageContainer">
-				You haven't added any activities yet.
+				We haven't found any activities.
 			</p>
 			<p class="pageContainer">
-				Use the <%= link_to_unless(Project.where(:user_id => current_user).empty?, "New activity", new_activity_path, :class => :button) %> button to add your first activities and start enjoying the pomodoro technique.
+				Use the <%= link_to_unless(Project.where(:user_id => current_user).empty?, "New activity", new_activity_path, :class => :button) %> button to add some and start enjoying the pomodoro technique.
 			</p>
 		<% end %>
 	</section>

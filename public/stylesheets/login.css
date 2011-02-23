@@ -1,6 +1,6 @@
 #site { width: 494px !important; }
 #login_page { background: url(../images/bg_app_texture.jpg) #fff;
-							float: left; margin-top: 30px; padding: 5px 15px 15px 15px; width: 494px;
+							float: left; margin-bottom: 20px; margin-top: 30px; padding: 5px 15px 15px 15px; width: 494px;
 							 -moz-border-radius: 10px !important; border-radius: 10px !important; }
 	#login_page header { 	margin-bottom: 32px; width: 494px;
 		 										-moz-border-radius-topright: 10px;

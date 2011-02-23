@@ -1,7 +1,7 @@
 <%= render "shared/debug" %>
 
-<%= javascript_include_tag 'jquery' %>
-<%= javascript_include_tag :all %>
+<%= javascript_include_tag 'jquery', 'rails', 'application', 'enhance', 'excanvas', 'jquery-ui-1.8.9.custom.min', 'jquery.formalize', 'jquery.inline_label.min', 'visualize.jQuery' %>
+<!--[if lt IE 9]><%= javascript_include_tag 'jquery.corner', 'ie' %><![endif]-->
 <script>
 	base_url = "<%= root_url %>";
 	voice_notifications = <%= current_user.nil? ? "false" : current_user.voice_notifications %>
