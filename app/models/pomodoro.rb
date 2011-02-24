@@ -25,10 +25,11 @@ class Pomodoro < ActiveRecord::Base
   validates_numericality_of :duration,  :only_integer => true,
                                         :greater_than_or_equal_to => 5,
                                         :less_than_or_equal_to => 60
+  #validate :cant_exceed_ten_completed_pomodoros_per_activity
   
   scope :successful_and_completed, :conditions => { :successful => true, :completed => true }
   
-  def self.length
-    25
+  def cant_exceed_ten_completed_pomodoros_per_activity
+    errors.add(:pomodoro, "count per activity was exceeded") if self.activity.pomodoros.successful_and_completed.count >= 10
   end
 end
