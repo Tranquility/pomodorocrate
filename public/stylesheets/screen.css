@@ -71,7 +71,7 @@ section.group {  }
 input.checkbox { 	float: left; margin: 1px 8px 0 0;
 	 								cursor: pointer; 
 									padding-bottom: 2px; }
-#content .activityName { cursor: pointer; color: #787465; /*max-width: 550px;*/ }
+#content .activityName { cursor: pointer; color: #787465; width: 550px; }
 .pomodorosCount { padding: 16px 6px 10px; }
 	.pomodorosCount img { margin-left: 2px; }
 .listPomodorosCount { float: right; margin-top: -34px; height: 12px; }
