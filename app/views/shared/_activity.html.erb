@@ -1,10 +1,12 @@
 <li id="act_<%= a.id %>" data-activity="a_<%= a.id %>" <%= a.completed ? 'class="completed_task"'.html_safe : '' %>>
 	<div class="quickView">
 		<%= form_for a do |f| %>
-			<%= hidden_field "activity", :completed, :value => (a.completed ? false : true) %>
-			<%= hidden_field "activity", "force_update", :value => :true %>
-			<%= image_submit_tag (a.completed ? "checkbox_ticked.png" : "checkbox.png"), :class => "checkbox", :title => "Click to complete / reopen activity" %>
-			<div class="activityName" title="Click to show / hide activity details">
+			
+			<div class="activityName" title="Click to show / hide activity details" style="width: <%= 690 - pomodoros_icons_width(a.pomodoros.successful_and_completed.count, a.estimated_pomodoros) %>px">
+				<%= hidden_field "activity", :completed, :value => (a.completed ? false : true) %>
+				<%= hidden_field "activity", "force_update", :value => :true %>
+				<%= image_submit_tag (a.completed ? "checkbox_ticked.png" : "checkbox.png"), :class => "checkbox", :title => "Click to complete / reopen activity" %>
+				
 				<%= content_tag_for(:span, a, :class => (a.completed ? 'activityCompleted' : "") ) do %>
 					<%= a.name %>
 				<% end %>
@@ -13,11 +15,12 @@
 					<%= todotoday_marker(a) %>
 				<% end %>
 			</div>
+			
 			<div class="pomodorosCount listPomodorosCount">
 				<% if params[:controller] == 'todotodays' %>
 					<div class="drag_handle" title="Drag to sort"><%= image_tag 'handle.png' %></div>
 				<% end %>
-				<div class="pomodoros_icons">
+				<div class="pomodoros_icons" style="width: <%= pomodoros_icons_width(a.pomodoros.successful_and_completed.count, a.estimated_pomodoros) %>px">
 					<%= pomodoros_completed_ratio(a.pomodoros.successful_and_completed.count, a.estimated_pomodoros) %>
 				</div>
 			</div>

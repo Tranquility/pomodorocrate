@@ -1,0 +1,6 @@
+.quickView { margin-top: -20px; }
+.activityList li { padding-top: 0 !important; zoom: 1; hasLayout: 1; }
+.activityList form { float: left; }
+.listPomodorosCount { text-align: right; width: 150px; overflow: hidden; max-width: 150px; }
+.quickView .pomodoros_icons { width: auto; }
+#content .activityName { max-width: 500px !important; }

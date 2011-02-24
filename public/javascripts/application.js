@@ -13,6 +13,9 @@ played_sounds[0] = false;
 var clock_audio;
 
 $(document).ready(function(){
+	
+	soundManager.url = base_url + 'swf';
+	
 	// setup pomodoro timer
 	decreaseTimer();
 	//setTimeout("testSounds()", 5000);
@@ -91,8 +94,24 @@ function announceTimeLeft(minutes) {
 		if( soundType ) {
 			audio = new Audio(sound_file + soundType);
 			audio.play();
+		} else {
+			soundManager.onready(function() {
+				var mySound = soundManager.createSound({
+			  	id: 'sound_' + minutes,
+			  	url: sound_file + 'mp3'
+				});
+				try {
+					mySound.play('sound_' + minutes, {
+						onfinish: function() {
+							this.destruct();
+						}
+					});
+				} catch(e) {
+					
+				}
+			})
 		}
-	  	
+	
 		played_sounds[minutes] = true;
 	} else {
 		//console.log(minutes);

@@ -13,7 +13,7 @@ class PomodorosController < ApplicationController
   end
   
   def show
-    
+    redirect_to(activities_path)
   end
 
   # POST /dummies
