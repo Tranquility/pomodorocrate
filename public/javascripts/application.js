@@ -58,13 +58,15 @@ function decreaseTimer() {
 	$(".timer .time").attr("data-seconds", currentTime);
 	$(".timer .time").html(minutes + ":" + seconds);
 	
+	/*
 	if( typeof(minutes) !== 'undefined' && typeof(seconds) !== 'undefined' && !isNaN(minutes) && !isNaN(seconds) ) {
 		if( $('title:contains("[")').length > 0 ) {
-			$('title').html( $('title').html().replace(/\[(.*)\]/, '[' + minutes + ":" + seconds + ']') );
+			$('title').text( $('title').text().replace(/\[(.*)\]/, '[' + minutes + ":" + seconds + ']') );
 		} else {
-			$('title').html( '[' + minutes + ":" + seconds + '] ' + $('title').html() );
+			$('title').text( '[' + minutes + ":" + seconds + '] ' + $('title').text() );
 		}
 	}
+	*/
 	
 }
 
