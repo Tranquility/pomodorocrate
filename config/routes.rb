@@ -18,9 +18,9 @@ Ketchup::Application.routes.draw do
   #match 'users/confirm'         => 'users#confirm',     :as => :confirm_user
   #match 'users/:id/timezone'    => 'users#timezone',    :as => :timezone_user
   
-  match '/signup',  :to => 'users#new'
-  match '/signin',  :to => 'sessions#new'
-  match '/signout', :to => 'sessions#destroy'
+  match '/signup',  :to => 'users#new', :as => :signup
+  match '/signin',  :to => 'sessions#new', :as => :signin
+  match '/signout', :to => 'sessions#destroy', :as => :signout
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
