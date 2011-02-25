@@ -382,5 +382,5 @@ img.gravatar { float: left; margin: 19px 0 0 16px; }
 .narrow { width: 440px; }
 	.narrow div { display: inline; margin-right: 26px; }
 	
-#content p { 	font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 14px;
-	 						background-color: #fff; color: #696558; }
+#content p.contact { 	font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 14px;
+	 										background-color: #fff; color: #696558; }
