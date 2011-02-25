@@ -298,3 +298,14 @@ $(function(){
 		}
 	});
 })
+
+$(function(){
+	$('.iframe').fancybox({
+		height: 570, 
+		width: 620
+	});
+	
+	$('#new_contact_request a.button').click(function(){
+		parent.$.fancybox.close();
+	})
+})

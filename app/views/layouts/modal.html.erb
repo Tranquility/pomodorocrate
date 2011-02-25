@@ -1,0 +1,20 @@
+		<%= render 'shared/login_header' %>
+		
+		<% flash.each do |key, value| %>
+			<%= content_tag(:div, value, :class => "flash #{key}") %>
+		<% end %>
+		
+		<section id="content" class="contentBoxNav">
+			
+			<%= yield %>
+			
+		</section>
+		
+	</div>
+	
+	<div class="signup">
+		<%= link_to "Sign up now!", signup_path if params[:controller] == 'sessions' and (params[:action] == 'new' or params[:action] == 'create') %>
+	</div>
+</div>
+
+<%= render "shared/footer" %>

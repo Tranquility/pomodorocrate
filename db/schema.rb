@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110215170424) do
+ActiveRecord::Schema.define(:version => 20110225161944) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(:version => 20110215170424) do
 
   add_index "breaks", ["completed"], :name => "index_breaks_on_completed"
   add_index "breaks", ["user_id"], :name => "index_breaks_on_user_id"
+
+  create_table "contact_requests", :force => true do |t|
+    t.text     "content"
+    t.boolean  "bug"
+    t.boolean  "feature_request"
+    t.boolean  "suggestion"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pomodoros", :force => true do |t|
     t.integer  "activity_id"

@@ -1,0 +1,33 @@
+<section class="group formContainer signUpForm">
+	<h6>Hello! <strong>Get in touch</strong> with us!</h6>
+	
+	<%= form_for(@contact_request) do |f| %>
+
+	  <div class="field">
+	    <%= f.label "What's on your mind?" %><br />
+	    <%= f.text_area :content %>
+	  </div>
+	  <div class="field narrow">
+			<div>
+	    	<%= f.label :bug %>
+	    	<%= f.check_box :bug %>
+			</div>
+	
+			<div>
+				<%= f.label :feature_request %>
+	    	<%= f.check_box :feature_request %>
+			</div>
+			
+			<div>
+				<%= f.label :suggestion %>
+	    	<%= f.check_box :suggestion %>
+			</div>
+	  </div>
+
+	  <div class="actions">
+			<%= link_to "Nevermind...", activities_path, :class => :button %>
+	    <%= f.submit "Get in touch!", :class => [:submit] %>
+	  </div>
+	<% end %>
+	
+</section>

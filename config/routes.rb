@@ -9,6 +9,7 @@ Ketchup::Application.routes.draw do
   resources :todotodays,  :only => [:index, :create, :destroy]
   resources :analytics,   :only => [:index]
   resources :sessions,    :only => [:new, :create, :destroy]
+  resources :contact_requests, :only => [:new, :create, :update, :show, :edit]
   
   match 'activities/:id/clone'  => 'activities#clone',  :as => :clone_activity
   match '/reset_password'       => 'sessions#reset_password',    :as => :reset_password
@@ -20,7 +21,6 @@ Ketchup::Application.routes.draw do
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
-  
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

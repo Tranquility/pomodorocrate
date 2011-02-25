@@ -16,7 +16,7 @@ module ApplicationHelper
   end
   
   def pomodoros_icons_width(completed_pomodoros, estimated_pomodoros)
-    pomodoros_count(completed_pomodoros, estimated_pomodoros) * 20 < 40 ? 40 : pomodoros_count(completed_pomodoros, estimated_pomodoros) * 20
+    pomodoros_count(completed_pomodoros, estimated_pomodoros) * 20 < 65 ? 65 : pomodoros_count(completed_pomodoros, estimated_pomodoros) * 20
   end
   
   def pomodoros_completed_ratio(completed_pomodoros, estimated_pomodoros)

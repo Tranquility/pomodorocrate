@@ -1,8 +1,11 @@
 <nav>
 	<ul>
 		<% if signed_in? %>
-			<li class="name">
+			<li>
       	<%= link_to "Settings", edit_user_path(current_user), :class => [:top_nav] %>
+			</li>
+			<li>
+      	<%= link_to "Feedback", new_contact_request_path, :class => [:top_nav, :iframe] %>
 			</li>
 		<% end %>
 		<li><a href="#" class="top_nav">Help</a></li>

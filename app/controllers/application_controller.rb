@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   
   before_filter :set_timezone, :setup_widgets, :unless => :load_user_settings?
+  before_filter :mailer_set_url_options
   
   def set_timezone
     Time.zone = current_user.time_zone unless current_user.time_zone.blank?
@@ -34,6 +35,10 @@ class ApplicationController < ActionController::Base
       @today_remaining_pomodoros += (difference < 0 ? 0 : difference)
     end
     @today_completed_pomodoros = Pomodoro.successful_and_completed.where("date(pomodoros.created_at) = '#{Date.today}' AND user_id = ?", current_user.id).count
+  end
+  
+  def mailer_set_url_options
+    ActionMailer::Base.default_url_options[:host] = request.host_with_port
   end
   
   protected

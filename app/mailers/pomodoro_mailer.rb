@@ -5,7 +5,7 @@ class PomodoroMailer < ActionMailer::Base
   def completed_pomodoro_email(user, pomodoro)
     @user = user
     @pomodoro = pomodoro
-    @url = "http://localhost:3000/signin"
+    @url = "#{request.host_with_port}/signin"
     
     mail( :to => user.email,
           :subject => "Pomodoro finished: " + @pomodoro.activity.name)
@@ -14,7 +14,7 @@ class PomodoroMailer < ActionMailer::Base
   def successful_pomodoro_email(user, pomodoro)
     @user = user
     @pomodoro = pomodoro
-    @url = "http://localhost:3000/signin"
+    @url = "#{request.host_with_port}/signin"
     
     mail( :to => user.email,
           :subject => "Pomodoro successfully completed: " + @pomodoro.activity.name)
@@ -23,7 +23,7 @@ class PomodoroMailer < ActionMailer::Base
   def voided_pomodoro_email(user, pomodoro)
     @user = user
     @pomodoro = pomodoro
-    @url = "http://localhost:3000/signin"
+    @url = "#{request.host_with_port}/signin"
     
     mail( :to => user.email,
           :subject => "Pomodoro voided: " + @pomodoro.activity.name)

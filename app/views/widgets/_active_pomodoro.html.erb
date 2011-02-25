@@ -17,6 +17,7 @@
 						<%= text_format(@pomodoro.activity.description) %>
 					</div>
 				<% end %>
+				
 				<div class="activity_details">
 					<%= link_to("&#9658; Details".html_safe, activity_path(@pomodoro.activity), :class => [:button, :details_button]) %>
 				</div>

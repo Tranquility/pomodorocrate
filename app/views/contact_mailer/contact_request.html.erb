@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Hi,</h1>
+    <p>
+      You have a new contact request from <%= link_to(@contact_request.user.name, user_url(@contact_request.user) ) %><br/>
+    </p>
+
+		<p>
+			<%= text_format(@contact_request.content) %>
+		</p>
+		
+		<p>
+			Bug <%= @contact_request.bug %><br/>
+			Feature request <%= @contact_request.feature_request %><br/>
+			Suggestion <%= @contact_request.suggestion %><br/>
+		</p>
+		
+		<p>
+			You can reply by writing at <%= mail_to(@contact_request.user.email, @contact_request.user.email) %>
+		</p>
+  </body>
+</html>
