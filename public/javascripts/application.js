@@ -194,7 +194,11 @@ $(function(){
 
 // usability
 $(function(){ // autofocus first form input
-	$('.formContainer form input[type=text]:first, .formContainer form textarea:first').focus();
+	if( $('.formContainer form input[type=text]').size() > 0 ) {
+		$('.formContainer form input[type=text]:first').focus();
+	} else {
+		$('.formContainer form textarea:first').focus();
+	}
 	
 	$('#hiddendp_').datepicker({
 	  beforeShow: readSelected, onSelect: updateSelected, 

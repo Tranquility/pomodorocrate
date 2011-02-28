@@ -2,11 +2,19 @@
 
 <section class="group">
 	
-	<% unless @complete_pomodoros.empty? and @void_pomodoros.empty? and @estimated_pomodoros.empty? %>
+	<% unless @complete_pomodoros.empty? and @void_pomodoros.empty? %>
 		<%= render "completed_vs_voided_pomodoros" %>
+	<% end %>
+	
+	<% unless @complete_pomodoros.empty? or @estimated_pomodoros.empty? %>
 		<%= render "estimated_vs_completed_pomodoros" %>
+	<% end %>
+	
+	<% unless @complete_pomodoros.empty? %>
 		<%= render "completed_pomodoros_vs_worked_time" %>
-	<% else %>
+	<% end %>
+	
+	<% if @complete_pomodoros.empty? and @void_pomodoros.empty? %>
 		<p class="pageContainer">
 			You have no data to process.
 		</p>
