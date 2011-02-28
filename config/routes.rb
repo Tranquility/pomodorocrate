@@ -1,5 +1,5 @@
 Ketchup::Application.routes.draw do
-  
+
   match 'pomodoros/update_current_form' => 'pomodoros#update_current_form'
   match 'todotodays/save_sort'          => 'todotodays#save_sort'
 
@@ -21,6 +21,8 @@ Ketchup::Application.routes.draw do
   match '/signup',  :to => 'users#new', :as => :signup
   match '/signin',  :to => 'sessions#new', :as => :signin
   match '/signout', :to => 'sessions#destroy', :as => :signout
+  
+  match '/help', :to => 'help#index'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

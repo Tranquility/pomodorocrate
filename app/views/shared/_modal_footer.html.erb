@@ -1,0 +1,27 @@
+<%= render "shared/debug" %>
+
+<script>
+	base_url = "<%= root_url %>";
+</script>
+<%= javascript_tag "var AUTH_TOKEN =  #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+
+<%= javascript_include_tag 'jquery', 'rails', 'application', 'soundmanager2-nodebug-jsmin' %>
+<!--[if lt IE 9]><%= javascript_include_tag 'jquery.corner', 'ie' %><![endif]-->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-21673864-1']);
+  _gaq.push(['_setDomainName', '.pomodorocrate.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>

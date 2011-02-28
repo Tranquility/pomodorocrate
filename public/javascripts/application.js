@@ -18,7 +18,6 @@ $(document).ready(function(){
 	
 	// setup pomodoro timer
 	decreaseTimer();
-	//setTimeout("testSounds()", 5000);
 });
 
 function decreaseTimer() {
@@ -195,7 +194,7 @@ $(function(){
 
 // usability
 $(function(){ // autofocus first form input
-	$('.formContainer form input[type=text]:first').focus();
+	$('.formContainer form input[type=text]:first, .formContainer form textarea:first').focus();
 	
 	$('#hiddendp_').datepicker({
 	  beforeShow: readSelected, onSelect: updateSelected, 
@@ -301,8 +300,16 @@ $(function(){
 
 $(function(){
 	$('.iframe').fancybox({
-		height: 570, 
-		width: 620
+		padding: 0,
+		margin: 0,
+		scrolling: 'no',
+		width: 580,
+		height: 560,
+		centerOnScroll: true,
+		transitionIn: 'none',
+		transitionOut: 'none',
+		overlayOpacity: 1,
+		overlayColor: '#E5E2D2'
 	});
 	
 	$('#new_contact_request a.button').click(function(){
