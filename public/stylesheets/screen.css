@@ -175,7 +175,7 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 
 .field_with_errors { color: #ef4832; }
 	.field_with_errors input, .field_with_errors select, .field_with_errors textarea { border: 1px solid #ef4832 !important; width: 98% !important; }
-.container_of_field_with_errors { border: 1px solid #ef4832; padding: 2px; }
+.container_of_field_with_errors { /*border: 1px solid #ef4832;*/ padding: 2px; }
 
 .hoverActivity { background: #f5f5f5 !important; }
 

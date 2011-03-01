@@ -14,7 +14,7 @@
 		#login_page section.group h6 strong { font-family: MetaProBold, Arial, Verdana, sans-serif; font-weight: normal; }
 	#login_page .signUpForm input[type="text"], .signUpForm input[type="password"] { 	padding: 6px; width: 456px !important;
 		 																																								font-size: 15px; }
-		#login_page .signUpForm .field_with_errors input[type="text"], .signUpForm .field_with_errors input[type="password"] { 	width: 440px !important;
+		#login_page .signUpForm .field_with_errors input[type="text"], .signUpForm .field_with_errors input[type="password"] { 	/*width: 440px !important;*/
 																																											 																			font-size: 15px; }
 	#login_page .formContainer label { font-size: 15px; }
 	#login_page .actions { min-height: 20px; padding: 10px 0; width: 468px; }
