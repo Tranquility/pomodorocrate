@@ -372,7 +372,8 @@ img.gravatar { float: left; margin: 19px 0 0 16px; }
 
 #user_info { padding-right: 6px; }
 .pomodoros_icons { 	width: 145px;
-	 									text-align: right; }
+	 									text-align: right;
+	 									float: right; }
 	
 #pomodoro_settings input.numeric { background: url(../images/bg_input.png) center center no-repeat #fff !important; }
 

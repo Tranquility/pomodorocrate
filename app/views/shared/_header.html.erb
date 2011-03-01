@@ -3,6 +3,8 @@
 <head>
   <title><%= request.path_parameters[:controller].capitalize %> | Pomodoro Crate</title>
 	
+	<!--[if IE 7]><%= stylesheet_link_tag "ie7", 	:media => [:screen, :projection] %><![endif]-->
+	
 	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<%= stylesheet_link_tag "blueprint/reset", 	:media => :screen %>
 	<%= stylesheet_link_tag "web_fonts", 				:media => :all %>

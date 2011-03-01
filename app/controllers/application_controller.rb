@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
       @recent_pomodoros = Pomodoro.group(:activity_id).order("created_at DESC").limit(5).find_all_by_user_id(current_user.id)
     end
     
-    @upcoming_activities = Activity.where(:user_id => current_user.id, :deadline => Time.now.midnight..(Time.now.midnight + 7.days), :completed => false).limit(5)
+    @upcoming_activities = Activity.where(:user_id => current_user.id, :completed => false).where("deadline >= '#{Time.now.midnight}'").order("activities.deadline ASC").limit(5)
     @overdue_activities = Activity.where("deadline < '#{Date.today}'").where(:user_id => current_user.id, :completed => false).limit(5)
     
     @today_remaining_pomodoros = 0

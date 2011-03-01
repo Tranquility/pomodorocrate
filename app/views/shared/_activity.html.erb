@@ -16,7 +16,7 @@
 				<% end %>
 			</div>
 			
-			<div class="pomodorosCount listPomodorosCount">
+			<div class="pomodorosCount listPomodorosCount" style="width: <%= pomodoros_icons_width(a.pomodoros.successful_and_completed.count, a.estimated_pomodoros) + 20 %>px">
 				<% if params[:controller] == 'todotodays' %>
 					<div class="drag_handle" title="Drag to sort"><%= image_tag 'handle.png' %></div>
 				<% end %>

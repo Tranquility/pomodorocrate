@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
-    @user.account = Account.find(5) # hard coded beta
+    @user.account = Account.find_by_name("beta") # hard coded beta
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to Pomodoro Crate!"
@@ -77,7 +77,7 @@ class UsersController < ApplicationController
       
       UserMailer.reset_password_email(@user, edit_password_url(:reset_password_hash => @user.reset_password_hash)).deliver
       
-      flash[:success] = "The password confirmation email has been sent. Follow the instructions from the email."
+      flash[:success] = "An email with instructions on how to reset your password has been sent."
       redirect_to signin_path
     else
       flash[:error] = "An error has occured while trying to initiate the password reset"
@@ -91,7 +91,7 @@ class UsersController < ApplicationController
       @user.update_attribute(:reset_password_hash, nil)
       
       sign_in @user
-      flash[:message] = "Please edit your password"
+      flash[:notice] = "Please edit your password"
       redirect_to edit_user_path(@user)
     else
       flash[:error] = "Invalid reset password hash"

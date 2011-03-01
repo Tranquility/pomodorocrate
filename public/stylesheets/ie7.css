@@ -4,3 +4,6 @@
 .listPomodorosCount { text-align: right; width: 150px; overflow: hidden; max-width: 150px; }
 .quickView .pomodoros_icons { width: auto; }
 #content .activityName { max-width: 500px !important; }
+
+.reset_password { padding-left: 0 !important; padding-top: 11px !important; }
+#login_page { padding-bottom: 0; }
