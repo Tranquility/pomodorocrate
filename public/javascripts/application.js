@@ -15,6 +15,7 @@ var clock_audio;
 $(document).ready(function(){
 	
 	soundManager.url = base_url + 'swf';
+	$('textarea').elastic();
 	
 	// setup pomodoro timer
 	decreaseTimer();
@@ -150,14 +151,17 @@ $(document).ready(function(){
 		} else {
 			$('.opened').find('.detailsView').toggle().parent().toggleClass("opened");
 			$(this).parent().parent().parent().find('.detailsView').toggle().parent().toggleClass("opened");
-			window.location.hash = $(this).parent().parent().parent().attr('data-activity');
+			
+			if( $('li[data-activity]').length > 0 ) {
+				window.location.hash = $(this).parent().parent().parent().attr('data-activity');
+			}
 		}
 		
 	});
 	
 	if( $('#content .activityName').length == 1 ) {
 		$('#content .activityName').click();
-	} else {
+	} else if( $('li[data-activity]').size() > 0 ) {
 		$( 'li[data-activity="' + window.location.hash.replace("#", '') + '"] .activityName' ).click();
 	}
 })

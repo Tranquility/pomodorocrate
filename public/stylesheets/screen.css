@@ -47,6 +47,7 @@ a.top_nav { color: #c4bca2; font-family: MetaProNormal, Arial, sans-serif; font-
 		.toolbar form input[type=text], .toolbar form select { 	background: #E5E2D2; color: #6B685D;
 																														border: 0; margin-left: 10px; padding: 4px; width: 120px;
 																														font-family: MetaProNormal; font-size: 14px; text-transform: none; }
+			.toolbar form select { max-width: 240px; min-width: 120px; width: auto; }
 																
 input.submit { 	background: #fff; color: #ef4832; cursor: pointer; font-size: 12px; font-weight: bold; 
 				border: 0; padding: 2px 14px; }
@@ -128,10 +129,12 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 	.formContainer input[type=text], .formContainer input[type=password] { 	background: #E5E2D2; color: #6B685D;
 		 																																			border: 0; padding: 6px; width: 98%;
 																																					font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 15px; }
+	.formContainer input[type=password] { font-family: Verdana, Arial, sans-serif; }
+	
 	.formContainer select {	background: #E5E2D2; color: #6B685D;
-													border: 0; padding: 6px;
+													border: 0; max-width: 256px; padding: 6px;
 													font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 15px; }
-	.formContainer input.numeric { width: 30px; }
+	.formContainer input.numeric { width: 30px !important; }
 	.formContainer textarea { 	background: #E5E2D2; color: #6B685D;
 															border: 0; height: 100px; padding: 6px; width: 98%;
 															font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 15px; }
@@ -390,3 +393,10 @@ section.help { 	background-color: #E5E2D2;
 	 							padding: 10px; }
 	
 .fancybox-bg { display: none !important; }
+
+.container_of_field_with_errors #slider { margin-top: -21px; }
+
+#error_explanation { font-size: 14px; }
+	#error_explanation h2 { font-family: MetaProBold, Arial, Verdana, sans-serif; }
+	#error_explanation ul { list-style-type: decimal; list-style-position:inside;
+		 											border-bottom: 1px solid red; padding-bottom: 18px; }
