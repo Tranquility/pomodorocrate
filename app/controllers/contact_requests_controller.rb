@@ -1,4 +1,5 @@
 class ContactRequestsController < ApplicationController
+
   # GET /contact_requests
   # GET /contact_requests.xml
   

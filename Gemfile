@@ -14,6 +14,7 @@ gem 'heroku'
 gem 'chronic'
 gem 'taps'
 gem 'activesupport'
+gem 'high_voltage'
 
 #gem 'scoped_search'
 #gem 'resource_search', '100.0', :git => 'git://github.com/rubaidh/resource_search'

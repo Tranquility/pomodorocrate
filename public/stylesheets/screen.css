@@ -19,7 +19,7 @@ header { 	border-bottom: 10px solid #edecea; height: 50px; margin: -5px 0 0 -15p
 	#logo { display: block; width: 160px; }
 		#logo h2 { 	background: url("../images/logo_pomodoro_crate.png") top left no-repeat;
 								text-indent: -999px;
-								height: 82px; margin-bottom: 8px; width: 158px; }
+								height: 82px; margin-bottom: 8px; overflow: hidden; width: 158px; }
 	header nav { float: right; }
 		header nav ul { display: inline; float: left; list-style: none; margin-top: -83px; }
 			header nav ul li { display: inline; float: left; padding-top: 5px; }
@@ -389,7 +389,7 @@ img.gravatar { float: left; margin: 19px 0 0 16px; }
 #content p.contact { 	font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 14px;
 	 										background-color: #fff; color: #696558; }
 	
-section.help { 	background-color: #E5E2D2;
+section.help { 	background-color: #fff;
 	 							padding: 10px; }
 	
 .fancybox-bg { display: none !important; }
@@ -400,3 +400,11 @@ section.help { 	background-color: #E5E2D2;
 	#error_explanation h2 { font-family: MetaProBold, Arial, Verdana, sans-serif; }
 	#error_explanation ul { list-style-type: decimal; list-style-position:inside;
 		 											border-bottom: 1px solid red; padding-bottom: 18px; }
+		
+.help { font-size: 14px; }
+	.help p { 
+		 				padding: 10px 5px;}
+	.help ul, .help ol { 	list-style-position: inside;
+		 										margin-left: 15px;}
+		.help .more_white_space li { padding: 4px; }
+	.help strong { font-family: MetaProBold, Arial, Verdana, sans-serif; font-weight: normal; }

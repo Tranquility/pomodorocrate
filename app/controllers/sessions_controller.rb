@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
   end
   
   def reset_password
-    
+    @title = 'Reset password'
   end
 
 end

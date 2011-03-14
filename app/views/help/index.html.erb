@@ -2,9 +2,81 @@
 	<h6>Help</h6>
 	
 	<section class="help">
+		<h6>What is the Pomodoro Technique?</h6>
 		<p>
-			This page is under construction. If you need any assistance with Pomodoro Crate, please use the 
-			<%= link_to "Feedback form", new_contact_request_path, :class => [:button, :iframe] %>
+			The Pomodoro Technique is a simple time management technique that helps you become more productive and get more things done, by enhancing your focus and concentration.
 		</p>
 	</section>
+	
+	<section class="help">	
+		<h6>Benefits of the Pomodoro Technique</h6>
+		<p>
+			The ultimate goal of the Pomodoro Technique is to help you improve your productivity - this is achieved by:
+		</p>
+		<ul>
+			<li>Alleviating the anxiety and the stress caused by upcoming deadlines and work requirements.</li>
+			<li>Enhancing focus and concentration by eliminating interruptions.</li>
+			<li>Increasing awareness of your decisions.</li>
+			<li>Boosting motivation and keeping it up.</li>
+			<li>Building the determination to pro-actively follow and achieve your goals.</li>
+			<li>Improving the estimation process, both in qualitative and quantitative terms.</li>
+			<li>Making your work and study more efficient.</li>
+			<li>Providing motivation and a valid approach to handle complex situations.</li>
+		</ul>
+	</section>
+		
+	<section class="help">
+		<h6>How does it work?</h6>
+		<p>
+			Using the Pomodoro Technique is very simple - and Pomodoro Crate makes it even easier. Just follow these steps and you'll find your desired productivity in no time.
+		</p>
+		<ol class="more_white_space">
+			<li><strong>Out of your mind</strong> (and lighten up) - make a list of activities you have to complete. <%= link_to 'Commit every task', new_activity_path, :class => :button %> to your Activities list - this will help you clear you mind and reduce stress. 
+				&#9654; <%= link_to '[Video demo]', '', :class => :button %></li>
+			<li><strong>Plan your work day</strong> - pick tasks from your <%= link_to 'Activities', activities_path, :class => :button %> list that you want to complete today.  Be objective - choose a fair amount of tasks, that can be reasonably completed given the time you have. This will help you commit and gain control of your schedule - instead of constantly reacting to other people requests, you decide your priorities. 
+				&#9654; <%= link_to '[Video demo]', '', :class => :button %></li>
+			<li><strong>Work it</strong> - choose one of today’s tasks from the <%= link_to 'Todo Today', todotodays_path, :class => :button %> list and work on it for 25 minutes (a “Pomodoro”). You should not stop and you should not do anything else until the time is up. This helps you focus and gets you in the flow - your zone of maximum productivity. If you have to stop, void the Pomodoro. 
+				&#9654; <%= link_to '[Video demo]', '', :class => :button %></li>
+			<li><strong>Congratulations!</strong> When the time is up, you have completed a pomodoro. Relax - reward yourself with a short break. Don’t forget to take a longer break every 4 pomodoros. 
+				&#9654; <%= link_to '[Video demo]', '', :class => :button %></li>
+			<li><strong>Repeat</strong> steps 3 and 4 and enjoy your newly found productivity!</li>
+		</ol>
+	</section>
+	
+	<section class="help">
+		<h6>Tips and tricks</h6>
+		<p>
+			Follow the simple tips and you'll be surprised at how simple it is to become a happy Pomodoro user.
+		</p>
+		<ul class="more_white_space">
+			<li>To help you group your activities and easily filter and retrieve them, and for better task management, Pomodoro Crate uses <%= link_to 'Projects', projects_path, :class => :button %>. Projects are an original feature of Pomodoro Crate, borrowed from the GTD technique. 
+				&#9654; <%= link_to '[Video demo]', '', :class => :button %></li>
+			<li>Properly define your activities - they need to be well described and documented otherwise you’ll have the tendency to avoid doing them.</li>
+			<li>An activity should not be longer than 8 pomodoros (4 hours). Anything longer will be very hard to estimate and control. If it takes longer, break it into smaller tasks.</li>
+			<li>If you finish the task before the time is up, use the spare time for improvements. Test your work, make it better or simply review what you've done and try to extract relevant things to remember and apply in the future.</li>
+			<li>Gather information about your pomodoros and analyze it to improve your work flow, estimations and productivity. Use the <%= link_to 'Analytics', analytics_path, :class => :button %> section to monitor your progress. 
+				&#9654; <%= link_to '[Video demo]', '', :class => :button %></li>
+			<li>Don’t use the Pomodoro Technique to schedule your free time.</li>
+			<li>You can adjust the length of the Pomdoro and of the breaks by using the <%= link_to 'Settings', edit_user_path(current_user), :class => :button %> page. From this section you can also adjust other settings, like voice and email notifications.</li>
+		</ul>
+	</section>
+	
+	<section class="help">
+		<h6>Resources</h6>
+		<p>
+			If you want to learn more about the Pomodoro Technique, go ahead and look into these excellent resources.
+		</p>
+		<ul>
+			<li><%= link_to 'The original Pomodoro Technique site', 'http://www.pomodorotechnique.com/', :target => :_blank, :class => :button %> - Check out the Products section and download the free Pomodoro Technique book.</li>
+			<li><%= link_to 'Pomodoro Technique Illustrated', 'http://www.pomodoro-book.com/ ', :target => :_blank, :class => :button %> - Read this excellent book on the Pomodoro Technique - 100% recommended!</li>
+		</ul>
+	</section>
+	
+	<section class="help">
+		<h6>Get in touch</h6>
+		<p>
+			If you have more questions about the Pomodoro Crate or the Pomodoro Technique, or if you want to request or suggest a functionality, use the <%= link_to 'Feedback form', new_contact_request_path, :class => [:button, :iframe]%> - we'll reply promptly.
+		</p>
+	</section>
+	
 </section>

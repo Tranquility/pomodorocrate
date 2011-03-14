@@ -54,5 +54,10 @@ module ApplicationHelper
   def text_format(text)
     return text.blank? ? "" : simple_format( auto_link text, :all, :class => :external ).html_safe
   end
+  
+  def title
+    return @title unless @title.nil?
+    request.path_parameters[:controller].capitalize
+  end
 
 end

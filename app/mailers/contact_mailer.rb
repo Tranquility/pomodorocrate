@@ -4,6 +4,6 @@ class ContactMailer < ActionMailer::Base
   
   def contact_request(contact_request)
     @contact_request = contact_request
-    mail(:to => "adrian@reveloper.com", :subject => "Contact request from #{@contact_request.user.name}")
+    mail(:from => @contact_request.user.email, :to => "adrian@pomodorocrate.com", :subject => "Contact request from #{@contact_request.user.name}")
   end
 end

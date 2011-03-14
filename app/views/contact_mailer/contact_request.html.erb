@@ -20,7 +20,15 @@
 		</p>
 		
 		<p>
-			You can reply by writing at <%= mail_to(@contact_request.user.email, @contact_request.user.email) %>
+			You can reply by writing at <%= mail_to(@contact_request.user.email, @contact_request.user.email) %> or by simply replying to this email.
+		</p>
+		
+		<p>
+			<hr />
+			==========================================================================<br/>
+			DEBUG INFO DUMP<br/>
+			==========================================================================<br/>
+			<%= sanitize @contact_request.debug_info %>
 		</p>
   </body>
 </html>

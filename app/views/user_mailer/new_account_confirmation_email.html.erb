@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Dear <%= @user.name %>,</h1>
+    <p>
+      We are so very happy that you joined us and we are wishing you lots and lots of red, shiny and completed pomodoros!
+    </p>
+		<p>
+			To login all you have to do is visit <%= signup_url %> and insert your username (<%= @user.email %>) and your password.
+		</p>
+		<p>
+			If you need any help, don't hesitate to use the feedback form or email at support@pomodorocrate.com 
+		</p>
+		<p>The Pomodoro Crate Team</p>
+  </body>
+</html>

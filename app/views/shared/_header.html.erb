@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= request.path_parameters[:controller].capitalize %> | Pomodoro Crate</title>
+  <title><%= title %> | Pomodoro Crate</title>
 	
 	<!--[if IE 7]><%= stylesheet_link_tag "ie7", 	:media => [:screen, :projection] %><![endif]-->
 	
@@ -25,6 +25,6 @@
 <div id="site">
 	<div id="page" class="boxShadow">
 		<header>
-			<%= link_to( raw("<h2>Pomodoro Crate - Pomodoro time management</h2>"), root_path, :id => "logo") %>
+			<%= render "shared/logo" %>
 			<%= render "shared/menu" %>
 		</header>

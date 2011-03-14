@@ -22,6 +22,8 @@
 				<%= f.label :suggestion %>
 	    	<%= f.check_box :suggestion %>
 			</div>
+			
+			<%= hidden_field_tag 'contact_request[debug_info]', debug(request.env).to_s %>
 	  </div>
 
 	  <div class="actions">

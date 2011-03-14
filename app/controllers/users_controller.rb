@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   before_filter :admin_user,   :only => [:index, :destroy]
   
   def new
+    @title = "Sign up"
     @user = User.new
     render :layout => "login"
   end
@@ -22,11 +23,15 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.account = Account.find_by_name("beta") # hard coded beta
     if @user.save
+      
+      UserMailer.new_account_confirmation_email(@user).deliver
+      
       sign_in @user
       flash[:success] = "Welcome to Pomodoro Crate!"
       redirect_to edit_user_path(@user)
       #redirect_to user_confirm_path
     else
+      @title = 'Sign up'
       render 'new', :layout => "login"
     end
   end
