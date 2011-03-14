@@ -45,6 +45,13 @@
 		    <%= f.label :voice_notifications %>
 		    <%= f.check_box :voice_notifications %>
 		  </div>
+			<div class="field">
+		    <%= f.label :tick_tack_sound %>
+		    <%= f.check_box :tick_tack_sound %>
+		  </div>
+			<div class="field">
+				<%= button_to_function "Test audio", "playTestSound()", :class => :submit %>
+			</div>
 		</section>
 	
 		<h6>Pomodoro settings</h6>

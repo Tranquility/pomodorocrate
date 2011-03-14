@@ -3,6 +3,7 @@
 <script>
 	base_url = "<%= root_url %>";
 	voice_notifications = <%= current_user.nil? ? "false" : current_user.voice_notifications %>
+	tick_tack_sound = <%= current_user.nil? ? "false" : current_user.tick_tack_sound %>
 	<% unless @start_date.nil? %>
 	chart_interval = <%= @graph_interval %>
 	<% end %>

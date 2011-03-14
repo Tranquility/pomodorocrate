@@ -13,7 +13,7 @@
 class User < ActiveRecord::Base
   
   attr_accessor :password, :settings_page
-  attr_accessible :name, :email, :password, :password_confirmation, :confirmation_hash, :reset_password_hash, :time_zone, :email_notifications, :voice_notifications, :pomodoro_length, :short_break_length, :long_break_length, :account_id
+  attr_accessible :name, :email, :password, :password_confirmation, :confirmation_hash, :reset_password_hash, :time_zone, :email_notifications, :voice_notifications, :pomodoro_length, :short_break_length, :long_break_length, :account_id, :tick_tack_sound
   
   has_many :projects,   :dependent => :destroy
   has_many :activities, :dependent => :destroy

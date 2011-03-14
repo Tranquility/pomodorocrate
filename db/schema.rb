@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110314191519) do
+ActiveRecord::Schema.define(:version => 20110314210147) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(:version => 20110314191519) do
     t.integer  "short_break_length",  :default => 5
     t.integer  "long_break_length",   :default => 25
     t.integer  "account_id"
+    t.boolean  "tick_tack_sound",     :default => false
   end
 
   add_index "users", ["confirmation_hash"], :name => "index_users_on_confirmation_hash"

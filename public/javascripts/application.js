@@ -11,6 +11,7 @@ played_sounds[2] = false;
 played_sounds[0] = false;
 
 var clock_audio;
+var counting_in_progress = false;
 
 $(document).ready(function(){
 	
@@ -43,6 +44,7 @@ function decreaseTimer() {
 	} else if( $('.timer .time').length > 0 ) {
 		
 		setTimeout("decreaseTimer()", 1000);
+		counting_in_progress = true;
 		
 	}
 	
@@ -324,3 +326,83 @@ $(function(){
 		parent.$.fancybox.close();
 	})
 })
+
+function playTickTack() {
+	
+	sound_file = base_url + "sounds/clocks/egg_timer.";
+	
+	soundType = "";
+	if($.support.audio.ogg) {
+		soundType = "ogg"
+	} else if($.support.audio.mp3) {
+		soundType = "mp3"
+	}
+	
+	if( soundType ) {
+		audio = new Audio(sound_file + soundType);
+		$(audio).attr('preload', 'auto');
+		$(audio).bind('ended', function() {
+			this.play();
+		});
+		
+		$(audio)[0].play();
+	} else {
+		soundManager.onready(function() {
+			var mySound = soundManager.createSound({
+		  	id: 'ticking_clock',
+		  	url: sound_file + 'mp3'
+			});
+			try {
+				mySound.play('ticking_clock', {
+					onfinish: function() {
+						this.play();
+					}
+				});
+			} catch(e) {
+				
+			}
+		})
+	}
+}
+
+$(function(){
+	if(tick_tack_sound && counting_in_progress) playTickTack();
+})
+
+function playTestSound() {
+	
+	sound_file = base_url + "sounds/others/tada.";
+	
+	soundType = "";
+	if($.support.audio.ogg) {
+		soundType = "ogg"
+	} else if($.support.audio.mp3) {
+		soundType = "mp3"
+	}
+	
+	if( soundType ) {
+		audio = new Audio(sound_file + soundType);
+		$(audio).attr('preload', 'auto');
+		$(audio).bind('ended', function() {
+			alert('Finished playing - did you hear the sound?');
+		});
+		
+		$(audio)[0].play();
+	} else {
+		soundManager.onready(function() {
+			var mySound = soundManager.createSound({
+		  	id: 'ticking_clock',
+		  	url: sound_file + 'mp3'
+			});
+			try {
+				mySound.play('ticking_clock', {
+					onfinish: function() {
+						alert('Finished playing - did you hear the sound?');
+					}
+				});
+			} catch(e) {
+				
+			}
+		})
+	}
+}
