@@ -327,6 +327,10 @@ $(function(){
 	})
 })
 
+$(function(){
+	$('.video_demo').attr('target', '_blank');
+})
+
 function playTickTack() {
 	
 	sound_file = base_url + "sounds/clocks/egg_timer.";

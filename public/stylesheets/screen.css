@@ -408,3 +408,5 @@ section.help { 	background-color: #fff;
 		 										margin-left: 15px;}
 		.help .more_white_space li { padding: 4px; }
 	.help strong { font-family: MetaProBold, Arial, Verdana, sans-serif; font-weight: normal; }
+	
+a.video_demo { color: #898989; font-family: MetaProBold, Arial, Verdana, sans-serif; font-weight: normal; text-decoration: none; }
