@@ -7,12 +7,14 @@ mustard: #DFB538
 blue: #3861DF
 */
 
+* { font-family: Arial, Verdana, sans-serif; }
 body { 	background: #e5e2d2; color: #898989;
-	 			font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 12px; }
+	 			font-family: Arial, Verdana, sans-serif; font-size: 12px; }
 
 #site { margin: 0 auto; width: 980px; }
 #page { background: url(../images/bg_app_texture.jpg) #fff;
-				float: left; margin-bottom: 20px; padding: 5px 15px 15px 15px; width: 960px; }
+				float: left; margin-bottom: 20px; padding: 5px 15px 15px 15px; width: 960px;
+				font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 12px; }
 
 header { 	border-bottom: 10px solid #edecea; height: 50px; margin: -5px 0 0 -15px; padding: 0 15px; width: 960px;
 	 				background: #696558; }
@@ -37,8 +39,9 @@ a.top_nav { color: #c4bca2; font-family: MetaProNormal, Arial, sans-serif; font-
 		.contentBoxNav nav ul li { 	display: inline; float: left;
 			 													font-family: MetaProBold, Arial, sans-serif; font-size: 14px; 
 			 													background: #c2bda7; }
+			.contentBoxNav nav ul li a { font-family: MetaProBold, Arial, Verdana, sans-serif; }
 			.contentBoxNav nav ul li.active { background: #a39e89; }
-				.contentBoxNav nav ul li.active a.tabs { 	color: #faf9f4; }
+				.contentBoxNav nav ul li.active a.tabs { 	color: #faf9f4; font-family: MetaProBold, Arial, Verdana, sans-serif; }
 				
 .toolbar { 	background: #a39e89; list-style: none;
 						clear: both; height: 44px; width: 100%; }
@@ -46,17 +49,17 @@ a.top_nav { color: #c4bca2; font-family: MetaProNormal, Arial, sans-serif; font-
 	.toolbar form { padding: 7px 10px; }
 		.toolbar form input[type=text], .toolbar form select { 	background: #E5E2D2; color: #6B685D;
 																														border: 0; margin-left: 10px; padding: 4px; width: 120px;
-																														font-family: MetaProNormal; font-size: 14px; text-transform: none; }
+																														font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 14px; text-transform: none; }
 			.toolbar form select { max-width: 240px; min-width: 120px; width: auto; }
 																
 input.submit { 	background: #fff; color: #ef4832; cursor: pointer; font-size: 12px; font-weight: bold; 
 				border: 0; padding: 2px 14px; }
 				
 section.group {  }
-	section.group h6, .visualize-title { 	background: #e5e2d2; color: #827d6a; font-family: MetaProNormal; font-size: 17px; 
+	section.group h6, .visualize-title { 	background: #e5e2d2; color: #827d6a; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 17px; 
 		 																		border-top: 1px solid #c8c5b7; border-bottom: 1px solid #c8c5b7; padding: 0 0 1px 10px; }
 		
-		section.group h6.settings { font-family: MetaProBold; font-size: 14px;
+		section.group h6.settings { font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 14px;
 			 													border: 1px solid #c8c5b7; margin: 10px 0;
 			 													background-color: #a39e89; color: #fff; }
 		
@@ -65,9 +68,12 @@ section.group {  }
 .activityList { list-style: none; }
 	.activityList li { 	background: #fff; color: #787465;
 											border-bottom: 2px solid #e7e7e7; padding: 6px 0 6px 10px;
-											font-family: MetaProNormal; font-size: 14px; }
+											font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 14px; }
 		.activityList li:last-child { border-bottom: 0; }
 		.activityList li.opened { background-color: #f4f4ee; }
+		
+.activityList li .activity, .activityList li .activityName { font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 14px; }
+		
 .quickView {  }						
 input.checkbox { 	float: left; margin: 1px 8px 0 0;
 	 								cursor: pointer; 
@@ -97,18 +103,18 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 	.widgetBox .pomodorosCount { 	border-top: 1px solid #d6d4c9; border-bottom: 1px solid #d6d4c9; 
 		 														text-align: center;}
 	.widgetBox .submit, .formContainer .submit, .toolbar .submit { 	background: url(../images/icon_apply.png) 8px center no-repeat #e24630; color: #ffe1dd; 
-																																	font-family: MetaProBold; font-size: 11px; font-weight: normal; letter-spacing: 1px;
+																																	font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 11px; font-weight: normal; letter-spacing: 1px;
 																																	text-align: right; text-decoration: none; text-shadow: 1px 1px 0px #a52618; text-transform: uppercase;
 																																	height: 34px; padding: 4px 8px 4px 28px; 
 																																	-moz-border-radius: 2px; border-radius: 2px; }
 	.widgetBox textarea { 	border: 1px solid #e7e7e7; height: 80px; padding: 4px; width: 196px; 
-							color: #898989; font-family: Arial; font-size: 12px;  }
+							color: #898989; font-family: Arial, Verdana, sans-serif; font-size: 12px;  }
 	.widgetBox a.button { float: right; margin-top: -16px;
-		 										color: #a39e89; font-family: MetaPlusMediumRomanRegular; font-size: 11px; font-weight: normal; text-decoration: none; text-transform: uppercase;
+		 										color: #a39e89; font-family: MetaPlusMediumRomanRegular, Arial, Verdana, sans-serif; font-size: 11px; font-weight: normal; text-decoration: none; text-transform: uppercase;
 		 										white-space: nowrap; }
-	.widgetBox a.details_button { font-family: MetaProBold; font-size: 10px;
+	.widgetBox a.details_button { font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 10px;
 		 														margin-top: -2px !important; }
-.time { color: #a39e89; font-family: MetaPlusMediumCapsRegular; font-size: 84px; font-weight: bold; line-height: 74px; letter-spacing: -2px; text-align: center;
+.time { color: #a39e89; font-family: MetaPlusMediumCapsRegular, Arial, Verdana, sans-serif; font-size: 84px; font-weight: bold; line-height: 74px; letter-spacing: -2px; text-align: center;
  				display: block; padding: 12px; width: 209px; }
 
 .tickbox { margin-top: 10px; }
@@ -279,7 +285,7 @@ a.button { 	color: #ef4832;
 			 						padding: 2px; }
 			.pagination a:hover { color: #000; text-decoration: none; }
 			
-a.toolbar_button { 	display: block; height: 24px; padding: 8px 0 0 36px; width: 88px;
+a.toolbar_button { 	display: block; height: 24px; padding: 8px 0 0 36px; width: 92px;
 	 									background: url(../images/icon_add.png) 4px center no-repeat #858174;
 	 									color: #e4dfbf; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 11px; letter-spacing: 1px; text-decoration: none; text-transform: uppercase; 
 										-moz-border-radius: 2px; border-radius: 2px; }

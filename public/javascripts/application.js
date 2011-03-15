@@ -346,7 +346,7 @@ function playTickTack() {
 		audio = new Audio(sound_file + soundType);
 		$(audio).attr('preload', 'auto');
 		$(audio).bind('ended', function() {
-			this.play();
+			if(counting_in_progress) this.play();
 		});
 		
 		$(audio)[0].play();
@@ -359,7 +359,7 @@ function playTickTack() {
 			try {
 				mySound.play('ticking_clock', {
 					onfinish: function() {
-						this.play();
+						if(counting_in_progress) this.play();
 					}
 				});
 			} catch(e) {
