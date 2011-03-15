@@ -79,11 +79,13 @@ input.checkbox { 	float: left; margin: 1px 8px 0 0;
 	 								cursor: pointer; 
 									padding-bottom: 2px; }
 #content .activityName { cursor: pointer; color: #787465; width: 550px; }
+	#content .activityName .project { font-family: MetaProNormal, Arial, Verdana, sans-serif; }
 .pomodorosCount { padding: 16px 6px 10px; }
 	.pomodorosCount img { margin-left: 2px; }
 .listPomodorosCount { float: right; margin-top: -34px; height: 12px; }
 .detailsView { 	padding: 6px 10px 2px 26px; display: none;
 	 							color: #a39e89; }
+	.detailsView p { font-family: MetaProNormal, Arial, Verdana, sans-serif; }
 
 .actionsBar { 	list-style: none; margin: 6px 0 0 -12px; }
 	.actionsBar li { 	border: none; display: inline;
@@ -152,9 +154,9 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 .activity_details { background-color: #f1efe5; color: #a39e89; font-weight: normal; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 13px;
 	 									overflow: hidden; padding: 2px 12px 14px; }
 	
-.past { color: red; }
-.present {  }
-.future {  }
+.past { color: red; font-family: MetaProNormal, Arial, Verdana, sans-serif; }
+.present { font-family: MetaProNormal, Arial, Verdana, sans-serif; }
+.future { font-family: MetaProNormal, Arial, Verdana, sans-serif; }
 
 .pageContainer { background: #fff; padding: 6px 12px; }
 .withSeparator { border-top: 2px solid #E7E7E7; }
@@ -178,9 +180,9 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 .activityCompleted, .projectCompleted { 	text-decoration: line-through; }
 
 #error_explanation { 	border: 0px solid #ef4832; margin-bottom: 12px; padding: 6px;
-	 										font-family: MetaProNormal, Arial, Verdana, sans-serif;}
+	 										font-family: MetaProNormal, Arial, Verdana, sans-serif; }
 	#error_explanation ul { list-style: none; }
-		#error_explanation ul li { color: #ef4832; }
+		#error_explanation ul li { color: #ef4832; font-family: MetaProNormal, Arial, Verdana, sans-serif; }
 
 .field_with_errors { color: #ef4832; }
 	.field_with_errors input, .field_with_errors select, .field_with_errors textarea { border: 1px solid #ef4832 !important; width: 98% !important; }
@@ -190,7 +192,7 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 
 .projectProgress { font-size: 22px; font-weight: bold; margin-top: -25px; }
 .projectDetails { 	float: right; margin: -7px 0 0 10px; min-width: 50px;
-	 									font-size: 16px; font-weight: normal; text-align: left; }
+	 									font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 16px; font-weight: normal; text-align: left; }
 .explanation { 	color: #ef4832; font-size: 28px; font-weight: bold;
 	 							display: block; float: left; margin: -10px 6px 0 0;}
 	
@@ -403,16 +405,18 @@ section.help { 	background-color: #fff;
 .container_of_field_with_errors #slider { margin-top: -21px; }
 
 #error_explanation { font-size: 14px; }
-	#error_explanation h2 { font-family: MetaProBold, Arial, Verdana, sans-serif; }
+	#error_explanation h2 { font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 100%; }
 	#error_explanation ul { list-style-type: decimal; list-style-position:inside;
 		 											border-bottom: 1px solid red; padding-bottom: 18px; }
 		
 .help { font-size: 14px; }
-	.help p { 
+	.help p { font-family: MetaProNormal, Arial, Verdana, sans-serif;
 		 				padding: 10px 5px;}
 	.help ul, .help ol { 	list-style-position: inside;
-		 										margin-left: 15px;}
-		.help .more_white_space li { padding: 4px; }
+		 										margin-left: 15px; }
+		.help li { font-family: MetaProNormal, Arial, Verdana, sans-serif; }
+		.help .more_white_space li { 	padding: 4px;
+			 														font-family: MetaProNormal, Arial, Verdana, sans-serif; }
 	.help strong { font-family: MetaProBold, Arial, Verdana, sans-serif; font-weight: normal; }
 	
 a.video_demo { color: #898989; font-family: MetaProBold, Arial, Verdana, sans-serif; font-weight: normal; text-decoration: none; }
