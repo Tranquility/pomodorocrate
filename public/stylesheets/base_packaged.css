@@ -380,6 +380,7 @@ button.ui-button-icons-only {width: 3.7em}
 @font-face { font-family: 'MetaProBold'; src: url('../fonts/metapro/metapro-bold-webfont.eot')}
 @font-face {font-family: 'MetaProBold'; src: url('../fonts/metapro/metapro-bold-webfont.eot') format('eot'), url('../fonts/metapro/metapro-bold-webfont.woff') format('woff'), url('../fonts/metapro/metapro-bold-webfont.ttf') format('truetype'), url('../fonts/metapro/metapro-bold-webfont.svg#webfontRnXn0xLh') format('svg'); font-weight: normal; font-style: normal}
  * {font-family: Arial, Verdana, sans-serif}
+option {font-family: MetaProNormal, Arial, Verdana, sans-serif}
 body {background: #e5e2d2; color: #898989; font-family: Arial, Verdana, sans-serif; font-size: 12px}
 #site {margin: 0 auto; width: 980px}
 #page {background: url(../images/bg_app_texture.jpg) #fff; float: left; margin-bottom: 20px; padding: 5px 15px 15px 15px; width: 960px; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 12px}
@@ -453,6 +454,7 @@ aside {float: right; margin-bottom: 12px; padding: 1px; width: 233px; background
 .signUpForm input[type=text], .signUpForm input[type=password] {width: 250px !important}
 .activity_name {background: url(../images/bg_timer.png) top left repeat-x #f1efe5; color: #858174; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 13px; padding: 16px 12px 12px}
 .activity_details {background-color: #f1efe5; color: #a39e89; font-weight: normal; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 13px; overflow: hidden; padding: 2px 12px 14px}
+.activity_details p {font-family: MetaProNormal, Arial, Verdana, sans-serif}
 .past {color: red; font-family: MetaProNormal, Arial, Verdana, sans-serif}
 .present {font-family: MetaProNormal, Arial, Verdana, sans-serif}
 .future {font-family: MetaProNormal, Arial, Verdana, sans-serif}

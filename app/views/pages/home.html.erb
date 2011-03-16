@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Pomodoro Crate - Agile time management based on the Pomodoro Technique</title>
+
+<%= render 'shared/meta_tags' %>
+
+<%= favicon_link_tag %>
+<%= csrf_meta_tag %>
+
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- styling -->
+<%= stylesheet_link_tag "http://reveloper.com/wp-content/themes/reveloper/html5reset.css" %>
+<%= stylesheet_link_tag "jquery.fancybox-1.3.4.css" %>
+<%= stylesheet_link_tag "web_fonts.css" %>
+<%= stylesheet_link_tag "styles.css" %>
+<!-- end styling -->
+
+<!--[if IE 7]>
+<%= stylesheet_link_tag "styles_ie7.css" %>
+<![endif]-->
+
+</head>
+<body>
+
+<div class="wrapper">
+	
+	<section id="content" class="longWrapper">
+		<div class="lineBg">
+			<h2 class="shortWrapper">About the Pomodoro Crate</h2>
+		</div>
+		
+		<div class="shortWrapper wideArticle">
+			<p>
+				Pomodoro Crate is a time management web application, based on the Pomodoro Technique. It comprises a full stack Pomodoro Technique implementation, covering all aspects, from Activity Inventory, to 
+				Today list, to Timer and Timed Breaks and Analytics.
+			</p>
+		</div>
+	</section>
+	
+	<section class="longWrapper">
+
+		<div class="lineBg">
+			<h2 class="shortWrapper">Features</h2>
+		</div>
+	
+		<div class="shortWrapper">
+
+			<article class="article firstArticle">
+				<a href="images/screen_activities.jpg" class="thumbnail" title="Activities - Put all your tasks and to dos in a safe and accessible place. Clear  your mind so that you can focus on getting things done." rel="features_set"><img src="images/thumb_activities.png" border="0"/></a>
+				<p><span>Activities.</span> Put all your tasks and to dos in a safe and accessible place. Clear  your mind so that you can focus on <em>getting things done</em>.</p>
+			</article>
+			
+			<article class="article">
+				<a href="images/screen_todo_today.jpg" class="thumbnail" title="Todo Today - Take control of your schedule. Pick the tasks you will be working on today and commit to doing them." rel="features_set"><img src="images/thumb_todo_today.png" border="0"/></a>
+				<p><span>Todo Today.</span> Take control of your schedule. Pick the tasks you will be working on today and commit to doing them.</p>
+			</article>
+			
+			<article class="article">
+				<a href="images/screen_timer.jpg" class="thumbnail" title="The Timer - User configurable timer with voice alerts and email notifications." rel="features_set"><img src="images/thumb_timer.png" border="0"/></a>
+				<p><span>The Timer.</span> User configurable timer with voice alerts and email notifications.</p>
+			</article>
+			
+			<article class="article">
+				<a href="images/screen_break.jpg" class="thumbnail" title="Timed Breaks - Alternate high focus periods with short relaxation breaks for maximum productivity." rel="features_set"><img src="images/thumb_break.png" border="0"/></a>
+				<p><span>Timed Breaks.</span> Alternate high focus periods with short relaxation breaks for maximum productivity.</p>
+			</article>
+
+			<article class="article firstArticle">
+				<a href="images/screen_projects.jpg" class="thumbnail" title="Projects - Group your activities into projects for easy tracking and filtering, GTD style." rel="features_set"><img src="images/thumb_project.png" border="0"/></a>
+				<p><span>Projects.</span> Group your activities into projects for easy tracking and filtering, GTD style.</p>
+			</article>
+			
+			<article class="article">
+				<a href="images/screen_analytics.jpg" class="thumbnail" title="Analytics - Track your progress and productivity to determine the areas where you need to improve." rel="features_set"><img src="images/thumb_analytics.png" border="0"/></a>
+				<p><span>Analytics.</span> Track your progress and productivity to determine the areas where you need to improve.</p>
+			</article>
+			
+			<article class="article">
+				<a href="images/screen_widgets.jpg" class="thumbnail" title="Widgets - Take advantage of the productivity boosting widgets that show you the daily status, upcoming deadlines and more." rel="features_set"><img src="images/thumb_widgets.png" border="0"/></a>
+				<p><span>The Timer.</span> User configurable timer with voice alerts and email notifications.</p>
+			</article>
+			
+			<article class="article">
+				<a href="images/screen_settings.jpg" class="thumbnail" title="Settings - Customize your workflow and augment your Pomodoros with audio and email notifications." rel="features_set"><img src="images/thumb_settings.png" border="0"/></a>
+				<p><span>Settings.</span> Customize your workflow and augment your Pomodoros with audio and email notifications.</p>
+			</article>
+
+		</div>
+
+	</section>
+
+	<header id="header" class="shortWrapper">
+
+		<nav class="menus">
+
+			<p><a href="#" id="logo" title="Pomodoro Crate">Pomodoro Crate</a></p>
+		
+			<menu id="mainMenu">
+				<li><a href="<%= root_path %>" title="Home">Home</a></li>
+				<li><a href="http://blog.pomodorocrate.com" title="The Pomodoro Crate Blog">Blog</a></li>
+				<li><a href="#" title="Get in touch!">Contact</a></li>
+			</menu>
+		
+			<ul id="loginMenu">
+				<li><a href="<%= signin_path %>" title="Go ahead and roll some Pomodoros">Sign In</a></li>
+			</ul>
+
+		</nav>
+
+		<div class="headerContent">
+			<p class="textHead1">Simply get more things done!</p>
+			<p class="textHead2">Boost your productivity and <br/>aleviate the anxiety of deadlines.</p>
+			<div class="promoText">
+				<p>Agile time management based on the <span>Pomodoro Technique</span>. Easy and <span>free</span>.</p>
+				<a href="<%= signup_path %>" title="Create your FREE Pomodoro Crate account and enjoy your newly found productivity" class="signUp">Sign Up</a>
+			</div>		
+		</div>
+	
+	</header>
+
+	<footer id="footer" class="longWrapper">
+
+		<div class="lineBg">
+				<h2 class="shortWrapper">The Pomodoro Technique &#0153;</h2>
+		</div>
+
+		<div class="shortWrapper">
+				<p class="article firstArticle doubleSizeArticle">The Pomodoro Technique® is a way to get the most out of time management. Turn time into a valuable ally to accomplish what we want to do and chart continuous improvement in the way we do it.</p>
+				<p class="article">Francesco Cirillo created the Pomodoro Technique® in the 1980s. It is now practiced by professional teams and individuals around the world.</p>
+				<p class="article noItalic">Check the official website: <br/><a href="http://www.pomodorocrate.com" title="Pomodoro Crate">http://www.pomodorocrate.com</p>
+		</div>
+
+	</footer>
+</div>
+<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js', 'jquery.fancybox-1.3.4.pack.js', 'jquery.easing-1.3.pack.js', 'static.js' %>
+
+</body>
+</html>

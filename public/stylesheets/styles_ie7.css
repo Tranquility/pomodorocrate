@@ -1,0 +1,9 @@
+#mainMenu, 
+#loginMenu {
+	padding-top:13px;
+}
+
+#mainMenu li a, 
+#loginMenu li a {
+	line-height:25px;
+}
