@@ -9,4 +9,8 @@ $(document).ready(function(){
 	$('.activity_toolbar_button').corner("3px");
 	$('.button').corner("3px");
 	$('.flash').corner("3px");
+	
+	$('#mainMenu li a').corner("10px");
+	$('#loginMenu li a').corner("10px");
+	$('#contact_form').corner("7px");
 })

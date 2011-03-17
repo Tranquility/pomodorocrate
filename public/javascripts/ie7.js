@@ -21,4 +21,12 @@ $(function(){
 	$('#analytics_filter_submit').css('height', '26px');
 	
 	$('#project_submit').css('width', '140px');
+	
+	
+	
+	$('#mainMenu').css('margin-top', '-8px');
+	$('#loginMenu').css('margin-top', '-8px');
+	$('.addthis_toolbox').css('margin-top', '-24px');
+	$('.addthis_counter').css('margin-top', '0px');
+	$('#features .article').height('260px');
 });
