@@ -24,6 +24,10 @@ Ketchup::Application.routes.draw do
   
   match '/help', :to => 'help#index'
   
+  #match '/contact', :to => 'contact#index'
+  #match '/contacts', :to => 'contact#index', :as => :contacts
+  resources :contacts
+  
   # static pages
   resources :pages
   match '/home', :to => 'pages#home'

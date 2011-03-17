@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Hi,</h1>
+    <p>
+      You have a new contact request from <%= @contact_request.name %> (<%= @contact_request.email %>)<br/>
+    </p>
+
+		<p>
+			<%= text_format(@contact_request.message) %>
+		</p>
+		
+		<p>
+			You can reply by writing at <%= mail_to(@contact_request.email, @contact_request.email) %> or by simply replying to this email.
+		</p>
+		
+		<p>
+			<hr />
+			==========================================================================<br/>
+			DEBUG INFO DUMP<br/>
+			==========================================================================<br/>
+			<%= sanitize @contact_request.debug_info %>
+		</p>
+  </body>
+</html>

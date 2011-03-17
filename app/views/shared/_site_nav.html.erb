@@ -1,0 +1,21 @@
+<nav class="menus">
+
+	<p><%= link_to 'Pomodoro Crate - Agile time management based on the Pomodoro Technique', root_path, :id => :logo, :title => 'Pomodoro Crate - Agile time management based on the Pomodoro Technique' -%></p>
+
+	<menu id="mainMenu">
+		<li><%= link_to 'Home', root_path -%></li>
+		<li><%= link_to 'Blog', "http://blog.pomodorocrate.com" -%></li>
+		<li><%= link_to 'Contact', contacts_path -%></li>
+	</menu>
+
+	<ul id="loginMenu">
+		<li>
+		<% if signed_in? %>
+			<%= link_to "Sign out", signout_path, :method => :delete %>
+		<% else %>
+			<%= link_to "Sign in", signin_path, :title => 'Go ahead and roll some Pomodoros' %>
+		<% end %>
+		</li>
+	</ul>
+
+</nav>

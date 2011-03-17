@@ -1,0 +1,52 @@
+<section class="group formContainer signUpForm" id="contact_form">
+	
+	<% if flash.length == 0 %>
+		<h6>Looking forward to hearing from you.</h6>
+	<% else %>
+		<h6>
+		<% flash.each do |key, value| %>
+			<strong><%= content_tag(:div, value, :class => "flash #{key}") %></strong>
+		<% end %>
+		</h6>
+	<% end %>
+	
+	<% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	
+	<%= form_for @contact do |f| %>
+	
+		<div class="field">
+	    <%= f.label :name %><br />
+	    <%= f.text_field :name %>
+	  </div>
+
+	  <div class="field">
+	    <%= f.label :email %><br />
+		  <%= f.text_field :email %>
+	  </div>
+
+		<div class="field">
+		  <%= f.label :message %><br />
+		  <%= f.text_area :message %>
+		</div>
+		
+		<div class="field recaptcha">
+			<%= recaptcha_tags %>
+		</div>
+
+	  <div class="actions">
+			<%= hidden_field_tag 'contact[debug_info]', debug(request.env).to_s %>
+	    <%= f.submit 'Contact us', :class => [:submit, :login] %>
+	  </div>
+	
+	<% end %>
+</section>

@@ -1,3 +1,4 @@
+# this one is used in the app, for feedback
 class ContactRequestsController < ApplicationController
 
   # GET /contact_requests

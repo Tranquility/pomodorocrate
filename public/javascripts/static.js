@@ -15,5 +15,17 @@ $(document).ready(function() {
 		'titlePosition' : 'outside'
 	});	
 	
+	$('input, select, textarea, submit, button, checkbox').focus(function() {
+		$(this).addClass("activeInput");
+	});
+	$('input, select, textarea, submit, button, checkbox').blur(function() {
+		$(this).removeClass("activeInput");
+	});
+	
+	if( $('.formContainer form input[type=text]').size() > 0 ) {
+		$('.formContainer form input[type=text]:first').focus();
+	} else {
+		$('.formContainer form textarea:first').focus();
+	}
 
 });
