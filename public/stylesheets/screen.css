@@ -288,7 +288,7 @@ a.button { 	color: #ef4832;
 	
 .pagination a { 	color: #fff; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 14px; text-decoration: none;
 			 						padding: 2px; }
-			.pagination a:hover { color: #000; text-decoration: none; }
+			.pagination a:hover { color: #E24630; text-decoration: none; }
 			
 a.toolbar_button { 	display: block; height: 24px; padding: 8px 0 0 36px; width: 92px;
 	 									background: url(../images/icon_add.png) 4px center no-repeat #858174;
@@ -424,3 +424,6 @@ section.help { 	background-color: #fff;
 	
 a.video_demo { color: #898989; font-family: MetaProBold, Arial, Verdana, sans-serif; font-weight: normal; text-decoration: none; }
 .ui-datepicker * { font-family: MetaProNormal, Arial, Verdana, sans-serif; font-weight: normal; }
+
+.pagination .disabled { font-family: MetaProNormal, Arial, Verdana, sans-serif; font-weight: normal; }
+	.pagination a { font-family: MetaProBold, Arial, Verdana, sans-serif; font-weight: normal; }
