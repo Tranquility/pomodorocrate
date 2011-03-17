@@ -27,6 +27,8 @@ function decreaseTimer() {
 	
 	if(currentTime <= 0){
 		
+		counting_in_progress = false;
+		
 		currentTime = 0;
 		$('.time').addClass('time_is_up');
 

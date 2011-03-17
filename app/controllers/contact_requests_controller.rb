@@ -1,5 +1,7 @@
 # this one is used in the app, for feedback
 class ContactRequestsController < ApplicationController
+  
+  before_filter :authenticate
 
   # GET /contact_requests
   # GET /contact_requests.xml

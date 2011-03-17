@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	
+	$('textarea').elastic();
 
 	$('.thumbnail').mouseenter(function() {
 		$(this).prepend('<div class="hoverArea"><div class="hoverIcon"></div></div>');

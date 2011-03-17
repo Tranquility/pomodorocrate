@@ -36,7 +36,7 @@
 			</nav>
 			<div class="widgetBox timer">
 			
-				<span class="time" data-seconds="<%= (@break.duration * 60) - ((Time.now - @break.created_at)).to_i %>"><%= @break.duration - ((Time.now - @break.created_at) / 60).to_i %></span>
+				<span class="time" data-seconds="<%= (@break.duration * 60) - ((Time.now - @break.created_at)).to_i %>"></span>
 				
 				<%= form_for(@break, :url => break_path(@break)) do |f| %>
 					<%= hidden_field_tag("break[completed]", true) %>
