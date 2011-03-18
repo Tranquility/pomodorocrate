@@ -9,7 +9,7 @@ class PomodorosController < ApplicationController
   end
   
   def edit
-    @pomodoro = Pomodoro.find(params[:id])
+    @pomodoro = Pomodoro.where(:user_id => current_user.id).find(params[:id])
   end
   
   def show

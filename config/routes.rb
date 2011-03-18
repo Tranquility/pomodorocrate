@@ -3,13 +3,14 @@ Ketchup::Application.routes.draw do
   match 'pomodoros/update_current_form' => 'pomodoros#update_current_form'
   match 'todotodays/save_sort'          => 'todotodays#save_sort'
 
-  resources :activities,  :pomodoros, :settings, :projects
-  resources :users #,       :except => [:show]
+  resources :activities, :settings, :projects
+  resources :pomodoros,   :except => [:index]
+  resources :users,       :except => [:index, :show, :destroy]
   resources :breaks,      :only => [:create, :update]
   resources :todotodays,  :only => [:index, :create, :destroy]
   resources :analytics,   :only => [:index]
   resources :sessions,    :only => [:new, :create, :destroy]
-  resources :contact_requests, :only => [:new, :create, :update, :show, :edit]
+  resources :contact_requests, :only => [:new, :create, :show]
   
   match 'activities/:id/clone'  => 'activities#clone',  :as => :clone_activity
   match '/reset_password'       => 'sessions#reset_password',    :as => :reset_password

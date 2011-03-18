@@ -38,6 +38,12 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
+    
+    if @user.id != current_user.id
+      flash[:error] = "Illegal access attempt."
+      redirect_to activities_path and return
+    end
+    
     @title = "Edit user"
   end
   
@@ -63,7 +69,15 @@ class UsersController < ApplicationController
   end
   
   def destroy
-    User.find(params[:id]).destroy
+    
+    @user = User.find(params[:id])
+    
+    if @user.id != current_user.id
+      flash[:error] = "Illegal access attempt."
+      redirect_to activities_path and return
+    end
+    
+    @user.destroy
     flash[:success] = "User destroyed."
     redirect_to users_path
   end

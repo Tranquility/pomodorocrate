@@ -62,7 +62,12 @@ class ActivitiesController < ApplicationController
 
   # GET /dummies/1/edit
   def edit
-    @activity = Activity.find(params[:id])
+    begin
+      @activity = Activity.where(:user_id => current_user.id).find(params[:id])
+    rescue
+      flash[:error] = "There is no activity with id #{params[:id]}"
+      redirect_to (activities_url) and return
+    end
   end
   
   # PUT /dummies/1

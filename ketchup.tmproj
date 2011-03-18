@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/views/pages/home.html.erb</string>
+	<string>app/views/layouts/static.html.erb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,28 +21,28 @@
 	<integer>398</integer>
 	<key>metaData</key>
 	<dict>
-		<key>app/views/pages/home.html.erb</key>
+		<key>app/views/layouts/static.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>7</integer>
+				<integer>9</integer>
 				<key>line</key>
-				<integer>39</integer>
+				<integer>53</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>22</integer>
+			<integer>0</integer>
 		</dict>
-		<key>app/views/shared/_footer.html.erb</key>
+		<key>app/views/pages/_addthis.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>46</integer>
+				<integer>2</integer>
 				<key>line</key>
-				<integer>13</integer>
+				<integer>2</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -54,9 +54,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>31</integer>
+				<integer>11</integer>
 				<key>line</key>
-				<integer>5</integer>
+				<integer>31</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -68,98 +68,97 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
+				<integer>90</integer>
+				<key>line</key>
+				<integer>9</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/views/widgets/_timed_break.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>108</integer>
+				<key>line</key>
+				<integer>38</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>config/asset_packages.yml</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>19</integer>
+				<key>line</key>
 				<integer>17</integer>
-				<key>line</key>
-				<integer>5</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>config/routes.rb</key>
+		<key>public/javascripts/application.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>25</integer>
+				<integer>30</integer>
 				<key>line</key>
-				<integer>79</integer>
+				<integer>29</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>31</integer>
-		</dict>
-		<key>public/javascripts/static.js</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>22</integer>
-				<key>line</key>
-				<integer>13</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>11</integer>
 		</dict>
 		<key>public/stylesheets/screen.css</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>53</integer>
+				<integer>33</integer>
 				<key>line</key>
-				<integer>34</integer>
+				<integer>290</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>6</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>7</integer>
-				<key>line</key>
-				<integer>34</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>53</integer>
-				<key>line</key>
-				<integer>34</integer>
-			</dict>
+			<integer>86</integer>
 		</dict>
 		<key>public/stylesheets/styles.css</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>16</integer>
+				<integer>76</integer>
 				<key>line</key>
-				<integer>243</integer>
+				<integer>487</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>200</integer>
+			<integer>431</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
+		<string>public/javascripts/application.js</string>
+		<string>app/views/widgets/_timed_break.html.erb</string>
 		<string>app/views/shared/_header.html.erb</string>
-		<string>app/views/shared/_footer.html.erb</string>
-		<string>app/views/shared/_meta_tags.html.erb</string>
-		<string>app/views/pages/home.html.erb</string>
 		<string>public/stylesheets/styles.css</string>
+		<string>app/views/shared/_meta_tags.html.erb</string>
+		<string>app/views/layouts/static.html.erb</string>
+		<string>app/views/pages/_addthis.html.erb</string>
 		<string>public/stylesheets/screen.css</string>
-		<string>public/javascripts/static.js</string>
-		<string>config/routes.rb</string>
+		<string>config/asset_packages.yml</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
@@ -242,6 +241,13 @@
 									<dict/>
 								</dict>
 								<key>contact_requests</key>
+								<dict>
+									<key>isExpanded</key>
+									<true/>
+									<key>subItems</key>
+									<dict/>
+								</dict>
+								<key>contacts</key>
 								<dict>
 									<key>isExpanded</key>
 									<true/>
@@ -356,6 +362,13 @@
 							<key>subItems</key>
 							<dict/>
 						</dict>
+						<key>initializers</key>
+						<dict>
+							<key>isExpanded</key>
+							<true/>
+							<key>subItems</key>
+							<dict/>
+						</dict>
 					</dict>
 				</dict>
 				<key>db</key>
@@ -400,6 +413,21 @@
 									<dict/>
 								</dict>
 							</dict>
+						</dict>
+					</dict>
+				</dict>
+				<key>vendor</key>
+				<dict>
+					<key>isExpanded</key>
+					<true/>
+					<key>subItems</key>
+					<dict>
+						<key>plugins</key>
+						<dict>
+							<key>isExpanded</key>
+							<true/>
+							<key>subItems</key>
+							<dict/>
 						</dict>
 					</dict>
 				</dict>
