@@ -9,11 +9,10 @@ class ActivitiesController < ApplicationController
   def index
     @activities = Activity.paginate :page => params[:page], :conditions => search_conditions
     
-    #@orders = Order.paginate(:all,
-    #:order => 'orders.created_at',
-    #:page => params[:page],
-    #:conditions => search_conditions,
-    #:joins => :user)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @activities }
+    end
   end
   
   # GET /dummies/1

@@ -149,7 +149,7 @@ nav .name img {margin: 0 4px -5px 0}
 .ui-datepicker-trigger {height: 24px; margin-bottom: -8px; width: 24px}
 table.punymce {width: 99%}
 a.external {color: #30B1FF; padding: 2px}
-a.external:hover {background: #30B1FF; color: #fff; text-decoration: none}
+a.external:hover {background: #30B1FF; color: #fff; text-decoration: none; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px}
 .standard_shadow {text-shadow: 1px 1px 0px #333}
 .boxShadow {-moz-box-shadow: 0px 0px 15px -3px #333;  -webkit-box-shadow: 0px 0px 15px -3px #333;  box-shadow: 0px 0px 15px -3px #333;  -moz-border-radius-bottomright: 10px; border-bottom-right-radius: 10px; -moz-border-radius-bottomleft: 10px; border-bottom-left-radius: 10px}
 .infoBar a {color: #e3533e; font-family: MetaProNormal, Arial, Verdana, sans-serif; padding: 2px}

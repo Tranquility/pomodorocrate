@@ -7,7 +7,12 @@ class UsersController < ApplicationController
   def new
     @title = "Sign up"
     @user = User.new
-    render :layout => "login"
+    
+    #render :layout => "login"
+    respond_to do |format|
+      format.html { render :layout => "login" }
+      format.xml  { render :xml => @user }
+    end
   end
   
   def index
@@ -22,17 +27,27 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @user.account = Account.find_by_name("beta") # hard coded beta
+    @user.admin = false # block privilege escalation - no need for admins yet
+    
     if @user.save
-      
       UserMailer.new_account_confirmation_email(@user).deliver
       
-      sign_in @user
-      flash[:success] = "Welcome to Pomodoro Crate!"
-      redirect_to edit_user_path(@user)
-      #redirect_to user_confirm_path
+      respond_to do |format|
+        format.html { 
+          sign_in @user
+          flash[:success] = "Welcome to Pomodoro Crate!"
+          redirect_to edit_user_path(@user)
+        }
+        format.xml  { render :xml => @user, :status => :created, :location => @user }
+      end
     else
-      @title = 'Sign up'
-      render 'new', :layout => "login"
+      respond_to do |format|
+        format.html { 
+          @title = 'Sign up'
+          render 'new', :layout => "login"
+        }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
     end
   end
   
@@ -49,6 +64,7 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
+    # @user.admin = false # block privilege escalation - no need for admins yet
     
     if @user.id != current_user.id
       flash[:error] = "Illegal access attempt."

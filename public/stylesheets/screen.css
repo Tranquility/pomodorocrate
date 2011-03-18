@@ -251,7 +251,8 @@ table.punymce { width: 99%; }
 
 a.external { 	color: #30B1FF;
 	 						padding: 2px; }
-	a.external:hover { background: #30B1FF; color: #fff; text-decoration: none; }
+	a.external:hover { 	background: #30B1FF; color: #fff; text-decoration: none;
+		 									-moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; }
 	
 .standard_shadow { text-shadow: 1px 1px 0px #333; }
 		

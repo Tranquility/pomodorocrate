@@ -4,7 +4,7 @@ Ketchup::Application.routes.draw do
   match 'todotodays/save_sort'          => 'todotodays#save_sort'
 
   resources :activities, :settings, :projects
-  resources :pomodoros,   :except => [:index]
+  resources :pomodoros,   :except => [:index, :edit, :new, :show]
   resources :users,       :except => [:index, :show, :destroy]
   resources :breaks,      :only => [:create, :update]
   resources :todotodays,  :only => [:index, :create, :destroy]
@@ -32,6 +32,9 @@ Ketchup::Application.routes.draw do
   # static pages
   resources :pages
   match '/home', :to => 'pages#home'
+  
+  # restful api
+  # match '/analytics/render_complete_pomodoros/:start_date/:end_date', :to => 'analytics#render_complete_pomodoros'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
