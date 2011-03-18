@@ -20,7 +20,7 @@
 		<tr>
 			<th scope="col">Worked time (hours)</th>
 			<% ( @start_date..(@end_date -1.day) ).each do |d| %>
-				<td class="values"><%= @worked_time[d.to_s].blank? ? 0 : (@worked_time[d.to_s] / 60).round %></td>
+				<td class="values"><%= @worked_time[d.to_s].blank? ? 0 : (@worked_time[d.to_s] / 60) %></td>
 			<% end %>
 		</tr>
 	</tbody>
