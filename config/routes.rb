@@ -35,6 +35,8 @@ Ketchup::Application.routes.draw do
   
   # restful api
   # match '/analytics/render_complete_pomodoros/:start_date/:end_date', :to => 'analytics#render_complete_pomodoros'
+  resources :apikeys, :only => [:create, :destroy]
+  match '/apikeys', :to => 'apikeys#destroy'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

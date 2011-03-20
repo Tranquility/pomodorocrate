@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110314210147) do
+ActiveRecord::Schema.define(:version => 20110318203823) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -55,6 +55,11 @@ ActiveRecord::Schema.define(:version => 20110314210147) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "debug_info"
+  end
+
+  create_table "contacts", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "pomodoros", :force => true do |t|
@@ -124,8 +129,10 @@ ActiveRecord::Schema.define(:version => 20110314210147) do
     t.integer  "long_break_length",   :default => 25
     t.integer  "account_id"
     t.boolean  "tick_tack_sound",     :default => false
+    t.string   "api_key"
   end
 
+  add_index "users", ["api_key"], :name => "index_users_on_api_key", :unique => true
   add_index "users", ["confirmation_hash"], :name => "index_users_on_confirmation_hash"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_hash"], :name => "index_users_on_reset_password_hash"

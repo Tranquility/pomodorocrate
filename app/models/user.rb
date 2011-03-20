@@ -13,7 +13,7 @@
 class User < ActiveRecord::Base
   
   attr_accessor :password, :settings_page
-  attr_accessible :name, :email, :password, :password_confirmation, :confirmation_hash, :reset_password_hash, :time_zone, :email_notifications, :voice_notifications, :pomodoro_length, :short_break_length, :long_break_length, :account_id, :tick_tack_sound
+  attr_accessible :name, :email, :password, :password_confirmation, :confirmation_hash, :reset_password_hash, :time_zone, :email_notifications, :voice_notifications, :pomodoro_length, :short_break_length, :long_break_length, :account_id, :tick_tack_sound, :api_key
   
   has_many :projects,   :dependent => :destroy
   has_many :activities, :dependent => :destroy
@@ -71,6 +71,30 @@ class User < ActiveRecord::Base
   def make_reset_password_hash
     self.reset_password_hash = encrypt(email)
   end
+  
+  # api key
+  def enable_api!
+    self.generate_api_key!
+  end
+
+  def disable_api!
+    self.update_attribute(:api_key, nil)
+  end
+
+  def api_is_enabled?
+    !(self.api_key.nil? || self.api_key.empty?)
+  end
+  # end api key
+  
+  protected
+
+    def s_digest(*args)
+      Digest::SHA1.hexdigest(args.flatten.join('--'))
+    end
+
+    def generate_api_key!
+      self.update_attribute(:api_key, s_digest(Time.now, (1..10).map{ rand.to_s }))
+    end
 
   private
   
@@ -83,6 +107,8 @@ class User < ActiveRecord::Base
     end
 
     def encrypt_password
+      return encrypted_password if (password.nil? or password.empty?)
+      
       self.salt = make_salt if new_record?
       self.encrypted_password = encrypt(password)
     end

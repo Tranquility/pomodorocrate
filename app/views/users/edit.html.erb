@@ -69,6 +69,24 @@
 		    <%= f.text_field :long_break_length, :class => :numeric %>
 		  </div>
 		</section>
+		
+		<h6>API Key</h6>
+		<section id="api_key">
+			<% if @user.api_is_enabled? %>
+		    <div class="field" id="api_key">
+			    <%= f.label :api_key %><br />
+			    <%= f.text_field :api_key, :readonly => :true %>
+			  </div>
+				<div class="field">
+					<%= link_to "Regenerate API key", apikeys_path, :method => :post, :class => :button %> | <%= link_to "Disable API acccess", apikeys_path, :method => :delete, :class => :button %>
+				</div>
+			<% else %>
+				<div class="field">
+				    <label>You'll need a unique key to make calls to the API.  Remember to keep this key a secret as it can be used to access your account.</label>
+				    <%= link_to("Get a key", apikeys_path, :method => :post, :class => :button) %>
+				</div>
+			<% end %>
+		</section>
 	
 		<h6>Account type</h6>
 		<section id="account_type">

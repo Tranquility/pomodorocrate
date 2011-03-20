@@ -6,7 +6,7 @@ module SessionsHelper
   end
   
   def current_user
-    @current_user ||= user_from_remember_token
+    @current_user ||= (user_from_remember_token or login_from_api_key)
   end
   
   def current_user=(user)
@@ -40,6 +40,10 @@ module SessionsHelper
 
     def user_from_remember_token
       User.authenticate_with_salt(*remember_token)
+    end
+    
+    def login_from_api_key
+      User.find_by_api_key(params[:api_key]) unless (params[:api_key].nil? or params[:api_key].empty?)
     end
 
     def remember_token

@@ -106,7 +106,7 @@ aside {float: right; margin-bottom: 12px; padding: 1px; width: 233px; background
 .past {color: red; font-family: MetaProNormal, Arial, Verdana, sans-serif}
 .present {font-family: MetaProNormal, Arial, Verdana, sans-serif}
 .future {font-family: MetaProNormal, Arial, Verdana, sans-serif}
-.pageContainer {background: #fff; padding: 6px 12px}
+.pageContainer {background: #fff; padding: 6px 12px; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 14px}
 .withSeparator {border-top: 2px solid #E7E7E7}
 .widgetBox .actionsBar {clear: both; height: 6px; margin-top: 20px}
 .widgetBox .actionsBar li a {margin-left: 6px}

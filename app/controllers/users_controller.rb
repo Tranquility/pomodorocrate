@@ -59,7 +59,7 @@ class UsersController < ApplicationController
       redirect_to activities_path and return
     end
     
-    @title = "Edit user"
+    @title = "Settings"
   end
   
   def update
