@@ -162,7 +162,7 @@ a.button {color: #ef4832; padding: 2px; font-family: MetaProNormal, Arial, Verda
 a.button:hover {background: #A39E89; color: #fff; text-decoration: none; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px}
 .pagination a {color: #fff; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 14px; text-decoration: none; padding: 2px}
 .pagination a:hover {color: #E24630; text-decoration: none}
-a.toolbar_button {display: block; height: 24px; padding: 8px 0 0 36px; width: 92px; background: url(../images/icon_add.png) 4px center no-repeat #858174; color: #e4dfbf; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 11px; letter-spacing: 1px; text-decoration: none; text-transform: uppercase; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px}
+a.toolbar_button {display: block; height: 24px; padding: 8px 0 0 36px; width: 105px; background: url(../images/icon_add.png) 4px center no-repeat #858174; color: #e4dfbf; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 11px; letter-spacing: 1px; text-decoration: none; text-transform: uppercase; text-align: center; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px}
 a.toolbar_button:hover {background-color: #7a776a; color: #ece2c3}
 #activityFilter {background: #fff; color: #a39e89; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 11px; text-transform: uppercase}
 .clear_me {float: left; margin-right: 30px}
