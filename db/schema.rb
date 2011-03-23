@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110318203823) do
+ActiveRecord::Schema.define(:version => 20110322155824) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -28,11 +28,17 @@ ActiveRecord::Schema.define(:version => 20110318203823) do
     t.datetime "updated_at"
     t.integer  "project_id"
     t.integer  "user_id"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.boolean  "event_type",          :default => false
   end
 
   add_index "activities", ["completed"], :name => "index_activities_on_completed"
   add_index "activities", ["deadline"], :name => "index_activities_on_deadline"
+  add_index "activities", ["end_at"], :name => "index_activities_on_end_at"
+  add_index "activities", ["event_type"], :name => "index_activities_on_event_type"
   add_index "activities", ["project_id"], :name => "index_activities_on_project_id"
+  add_index "activities", ["start_at"], :name => "index_activities_on_start_at"
   add_index "activities", ["user_id"], :name => "index_activities_on_user_id"
 
   create_table "breaks", :force => true do |t|

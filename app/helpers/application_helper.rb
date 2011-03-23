@@ -59,5 +59,11 @@ module ApplicationHelper
     return @title unless @title.nil?
     request.path_parameters[:controller].capitalize
   end
+  
+  def hms_format(datetime, seconds = false)
+    dts = DateTime.parse(datetime.to_s) 
+    output = (dts.hour < 10 ? '0' << dts.hour.to_s : dts.hour).to_s << ":" << (dts.minute < 10 ? '0' << dts.minute.to_s : dts.minute).to_s
+    #output << (dts.second < 10 ? '0' << dts.second : dts.second) if seconds
+  end
 
 end

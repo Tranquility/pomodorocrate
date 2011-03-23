@@ -16,6 +16,7 @@ gem 'taps'
 gem 'activesupport'
 gem 'high_voltage'
 gem 'recaptcha', :require => 'recaptcha/rails' #, :git => 'git://github.com/ambethia/recaptcha.git'
+gem 'event-calendar', :require => 'event_calendar'
 
 #gem 'validatable'
 #gem 'scoped_search'

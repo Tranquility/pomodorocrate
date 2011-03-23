@@ -34,6 +34,10 @@
 			<li>PROJECT: <%= a.project.nil? ? "none" : link_to(a.project.name, a.project) %></li>
 			<li class="clear_me"><%= raw a.completed ? "Completed" : "DUE AT: #{due_at_status a.deadline}" %></li>
 			<li>CREATED AT: <%= a.created_at.to_date.to_s(:rfc822) %></li>
+			<% if a.event_type? %>
+				<li class="clear_me">START AT: <%= hms_format a.start_at %></li>
+				<li>END AT: <%= hms_format a.end_at %></li>
+			<% end %>
 		</ul>
 
 		<ul class="actionsBar">

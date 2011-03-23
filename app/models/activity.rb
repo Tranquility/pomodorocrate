@@ -16,12 +16,14 @@
 
 class Activity < ActiveRecord::Base
   
+  has_event_calendar
+  
   has_one     :todotoday, :dependent => :destroy
   has_many    :pomodoros, :dependent => :destroy
   belongs_to  :project
   belongs_to  :user
   
-  attr_accessible :name, :description, :estimated_pomodoros, :deadline, :completed, :project_id
+  attr_accessible :name, :description, :estimated_pomodoros, :deadline, :completed, :project_id, :start_at, :end_at, :event_type
   
   validates :name,  :presence => true,
                     :length => { :maximum => 100 }
@@ -31,8 +33,11 @@ class Activity < ActiveRecord::Base
   validates :user,    :presence => true
   validate  :deadline_can_not_be_in_the_past
   validate  :user_must_own_project
+  validate  :start_at_must_be_smaller_than_end_at, :if => :event_type?
   
   default_scope :order => "activities.completed ASC, activities.deadline ASC"
+  
+  before_save :prepare_calendar_dates
   
   cattr_reader :per_page
   @@per_page = 40
@@ -44,5 +49,19 @@ class Activity < ActiveRecord::Base
   def user_must_own_project
     errors.add(:project, "is not valid") unless ( self.project.user_id == user_id )
   end
+  
+  def start_at_must_be_smaller_than_end_at
+    errors.add(:end_at, "must be after Start at") if ( start_at >= end_at )
+  end
+  
+  private
+  
+    def prepare_calendar_dates
+      start_at = start_at.nil? ? DateTime.parse( Date.today.to_s ) : self.start_at.to_datetime
+      start_at = DateTime.parse( "#{deadline.year}-#{deadline.month}-#{deadline.day} #{start_at.hour}:#{start_at.minute}")
+      
+      end_at = end_at.nil? ? DateTime.parse( Date.today.to_s ) : self.end_at.to_datetime
+      end_at = DateTime.parse( "#{deadline.year}-#{deadline.month}-#{deadline.day} #{end_at.hour}:#{end_at.minute}")
+    end
   
 end

@@ -3,6 +3,7 @@
 		<li <%= is_current_page?(:activities) ? 'class=active' : '' %>><%= link_to "Activities", activities_path, :class => "tabs"%></li>
 		<li <%= is_current_page?(:todotodays) ? 'class=active' : '' %>><%= link_to "Todo Today", todotodays_path, :class => "tabs"%></li>
 		<li <%= is_current_page?(:projects) ? 'class=active' : '' %>><%= link_to "Projects", projects_path, :class => "tabs"%></li>
+		<li <%= is_current_page?(:calendar) ? 'class=active' : '' %>><%= link_to "Calendar", calendar_path, :class => "tabs"%></li>
 		<li <%= is_current_page?(:analytics) ? 'class=active' : '' %>><%= link_to "Analytics", analytics_path, :class => "tabs"%></li>
 	</ul>
 </nav>

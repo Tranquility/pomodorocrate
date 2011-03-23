@@ -34,6 +34,21 @@
 	</div>
 	
 	<div class="field">
+	  <%= f.label 'Appointment (time schedule)' %><br />
+	  <%= f.check_box :event_type %>
+	</div>
+	
+	<div class="field schedule <%= @activity.event_type ? '' : ' inactive' %>">
+	  <%= f.label :start_at %><br />
+	  <%= f.time_select :start_at %>
+	</div>
+	
+	<div class="field schedule <%= @activity.event_type ? '' : ' inactive' %>">
+	  <%= f.label :end_at %><br />
+	  <%= f.time_select :end_at %>
+	</div>
+	
+	<div class="field">
 	  <%= f.label :project %><br />
 	  <%= collection_select(:activity, :project_id, Project.where(:user_id => current_user, :completed => false), :id, :name) %>
 	</div>

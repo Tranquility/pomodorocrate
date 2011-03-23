@@ -373,6 +373,14 @@ function playTickTack() {
 
 $(function(){
 	if(tick_tack_sound && counting_in_progress) playTickTack();
+	
+	$('#activity_event_type').click(function(){
+		if( $('#activity_event_type').is(':checked') ) {
+			$('.schedule').removeClass('inactive');
+		} else {
+			$('.schedule').addClass('inactive');
+		}
+	});
 })
 
 function playTestSound() {

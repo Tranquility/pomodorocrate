@@ -5,7 +5,7 @@ class AddApiKeyToUsers < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column :users, :api_key
     remove_index :users, :api_key
+    remove_column :users, :api_key
   end
 end

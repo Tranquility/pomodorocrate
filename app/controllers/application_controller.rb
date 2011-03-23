@@ -35,6 +35,8 @@ class ApplicationController < ActionController::Base
       @today_remaining_pomodoros += (difference < 0 ? 0 : difference)
     end
     @today_completed_pomodoros = Pomodoro.successful_and_completed.where("date(pomodoros.created_at) = '#{Date.today}' AND user_id = ?", current_user.id).count
+    
+    @upcoming_appointments = Activity.where(:user_id => current_user.id, :completed => false).where("deadline >= '#{Time.now.midnight}'").where(:event_type => true).order("activities.start_at ASC").limit(5)
   end
   
   def mailer_set_url_options

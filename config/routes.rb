@@ -1,5 +1,7 @@
 Ketchup::Application.routes.draw do
 
+  match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+
   match 'pomodoros/update_current_form' => 'pomodoros#update_current_form'
   match 'todotodays/save_sort'          => 'todotodays#save_sort'
 
