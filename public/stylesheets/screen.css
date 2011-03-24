@@ -447,5 +447,6 @@ a.video_demo { color: #898989; font-family: MetaProBold, Arial, Verdana, sans-se
 	
 .inactive { display: none; }
 
-.ec-event-bg a.activityCompleted { color: #333 !important; }
+.ec-event-bg a { color: #000 !important; }
+.ec-event-bg a.activityCompleted { color: #555 !important; }
 .ec-event-cell a.activityCompleted { text-decoration: line-through; }

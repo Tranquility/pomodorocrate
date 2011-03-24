@@ -24,6 +24,7 @@ class Activity < ActiveRecord::Base
   belongs_to  :user
   
   attr_accessible :name, :description, :estimated_pomodoros, :deadline, :completed, :project_id, :start_at, :end_at, :event_type
+  attr_accessor :color
   
   validates :name,  :presence => true,
                     :length => { :maximum => 100 }
@@ -57,11 +58,11 @@ class Activity < ActiveRecord::Base
   private
   
     def prepare_calendar_dates
-      start_at = start_at.nil? ? DateTime.parse( Date.today.to_s ) : self.start_at.to_datetime
-      start_at = DateTime.parse( "#{deadline.year}-#{deadline.month}-#{deadline.day} #{start_at.hour}:#{start_at.minute}")
+      self.start_at = self.start_at.nil? ? DateTime.parse( Date.today.to_s ) : self.start_at.to_datetime
+      self.start_at = DateTime.parse( "#{self.deadline.year}-#{self.deadline.month}-#{self.deadline.day} #{self.start_at.hour}:#{self.start_at.minute}")
       
-      end_at = end_at.nil? ? DateTime.parse( Date.today.to_s ) : self.end_at.to_datetime
-      end_at = DateTime.parse( "#{deadline.year}-#{deadline.month}-#{deadline.day} #{end_at.hour}:#{end_at.minute}")
+      self.end_at = self.end_at.nil? ? DateTime.parse( Date.today.to_s ) : self.end_at.to_datetime
+      self.end_at = DateTime.parse( "#{self.deadline.year}-#{self.deadline.month}-#{self.deadline.day} #{self.end_at.hour}:#{self.end_at.minute}")
     end
   
 end

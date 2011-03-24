@@ -243,7 +243,8 @@ a.video_demo {color: #898989; font-family: MetaProBold, Arial, Verdana, sans-ser
 .two_on_row {float: left; width: 540px}
 .two_on_row.first {width: 142px}
 .inactive {display: none}
-.ec-event-bg a.activityCompleted {color: #333 !important}
+.ec-event-bg a {color: #000 !important}
+.ec-event-bg a.activityCompleted {color: #555 !important}
 .ec-event-cell a.activityCompleted {text-decoration: line-through}
  .visualize {border: 1px solid #888; position: relative; background: #fafafa}
 .visualize canvas {position: absolute}
