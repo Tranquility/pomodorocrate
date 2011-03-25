@@ -345,13 +345,13 @@ function playTickTack() {
 	}
 	
 	if( soundType ) {
-		audio = new Audio(sound_file + soundType);
-		$(audio).attr('preload', 'auto');
-		$(audio).bind('ended', function() {
+		ticktack = new Audio(sound_file + soundType);
+		$(ticktack).attr('preload', 'auto');
+		$(ticktack).bind('ended', function() {
 			if(counting_in_progress) this.play();
 		});
 		
-		$(audio)[0].play();
+		$(ticktack)[0].play();
 	} else {
 		soundManager.onready(function() {
 			var mySound = soundManager.createSound({
