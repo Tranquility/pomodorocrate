@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110324100257) do
+ActiveRecord::Schema.define(:version => 20110325151917) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20110324100257) do
     t.datetime "start_at"
     t.datetime "end_at"
     t.boolean  "event_type",          :default => false
+    t.boolean  "unplanned",           :default => false
   end
 
   add_index "activities", ["completed"], :name => "index_activities_on_completed"
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20110324100257) do
   add_index "activities", ["event_type"], :name => "index_activities_on_event_type"
   add_index "activities", ["project_id"], :name => "index_activities_on_project_id"
   add_index "activities", ["start_at"], :name => "index_activities_on_start_at"
+  add_index "activities", ["unplanned"], :name => "index_activities_on_unplanned"
   add_index "activities", ["user_id"], :name => "index_activities_on_user_id"
 
   create_table "breaks", :force => true do |t|

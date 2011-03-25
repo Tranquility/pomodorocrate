@@ -1,0 +1,1 @@
+<%= (current_user.pomodoro_length * 60) - ((Time.now - @pomodoro.created_at)).to_i %>

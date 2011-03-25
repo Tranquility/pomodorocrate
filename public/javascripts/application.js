@@ -12,6 +12,7 @@ played_sounds[0] = false;
 
 var clock_audio;
 var counting_in_progress = false;
+var time_since_server_time_read = 0;
 
 $(document).ready(function(){
 	
@@ -48,6 +49,7 @@ function decreaseTimer() {
 		setTimeout("decreaseTimer()", 1000);
 		counting_in_progress = true;
 		
+		refreshTimeFromServer();
 	}
 	
 	minutes = parseInt(currentTime / 60);
@@ -73,6 +75,24 @@ function decreaseTimer() {
 		}
 	}
 	
+}
+
+function refreshTimeFromServer() {
+	time_since_server_time_read++;
+	// bring time from server every minute (60 seconds), cause javascript is not precise enough
+	if( time_since_server_time_read >= 60 ) {
+		
+		$.ajax({
+			type: "GET",
+			url: base_url + "pomodoros/get_time_from_server",
+			dataType: "text/html",
+			success: function(html){
+				$(".timer .time").attr("data-seconds", html);
+			}
+		});
+		
+		time_since_server_time_read = 0;
+	}
 }
 
 function announceTimeLeft(minutes) {

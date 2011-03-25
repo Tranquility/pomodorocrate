@@ -14,7 +14,11 @@
 		<%= render "completed_pomodoros_vs_worked_time" %>
 	<% end %>
 	
-	<% if @complete_pomodoros.empty? and @void_pomodoros.empty? %>
+	<% unless @planned_activities.empty? and @unplanned_activities.empty? %>
+		<%= render "planned_activities_vs_unplanned_activities" %>
+	<% end %>
+	
+	<% if @complete_pomodoros.empty? and @void_pomodoros.empty? and @planned_activities.empty? and @unplanned_activities.empty? %>
 		<p class="pageContainer">
 			You have no data to process.
 		</p>

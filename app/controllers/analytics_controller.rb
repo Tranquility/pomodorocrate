@@ -19,6 +19,10 @@ class AnalyticsController < ApplicationController
     @estimated_pomodoros = self.estimated_pomodoros(current_user, @start_date..@end_date)
     
     @worked_time = self.worked_time(current_user, @start_date..@end_date)
+    
+    @planned_activities = self.planned_activities(current_user, @start_date..@end_date)
+    @unplanned_activities = self.unplanned_activities(current_user, @start_date..@end_date)
+    
   end
   
   def render_complete_pomodoros
@@ -45,6 +49,14 @@ class AnalyticsController < ApplicationController
     
     def worked_time(current_user, created_at)
       Pomodoro.where(:user_id => current_user.id, :completed => true, :successful => true, :created_at => created_at).group("date(pomodoros.created_at)").sum(:duration)
+    end
+    
+    def planned_activities(current_user, created_at)
+      Activity.where(:user_id => current_user.id, :unplanned => false, :created_at => created_at).count(:group => "date(activities.created_at)")
+    end
+    
+    def unplanned_activities(current_user, created_at)
+      Activity.where(:user_id => current_user.id, :unplanned => true, :created_at => created_at).count(:group => "date(activities.created_at)")
     end
 
 end

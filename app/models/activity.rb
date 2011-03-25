@@ -23,7 +23,7 @@ class Activity < ActiveRecord::Base
   belongs_to  :project
   belongs_to  :user
   
-  attr_accessible :name, :description, :estimated_pomodoros, :deadline, :completed, :project_id, :start_at, :end_at, :event_type
+  attr_accessible :name, :description, :estimated_pomodoros, :deadline, :completed, :project_id, :start_at, :end_at, :event_type, :unplanned
   attr_accessor :color
   
   validates :name,  :presence => true,

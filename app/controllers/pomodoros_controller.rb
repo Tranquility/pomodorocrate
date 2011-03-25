@@ -77,4 +77,13 @@ class PomodorosController < ApplicationController
     end
   end
   
+  # GET /pomodoros/get_time_from_server
+  def get_time_from_server    
+    @pomodoro = Pomodoro.where( :completed => nil, :user_id => current_user.id ).first
+    
+    respond_to do |format|
+      format.html { render :layout => false }
+    end
+  end
+  
 end

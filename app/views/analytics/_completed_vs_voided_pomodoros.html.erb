@@ -18,7 +18,7 @@
 			<% end %>
 		</tr>
 		<tr>
-			<th scope="col">Void</th>
+			<th scope="col">Voided</th>
 			<% (@start_date..@end_date).each do |d| %>
 				<td class="values"><%= @void_pomodoros[d.to_s].blank? ? 0 : @void_pomodoros[d.to_s] %></td>
 			<% end %>
