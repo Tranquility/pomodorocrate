@@ -1,0 +1,28 @@
+<table class="analytics pie bar">
+	<caption>Internal interruptions / external interruptions - last <%= ((@end_date -1.day) - @start_date).to_i %> days</caption>
+	
+	<thead>
+		<tr>
+			<td></td>
+			<% ( @start_date..(@end_date -1.day) ).each_with_index do |d, index| %>
+				<th scope="row"><%= (@graph_interval > 20 and index % 5 != 0) ? '' : d.to_date.to_s(:rfc822) %></th>
+			<% end %>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr>
+			<th scope="col">Internal</th>
+			<% (@start_date..@end_date).each do |d| %>
+				<td class="values"><%= @internal_interruptions[d.to_s].blank? ? 0 : @internal_interruptions[d.to_s] %></td>
+			<% end %>
+		</tr>
+		<tr>
+			<th scope="col">External</th>
+			<% ( @start_date..(@end_date -1.day) ).each do |d| %>
+				<td class="values"><%= @external_interruptions[d.to_s].blank? ? 0 : @external_interruptions[d.to_s] %></td>
+			<% end %>
+		</tr>
+	</tbody>
+	
+</table>

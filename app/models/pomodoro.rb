@@ -16,6 +16,7 @@ class Pomodoro < ActiveRecord::Base
   
   belongs_to :activity
   belongs_to :user
+  has_many  :interruptions, :dependent => :destroy
   
   attr_accessible :activity_id, :successful, :comments, :completed, :user_id, :duration
   

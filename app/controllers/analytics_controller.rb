@@ -13,16 +13,18 @@ class AnalyticsController < ApplicationController
     @start_date = @graph_interval.days.ago.to_date
     @end_date = Date.tomorrow
     
-    @complete_pomodoros = self.complete_pomodoros(current_user, @start_date..@end_date)
-    @void_pomodoros = self.void_pomodoros(current_user, @start_date..@end_date)
+    @complete_pomodoros = self.complete_pomodoros(current_user, @start_date..@end_date, true)
+    @void_pomodoros = self.complete_pomodoros(current_user, @start_date..@end_date, false)
     
     @estimated_pomodoros = self.estimated_pomodoros(current_user, @start_date..@end_date)
     
     @worked_time = self.worked_time(current_user, @start_date..@end_date)
     
-    @planned_activities = self.planned_activities(current_user, @start_date..@end_date)
-    @unplanned_activities = self.unplanned_activities(current_user, @start_date..@end_date)
+    @planned_activities = self.activities(current_user, @start_date..@end_date, false)
+    @unplanned_activities = self.activities(current_user, @start_date..@end_date, true)
     
+    @internal_interruptions = self.interruptions(current_user, @start_date..@end_date, :internal)
+    @external_interruptions = self.interruptions(current_user, @start_date..@end_date, :external)
   end
   
   def render_complete_pomodoros
@@ -35,12 +37,8 @@ class AnalyticsController < ApplicationController
   
   protected
     
-    def complete_pomodoros(current_user, created_at)
-      Pomodoro.where(:user_id => current_user.id, :completed => true, :successful => true, :created_at => created_at).count(:group => "date(pomodoros.created_at)")
-    end
-    
-    def void_pomodoros(current_user, created_at)
-      Pomodoro.where(:user_id => current_user.id, :completed => true, :successful => false, :created_at => created_at).count(:group => "date(pomodoros.created_at)")
+    def complete_pomodoros(current_user, created_at, successful)
+      Pomodoro.where(:user_id => current_user.id, :completed => true, :successful => successful, :created_at => created_at).count(:group => "date(pomodoros.created_at)")
     end
     
     def estimated_pomodoros(current_user, updated_at)
@@ -51,12 +49,12 @@ class AnalyticsController < ApplicationController
       Pomodoro.where(:user_id => current_user.id, :completed => true, :successful => true, :created_at => created_at).group("date(pomodoros.created_at)").sum(:duration)
     end
     
-    def planned_activities(current_user, created_at)
-      Activity.where(:user_id => current_user.id, :unplanned => false, :created_at => created_at).count(:group => "date(activities.created_at)")
+    def activities(current_user, created_at, unplanned)
+      Activity.where(:user_id => current_user.id, :unplanned => unplanned, :created_at => created_at).count(:group => "date(activities.created_at)")
     end
     
-    def unplanned_activities(current_user, created_at)
-      Activity.where(:user_id => current_user.id, :unplanned => true, :created_at => created_at).count(:group => "date(activities.created_at)")
+    def interruptions(current_user, created_at, kind)
+      Interruption.where(:user_id => current_user.id, :kind => kind, :created_at => created_at).count(:group => "date(interruptions.created_at)")
     end
 
 end

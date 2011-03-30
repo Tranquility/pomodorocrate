@@ -18,6 +18,10 @@
 		<%= render "planned_activities_vs_unplanned_activities" %>
 	<% end %>
 	
+	<% unless @internal_interruptions.empty? and @external_interruptions.empty? %>
+		<%= render "internal_interruptions_vs_external_interruptions" %>
+	<% end %>
+	
 	<% if @complete_pomodoros.empty? and @void_pomodoros.empty? and @planned_activities.empty? and @unplanned_activities.empty? %>
 		<p class="pageContainer">
 			You have no data to process.

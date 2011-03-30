@@ -14,6 +14,7 @@ Ketchup::Application.routes.draw do
   resources :analytics,   :only => [:index]
   resources :sessions,    :only => [:new, :create, :destroy]
   resources :contact_requests, :only => [:new, :create, :show]
+  resources :interruptions, :only => [:create]
   
   match 'activities/:id/clone'  => 'activities#clone',  :as => :clone_activity
   match '/reset_password'       => 'sessions#reset_password',    :as => :reset_password

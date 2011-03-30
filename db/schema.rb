@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110325151917) do
+ActiveRecord::Schema.define(:version => 20110329125448) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -69,6 +69,16 @@ ActiveRecord::Schema.define(:version => 20110325151917) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "interruptions", :force => true do |t|
+    t.string   "kind"
+    t.integer  "pomodoro_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "interruptions", ["user_id"], :name => "index_interruptions_on_user_id"
 
   create_table "pomodoros", :force => true do |t|
     t.integer  "activity_id"

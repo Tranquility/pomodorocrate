@@ -246,6 +246,13 @@ a.video_demo {color: #898989; font-family: MetaProBold, Arial, Verdana, sans-ser
 .ec-event-bg a {color: #000 !important}
 .ec-event-bg a.activityCompleted {color: #555 !important}
 .ec-event-cell a.activityCompleted {text-decoration: line-through}
+#interruptions .interruptions_types {height: 79px; width: 116px; background-color: #fff;}
+#interruptions h6 {text-align: center}
+#externalInterruptions {float: right; margin-top: -79px}
+#internalInterruptions {border-right: 1px solid #918C77}
+.interruption_button {display: block; float: left; height: 30px; margin: 6px; overflow: hidden; padding: 4px; width: 30px; background: url("../images/icon_add.png") no-repeat center center #858174; text-indent: -999px; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px}
+.interruption_button:hover {background-color: #7A776A}
+.interruptions_count {display: block; float: left; height: 30px; margin: 6px; overflow: hidden; padding: 4px; width: 46px; color: #A39E89; font-family: MetaPlusMediumCapsRegular, Arial, Verdana, sans-serif; font-size: 40px; line-height: 32px; text-align: center}
  .visualize {border: 1px solid #888; position: relative; background: #fafafa}
 .visualize canvas {position: absolute}
 .visualize ul,.visualize li {margin: 0; padding: 0;}

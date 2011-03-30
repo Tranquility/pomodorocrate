@@ -29,10 +29,10 @@
 						<ul class="actionsBar">
 							<li><%= link_to("Show", activity_path(a), :class => :button) %></li>
 							<li><%= link_to("Clone", clone_activity_path(:id => a.id), :class => :button) %></li>
-							<% if @pomodoro.nil? and !a.todotoday.nil? %>
+							<% if @pomodoro.nil? and !a.todotoday.nil? and !a.completed %>
 								<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => :button) %></li>
 							<% end %>
-							<% if a.todotoday.nil? %>
+							<% if a.todotoday.nil? and !a.completed %>
 								<li><%= link_to("Do Today", todotodays_path(:activity_id => a), :method => :post, :class => :button) %></li>
 							<% end %>
 						</ul>

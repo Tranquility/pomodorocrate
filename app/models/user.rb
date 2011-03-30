@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :activities, :dependent => :destroy
   has_many :todotodays, :dependent => :destroy
   has_many :pomodoros,  :dependent => :destroy
+  has_many :interruptions, :dependent => :destroy
 
   belongs_to :account
   

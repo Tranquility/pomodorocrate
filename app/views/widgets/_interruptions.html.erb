@@ -1,0 +1,27 @@
+<% unless @pomodoro.nil? %>
+<aside>
+	
+	<section id="interruptions" class="contentBoxNav">
+		<nav>
+			<ul>
+				<li class="active"><a href="#" class="tabs">Interruptions</a></li>
+			</ul>
+		</nav>
+		<div class="widgetBox">
+			<section class="group">
+				<div id="internalInterruptions" class="interruptions_types">
+					<h6>Internal</h6>
+					<%= link_to("[+] Add internal interruption", interruptions_path(:kind => :internal), :method => :post, :class => :interruption_button, :title => 'Add internal interruption', :remote => true) %>
+					<span class="interruptions_count" id="internal_count"><%= (@pomodoro.interruptions.nil? or @pomodoro.interruptions.blank?) ? 0 : @pomodoro.interruptions.find_all_by_kind(:internal).count %></span>
+				</div>
+				<div id="externalInterruptions" class="interruptions_types">
+					<h6>External</h6>
+					<%= link_to("[+] Add external interruption", interruptions_path(:kind => :external), :method => :post, :class => :interruption_button, :title => 'Add external interruption', :remote => true) %>
+					<span class="interruptions_count" id="external_count"><%= (@pomodoro.interruptions.nil? or @pomodoro.interruptions.blank?) ? 0 : @pomodoro.interruptions.find_all_by_kind(:external).count %></span>
+				</div>
+			</section>
+		</div>
+	</section>
+	
+</aside>
+<% end %>

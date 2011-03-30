@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
   
   def setup_widgets
-    @pomodoro = Pomodoro.where( :completed => nil, :user_id => current_user.id ).first
+    @pomodoro = Pomodoro.where( :completed => nil, :user_id => current_user.id ).last
     @break = Break.where( :user_id => current_user.id, :completed => nil ).first
     
     if Rails.env.production? and ActiveRecord::Base.configurations[Rails.env]['adapter'] == :postgresql
