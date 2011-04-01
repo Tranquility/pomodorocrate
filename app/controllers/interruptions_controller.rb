@@ -14,7 +14,7 @@ class InterruptionsController < ApplicationController
     end
     
     pomodoro = Pomodoro.where( :completed => nil, :user_id => current_user.id ).last
-    @interruption = Interruption.new( :kind => params[:kind], :pomodoro_id => pomodoro.id, :user_id => current_user )
+    @interruption = Interruption.new( :kind => params[:kind], :pomodoro_id => pomodoro.id, :user_id => current_user.id )
 
     respond_to do |format|
       if @interruption.save
@@ -23,7 +23,7 @@ class InterruptionsController < ApplicationController
         
         format.js   {  }
         format.html {
-          flash[:success] = The #{@interruption.kind} interruption has been recorded."
+          flash[:success] = "The #{@interruption.kind} interruption has been recorded."
           redirect_to(todotodays_path)
         }
         format.xml  { render :xml => @interruption, :status => :created, :location => @interruption }
