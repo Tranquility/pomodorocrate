@@ -486,3 +486,5 @@ label {
 .activeInput { outline: 1px solid #898989 !important; }
 
 .promoText .signUp:hover { background: url("../images/header_promo_btn_hover.png") no-repeat scroll left top transparent; }
+
+.addthis_button_facebook_like { margin-top: -6px; }
