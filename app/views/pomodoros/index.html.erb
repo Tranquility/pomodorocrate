@@ -1,3 +1,28 @@
-<p class="pageContainer">
-	Pomodoros
-</p>
+<% unless @pomodoros.empty? %>
+<ul id="pomodorosList">
+	<li class="pomodorosListTitle">
+		<div>Pomodoros history</div>
+	</li>
+	<% @pomodoros.each do |pomodoro| %>
+		<li>
+			<div>
+				<div class="pomodoroQuickView">
+					<div class="pomodoroActivityName">
+						<%= content_tag_for( :span, pomodoro, :class => (pomodoro.successful ? 'pomodoroSuccessful' : 'pomodoroVoided') ) do %>
+							<% # pomodoro.activity.name %>
+							<span class="pomodoroDate">
+								<%= Date.today == pomodoro.created_at.to_date ? 'Today' : distance_of_time_in_words(Date.today, pomodoro.created_at.to_date) + " ago" %> - <%= pomodoro.created_at.to_date.to_s(:rfc822) %>, <%= pomodoro.created_at.to_time.strftime("%I:%M%p") %>
+							</span>
+						<% end %>
+						<% in_progress_marker(@pomodoro, pomodoro.activity) %>
+					</div>
+				</div>
+			</div>
+
+			<div class="pomodoroDetailsView">
+				<%= text_format(pomodoro.comments) %>
+			</div>
+		</li>
+	<% end %>
+</ul>
+<% end %>

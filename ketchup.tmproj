@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/models/activity.rb</string>
+	<string>public/stylesheets/styles.css</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -175,6 +175,34 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>public/stylesheets/screen.css</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>154</integer>
+				<key>line</key>
+				<integer>464</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>408</integer>
+		</dict>
+		<key>public/stylesheets/styles.css</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>46</integer>
+				<key>line</key>
+				<integer>489</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>433</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
@@ -183,6 +211,8 @@
 		<string>app/helpers/activities_helper.rb</string>
 		<string>app/controllers/application_controller.rb</string>
 		<string>app/models/activity.rb</string>
+		<string>public/stylesheets/screen.css</string>
+		<string>public/stylesheets/styles.css</string>
 		<string>config/routes.rb</string>
 		<string>config/database.yml</string>
 		<string>app/controllers/todotodays_controller.rb</string>

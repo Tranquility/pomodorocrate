@@ -173,6 +173,7 @@ a.toolbar_button:hover {background-color: #7a776a; color: #ece2c3}
 .edit {background: url(../images/icon_edit.png) 8px center no-repeat #b4b09f}
 .delete {background: url(../images/icon_delete.png) 8px center no-repeat #b4b09f}
 .clone {background: url(../images/icon_clone.png) 8px center no-repeat #b4b09f; padding-left: 36px}
+.pomodoros_count {background: url(../images/icon_pomodoro.png) 8px center no-repeat #b4b09f; padding-left: 30px}
 li.completed_task, li.completed_project {background-color: #f5f3ea}
 #currentPomodoroForm .field {padding: 2px 14px 8px 14px}
 #currentPomodoroForm .field label {}
@@ -253,6 +254,16 @@ a.video_demo {color: #898989; font-family: MetaProBold, Arial, Verdana, sans-ser
 .interruption_button {display: block; float: left; height: 30px; margin: 6px; overflow: hidden; padding: 4px; width: 30px; background: url("../images/icon_add.png") no-repeat center center #858174; text-indent: -999px; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px}
 .interruption_button:hover {background-color: #7A776A}
 .interruptions_count {display: block; float: left; height: 30px; margin: 6px; overflow: hidden; padding: 4px; width: 46px; color: #A39E89; font-family: MetaPlusMediumCapsRegular, Arial, Verdana, sans-serif; font-size: 40px; line-height: 32px; text-align: center}
+.pomodoroActivityName .pomodoro {font-family: MetaProBold, Arial, Verdana, sans-serif; font-weight: normal}
+.pomodoroActivityName .pomodoro .pomodoroDate {font-family: MetaProNormal, Arial, Verdana, sans-serif; font-weight: normal; text-transform: capitalize}
+.pomodoroActivityName .pomodoro.pomodoroVoided {color: #EF4832}
+#pomodorosList {list-style: none; margin: 6px 0 0 -2px; max-height: 300px; overflow: auto; border: 0px solid #918C77}
+#pomodorosList .pomodoroActivityName {color: #787465; width: 600px; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-weight: normal; font-size: 11px}
+#pomodorosList .pomodoroDetailsView, #pomodorosList .pomodoroDetailsView li {font-size: 11px}
+.pomodoroInfoBar {margin: 0; padding: 0; list-style: none}
+.pomodoroInfoBar li {padding: 0}
+.pomodorosListTitle {background-color: #E5E2D2 !important}
+.pomodorosListTitle div {color: #827D6A; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 14px}
  .visualize {border: 1px solid #888; position: relative; background: #fafafa}
 .visualize canvas {position: absolute}
 .visualize ul,.visualize li {margin: 0; padding: 0;}

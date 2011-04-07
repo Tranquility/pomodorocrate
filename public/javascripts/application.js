@@ -171,10 +171,10 @@ $(document).ready(function(){
 	$('#content .activityName').click(function(){
 		
 		if( $(this).parent().parent().parent().hasClass("opened") ) {
-			$(this).parent().parent().parent().find('.detailsView').toggle().parent().toggleClass("opened");
+			$(this).parent().parent().parent().find('.detailsView').toggle().parent().removeClass("opened");
 		} else {
-			$('.opened').find('.detailsView').toggle().parent().toggleClass("opened");
-			$(this).parent().parent().parent().find('.detailsView').toggle().parent().toggleClass("opened");
+			$('.opened').find('.detailsView').toggle().parent().removeClass("opened");
+			$(this).parent().parent().parent().find('.detailsView').toggle().parent().addClass("opened");
 			
 			if( $('li[data-activity]').length > 0 ) {
 				window.location.hash = $(this).parent().parent().parent().attr('data-activity');
@@ -188,6 +188,13 @@ $(document).ready(function(){
 	} else if( $('li[data-activity]').size() > 0 ) {
 		$( 'li[data-activity="' + window.location.hash.replace("#", '') + '"] .activityName' ).click();
 	}
+	
+	$(".pomodoros_count")
+   .bind("ajax:success", function(event, data, status, xhr) {
+		if( $('#pomodorosList').length > 0 ) $('#pomodorosList').remove();
+		$(this).parent().parent().after( data );
+   });
+	
 })
 
 // formattings

@@ -7,7 +7,7 @@ Ketchup::Application.routes.draw do
   match 'todotodays/save_sort'          => 'todotodays#save_sort'
 
   resources :activities, :settings, :projects
-  resources :pomodoros,   :except => [:index, :edit, :new, :show]
+  resources :pomodoros,   :except => [:edit, :new, :show]
   resources :users,       :except => [:index, :show, :destroy]
   resources :breaks,      :only => [:create, :update]
   resources :todotodays,  :only => [:index, :create, :destroy]

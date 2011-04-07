@@ -57,6 +57,9 @@
 				<li><%= link_to("Delete", a, :confirm => "Are you sure?", :method => :delete, :class => [:activity_toolbar_button, :delete]) %></li>
 			<% end %>
 			<li><%= link_to("Clone", clone_activity_path(:id => a.id), :class => [:activity_toolbar_button, :clone]) %></li>
+			<% if (count = a.pomodoros.count) > 0 %>
+				<li><%= link_to("#{pluralize(count, 'pomodoro')}", pomodoros_path(:activity => a.id), :class => [:activity_toolbar_button, :pomodoros_count], :remote => true) %></li>
+			<% end %>
 		</ul>
 	</div>
 </li>

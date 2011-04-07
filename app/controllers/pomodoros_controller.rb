@@ -6,6 +6,13 @@ class PomodorosController < ApplicationController
   include BreaksHelper
   
   def index
+    @pomodoros = Pomodoro.where(:user_id => current_user.id, :activity_id => params[:activity]).order("created_at DESC")
+    
+    respond_to do |format|
+      unless @pomodoros.empty? 
+        format.html { render :layout => false }
+      end
+    end
   end
   
   def edit
