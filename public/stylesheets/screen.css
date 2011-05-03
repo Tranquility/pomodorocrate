@@ -53,6 +53,7 @@ a.top_nav { color: #c4bca2; font-family: MetaProNormal, Arial, sans-serif; font-
 																														border: 0; margin-left: 10px; padding: 4px; width: 120px;
 																														font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 14px; text-transform: none; }
 			.toolbar form select { max-width: 240px; min-width: 120px; width: auto; }
+			.toolbar form input[type=text] { width: 250px; }
 																
 input.submit { 	background: #fff; color: #ef4832; cursor: pointer; font-size: 12px; font-weight: bold; 
 				border: 0; padding: 2px 14px; }
@@ -202,7 +203,7 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 	
 .activeInput { outline: 1px solid #898989 !important; }
 
-#activityFilter label { margin-left: 16px;
+#activityFilter label { margin-left: 16px; 
 	 											font-family: MetaProBold, Arial, Verdana, sans-serif; }
 
 #timedBreak .widgetBox { 	background-color: #a39e89;
@@ -298,7 +299,13 @@ a.toolbar_button { 	display: block; height: 24px; padding: 8px 0 0 36px; width: 
 										-moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; }
 	a.toolbar_button:hover { background-color: #7a776a; color: #ece2c3; }
 	
-#activityFilter { background: #fff; color: #a39e89; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 11px; text-transform: uppercase; }
+#activityFilter, #activityFilterAnalytics { background: #fff; color: #a39e89; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 11px; text-transform: uppercase;
+	 																					height: 144px; }
+	#activityFilter #title, #activityFilterAnalytics #title { font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 14px; }
+	#activityFilter .row, #activityFilterAnalytics .row { margin-top: 6px; }
+		#activityFilter .row.submit_row, #activityFilterAnalytics .row.submit_row { margin: 10px; }
+	
+	#activityFilterAnalytics { height: 110px; }
 
 .clear_me { float: left; margin-right: 30px; }
 
@@ -481,3 +488,36 @@ a.video_demo { color: #898989; font-family: MetaProBold, Arial, Verdana, sans-se
 
 	.pomodorosListTitle { background-color: #E5E2D2 !important; }
 		.pomodorosListTitle div { color: #827D6A; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 14px; }
+		
+/* autocomplete */
+.ui-autocomplete { 	max-height: 100px; overflow-y: auto;
+										/* prevent horizontal scrollbar */
+										overflow-x: hidden;
+										/* add padding to account for vertical scrollbar */
+										padding-right: 20px;
+}
+
+	/* IE 6 doesn't support max-height
+	 * we use height instead, but this forces the menu to always be this tall
+	 */
+* html .ui-autocomplete { height: 100px; }
+
+/* quickclear */
+.clearBtnContainer { position:relative;	display:inline-block; }
+.clearButton { position:absolute; right: 5px; top: 8px; cursor:pointer; }
+
+.toggable { 	padding-right: 20px;
+	 						cursor: pointer; }
+.expandable { background: url(../images/expand.png) center right no-repeat; }
+.collapsable 	{ background: url(../images/collapse.png) center right no-repeat; }
+
+.collapsed_toolbar { height: 34px !important; overflow: hidden; }
+
+#activityFilterAnalytics #q_project { margin-left: 40px; margin-right: 10px; }
+
+.quick_stats table { width: 100%; }
+.quick_stats table th { font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 14px; text-align: center;
+	 											background-color: #A39E89; color: #fff; }
+.quick_stats table td { font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 16px; text-align: center; 
+												background-color: #E5E2D2; color: #A39E89;
+	 											padding: 0 4px;}

@@ -18,6 +18,7 @@ Ketchup::Application.routes.draw do
   
   match 'activities/:id/clone'  => 'activities#clone',  :as => :clone_activity
   match '/reset_password'       => 'sessions#reset_password',    :as => :reset_password
+  
   match '/email_reset_password'  => 'users#email_reset_password',    :as => :email_reset_password
   match '/edit_password'        => 'users#edit_password',   :as => :edit_password
   #match 'users/confirm'         => 'users#confirm',     :as => :confirm_user
@@ -28,6 +29,10 @@ Ketchup::Application.routes.draw do
   match '/signout', :to => 'sessions#destroy', :as => :signout
   
   match '/help', :to => 'help#index'
+  
+  get "tags/user_tags"
+  get "tags/activity_tags"
+  get "tags/project_tags"
   
   #match '/contact', :to => 'contact#index'
   #match '/contacts', :to => 'contact#index', :as => :contacts

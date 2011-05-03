@@ -53,6 +53,7 @@ a.top_nav:hover {background: #4e4b41; color: #ece2c3; text-shadow: 1px 1px 0px #
 .toolbar form {padding: 7px 10px}
 .toolbar form input[type=text], .toolbar form select {background: #E5E2D2; color: #6B685D; border: 0; margin-left: 10px; padding: 4px; width: 120px; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 14px; text-transform: none}
 .toolbar form select {max-width: 240px; min-width: 120px; width: auto}
+.toolbar form input[type=text] {width: 250px}
 input.submit {background: #fff; color: #ef4832; cursor: pointer; font-size: 12px; font-weight: bold; border: 0; padding: 2px 14px}
 section.group {}
 section.group h6, .visualize-title {background: #e5e2d2; color: #827d6a; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 17px; border-top: 1px solid #c8c5b7; border-bottom: 1px solid #c8c5b7; padding: 0 0 1px 10px}
@@ -164,7 +165,11 @@ a.button:hover {background: #A39E89; color: #fff; text-decoration: none; -moz-bo
 .pagination a:hover {color: #E24630; text-decoration: none}
 a.toolbar_button {display: block; height: 24px; padding: 8px 0 0 36px; width: 105px; background: url(../images/icon_add.png) 4px center no-repeat #858174; color: #e4dfbf; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 11px; letter-spacing: 1px; text-decoration: none; text-transform: uppercase; text-align: center; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px}
 a.toolbar_button:hover {background-color: #7a776a; color: #ece2c3}
-#activityFilter {background: #fff; color: #a39e89; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 11px; text-transform: uppercase}
+#activityFilter, #activityFilterAnalytics {background: #fff; color: #a39e89; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 11px; text-transform: uppercase; height: 144px}
+#activityFilter #title, #activityFilterAnalytics #title {font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 14px}
+#activityFilter .row, #activityFilterAnalytics .row {margin-top: 6px}
+#activityFilter .row.submit_row, #activityFilterAnalytics .row.submit_row {margin: 10px}
+#activityFilterAnalytics {height: 110px}
 .clear_me {float: left; margin-right: 30px}
 .activity_toolbar_button {color: #f4f4ee; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 12px; font-weight: normal; text-decoration: none; text-transform: uppercase; padding: 4px 10px 4px 28px; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px;  }
 .activity_toolbar_button:hover {background-color: #9a9788}
@@ -264,6 +269,18 @@ a.video_demo {color: #898989; font-family: MetaProBold, Arial, Verdana, sans-ser
 .pomodoroInfoBar li {padding: 0}
 .pomodorosListTitle {background-color: #E5E2D2 !important}
 .pomodorosListTitle div {color: #827D6A; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 14px}
+ .ui-autocomplete {max-height: 100px; overflow-y: auto;  overflow-x: hidden;  padding-right: 20px}
+ * html .ui-autocomplete {height: 100px}
+ .clearBtnContainer {position:relative; display:inline-block}
+.clearButton {position:absolute; right: 5px; top: 8px; cursor:pointer}
+.toggable {padding-right: 20px; cursor: pointer}
+.expandable {background: url(../images/expand.png) center right no-repeat}
+.collapsable {background: url(../images/collapse.png) center right no-repeat}
+.collapsed_toolbar {height: 34px !important; overflow: hidden}
+#activityFilterAnalytics #q_project {margin-left: 40px; margin-right: 10px}
+.quick_stats table {width: 100%}
+.quick_stats table th {font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 14px; text-align: center; background-color: #A39E89; color: #fff}
+.quick_stats table td {font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 16px; text-align: center; background-color: #E5E2D2; color: #A39E89; padding: 0 4px;}
  .visualize {border: 1px solid #888; position: relative; background: #fafafa}
 .visualize canvas {position: absolute}
 .visualize ul,.visualize li {margin: 0; padding: 0;}

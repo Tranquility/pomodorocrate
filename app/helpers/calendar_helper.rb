@@ -1,6 +1,6 @@
 module CalendarHelper
   def month_link(month_date)
-    link_to(I18n.localize(month_date, :format => "%B"), {:month => month_date.month, :year => month_date.year}, :class => :button)
+    link_to(I18n.localize(month_date, :format => "%B"), url_for({:month => month_date.month, :year => month_date.year, :q_name => params[:q_name], :q_project => params[:q_project], :q_tags => params[:q_tags], :q_completed => params[:q_completed] }), :class => :button)
   end
   
   # custom options for this calendar

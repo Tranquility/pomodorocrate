@@ -2,6 +2,8 @@
 
 <section class="group">
 	
+	<%= render "quick_status" %>
+	
 	<% unless @complete_pomodoros.empty? and @void_pomodoros.empty? %>
 		<%= render "completed_vs_voided_pomodoros" %>
 	<% end %>

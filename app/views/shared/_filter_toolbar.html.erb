@@ -1,26 +1,35 @@
-<div class="toolbar" id="activityFilter">
-	
-	<%= form_tag(activities_path, :method => "get") do %>
-		Filter by:
-		
-	  <%= label_tag(:q_name, "Activity.") %>
-	  <%= text_field_tag(:q_name, params[:q_name]) %>
-		
-	  <%= label_tag(:q_project, "Project:") %>
-		<% 
-		projects = [["..Any..", "__none__"]] 
-		Project.where("user_id = ?", current_user).where(:completed => false).each do |p|
-			projects << [p.name, p.id]
-		end
-		%>
-	  <%= select_tag(:q_project, options_for_select(projects, params[:q_project])) %>
-		
-		<%
-		#label_tag(:q_deadline, "Deadline.")
-	  #text_field_tag(:q_deadline, params[:q_deadline]) 
-		%>
+<span id="title" class="toggable expandable">Filter </span>
 
-	  <%= submit_tag("Filter", :class => [:submit, :filter]) %>
-	<% end %>
+<div class="row">
+	<%= label_tag(:q_name, "Activity.") %>
+	<%= text_field_tag(:q_name, params[:q_name]) %>
+
+	<%= label_tag(:q_project, "Project:") %>
+	<% 
+	projects = [["..Any..", "__none__"]] 
+	Project.where("user_id = ?", current_user).where(:completed => false).each do |p|
+		projects << [p.name, p.id]
+	end
+	%>
+  <%= select_tag(:q_project, options_for_select(projects, params[:q_project])) %>
+</div>
+
+<div class="row">
+	<%= label_tag(:q_tags, "Tags.") %>
+	<%= text_field_tag(:q_tags, params[:q_tags]) %>
+
+	<%= label_tag(:q_completed, "Completed:") %>
 	
+	<%= label_tag(:q_completed, "No") %>
+	<%= radio_button_tag :q_completed, 'No', (params[:q_completed] == 'No') %>
+	
+	<%= label_tag(:q_completed, "Yes") %>
+	<%= radio_button_tag :q_completed, 'Yes', (params[:q_completed] == 'Yes') %>
+	
+	<%= label_tag(:q_completed, "All") %>
+	<%= radio_button_tag :q_completed, 'All', (params[:q_completed] == 'All' or params[:q_completed].nil?) %>
+</div>
+
+<div class="row submit_row">
+	<%= submit_tag("Filter", :class => [:submit, :filter]) %>
 </div>

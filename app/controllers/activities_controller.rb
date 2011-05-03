@@ -7,7 +7,11 @@ class ActivitiesController < ApplicationController
   # GET /dummies
   # GET /dummies.xml
   def index
-    @activities = Activity.paginate :page => params[:page], :conditions => search_conditions
+    if params[:q_tags] and params[:q_tags] != 'Tags.' and !params[:q_tags].blank? 
+      @activities = Activity.find_tagged_with(params[:q_tags]).paginate :page => params[:page], :conditions => search_conditions
+    else
+      @activities = Activity.paginate :page => params[:page], :conditions => search_conditions
+    end
     
     respond_to do |format|
       format.html # index.html.erb

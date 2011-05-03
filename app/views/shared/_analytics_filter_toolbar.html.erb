@@ -1,15 +1,34 @@
-<div class="toolbar" id="activityFilter">
+<div class="toolbar collapsed_toolbar" id="activityFilterAnalytics">
 	
 	<%= form_tag(analytics_path, :method => "get") do %>
-		Filter by:
+		<span id="title" class="toggable expandable">Filter </span>
 		
-	  <%= label_tag(:q_interval, "Time interval:") %>
-		<% 
-		intervals = [["7 days", "7"], ["30 days", "30"]] 
-		%>
-	  <%= select_tag(:q_interval, options_for_select(intervals, params[:q_interval])) %>
-
-	  <%= submit_tag("Filter", :class => [:submit, :filter], :id => :analytics_filter_submit) %>
+		<div class="row">
+			
+	  	<%= label_tag(:q_interval, "Time interval:") %>
+			<% 
+			intervals = [["Since yesterday", "1"], ["7 days", "7"], ["30 days", "30"]] 
+			%>
+		  <%= select_tag(:q_interval, options_for_select(intervals, params[:q_interval])) %>
+		
+			<%= label_tag(:q_tags, "Tags.") %>
+	  	<%= text_field_tag(:q_tags, params[:q_tags]) %>
+		
+		</div>
+		
+		<div class="row">
+			<%= label_tag(:q_project, "Project:") %>
+			<% 
+			projects = [["..Any..", "__none__"]] 
+			Project.where("user_id = ?", current_user).where(:completed => false).each do |p|
+				projects << [p.name, p.id]
+			end
+			%>
+		  <%= select_tag(:q_project, options_for_select(projects, params[:q_project])) %>
+		
+			<%= submit_tag("Filter", :class => [:submit, :filter], :id => :analytics_filter_submit) %>
+		</div>
+		
 	<% end %>
 	
 </div>

@@ -19,6 +19,9 @@ $(document).ready(function(){
 	soundManager.url = base_url + 'swf';
 	$('textarea').elastic();
 	
+	$('#activityFilter input[type=text]').quickClear();
+	$('#activityFilterAnalytics input[type=text]').quickClear();
+	
 	// setup pomodoro timer
 	decreaseTimer();
 });
@@ -105,43 +108,50 @@ function announceTimeLeft(minutes) {
 		sound_file = base_url + "sounds/text-to-speech/" + (parseInt(minutes) +1) + ".";
 		if(minutes == 0 && $('#pomodoro_submit[value="Complete"]').length == 0) {
 			sound_file = base_url + "sounds/text-to-speech/0.";
+			
+			ring_file = base_url + "sounds/clocks/alarm_clock.";
+			playAudioFile(ring_file)
 		} 
 		
-		//console.log(sound_file);
-		soundType = "";
-		if($.support.audio.ogg) {
-			soundType = "ogg"
-		} else if($.support.audio.mp3) {
-			soundType = "mp3"
-		}
+		playAudioFile(sound_file);
 		
-		if( soundType ) {
-			audio = new Audio(sound_file + soundType);
-			audio.play();
-		} else {
-			soundManager.onready(function() {
-				var mySound = soundManager.createSound({
-			  	id: 'sound_' + minutes,
-			  	url: sound_file + 'mp3'
-				});
-				try {
-					mySound.play('sound_' + minutes, {
-						onfinish: function() {
-							this.destruct();
-						}
-					});
-				} catch(e) {
-					
-				}
-			})
-		}
-	
 		played_sounds[minutes] = true;
 	} else {
 		//console.log(minutes);
 		//console.log(played_sounds[minutes]);
 		//console.log(played_sounds[minutes]);
 		//console.log("moo");
+	}
+}
+
+function playAudioFile(sound_file) {
+	//console.log(sound_file);
+	soundType = "";
+	if($.support.audio.ogg) {
+		soundType = "ogg"
+	} else if($.support.audio.mp3) {
+		soundType = "mp3"
+	}
+	
+	if( soundType ) {
+		audio = new Audio(sound_file + soundType);
+		audio.play();
+	} else {
+		soundManager.onready(function() {
+			var mySound = soundManager.createSound({
+		  	id: 'sound_' + minutes,
+		  	url: sound_file + 'mp3'
+			});
+			try {
+				mySound.play('sound_' + minutes, {
+					onfinish: function() {
+						this.destruct();
+					}
+				});
+			} catch(e) {
+				
+			}
+		})
 	}
 }
 
@@ -201,6 +211,7 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$('.field_with_errors').parent().addClass("container_of_field_with_errors");
 	$('#activityFilter input[type=text]').inline_label();
+	$('#activityFilterAnalytics input[type=text]').inline_label();
 	$('#pomodoro_comments').inline_label();
 	$('input, select, textarea, submit, button, checkbox').focus(function() {
 		$(this).addClass("activeInput");
@@ -208,7 +219,23 @@ $(document).ready(function(){
 	$('input, select, textarea, submit, button, checkbox').blur(function() {
 		$(this).removeClass("activeInput");
 	});
-})
+	
+	$('#activityFilter .row, #activityFilterAnalytics .row').hide();
+	
+	$('#activityFilter .toggable, #activityFilterAnalytics .toggable').click(function(){
+		if ( $(this).hasClass('expandable') ) {
+			$(this).addClass('collapsable');
+			$(this).removeClass('expandable');
+			$('#activityFilter, #activityFilterAnalytics').removeClass('collapsed_toolbar');
+			$('#activityFilter .row, #activityFilterAnalytics .row').show();
+		} else {
+			$(this).addClass('expandable');
+			$(this).removeClass('collapsable');
+			$('#activityFilter, #activityFilterAnalytics').addClass('collapsed_toolbar');
+			$('#activityFilter .row, #activityFilterAnalytics .row').hide();
+		}
+	});
+});
 
 // graphs
 // Run the script on DOM ready:
@@ -291,7 +318,59 @@ $( function(){
 			$(this).removeClass('breakButtonHover');
 		}
 	);
-})
+	
+	/* $("#activity_tag_list").autoSuggest( base_url + 'tags/user_tags' ); */
+});
+
+// tags auto-complete
+$(function() {
+	function split( val ) {
+		return val.split( /,\s*/ );
+	}
+	
+	function extractLast( term ) {
+		return split( term ).pop();
+	}
+
+	$( "#activity_tag_list, #q_tags" )
+		// don't navigate away from the field on tab when selecting an item
+		.bind( "keydown", function( event ) {
+			if ( event.keyCode === $.ui.keyCode.TAB &&
+					$( this ).data( "autocomplete" ).menu.active ) {
+				event.preventDefault();
+			}
+		})
+		
+		.autocomplete({
+			source: function( request, response ) {
+				$.getJSON( base_url + 'tags/user_tags', {
+					term: extractLast( request.term )
+				}, response );
+			},
+			search: function() {
+				// custom minLength
+				var term = extractLast( this.value );
+				if ( term.length < 2 ) {
+					return false;
+				}
+			},
+			focus: function() {
+				// prevent value inserted on focus
+				return false;
+			},
+			select: function( event, ui ) {
+				var terms = split( this.value );
+				// remove the current input
+				terms.pop();
+				// add the selected item
+				terms.push( ui.item.value );
+				// add placeholder to get the comma-and-space at the end
+				terms.push( "" );
+				this.value = terms.join( ", " );
+				return false;
+			}
+		});
+});
 
 $( function() {
 	
@@ -318,7 +397,7 @@ $( function() {
 		}
 		
 	)
-})
+});
 
 $(function(){
 	$('#todotodays').sortable({
@@ -335,7 +414,7 @@ $(function(){
 			});
 		}
 	});
-})
+});
 
 $(function(){
 	$('.iframe').fancybox({
@@ -353,12 +432,12 @@ $(function(){
 	
 	$('#new_contact_request a.button').click(function(){
 		parent.$.fancybox.close();
-	})
+	});
 })
 
 $(function(){
 	$('.video_demo').attr('target', '_blank');
-})
+});
 
 function playTickTack() {
 	
@@ -408,7 +487,7 @@ $(function(){
 			$('.schedule').addClass('inactive');
 		}
 	});
-})
+});
 
 function playTestSound() {
 	

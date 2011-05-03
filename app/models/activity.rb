@@ -16,6 +16,7 @@
 
 class Activity < ActiveRecord::Base
   
+  acts_as_taggable
   has_event_calendar
   
   has_one     :todotoday, :dependent => :destroy
@@ -23,7 +24,7 @@ class Activity < ActiveRecord::Base
   belongs_to  :project
   belongs_to  :user
   
-  attr_accessible :name, :description, :estimated_pomodoros, :deadline, :completed, :project_id, :start_at, :end_at, :event_type, :unplanned
+  attr_accessible :name, :description, :estimated_pomodoros, :deadline, :completed, :project_id, :start_at, :end_at, :event_type, :unplanned, :tag_list
   attr_accessor :color
   
   validates :name,  :presence => true,

@@ -7,3 +7,5 @@
 
 .reset_password { padding-left: 0 !important; padding-top: 11px !important; }
 #login_page { padding-bottom: 0; }
+
+.toolbar form select { width: 240px !important; }

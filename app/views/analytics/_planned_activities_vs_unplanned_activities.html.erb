@@ -1,5 +1,5 @@
 <table class="analytics pie bar">
-	<caption>Unplanned activities / planned activities - last <%= ((@end_date -1.day) - @start_date).to_i %> days</caption>
+	<caption>Unplanned activities / planned activities - last <%= pluralize( ((@end_date -1.day) - @start_date).to_i, 'day' ) %></caption>
 	
 	<thead>
 		<tr>

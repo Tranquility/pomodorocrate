@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
       cond_params = {
         :q_name     => "%#{params[:q_name]}%",
         :q_project  => params[:q_project],
-        :q_deadline => Chronic.parse(params[:q_deadline])
+        :q_completed => params[:q_completed]
       }
 
       cond_strings = returning([]) do |strings|
@@ -61,9 +61,10 @@ class ApplicationController < ActionController::Base
         if params[:q_project]
           strings << "(activities.project_id = :q_project)" unless (params[:q_project].blank? or params[:q_project] == "__none__" )
         end
-      
-        if params[:q_deadline]
-          #strings << "(activities.deadline = #{cond_params[:q_deadline].to_date})" unless (params[:q_deadline].blank?)
+        
+        if params[:q_completed]
+          strings << "(activities.completed = 't' OR activities.completed = '1')" if params[:q_completed] == 'Yes'
+          strings << "(activities.completed = 'f' OR activities.completed = '0')" if params[:q_completed] == 'No'
         end
         
         # filter by logged user

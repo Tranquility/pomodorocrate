@@ -29,4 +29,7 @@ $(function(){
 	$('.addthis_toolbox').css('margin-top', '-24px');
 	$('.addthis_counter').css('margin-top', '0px');
 	$('#features .article').height('260px');
+	
+	$('.toolbar select').css('width', '340px');
+	$('#activity_project_id').css('width', '686px');
 });

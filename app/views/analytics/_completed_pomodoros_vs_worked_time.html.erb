@@ -1,5 +1,5 @@
 <table class="analytics bar">
-	<caption>Completed pomodoros / worked time (hours) - last <%= ((@end_date -1.day) - @start_date).to_i %> days</caption>
+	<caption>Completed pomodoros / worked time (hours) - last <%= pluralize( ((@end_date -1.day) - @start_date).to_i, 'day') %></caption>
 	
 	<thead>
 		<tr>

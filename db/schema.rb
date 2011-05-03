@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110401065529) do
+ActiveRecord::Schema.define(:version => 20110408152817) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20110401065529) do
     t.datetime "end_at"
     t.boolean  "event_type",          :default => false
     t.boolean  "unplanned",           :default => false
+    t.string   "cached_tag_list"
   end
 
   add_index "activities", ["completed"], :name => "index_activities_on_completed"
@@ -112,6 +113,20 @@ ActiveRecord::Schema.define(:version => 20110401065529) do
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
   end
 
   create_table "todotodays", :force => true do |t|
