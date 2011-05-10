@@ -14,8 +14,9 @@ class ActivitiesController < ApplicationController
     end
     
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @activities }
+      format.html   # index.html.erb
+      format.xml    { render :xml => @activities }
+      format.json   { render :json => @activities }
     end
   end
   
@@ -30,8 +31,9 @@ class ActivitiesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @activity }
+      format.html   # show.html.erb
+      format.xml    { render :xml => @activity }
+      format.json   { render :json => @activity }
     end
   end
 
@@ -41,8 +43,9 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new
     
     respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @activity }
+      format.html   # new.html.erb
+      format.xml    { render :xml => @activity }
+      format.json   { render :json => @activity }
     end
   end
   
@@ -54,11 +57,13 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.save
-        format.html { redirect_to(@activity, :notice => 'Activity was successfully created.') }
-        format.xml  { render :xml => @activity, :status => :created, :location => @activity }
+        format.html   { redirect_to(@activity, :notice => 'Activity was successfully created.') }
+        format.xml    { render :xml => @activity, :status => :created, :location => @activity }
+        format.json   { render :json => @activity, :status => :created, :location => @activity }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @activity.errors, :status => :unprocessable_entity }
+        format.html   { render :action => "new" }
+        format.xml    { render :xml => @activity.errors, :status => :unprocessable_entity }
+        format.json   { render :json => @activity.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -92,11 +97,14 @@ class ActivitiesController < ApplicationController
         
       elsif @activity.update_attributes(params[:activity])
         flash[:success] = "Activity updated"
-        format.html { redirect_to(activities_path, :success => 'Activity updated.') }
-        format.xml  { head :ok }
+        
+        format.html   { redirect_to(activities_path, :success => 'Activity updated.') }
+        format.xml    { head :ok }
+        format.json   { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @activity.errors, :status => :unprocessable_entity }
+        format.html   { render :action => "edit" }
+        format.xml    { render :xml => @activity.errors, :status => :unprocessable_entity }
+        format.json   { render :json => @activity.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -109,8 +117,9 @@ class ActivitiesController < ApplicationController
     flash[:success] = "Activity deleted"
 
     respond_to do |format|
-      format.html { redirect_to(activities_url) }
-      format.xml  { head :ok }
+      format.html   { redirect_to(activities_url) }
+      format.xml    { head :ok }
+      format.json   { head :ok }
     end
   end
   
@@ -122,11 +131,13 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @clone.save
-        format.html { redirect_to(@clone, :notice => 'Activity cloned') }
-        format.xml  { render :xml => @clone, :status => :created, :location => @clone }
+        format.html   { redirect_to(@clone, :notice => 'Activity cloned') }
+        format.xml    { render :xml => @clone, :status => :created, :location => @clone }
+        format.json   { render :json => @clone, :status => :created, :location => @clone }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @clone.errors, :status => :unprocessable_entity }
+        format.html   { render :action => "new" }
+        format.xml    { render :xml => @clone.errors, :status => :unprocessable_entity }
+        format.json   { render :json => @clone.errors, :status => :unprocessable_entity }
       end
     end
   end

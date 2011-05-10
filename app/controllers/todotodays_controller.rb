@@ -10,7 +10,8 @@ class TodotodaysController < ApplicationController
    
    respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @todotodays }
+      format.xml  { render :xml => @todotodays.to_xml(:include => [:activity]) }
+      format.json { render :json => @todotodays.to_json(:include => [:activity]) }
     end
   end
 
@@ -31,7 +32,8 @@ class TodotodaysController < ApplicationController
         flash[:success] = "Activity has been scheduled for today"
         
         format.html { redirect_to(request.env["HTTP_REFERER"]) }
-        format.xml  { render :xml => @todotoday, :status => :created, :location => @todotoday }
+        format.xml  { render :xml => @todotoday.to_xml(:include => [:activity]), :status => :created, :location => @todotoday }
+        format.json { render :json => @todotoday.to_json(:include => [:activity]), :status => :created, :location => @todotoday }
       else
         format.html { redirect_to(activities_path, :error => 'Adding the new todo today has failed') }
         format.xml  { render :xml => @todotoday.errors, :status => :unprocessable_entity }
@@ -44,11 +46,13 @@ class TodotodaysController < ApplicationController
   def destroy
     @todotoday = Todotoday.where(:user_id => current_user.id).find(params[:id])
     @todotoday.destroy
+    
     flash[:success] = "Activity was removed from the todo today list"
 
     respond_to do |format|
       format.html { redirect_to(todotodays_url) }
       format.xml  { head :ok }
+      format.json { head :ok }
     end
   end
   

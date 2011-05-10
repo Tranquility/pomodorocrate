@@ -8,6 +8,10 @@ Ketchup::Application.routes.draw do
 
   match 'pomodoros/update_current_form' => 'pomodoros#update_current_form'
   match 'pomodoros/get_time_from_server' => 'pomodoros#get_time_from_server'
+  match 'pomodoros/current' => 'pomodoros#current'
+  
+  match 'breaks/current' => 'breaks#current'
+  
   match 'todotodays/save_sort'          => 'todotodays#save_sort'
 
   resources :activities, :settings, :projects

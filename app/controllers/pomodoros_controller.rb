@@ -11,6 +11,8 @@ class PomodorosController < ApplicationController
     respond_to do |format|
       unless @pomodoros.empty? 
         format.html { render :layout => false }
+        format.xml  { render :xml => @pomodoros }
+        format.json { render :json => @pomodoros }
       end
     end
   end
@@ -42,9 +44,11 @@ class PomodorosController < ApplicationController
       if @pomodoro.save
         format.html { redirect_to(todotodays_path, :success => 'The pomodoro was successfully started.') }
         format.xml  { render :xml => @pomodoro, :status => :created, :location => @pomodoro }
+        format.json { render :json => @pomodoro, :status => :created, :location => @pomodoro }
       else
         format.html { redirect_to(todotodays_path, :error => 'Starting the pomodoro has failed.') }
         format.xml  { render :xml => @pomodoro.errors, :status => :unprocessable_entity }
+        format.json { render :json => @pomodoro.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -65,9 +69,11 @@ class PomodorosController < ApplicationController
         
         format.html { redirect_to(todotodays_path, :notice => 'Pomodoro was successfully updated.') }
         format.xml  { head :ok }
+        format.json { head :ok }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @pomodoro.errors, :status => :unprocessable_entity }
+        format.json { render :json => @pomodoro.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -81,6 +87,8 @@ class PomodorosController < ApplicationController
     
     respond_to do |format|
       format.html { render :layout => false }
+      format.xml  { head :ok }
+      format.json { head :ok }
     end
   end
   
@@ -90,6 +98,21 @@ class PomodorosController < ApplicationController
     
     respond_to do |format|
       format.html { render :layout => false }
+    end
+  end
+  
+  # GET /pomodoros/current
+  def current
+    @pomodoro = Pomodoro.where( :completed => nil, :user_id => current_user.id ).first
+    
+    respond_to do |format|
+      unless @pomodoro.nil?
+        format.xml  { render :xml => @pomodoro, :status => :created, :location => @pomodoro }
+        format.json { render :json => @pomodoro, :status => :created, :location => @pomodoro }
+      else
+        format.xml  { head :ok }
+        format.json { head :ok }
+      end
     end
   end
   

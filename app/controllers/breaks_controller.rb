@@ -11,6 +11,7 @@ class BreaksController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @breaks }
+      format.json { render :json => @breaks }
     end
   end
 
@@ -22,6 +23,7 @@ class BreaksController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @break }
+      format.json { render :json => @break }
     end
   end
 
@@ -51,9 +53,11 @@ class BreaksController < ApplicationController
       if @break.save
         format.html { redirect_to(activities_path, :notice => 'Break was successfully created.') }
         format.xml  { render :xml => @break, :status => :created, :location => @break }
+        format.json { render :json => @break, :status => :created, :location => @break }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @break.errors, :status => :unprocessable_entity }
+        format.json { render :json => @break.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -67,9 +71,11 @@ class BreaksController < ApplicationController
       if @break.update_attributes(params[:break])
         format.html { redirect_to(activities_path, :notice => 'Break was successfully updated.') }
         format.xml  { head :ok }
+        format.json { head :ok }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @break.errors, :status => :unprocessable_entity }
+        format.json { render :json => @break.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -83,6 +89,22 @@ class BreaksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(breaks_url) }
       format.xml  { head :ok }
+      format.json { head :ok }
+    end
+  end
+  
+  # GET /breaks/current
+  def current
+    @break = Break.where( :completed => nil, :user_id => current_user.id ).first
+    
+    respond_to do |format|
+      unless @break.nil?
+        format.xml  { render :xml => @break, :status => :created, :location => @break }
+        format.json { render :json => @break, :status => :created, :location => @break }
+      else
+        format.xml  { head :ok }
+        format.json { head :ok }
+      end
     end
   end
 end
