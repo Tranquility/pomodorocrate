@@ -1,0 +1,25 @@
+<ul id="commentsList">
+	<li class="commentsListTitle">
+		<div>Comments</div>
+	</li>
+	<% @comments.each do |comment| %>
+		<li>
+			<strong><%= distance_of_time_in_words comment.created_at.to_time, Time.now, true %> ago</strong>
+			<%= text_format(comment.content) %>
+			<%= link_to "[-]", comment, :confirm => "Really delete comment?", :method => :delete, :class => :delete_comment, :remote => true, :title => "Delete comment" %>
+		</li>
+	<% end %>
+	
+	<li>
+		<%= form_for @comment, :remote => true do |f| %>
+			<div class="field">
+			  <%= f.text_area :content %>
+			</div>
+			
+			<div class="actions">
+				<%= hidden_field :comment, :activity_id %>
+		    <%= f.submit "Add comment", :class => :submit %>
+		  </div>
+		<% end %>
+	</li>
+</ul>

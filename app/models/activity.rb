@@ -21,6 +21,7 @@ class Activity < ActiveRecord::Base
   
   has_one     :todotoday, :dependent => :destroy
   has_many    :pomodoros, :dependent => :destroy
+  has_many    :comments,  :dependent => :destroy
   belongs_to  :project
   belongs_to  :user
   

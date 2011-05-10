@@ -1,0 +1,2 @@
+$("#btn_comments_" + <%= @comment.activity.id.to_s %>).click();
+$("#btn_comments_" + <%= @comment.activity.id.to_s %>).html( "<%= pluralize(@comment.activity.comments.count, 'comment') %>" );

@@ -22,6 +22,17 @@ $(document).ready(function(){
 	$('#activityFilter input[type=text]').quickClear();
 	$('#activityFilterAnalytics input[type=text]').quickClear();
 	
+	$('#commentsList li').live({
+		mouseenter:
+    	function() {
+				$(this).children('.delete_comment').show();
+			},
+     mouseleave:
+			function() {
+				$(this).children('.delete_comment').hide();
+			}
+    });
+	
 	// setup pomodoro timer
 	decreaseTimer();
 });
@@ -201,11 +212,26 @@ $(document).ready(function(){
 	
 	$(".pomodoros_count")
    .bind("ajax:success", function(event, data, status, xhr) {
-		if( $('#pomodorosList').length > 0 ) $('#pomodorosList').remove();
-		$(this).parent().parent().after( data );
+		clearExistingData();
+		addNewData(data, this);
    });
-	
-})
+
+	$(".comments_count")
+  	.bind("ajax:success", function(event, data, status, xhr) {
+			clearExistingData();
+			addNewData(data, this);
+			$('#commentsList #comment_content').elastic();
+   });
+});
+
+function clearExistingData() {
+	if( $('#pomodorosList').length > 0 ) $('#pomodorosList').remove();
+	if( $('#commentsList').length > 0 ) $('#commentsList').remove();
+}
+
+function addNewData(data, element) {
+	$(element).parent().parent().after( data );
+}
 
 // formattings
 $(document).ready(function(){

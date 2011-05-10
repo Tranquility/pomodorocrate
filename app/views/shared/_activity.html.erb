@@ -63,6 +63,7 @@
 			<% if (count = a.pomodoros.count) > 0 %>
 				<li><%= link_to("#{pluralize(count, 'pomodoro')}", pomodoros_path(:activity => a.id), :class => [:activity_toolbar_button, :pomodoros_count], :remote => true) %></li>
 			<% end %>
+			<li><%= link_to("#{pluralize(a.comments.count, 'comment')}", comments_path(:activity => a.id), :class => [:activity_toolbar_button, :comments_count], :id => ('btn_comments_' + a.id.to_s), :remote => true) %></li>
 		</ul>
 	</div>
 </li>
