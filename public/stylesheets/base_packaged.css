@@ -9,22 +9,10 @@ table, th, td {vertical-align: middle}
 blockquote, q {quotes: "" ""}
  a img {border: none}
  :focus {outline: 0}
-@font-face { font-family: 'MetaPlusMediumRomanRegular'; src: url('../fonts/mpmrr/mepmr___-webfont.eot')}
-@font-face { font-family: 'MetaPlusMediumRomanRegular'; src: url(//:) format('no404'), url('../fonts/mpmrr/mepmr___-webfont.woff') format('woff'), url('../fonts/mpmrr/mepmr___-webfont.ttf') format('truetype'), url('../fonts/mpmrr/mepmr___-webfont.svg#webfontArxv16So') format('svg'); font-weight: normal; font-style: normal}
-@font-face { font-family: 'MetaPlusBoldCapsRegular'; src: url('../fonts/mepbc/mepbc___-webfont.eot')}
-@font-face { font-family: 'MetaPlusBoldCapsRegular'; src: url(//:) format('no404'), url('../fonts/mepbc/mepbc___-webfont.woff') format('woff'), url('../fonts/mepbc/mepbc___-webfont.ttf') format('truetype'), url('../fonts/mepbc/mepbc___-webfont.svg#webfontKjITcNcj') format('svg'); font-weight: normal; font-style: normal}
-@font-face { font-family: 'MetaPlusNormalItalicRegular'; src: url('../fonts/mepni/mepni___-webfont.eot')}
-@font-face { font-family: 'MetaPlusNormalItalicRegular'; src: url(//:) format('no404'), url('../fonts/mepni/mepni___-webfont.woff') format('woff'), url('../fonts/mepni/mepni___-webfont.ttf') format('truetype'), url('../fonts/mepni/mepni___-webfont.svg#webfontPv7wEeKB') format('svg'); font-weight: normal; font-style: normal}
-@font-face { font-family: 'MetaPlusNormalRomanRegular'; src: url('../fonts/mepnr/mepnr___-webfont.eot')}
-@font-face { font-family: 'MetaPlusNormalRomanRegular'; src: url(//:) format('no404'), url('../fonts/mepnr/mepnr___-webfont.woff') format('woff'), url('../fonts/mepnr/mepnr___-webfont.ttf') format('truetype'), url('../fonts/mepnr/mepnr___-webfont.svg#webfontoVmNU45c') format('svg'); font-weight: normal; font-style: normal}
 @font-face { font-family: 'MetaPlusMediumCapsRegular'; src: url('../fonts/mepmc/mepmc___-webfont.eot')}
 @font-face { font-family: 'MetaPlusMediumCapsRegular'; src: url(//:) format('no404'), url('../fonts/mepmc/mepmc___-webfont.woff') format('woff'), url('../fonts/mepmc/mepmc___-webfont.ttf') format('truetype'), url('../fonts/mepmc/mepmc___-webfont.svg#webfontjSgBz87w') format('svg'); font-weight: normal; font-style: normal}
  @font-face { font-family: 'MetaProNormal'; src: url('../fonts/metapro/metapro-normal-webfont.eot')}
 @font-face {font-family: 'MetaProNormal'; src: url('../fonts/metapro/metapro-normal-webfont.eot') format('eot'), url('../fonts/metapro/metapro-normal-webfont.woff') format('woff'), url('../fonts/metapro/metapro-normal-webfont.ttf') format('truetype'), url('../fonts/metapro/metapro-normal-webfont.svg#webfontphF9Wr36') format('svg'); font-weight: normal; font-style: normal}
-@font-face { font-family: 'MetaProNormalItalic'; src: url('../fonts/metapro/metapro-normalitalic-webfont.eot')}
-@font-face {font-family: 'MetaProNormalItalic'; src: url('../fonts/metapro/metapro-normalitalic-webfont.eot') format('eot'), url('../fonts/metapro/metapro-normalitalic-webfont.woff') format('woff'), url('../fonts/metapro/metapro-normalitalic-webfont.ttf') format('truetype'), url('../fonts/metapro/metapro-normalitalic-webfont.svg#webfontdKnRbMoV') format('svg'); font-weight: normal; font-style: normal}
-@font-face { font-family: 'MetaProBoldItalic'; src: url('../fonts/metapro/metapro-bolditalic-webfont.eot')}
-@font-face {font-family: 'MetaProBoldItalic'; src: url('../fonts/metapro/metapro-bolditalic-webfont.eot') format('eot'), url('../fonts/metapro/metapro-bolditalic-webfont.woff') format('woff'), url('../fonts/metapro/metapro-bolditalic-webfont.ttf') format('truetype'), url('../fonts/metapro/metapro-bolditalic-webfont.svg#webfontkmslv2Tp') format('svg'); font-weight: normal; font-style: normal}
 @font-face { font-family: 'MetaProBold'; src: url('../fonts/metapro/metapro-bold-webfont.eot')}
 @font-face {font-family: 'MetaProBold'; src: url('../fonts/metapro/metapro-bold-webfont.eot') format('eot'), url('../fonts/metapro/metapro-bold-webfont.woff') format('woff'), url('../fonts/metapro/metapro-bold-webfont.ttf') format('truetype'), url('../fonts/metapro/metapro-bold-webfont.svg#webfontRnXn0xLh') format('svg'); font-weight: normal; font-style: normal}
  * {font-family: Arial, Verdana, sans-serif}
@@ -84,7 +72,7 @@ aside {float: right; margin-bottom: 12px; padding: 1px; width: 233px; background
 .widgetBox .pomodorosCount {border-top: 1px solid #d6d4c9; border-bottom: 1px solid #d6d4c9; text-align: center;}
 .widgetBox .submit, .formContainer .submit, .toolbar .submit {background: url(../images/icon_apply.png) 8px center no-repeat #e24630; color: #ffe1dd; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 11px; font-weight: normal; letter-spacing: 1px; text-align: right; text-decoration: none; text-shadow: 1px 1px 0px #a52618; text-transform: uppercase; height: 34px; padding: 4px 8px 4px 28px; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px}
 .widgetBox textarea {border: 1px solid #e7e7e7; height: 80px; padding: 4px; width: 196px; color: #898989; font-family: Arial, Verdana, sans-serif; font-size: 12px}
-.widgetBox a.button {float: right; margin-top: -16px; color: #a39e89; font-family: MetaPlusMediumRomanRegular, Arial, Verdana, sans-serif; font-size: 11px; font-weight: normal; text-decoration: none; text-transform: uppercase; white-space: nowrap}
+.widgetBox a.button {float: right; margin-top: -16px; color: #a39e89; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 11px; font-weight: normal; text-decoration: none; text-transform: uppercase; white-space: nowrap}
 .widgetBox a.details_button {font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 10px; margin-top: -2px !important}
 .time {color: #a39e89; font-family: MetaPlusMediumCapsRegular, Arial, Verdana, sans-serif; font-size: 84px; font-weight: bold; line-height: 74px; letter-spacing: -2px; text-align: center; display: block; padding: 12px; width: 209px}
 .tickbox {margin-top: 10px}
@@ -115,7 +103,7 @@ aside {float: right; margin-bottom: 12px; padding: 1px; width: 233px; background
 .widgetBox .activityList li {padding: 6px 12px 0 12px}
 .inProgressMarker {font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 10px; text-transform: uppercase; white-space: nowrap; background: #3AA5E7; color: #fff; margin-right: 2px; padding: 2px 4px; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px}
 .todotodayMarker {font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 10px; text-transform: uppercase; white-space: nowrap; background: #DFB538; color: #fff; margin-right: 2px; padding: 2px 4px; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px}
-.deadlineMarker {font-family: MetaPlusMediumRomanRegular, Arial, Verdana, sans-serif; font-size: 11px; text-transform: uppercase; white-space: nowrap; color: #898989; padding: 2px 4px}
+.deadlineMarker {font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 11px; text-transform: uppercase; white-space: nowrap; color: #898989; padding: 2px 4px}
 .activityCompleted, .projectCompleted {text-decoration: line-through}
 #error_explanation {border: 0px solid #ef4832; margin-bottom: 12px; padding: 6px; font-family: MetaProNormal, Arial, Verdana, sans-serif}
 #error_explanation ul {list-style: none}
