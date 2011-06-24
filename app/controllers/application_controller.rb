@@ -63,8 +63,8 @@ class ApplicationController < ActionController::Base
         end
         
         if params[:q_completed]
-          strings << "(activities.completed = 't' OR activities.completed = '1')" if params[:q_completed] == 'Yes'
-          strings << "(activities.completed = 'f' OR activities.completed = '0')" if params[:q_completed] == 'No'
+          strings << "(activities.completed = '" + (ActiveRecord::Base.connection.adapter_name.downcase.to_sym == :mysql ? '1' : 't') + "')" if params[:q_completed] == 'Yes'
+          strings << "(activities.completed = '" + (ActiveRecord::Base.connection.adapter_name.downcase.to_sym == :mysql ? '0' : 'f') + "')" if params[:q_completed] == 'No'
         end
         
         # filter by logged user

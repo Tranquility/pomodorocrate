@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>config/asset_packages.yml</string>
+	<string>app/controllers/application_controller.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -18,9 +18,23 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>360</integer>
+	<integer>507</integer>
 	<key>metaData</key>
 	<dict>
+		<key>app/controllers/application_controller.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>7</integer>
+				<key>line</key>
+				<integer>52</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>23</integer>
+		</dict>
 		<key>app/views/shared/_activity.html.erb</key>
 		<dict>
 			<key>caret</key>
@@ -57,6 +71,20 @@
 				<integer>10</integer>
 				<key>line</key>
 				<integer>3</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>db/migrate/20110624110620_add_activity_id_index_to_comments.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>5</integer>
+				<key>line</key>
+				<integer>9</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -156,6 +184,8 @@
 	<array>
 		<string>app/views/shared/_footer.html.erb</string>
 		<string>config/asset_packages.yml</string>
+		<string>app/controllers/application_controller.rb</string>
+		<string>db/migrate/20110624110620_add_activity_id_index_to_comments.rb</string>
 		<string>public/javascripts/rails.js</string>
 		<string>app/views/shared/_activity.html.erb</string>
 		<string>public/javascripts/application.js</string>
@@ -252,6 +282,21 @@
 					<true/>
 					<key>subItems</key>
 					<dict/>
+				</dict>
+				<key>db</key>
+				<dict>
+					<key>isExpanded</key>
+					<true/>
+					<key>subItems</key>
+					<dict>
+						<key>migrate</key>
+						<dict>
+							<key>isExpanded</key>
+							<true/>
+							<key>subItems</key>
+							<dict/>
+						</dict>
+					</dict>
 				</dict>
 				<key>public</key>
 				<dict>
