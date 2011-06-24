@@ -1,5 +1,11 @@
 Ketchup::Application.routes.draw do
 
+  get "widgets/active_pomodoro"
+  get "widgets/activity_status"
+  get "widgets/recent_activities"
+  get "widgets/upcoming_activities"
+  get "widgets/overdue_activities"
+
   get "comments/index"
   get "comments/create"
   get "comments/destroy"

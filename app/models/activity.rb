@@ -34,7 +34,7 @@ class Activity < ActiveRecord::Base
                                   :inclusion => { :in => 0..8 }
   validates :project, :presence => true
   validates :user,    :presence => true
-  validate  :deadline_can_not_be_in_the_past
+  validate  :deadline_can_not_be_in_the_past, :on => :create
   validate  :user_must_own_project
   validate  :start_at_must_be_smaller_than_end_at, :if => :event_type?
   

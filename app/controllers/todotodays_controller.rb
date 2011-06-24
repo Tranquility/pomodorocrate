@@ -9,6 +9,7 @@ class TodotodaysController < ApplicationController
     @todotodays = Todotoday.where(:today => Date.today).paginate :page => params[:page], :conditions => search_conditions
    
    respond_to do |format|
+      format.js   {  }
       format.html # index.html.erb
       format.xml  { render :xml => @todotodays.to_xml(:include => [:activity]) }
       format.json { render :json => @todotodays.to_json(:include => [:activity]) }
@@ -50,6 +51,7 @@ class TodotodaysController < ApplicationController
     flash[:success] = "Activity was removed from the todo today list"
 
     respond_to do |format|
+      format.js   { render :text => 'OK' }
       format.html { redirect_to(todotodays_url) }
       format.xml  { head :ok }
       format.json { head :ok }

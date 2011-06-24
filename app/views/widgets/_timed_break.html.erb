@@ -11,11 +11,11 @@
 			<div class="widgetBox timer">
 				<ul class="breakButtons">
 					<li id="shortBreak">
-						<%= link_to("#{current_user.short_break_length}", breaks_path(:duration => current_user.short_break_length), :method => :post) %> min
+						<%= link_to("#{current_user.short_break_length}", breaks_path(:duration => current_user.short_break_length), :method => :post, :remote => true, 'data-type' => 'text') %> min
 						<span>break</span>
 					</li>
 					<li id="longBreak">
-						<%= link_to("#{current_user.long_break_length}", breaks_path(:duration => current_user.long_break_length), :method => :post) %> min
+						<%= link_to("#{current_user.long_break_length}", breaks_path(:duration => current_user.long_break_length), :method => :post, :remote => true, 'data-type' => 'text') %> min
 						<span>break</span>
 					</li>
 				</ul>
@@ -38,7 +38,7 @@
 			
 				<span class="time" data-seconds="<%= (@break.duration * 60) - ((Time.now - @break.created_at)).to_i %>"></span>
 				
-				<%= form_for(@break, :url => break_path(@break)) do |f| %>
+				<%= form_for(@break, :url => break_path(@break), :remote => true, :html => {'data-type' => 'text'} ) do |f| %>
 					<%= hidden_field_tag("break[completed]", true) %>
 					<div class="field break_toolbar">
 						<%= f.submit("End break", :class => :submit) %>

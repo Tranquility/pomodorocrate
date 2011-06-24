@@ -28,10 +28,10 @@
 							<li><%= link_to("Show", activity_path(a), :class => :button) %></li>
 							<li><%= link_to("Clone", clone_activity_path(:id => a.id), :class => :button) %></li>
 							<% if @pomodoro.nil? and !a.todotoday.nil? %>
-								<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => :button) %></li>
+								<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => :button, :remote => true, 'data-type' => 'text') %></li>
 							<% end %>
 							<% if a.todotoday.nil? %>
-								<li><%= link_to("Do Today", todotodays_path(:activity_id => a), :method => :post, :class => :button) %></li>
+								<li><%= link_to("Do Today", todotodays_path(:activity_id => a), :method => :post, :class => :button, :remote => true, 'data-type' => 'text') %></li>
 							<% end %>
 						</ul>
 						

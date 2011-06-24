@@ -1,4 +1,12 @@
 $(function(){
+	fixIe7Layout();
+	
+	$('html').ajaxStop(function(){
+		fixIe7Layout();
+	});
+});
+
+function fixIe7Layout() {
 	$('.reset_password').css('padding-left', '0').css('padding-top', '11px');
 	$('#login_page').css('padding-bottom', '6px');
 	$('header').css('margin-bottom', '35px');
@@ -32,4 +40,4 @@ $(function(){
 	
 	$('.toolbar select').css('width', '340px');
 	$('#activity_project_id').css('width', '686px');
-});
+}

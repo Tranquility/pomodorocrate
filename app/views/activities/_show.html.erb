@@ -1,0 +1,8 @@
+<section id="activity_item" class="group">
+	<h6><%= @activity.name %></h6>
+	<ul class="activityList">
+		
+		<%= render :partial => "shared/activity", :locals => { :a => @activity } %>
+	
+	</ul>
+</section>

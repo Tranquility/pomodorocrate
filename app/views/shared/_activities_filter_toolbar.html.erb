@@ -1,6 +1,6 @@
 <div class="toolbar collapsed_toolbar" id="activityFilter">
 	
-	<%= form_tag(activities_path, :method => "get") do %>
+	<%= form_tag(activities_path, :method => "get", :remote => true, 'data-type' => 'text') do %>
 		<%= render "shared/filter_toolbar" %>
 	<% end %>
 	

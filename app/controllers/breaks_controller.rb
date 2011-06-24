@@ -1,5 +1,8 @@
 class BreaksController < ApplicationController
   
+  include PomodorosHelper
+  include BreaksHelper
+  
   before_filter :authenticate
   #before_filter :correct_user
   
@@ -46,15 +49,20 @@ class BreaksController < ApplicationController
   # POST /breaks
   # POST /breaks.xml
   def create
+    
+    return if break_in_progress?
+    
     duration = params[:duration].nil? ? Break.duration : params[:duration]
     @break = Break.new( :duration => duration, :user_id => current_user.id )
 
     respond_to do |format|
       if @break.save
+        format.js   { render 'widgets/timed_break', :layout => false }
         format.html { redirect_to(activities_path, :notice => 'Break was successfully created.') }
         format.xml  { render :xml => @break, :status => :created, :location => @break }
         format.json { render :json => @break, :status => :created, :location => @break }
       else
+        format.js   { render :text => 'KO' }
         format.html { render :action => "new" }
         format.xml  { render :xml => @break.errors, :status => :unprocessable_entity }
         format.json { render :json => @break.errors, :status => :unprocessable_entity }
@@ -69,10 +77,15 @@ class BreaksController < ApplicationController
 
     respond_to do |format|
       if @break.update_attributes(params[:break])
+        format.js   { 
+          @break = nil
+          render 'widgets/timed_break', :layout => false 
+        }
         format.html { redirect_to(activities_path, :notice => 'Break was successfully updated.') }
         format.xml  { head :ok }
         format.json { head :ok }
       else
+        format.js   { render :text => 'KO' }
         format.html { render :action => "edit" }
         format.xml  { render :xml => @break.errors, :status => :unprocessable_entity }
         format.json { render :json => @break.errors, :status => :unprocessable_entity }

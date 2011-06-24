@@ -1,4 +1,4 @@
-<%= form_for(@pomodoro, :url => pomodoro_path(@pomodoro)) do |f| %>
+<%= form_for(@pomodoro, :url => pomodoro_path(@pomodoro), :remote => true, :html => { 'data-type' => 'text' }) do |f| %>
 	<%= hidden_field_tag("pomodoro[completed]", true) %>
 	<div class="field">
 		<%= f.label :comments, 'Leave a comment?'%>

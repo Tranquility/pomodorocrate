@@ -1,0 +1,11 @@
+SYNC:
++ new 5 break
++ new 25 break
+
++ do today
+
+ASYNC
++ new 5 break
++ new 25 break
+
++ do today

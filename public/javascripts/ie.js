@@ -1,4 +1,27 @@
 $(document).ready(function(){
+	fixIeLayout();
+});
+
+$(function(){
+	
+	$.ajaxSetup({
+		dataFilter: function(data, dataType) {
+			if (typeof innerShiv === 'function' && dataType === 'text') {
+				return innerShiv(data, false);
+			}
+			else {
+				return data;
+			}
+		}
+	});
+	
+	$('html').ajaxStop(function(){
+		fixIeLayout();
+	});
+	
+});
+
+function fixIeLayout() {
 	$('#login_page').corner();
 	$('#page').corner("bottom");
 	$('.top_nav').corner("10px");
@@ -13,4 +36,4 @@ $(document).ready(function(){
 	$('#mainMenu li a').corner("10px");
 	$('#loginMenu li a').corner("10px");
 	$('#contact_form').corner("7px");
-})
+}

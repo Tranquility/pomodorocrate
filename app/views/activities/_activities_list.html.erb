@@ -1,0 +1,71 @@
+<% unless @activities.empty? %>
+
+	<section class="group" id="activities_list">
+		
+		<% prev_deadline = "" %>
+		<% completed_activities = false %>
+		<% opened_ul = false %>
+		
+		<% @activities.each do |a| %>
+		
+			<% unless a.completed %>
+				<% if a.deadline != prev_deadline %>
+				
+					<% unless prev_deadline.blank? %>
+					</ul>
+					<% end %>
+				
+					<h6>
+						<% if Date.today == a.deadline.to_date %>
+								Today
+						<% else %>
+								<%= distance_of_time_in_words(Date.today, a.deadline.to_date).titleize %>
+								<%= (Time.now > a.deadline) ? " ago".titleize : " from now".titleize %>
+						<% end %>
+					</h6>
+					<ul class="activityList">
+					<% prev_deadline = a.deadline %>
+					<% opened_ul = true %>
+				<% end %>
+			<% else %>
+				<% unless completed_activities %>
+					<%= "</ul>".html_safe if opened_ul %>
+					<h6>Completed</h6>
+					<ul class="activityList">
+					<% completed_activities = true %>
+				<% end %>
+			<% end %>
+			
+			<%= render :partial => "shared/activity", :locals => { :a => a } %>
+			
+	<% end %>
+					</ul>
+		
+	</section>
+
+	<%= will_paginate @activities %>
+	
+<% else %>
+	<section class="group"  id="activities_list">
+		<h6>Activities</h6>
+		
+		<% if Project.where(:user_id => current_user).empty? %>
+			<p class="pageContainer">
+				You haven't added any activities yet.
+			</p>
+			<p class="pageContainer">
+				Before you can do that, please create your first project - you will use it to easily group and filter your activities by it.
+			</p>
+			<p class="pageContainer">
+				Use the <%= link_to "New project", new_project_path, :class => :button %> button to add your first project.
+			</p>
+		<% else %>
+			<p class="pageContainer">
+				We haven't found any activities.
+			</p>
+			<p class="pageContainer">
+				Use the <%= link_to_unless(Project.where(:user_id => current_user).empty?, "New activity", new_activity_path, :class => :button) %> button to add some and start enjoying the pomodoro technique.
+			</p>
+		<% end %>
+	</section>
+<% end %>

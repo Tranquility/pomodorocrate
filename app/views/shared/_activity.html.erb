@@ -1,6 +1,6 @@
 <li id="act_<%= a.id %>" data-activity="a_<%= a.id %>" <%= a.completed ? 'class="completed_task"'.html_safe : '' %>>
 	<div class="quickView">
-		<%= form_for a do |f| %>
+		<%= form_for a, :remote => true, :html => { 'data-type' => 'text' } do |f| %>
 			
 			<div class="activityName" title="Click to show / hide activity details" style="width: <%= 690 - pomodoros_icons_width(a.pomodoros.successful_and_completed.count, a.estimated_pomodoros) %>px">
 				<%= hidden_field "activity", :completed, :value => (a.completed ? false : true) %>
@@ -46,18 +46,18 @@
 		<ul class="actionsBar">
 			<% unless a.completed %>
 				<% if a.todotoday.nil? %>
-					<li><%= link_to( "Do Today", todotodays_path(:activity_id => a), :method => :post, :class => [:activity_toolbar_button, :dotoday]) %></li>
+					<li><%= link_to( "Do Today", todotodays_path(:activity_id => a), :method => :post, :class => [:activity_toolbar_button, :dotoday], :remote => true, 'data-type' => 'text') %></li>
 				<% elsif !in_progress?(@pomodoro, a) and @pomodoro.nil? %>
-					<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => [:activity_toolbar_button, :doitnow]) %></li>
+					<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => [:activity_toolbar_button, :doitnow], :remote => true, 'data-type' => 'text') %></li>
 				<% end %>
 				
 				<% if !a.todotoday.nil? and params[:controller] == 'todotodays' and !td.nil? and !in_progress?(@pomodoro, a) %>
-					<li><%= link_to("Do another day", td, :confirm => "Are you sure?", :method => :delete, :class => [:activity_toolbar_button, :delete]) %></li>
+					<li><%= link_to("Do another day", td, :confirm => "Are you sure?", :method => :delete, :class => [:activity_toolbar_button, :delete], :remote => true, 'data-type' => 'text') %></li>
 				<% end %>
 			<% end %>
 			<li><%= link_to("Edit", edit_activity_path(a), :class => [:activity_toolbar_button, :edit]) %></li>
-			<% if params[:controller] != 'todotodays' %>
-				<li><%= link_to("Delete", a, :confirm => "Are you sure?", :method => :delete, :class => [:activity_toolbar_button, :delete]) %></li>
+			<% if params[:controller] != 'todotodays' and !in_progress?(@pomodoro, a) %>
+				<li><%= link_to("Delete", a, :confirm => "Are you sure?", :method => :delete, :class => [:activity_toolbar_button, :delete], :remote => true, 'data-type' => 'text') %></li>
 			<% end %>
 			<li><%= link_to("Clone", clone_activity_path(:id => a.id), :class => [:activity_toolbar_button, :clone]) %></li>
 			<% if (count = a.pomodoros.count) > 0 %>

@@ -15,6 +15,7 @@ javascripts:
   - jquery.elastic
   - event_calendar
   - jquery.quickClear
+  - ajaxify
 stylesheets: 
 - base: 
   - blueprint/reset

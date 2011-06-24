@@ -13,11 +13,200 @@ played_sounds[0] = false;
 var clock_audio;
 var counting_in_progress = false;
 var time_since_server_time_read = 0;
+var ticktack;
+var timer;
+
+/**** BREAKS WIDGET ****/
+$(function(){
+	/* add hover functionality to break buttons */
+	$('.breakButtons li').live('mouseover', function(){
+		$(this).addClass('breakButtonHover');
+	});
+	
+	$('.breakButtons li').live('mouseout', function(){
+		$(this).removeClass('breakButtonHover');
+	});
+	
+	/* new break */
+	$("#shortBreak a, #longBreak a").live("ajax:success", function(event, data, status, xhr) {
+		if( data != 'KO' ) {
+			$('#timedBreak').parent().replaceWith(data);
+			decreaseTimer();
+			playTickTack();
+		}
+	});
+
+	/* stop break from button */
+	$(".edit_break").live("ajax:success", function(event, data, status, xhr) {
+			if( data != 'KO' ) {
+				$('#activePomodoro').parent().replaceWith(data);
+				stopCounting();
+			}
+  });
+	
+	/* add click on the whole button */
+	$('#shortBreak, #longBreak').live('click', function(){
+		$(this).children('a').click();
+	});
+	
+	/* stop link click from bubbling up */
+	$('#shortBreak a, #longBreak a').live('click', function(e){
+		e.stopPropagation();
+	});
+});
+/**** END BREAKS WIDGET ****/
+
+/**** DO TODAY FUNCTIONALITY ****/
+$(function(){
+	$('a[data-method="post"][href^="/todotodays?activity_id="]').live("ajax:success", function(event, data, status, xhr) {
+			if( data != 'KO' ) {
+				updateMainListing();
+			}
+   });
+});
+/**** END DO TODAY FUNCTIONALITY ****/
+
+/**** DO IT NOW FUNCTIONALITY ****/
+$(function(){
+	$('a[data-method="post"][href^="/pomodoros?activity_id="]').live("ajax:success", function(event, data, status, xhr) {
+			if( data != 'KO' ) {
+				containerId = '#timedBreak'
+				if( $('#activePomodoro').length ) {
+					containerId = '#activePomodoro';
+				}
+				$(containerId).parent().replaceWith(data);
+				
+				stopCounting();
+				updateMainListing();
+				decreaseTimer();
+				playTickTack();
+			}
+   });
+});
+/**** END DO IT NOW FUNCTIONALITY ****/
+
+/**** VOID POMODORO ****/
+$(function(){
+	$(".edit_pomodoro").live("ajax:success", function(event, data, status, xhr) {
+			if( data != 'KO' ) {
+				$('#activePomodoro').parent().replaceWith(data);
+				removeInterruptionsWidget();
+				updateMainListing();
+
+				stopCounting();
+			}
+	 });
+})
+/**** END VOID POMODORO ****/
+
+/**** ACTION TOOLBAR BUTTONS ****/
+$(function(){
+	$(".pomodoros_count").live("ajax:success", function(event, data, status, xhr) {
+		clearExistingData();
+		addNewData(data, this);
+	});
+	
+	$(".comments_count").live("ajax:success", function(event, data, status, xhr) {
+			clearExistingData();
+			addNewData(data, this);
+			$('#commentsList #comment_content').elastic();
+	});
+});
+/**** END ACTION TOOLBAR BUTTONS ****/
+
+/**** PAGINATION ****/
+$(function(){
+	$('.pagination a').attr('data-remote', true).attr('data-type', 'text');
+
+	$('.pagination a').live("ajax:success", function(event, data, status, xhr) {
+			updateActivitiesListing(currentActivityListId(), data);
+			
+			$('.pagination a').attr('data-remote', true).attr('data-type', 'text');
+   });
+});
+/**** END PAGINATION ****/
+
+/**** DELETE ACTIVITY ****/
+$(function(){
+	$('a[data-method="delete"][href^="/activities/"]').live("ajax:success", function(event, data, status, xhr) {
+			if( data != 'OK' ) {
+				alert('delete failed');
+			}
+			updateMainListing();
+   });
+});
+/**** END DELETE ACTIVITY ****/
+
+/**** MARK ACTIVITY AS COMPLETED ****/
+$(function(){
+	$(".edit_activity").live("ajax:success", function(event, data, status, xhr) {
+			updateMainListing();
+	 });
+});
+/**** END MARK ACTIVITY AS COMPLETED ****/
+
+/**** GENERIC AJAX START ****/
+/*
+$(document).ajaxStart(function(e){
+
+});
+*/
+/**** END GENERIC AJAX START ****/
+
+/**** GENERIC AJAX COMPLETE ****/
+$(document).ajaxComplete(function(){
+	$('.pagination a').attr('data-remote', true);
+	draggableTodoItems(); // make todo today items draggable
+});
+/**** END GENERIC AJAX COMPLETE ****/
+
+/**** DELETE TODOTODAY ****/
+$(function(){
+	$('a[data-method="delete"][href^="/todotodays/"]').live("ajax:success", function(event, data, status, xhr) {
+			if( data != 'OK' ) {
+				alert('delete failed');
+			}
+			updateMainListing();
+   });
+});
+/**** END DELETE TODOTODAY ****/
+
+function stopCounting() {
+	counting_in_progress = false;
+	if( typeof timer !== 'undefined' ) {
+		clearTimeout(timer);
+	}
+	stopAllSounds();
+	resetPageTitle();
+}
+
+function stopAllSounds() {
+	if( typeof ticktack !== 'undefined' ) $(ticktack)[0].pause();
+}
+
+function startCounting() {
+	counting_in_progress = true;
+}
+
+$(function(){
+	// dynamic activities filtering (search)
+	$("#activityFilter form").unbind("ajax:success");
+	
+	$("#activityFilter form")
+   .bind("ajax:success", function(event, data, status, xhr) {
+			removePagination();
+			updateActivitiesListing(currentActivityListId(), data);
+   });
+});
+
+function removePagination(){
+	$('.pagination').remove();
+}
 
 $(document).ready(function(){
 	
 	soundManager.url = base_url + 'swf';
-	$('textarea').elastic();
+	$('textarea').not('#contact_request_content').elastic();
 	
 	$('#activityFilter input[type=text]').quickClear();
 	$('#activityFilterAnalytics input[type=text]').quickClear();
@@ -38,11 +227,12 @@ $(document).ready(function(){
 });
 
 function decreaseTimer() {
+	
 	currentTime = parseInt ( $(".timer .time").attr("data-seconds") ) -1;
 	
 	if(currentTime <= 0){
 		
-		counting_in_progress = false;
+		stopCounting();
 		
 		currentTime = 0;
 		$('.time').addClass('time_is_up');
@@ -60,10 +250,14 @@ function decreaseTimer() {
 		
 	} else if( $('.timer .time').length > 0 ) {
 		
-		setTimeout("decreaseTimer()", 1000);
+		timer = setTimeout("decreaseTimer()", 1000);
 		counting_in_progress = true;
 		
 		refreshTimeFromServer();
+		
+	} else {
+		// nothing to do
+		return;
 	}
 	
 	minutes = parseInt(currentTime / 60);
@@ -91,7 +285,14 @@ function decreaseTimer() {
 	
 }
 
+function resetPageTitle() {
+	document.title = ( document.title.replace(/\[(.*)\]/, '') );
+}
+
 function refreshTimeFromServer() {
+	
+	if(! $('#btn_void_pomodoro').length ) return;
+	
 	time_since_server_time_read++;
 	// bring time from server every minute (60 seconds), cause javascript is not precise enough
 	if( time_since_server_time_read >= 60 ) {
@@ -116,15 +317,15 @@ function announceTimeLeft(minutes) {
 	minutes = parseInt(minutes);
 	if(played_sounds[minutes] !== undefined && !played_sounds[minutes]) {
 		
-		sound_file = base_url + "sounds/text-to-speech/" + (parseInt(minutes) +1) + ".";
+		minutes_file = base_url + "sounds/text-to-speech/" + (parseInt(minutes) +1) + ".";
 		if(minutes == 0 && $('#pomodoro_submit[value="Complete"]').length == 0) {
-			sound_file = base_url + "sounds/text-to-speech/0.";
+			minutes_file = base_url + "sounds/text-to-speech/0.";
 			
 			ring_file = base_url + "sounds/clocks/alarm_clock.";
 			playAudioFile(ring_file)
 		} 
 		
-		playAudioFile(sound_file);
+		playAudioFile(minutes_file);
 		
 		played_sounds[minutes] = true;
 	} else {
@@ -135,7 +336,7 @@ function announceTimeLeft(minutes) {
 	}
 }
 
-function playAudioFile(sound_file) {
+function playAudioFile(minutes_file) {
 	//console.log(sound_file);
 	soundType = "";
 	if($.support.audio.ogg) {
@@ -145,13 +346,13 @@ function playAudioFile(sound_file) {
 	}
 	
 	if( soundType ) {
-		audio = new Audio(sound_file + soundType);
+		audio = new Audio(minutes_file + soundType);
 		audio.play();
 	} else {
 		soundManager.onready(function() {
 			var mySound = soundManager.createSound({
 		  	id: 'sound_' + minutes,
-		  	url: sound_file + 'mp3'
+		  	url: minutes_file + 'mp3'
 			});
 			try {
 				mySound.play('sound_' + minutes, {
@@ -188,8 +389,9 @@ function playAudioFile(sound_file) {
 
 // event
 $(document).ready(function(){
+	
 	// activity item click
-	$('#content .activityName').click(function(){
+	$('#content .activityName').live('click', function(){
 		
 		if( $(this).parent().parent().parent().hasClass("opened") ) {
 			$(this).parent().parent().parent().find('.detailsView').toggle().parent().removeClass("opened");
@@ -204,25 +406,20 @@ $(document).ready(function(){
 		
 	});
 	
+	revealCurrentActivity();
+});
+
+function removeInterruptionsWidget() {
+	$('#interruptions').parent().remove();
+}
+
+function revealCurrentActivity() {
 	if( $('#content .activityName').length == 1 ) {
 		$('#content .activityName').click();
 	} else if( $('li[data-activity]').size() > 0 ) {
 		$( 'li[data-activity="' + window.location.hash.replace("#", '') + '"] .activityName' ).click();
 	}
-	
-	$(".pomodoros_count")
-   .bind("ajax:success", function(event, data, status, xhr) {
-		clearExistingData();
-		addNewData(data, this);
-   });
-
-	$(".comments_count")
-  	.bind("ajax:success", function(event, data, status, xhr) {
-			clearExistingData();
-			addNewData(data, this);
-			$('#commentsList #comment_content').elastic();
-   });
-});
+}
 
 function clearExistingData() {
 	if( $('#pomodorosList').length > 0 ) $('#pomodorosList').remove();
@@ -266,17 +463,22 @@ $(document).ready(function(){
 // graphs
 // Run the script on DOM ready:
 $(function(){
-	$('.pie').visualize({type: 'pie', width: '629px'});
-	if( typeof(chart_interval) === 'undefined' || chart_interval < 20 ) {
-		$('.bar').visualize({type: 'bar', width: '629px'});
-	} else {
-		$('.bar').visualize({type: 'line', width: '629px'});
+	if( $('#analytics_index').length ) {
+		
+		$('.pie').visualize({type: 'pie', width: '629px'});
+		
+		if( typeof(chart_interval) === 'undefined' || chart_interval < 20 ) {
+			$('.bar').visualize({type: 'bar', width: '629px'});
+		} else {
+			$('.bar').visualize({type: 'line', width: '629px'});
+		}
+		
+		//$('.area').visualize({type: 'area', width: '629px'});
+		//$('.line').visualize({type: 'line', width: '629px'});
+		//$('.analytics').visualize({type: 'area', width: '629px'});
+		//$('.analytics').visualize({type: 'line', width: '629px'});
+		$('.analytics').hide();
 	}
-	//$('.area').visualize({type: 'area', width: '629px'});
-	//$('.line').visualize({type: 'line', width: '629px'});
-	//$('.analytics').visualize({type: 'area', width: '629px'});
-	//$('.analytics').visualize({type: 'line', width: '629px'});
-	$('.analytics').hide();
 });
 
 
@@ -327,26 +529,6 @@ function updateSelected(date) {
 
 // nonsemantic 
 $('#site').wrap('<div id="nonsemanticBg" />');
-
-$( function(){
-	
-	$('.breakButtons li').click( function() {
-		$(this).unbind('click');
-		$(this).find('a').click();
-		return;
-	});
-	
-	$('.breakButtons li').hover(
-		function() {
-			$(this).addClass('breakButtonHover');
-		},
-		function() {
-			$(this).removeClass('breakButtonHover');
-		}
-	);
-	
-	/* $("#activity_tag_list").autoSuggest( base_url + 'tags/user_tags' ); */
-});
 
 // tags auto-complete
 $(function() {
@@ -426,6 +608,12 @@ $( function() {
 });
 
 $(function(){
+	draggableTodoItems();
+});
+
+function draggableTodoItems() {
+	if( ! $('#todotodays').length ) return;
+	
 	$('#todotodays').sortable({
 		handle: '.drag_handle',
 		update: function(event, ui) {
@@ -440,7 +628,7 @@ $(function(){
 			});
 		}
 	});
-});
+}
 
 $(function(){
 	$('.iframe').fancybox({
@@ -453,7 +641,8 @@ $(function(){
 		transitionIn: 'none',
 		transitionOut: 'none',
 		overlayOpacity: 1,
-		overlayColor: '#E5E2D2'
+		overlayColor: '#E5E2D2',
+		hideOnOverlayClick: false
 	});
 	
 	$('#new_contact_request a.button').click(function(){

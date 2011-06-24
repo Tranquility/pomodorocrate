@@ -14,6 +14,7 @@ class ActivitiesController < ApplicationController
     end
     
     respond_to do |format|
+      format.js     {  }
       format.html   # index.html.erb
       format.xml    { render :xml => @activities }
       format.json   { render :json => @activities }
@@ -31,6 +32,7 @@ class ActivitiesController < ApplicationController
     end
 
     respond_to do |format|
+      format.js     {  }
       format.html   # show.html.erb
       format.xml    { render :xml => @activity }
       format.json   { render :json => @activity }
@@ -98,10 +100,12 @@ class ActivitiesController < ApplicationController
       elsif @activity.update_attributes(params[:activity])
         flash[:success] = "Activity updated"
         
+        format.js     { render :text => 'OK' }
         format.html   { redirect_to(activities_path, :success => 'Activity updated.') }
         format.xml    { head :ok }
         format.json   { head :ok }
       else
+        format.js     { render :text => 'KO' }
         format.html   { render :action => "edit" }
         format.xml    { render :xml => @activity.errors, :status => :unprocessable_entity }
         format.json   { render :json => @activity.errors, :status => :unprocessable_entity }
@@ -117,6 +121,7 @@ class ActivitiesController < ApplicationController
     flash[:success] = "Activity deleted"
 
     respond_to do |format|
+      format.js     { render :text => 'OK' }
       format.html   { redirect_to(activities_url) }
       format.xml    { head :ok }
       format.json   { head :ok }
@@ -126,6 +131,7 @@ class ActivitiesController < ApplicationController
   def clone
     @activity = Activity.where(:user_id => current_user.id).find(params[:id])
     @activity.id = nil
+    @activity.deadline = Date.today if @activity.deadline < Date.today
     
     @clone = @activity.clone
 
