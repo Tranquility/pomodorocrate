@@ -45,6 +45,13 @@ class AnalyticsController < ApplicationController
     @total_worked_activities = Pomodoro.joins(:activity => :project).where(:user_id => current_user.id, :completed => true, :successful => true, :created_at => @start_date..@end_date).where(project_filtering).where(pomodoros_tags_filtering).count(:group => :activity).length
     @total_worked_projects = Pomodoro.joins(:activity => :project).where(:user_id => current_user.id, :completed => true, :successful => true, :created_at => @start_date..@end_date).where(project_filtering).where(pomodoros_tags_filtering).count(:group => 'activities.project_id').length
     
+    respond_to do |format|
+      format.js     {  }
+      format.html   # index.html.erb
+      format.xml    {  }
+      format.json   {  }
+    end
+    
   end
   
   def render_complete_pomodoros

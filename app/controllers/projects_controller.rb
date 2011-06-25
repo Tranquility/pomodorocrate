@@ -9,8 +9,10 @@ class ProjectsController < ApplicationController
     @projects = Project.where(:user_id => current_user)
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @projects }
+      format.js     {  }
+      format.html   # index.html.erb
+      format.xml    { render :xml => @projects }
+      format.json   { render :json => @projects }
     end
   end
 
@@ -25,6 +27,7 @@ class ProjectsController < ApplicationController
     end
 
     respond_to do |format|
+      format.js   {  }
       format.html # show.html.erb
       format.xml  { render :xml => @project }
     end
@@ -36,6 +39,7 @@ class ProjectsController < ApplicationController
     @project = Project.new
 
     respond_to do |format|
+      format.js     {  }
       format.html # new.html.erb
       format.xml  { render :xml => @project }
     end
@@ -48,6 +52,13 @@ class ProjectsController < ApplicationController
     rescue
       flash[:error] = "There is no project with id #{params[:id]}"
       redirect_to (projects_url) and return
+    end
+    
+    respond_to do |format|
+      format.js     {  }
+      format.html   # index.html.erb
+      format.xml    { render :xml => @project }
+      format.json   { render :json => @project }
     end
   end
 

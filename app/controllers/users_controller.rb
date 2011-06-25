@@ -60,6 +60,13 @@ class UsersController < ApplicationController
     end
     
     @title = "Settings"
+    
+    respond_to do |format|
+      format.js     {  }
+      format.html   # index.html.erb
+      format.xml    { render :xml => @user }
+      format.json   { render :json => @user }
+    end
   end
   
   def update

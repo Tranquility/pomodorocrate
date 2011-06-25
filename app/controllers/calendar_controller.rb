@@ -19,6 +19,13 @@ class CalendarController < ApplicationController
       @event_strips = Activity.event_strips_for_month(@shown_month, :conditions => search_conditions)
     end
     
+    respond_to do |format|
+      format.js     {  }
+      format.html   # index.html.erb
+      format.xml    { render :xml => @event_strips }
+      format.json   { render :json => @event_strips }
+    end
+    
   end
   
 end

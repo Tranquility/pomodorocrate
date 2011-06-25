@@ -656,6 +656,8 @@ $(function(){
 
 function playTickTack() {
 	
+	if( ! tick_tack_sound || ! counting_in_progress) return;
+	
 	sound_file = base_url + "sounds/clocks/egg_timer.";
 	
 	soundType = "";

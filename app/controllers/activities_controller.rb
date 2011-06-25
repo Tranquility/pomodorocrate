@@ -45,6 +45,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new
     
     respond_to do |format|
+      format.js     {  }
       format.html   # new.html.erb
       format.xml    { render :xml => @activity }
       format.json   { render :json => @activity }
@@ -77,6 +78,13 @@ class ActivitiesController < ApplicationController
     rescue
       flash[:error] = "There is no activity with id #{params[:id]}"
       redirect_to (activities_url) and return
+    end
+    
+    respond_to do |format|
+      format.js     {  }
+      format.html   # new.html.erb
+      format.xml    { render :xml => @activity }
+      format.json   { render :json => @activity }
     end
   end
   

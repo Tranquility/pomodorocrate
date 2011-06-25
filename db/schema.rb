@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110624110620) do
+ActiveRecord::Schema.define(:version => 20110625133053) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20110624110620) do
 
   add_index "pomodoros", ["activity_id"], :name => "index_pomodoros_on_activity_id"
   add_index "pomodoros", ["completed"], :name => "index_pomodoros_on_completed"
+  add_index "pomodoros", ["created_at"], :name => "index_pomodoros_on_created_at"
   add_index "pomodoros", ["successful"], :name => "index_pomodoros_on_successful"
   add_index "pomodoros", ["user_id"], :name => "index_pomodoros_on_user_id"
 
@@ -117,6 +118,8 @@ ActiveRecord::Schema.define(:version => 20110624110620) do
     t.boolean  "completed",   :default => false
   end
 
+  add_index "projects", ["completed"], :name => "index_projects_on_completed"
+  add_index "projects", ["name"], :name => "index_projects_on_name"
   add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
 
   create_table "settings", :force => true do |t|
@@ -152,6 +155,7 @@ ActiveRecord::Schema.define(:version => 20110624110620) do
 
   add_index "todotodays", ["activity_id", "today"], :name => "index_todotodays_on_activity_id_and_today", :unique => true
   add_index "todotodays", ["activity_id"], :name => "index_todotodays_on_activity_id"
+  add_index "todotodays", ["position"], :name => "index_todotodays_on_position"
   add_index "todotodays", ["today"], :name => "index_todotodays_on_today"
   add_index "todotodays", ["user_id"], :name => "index_todotodays_on_user_id"
 

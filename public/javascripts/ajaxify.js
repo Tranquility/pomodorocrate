@@ -1,5 +1,7 @@
 function updateMainListing() {
-	updateCurrentActivityList( currentActivityListId() );
+	listId = currentActivityListId();
+	if( listId ) updateCurrentActivityList( listId );
+	
 	reloadAllWidgets();
 }
 
@@ -11,11 +13,14 @@ function currentActivityListId() {
 	} else if( $('#activity_item').length ) {
 		return '#activity_item';
 	} else {
-		return null;
+		return false;
 	}
 }
 
 function updateCurrentActivityList(itemSelector) {
+	
+	if( ! itemSelector ) return;
+	
 	$.ajax({
 		type: "GET",
 		url: window.location.href,
