@@ -74,12 +74,15 @@ $(function(){
 				if( $('#activePomodoro').length ) {
 					containerId = '#activePomodoro';
 				}
+				
 				$(containerId).parent().replaceWith(data);
 				
 				stopCounting();
 				updateMainListing();
 				decreaseTimer();
 				playTickTack();
+				
+				$('#pomodoro_comments').elastic();
 			}
    });
 });
@@ -116,12 +119,11 @@ $(function(){
 
 /**** PAGINATION ****/
 $(function(){
-	$('.pagination a').attr('data-remote', true).attr('data-type', 'text');
+	ajaxifyPagination();
 
 	$('.pagination a').live("ajax:success", function(event, data, status, xhr) {
 			updateActivitiesListing(currentActivityListId(), data);
-			
-			$('.pagination a').attr('data-remote', true).attr('data-type', 'text');
+			//ajaxifyPagination();
    });
 });
 /**** END PAGINATION ****/
@@ -155,7 +157,7 @@ $(document).ajaxStart(function(e){
 
 /**** GENERIC AJAX COMPLETE ****/
 $(document).ajaxComplete(function(){
-	$('.pagination a').attr('data-remote', true);
+	ajaxifyPagination();
 	draggableTodoItems(); // make todo today items draggable
 });
 /**** END GENERIC AJAX COMPLETE ****/
@@ -182,6 +184,7 @@ function stopCounting() {
 
 function stopAllSounds() {
 	if( typeof ticktack !== 'undefined' ) $(ticktack)[0].pause();
+	$.Storage.remove('last_sound_played');
 }
 
 function startCounting() {
@@ -189,18 +192,18 @@ function startCounting() {
 }
 
 $(function(){
-	// dynamic activities filtering (search)
-	$("#activityFilter form").unbind("ajax:success");
-	
-	$("#activityFilter form")
-   .bind("ajax:success", function(event, data, status, xhr) {
-			removePagination();
+	$("#activityFilter form").live("ajax:success", function(event, data, status, xhr) {
 			updateActivitiesListing(currentActivityListId(), data);
+			//ajaxifyPagination();
    });
 });
 
 function removePagination(){
 	$('.pagination').remove();
+}
+
+function ajaxifyPagination(){
+	$('.pagination a').attr('data-remote', true).attr('data-type', 'text');
 }
 
 $(document).ready(function(){
@@ -312,7 +315,7 @@ function refreshTimeFromServer() {
 
 function announceTimeLeft(minutes) {
 	
-	if(!voice_notifications) return;
+	if(!voice_notifications || $.Storage.get('last_sound_played') == minutes) return;
 	
 	minutes = parseInt(minutes);
 	if(played_sounds[minutes] !== undefined && !played_sounds[minutes]) {
@@ -328,6 +331,8 @@ function announceTimeLeft(minutes) {
 		playAudioFile(minutes_file);
 		
 		played_sounds[minutes] = true;
+		
+		$.Storage.set('last_sound_played', minutes);
 	} else {
 		//console.log(minutes);
 		//console.log(played_sounds[minutes]);

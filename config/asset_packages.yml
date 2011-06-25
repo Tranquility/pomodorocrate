@@ -8,14 +8,25 @@ javascripts:
   - enhance
   - excanvas
   - jquery-ui-1.8.9.custom.min
-  - jquery.formalize
   - jquery.inline_label.min
   - visualize.jQuery
   - jquery.fancybox-1.3.4.pack
-  - jquery.elastic
+  - jquery.elastic.source
   - event_calendar
   - jquery.quickClear
   - ajaxify
+  - jquery.storage
+- static:
+  - jquery-1.6.1.min
+  - jquery.fancybox-1.3.4.pack
+  - jquery.easing-1.3.pack
+  - static
+  - jquery.elastic.source
+- modal:
+  - jquery-1.6.1.min
+  - rails
+  - application
+  - soundmanager2-nodebug-jsmin
 stylesheets: 
 - base: 
   - blueprint/reset
@@ -25,3 +36,14 @@ stylesheets:
   - visualize-light
   - jquery.fancybox-1.3.4
   - event_calendar
+  - ui-pomodoro_crate/jquery-ui-1.8.9.custom
+- static:
+  - blueprint/reset
+  - jquery.fancybox-1.3.4
+  - web_fonts
+  - styles
+- modal:
+  - blueprint/reset
+  - web_fonts
+  - screen
+  - login

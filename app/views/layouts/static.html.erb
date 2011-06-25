@@ -10,16 +10,9 @@
 <%= favicon_link_tag %>
 <%= csrf_meta_tag %>
 
-<!--[if IE]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-<!-- styling -->
-<%= stylesheet_link_tag "http://reveloper.com/wp-content/themes/reveloper/html5reset.css" %>
-<%= stylesheet_link_tag "jquery.fancybox-1.3.4.css" %>
-<%= stylesheet_link_tag "web_fonts.css" %>
-<%= stylesheet_link_tag "styles.css" %>
-<!-- end styling -->
+<%= stylesheet_link_merged(:static).html_safe %>
 
 <!--[if IE 7]>
 <%= stylesheet_link_tag "styles_ie7.css" %>
@@ -34,24 +27,11 @@
 	
 </div>
 
-<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js', 'jquery.fancybox-1.3.4.pack', 'jquery.easing-1.3.pack', 'static', 'jquery.elastic' %>
+<%= javascript_include_merged(:static).html_safe %>
 <!--[if lt IE 9]><%= javascript_include_tag 'jquery.corner', 'ie' %><![endif]-->
 <!--[if IE 7]><%= javascript_include_tag 'ie7' %><![endif]-->
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-21673864-1']);
-  _gaq.push(['_setDomainName', '.pomodorocrate.com']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+<%= render "shared/ga" %>
 
 </body>
 </html>
