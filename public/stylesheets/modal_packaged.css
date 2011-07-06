@@ -281,10 +281,11 @@ a.video_demo {color: #898989; font-family: MetaProBold, Arial, Verdana, sans-ser
 .quick_stats table td {font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 16px; text-align: center; background-color: #E5E2D2; color: #A39E89; padding: 0 4px;}
 #commentsList {max-height: none}
 #commentsList #comment_content {height: 60px; padding: 4px; width: 636px; font-family: MetaProNormal,Arial,Verdana,sans-serif; font-size: 12px; color: #6B685D}
-#commentsList #comment_submit {padding-left: 0px}
+#commentsList #comment_submit {margin-top: 4px; padding-left: 0px}
 #commentsList .delete_comment, #pomodorosList .delete_pomodoro {text-indent: -999px; display: none; float: right; height: 10px; margin: -15px -5px 0 10px; overflow: hidden; width: 10px; background: url(../images/clear.png) top left no-repeat}
 #commentsList li, #pomodorosList li {padding: 6px 10px; font-size: 12px}
 #commentsList li strong {font-family: MetaProBold, Arial, Verdana, sans-serif; font-weight: normal; font-size: 12px}
+#commentsList li #comment_content:focus {outline: none !important}
 #tooltip {display: none; height: 20px; padding: 2px 5px 2px 38px; position: absolute; background: url(../images/bg_tooltip_small.png) 4px center no-repeat #fff; color: #c83d2b; opacity: 0.8; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 12px}
 #loader {display: none; height: 32px; overflow: hidden; padding: 2px; position: absolute; width: 32px; background: url(../images/loading_feedback.gif) center center no-repeat transparent; opacity: 0.8; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 12px; text-indent: -9999px;}
 #speaker {background: url(../images/bg_speaker.jpg) center left no-repeat #fff; border: 2px solid #b9b9b9; height: 42px; padding-left: 36px; color: #b9b9b9; text-shadow: none}

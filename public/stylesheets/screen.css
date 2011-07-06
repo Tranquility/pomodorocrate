@@ -542,13 +542,14 @@ a.video_demo { color: #898989; font-family: MetaProBold, Arial, Verdana, sans-se
 #commentsList #comment_content { 	height: 60px; padding: 4px; width: 636px;
 	 																font-family: MetaProNormal,Arial,Verdana,sans-serif; font-size: 12px; 
 	 																color: #6B685D; }
-#commentsList #comment_submit { padding-left: 0px; }
+#commentsList #comment_submit { margin-top: 4px; padding-left: 0px; }
 #commentsList .delete_comment, #pomodorosList .delete_pomodoro { 	text-indent: -999px;
 	 																																display: none; float: right; height: 10px; margin: -15px -5px 0 10px; overflow: hidden; width: 10px;
 																																	background: url(../images/clear.png) top left no-repeat; }
 #commentsList li, #pomodorosList li { padding: 6px 10px;
 	 																		font-size: 12px; }
 	#commentsList li strong { font-family: MetaProBold, Arial, Verdana, sans-serif; font-weight: normal; font-size: 12px; }
+		#commentsList li #comment_content:focus { outline: none !important; }
 	
 	
 #tooltip { display: none; height: 20px; padding: 2px 5px 2px 38px; position: absolute; 
