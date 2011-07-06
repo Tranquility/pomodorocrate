@@ -9,7 +9,7 @@
 		<% @activities.each do |a| %>
 		
 			<% unless a.completed %>
-				<% if a.deadline != prev_deadline %>
+				<% if distance_of_time_in_words(Date.today, a.deadline.to_date) != prev_deadline %>
 				
 					<% unless prev_deadline.blank? %>
 					</ul>
@@ -24,7 +24,7 @@
 						<% end %>
 					</h6>
 					<ul class="activityList">
-					<% prev_deadline = a.deadline %>
+					<% prev_deadline = distance_of_time_in_words(Date.today, a.deadline.to_date) %>
 					<% opened_ul = true %>
 				<% end %>
 			<% else %>

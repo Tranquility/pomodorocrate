@@ -1,13 +1,6 @@
-<%= render "shared/debug" %>
+<%= render "shared/debug" if Rails.env.development? %>
+<%= render "shared/client_side_settings" %>
 
-<script>
-	base_url = "<%= root_url %>";
-	voice_notifications = <%= current_user.nil? ? "false" : current_user.voice_notifications %>
-	tick_tack_sound = <%= current_user.nil? ? "false" : current_user.tick_tack_sound %>
-	<% unless @start_date.nil? %>
-	chart_interval = <%= @graph_interval %>
-	<% end %>
-</script>
 <%= javascript_tag "var AUTH_TOKEN =  #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 
 <%= javascript_include_merged(:base).html_safe %>

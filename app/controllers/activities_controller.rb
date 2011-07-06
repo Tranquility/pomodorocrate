@@ -1,12 +1,13 @@
 class ActivitiesController < ApplicationController
   
-  before_filter :authenticate
+  before_filter :authenticate, :persist_filters_on_session, :load_persisted_settings
   
   @@per_page = 60
   
   # GET /dummies
   # GET /dummies.xml
   def index
+    
     if params[:q_tags] and params[:q_tags] != 'Tags.' and !params[:q_tags].blank? 
       @activities = Activity.find_tagged_with(params[:q_tags]).paginate :page => params[:page], :conditions => search_conditions
     else
@@ -28,7 +29,12 @@ class ActivitiesController < ApplicationController
       @activity = Activity.where(:user_id => current_user.id).find(params[:id])
     rescue
       flash[:error] = "There is no activity with id #{params[:id]}"
-      redirect_to (activities_url) and return
+      
+      respond_to do |format|
+        format.js   { render :text => 'KO' }
+        format.html { redirect_to (activities_url) and return }
+      end
+      
     end
 
     respond_to do |format|
@@ -43,6 +49,7 @@ class ActivitiesController < ApplicationController
   # GET /dummies/new.xml
   def new
     @activity = Activity.new
+    @activity.project_id = session[:project_id] unless session[:project_id].nil?
     
     respond_to do |format|
       format.js     {  }
@@ -57,6 +64,8 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(params[:activity])
     @activity.user_id = current_user.id
+    
+    session[:project_id] = params[:activity][:project_id]
 
     respond_to do |format|
       if @activity.save
@@ -109,7 +118,7 @@ class ActivitiesController < ApplicationController
         flash[:success] = "Activity updated"
         
         format.js     { render :text => 'OK' }
-        format.html   { redirect_to(activities_path, :success => 'Activity updated.') }
+        format.html   { redirect_to( activities_path , :success => 'Activity updated.') }
         format.xml    { head :ok }
         format.json   { head :ok }
       else
@@ -155,5 +164,72 @@ class ActivitiesController < ApplicationController
       end
     end
   end
+  
+  private
+  
+    def persist_filters_on_session
+      
+      session[:filtered] = false
+      
+      if params[:commit]
+        
+        if params[:q_name] 
+          unless params[:q_name].blank?
+            if params[:q_name] != "Activity."
+              session[:q_name] = params[:q_name]
+            else 
+              session.delete(:q_name)
+            end
+          else
+            session.delete(:q_name)
+          end
+        end
+        
+        if params[:q_project]
+          if params[:q_project] != "__none__"
+            session[:q_project] = params[:q_project]
+          else
+            session.delete(:q_project)
+          end
+        end
+        
+        if params[:q_completed] 
+          if params[:q_completed] != 'All'
+            session[:q_completed] = params[:q_completed] 
+          else
+            session.delete(:q_completed)
+          end
+        end
+        
+        if params[:q_tags]
+          unless params[:q_tags].blank?
+            if params[:q_tags] != 'Tags.'
+              session[:q_tags] = params[:q_tags]
+            else
+              session.delete(:q_tags)
+            end
+          else
+            session.delete(:q_tags)
+          end
+        end
+        
+        session.delete(:page)
+      end
+      
+      unless session[:q_name].nil? and session[:q_project].nil? and session[:q_completed].nil? and session[:q_tags].nil?
+        session[:filtered] = true
+      end
+      
+      session[:page] = params[:page] if params[:page]
+    end
+    
+    def load_persisted_settings
+      params[:q_name] = session[:q_name] if session[:q_name]
+      params[:q_project] = session[:q_project] if session[:q_project]
+      params[:q_completed] = session[:q_completed] if session[:q_completed]
+      params[:q_tags] = session[:q_tags] if session[:q_tags]
+      
+      params[:page] = session[:page] if session[:page]
+    end
   
 end

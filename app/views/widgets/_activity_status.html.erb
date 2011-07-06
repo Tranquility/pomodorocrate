@@ -1,12 +1,14 @@
-<% unless @today_remaining_pomodoros == 0 and @today_completed_pomodoros == 0 %>
 <aside>
-	
 	<section id="activityStatus" class="contentBoxNav">
+		<% unless @today_remaining_pomodoros == 0 and @today_completed_pomodoros == 0 %>
 		<nav>
 			<ul>
 				<li class="active"><a class="tabs">Daily stats</a></li>
 			</ul>
 		</nav>
+		
+		<%= render :partial => 'widgets/toggable_button', :locals => { :widget_name => :activityStatus } %>
+		
 		<div class="widgetBox">
 			<section class="group">
 				<h6>Remaining pomodoros: <%= @today_remaining_pomodoros %></h6>
@@ -16,7 +18,6 @@
 				<div class="pomodorosCount"><%= pomodoros_as_image(@today_completed_pomodoros) %></div>
 			</section>
 		</div>
+		<% end %>
 	</section>
-	
 </aside>
-<% end %>

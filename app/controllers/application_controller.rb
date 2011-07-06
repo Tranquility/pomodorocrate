@@ -18,13 +18,13 @@ class ApplicationController < ActionController::Base
     @pomodoro = Pomodoro.where( :completed => nil, :user_id => current_user.id ).last
     @break = Break.where( :user_id => current_user.id, :completed => nil ).first
     
-    if Rails.env.production? and ActiveRecord::Base.configurations[Rails.env]['adapter'] == :postgresql
+    if Rails.env.production? and ActiveRecord::Base.connection.adapter_name.downcase.to_sym == :postgresql
       @recent_pomodoros = Pomodoro.successful_and_completed.select("activity_id, id, created_at, successful, completed").where(:user_id, current_user.id).group("activity_id, pomodoros.id, created_at, successful, completed").order("pomodoros.created_at DESC").limit(5)
     else
       @recent_pomodoros = Pomodoro.group(:activity_id).order("created_at DESC").limit(5).find_all_by_user_id(current_user.id)
     end
     
-    @upcoming_activities = Activity.where(:user_id => current_user.id, :completed => false).where("deadline >= '#{Time.now.midnight}'").order("activities.deadline ASC").limit(5)
+    @upcoming_activities = Activity.where(:user_id => current_user.id, :completed => false).where("deadline >= '#{Date.today}'").order("activities.deadline ASC").limit(5)
     @overdue_activities = Activity.where("deadline < '#{Date.today}'").where(:user_id => current_user.id, :completed => false).limit(5)
     
     @today_remaining_pomodoros = 0
@@ -34,9 +34,9 @@ class ApplicationController < ActionController::Base
       logger.debug("difference: " + difference.to_s)
       @today_remaining_pomodoros += (difference < 0 ? 0 : difference)
     end
-    @today_completed_pomodoros = Pomodoro.successful_and_completed.where("date(pomodoros.created_at) = '#{Date.today}' AND user_id = ?", current_user.id).count
+    @today_completed_pomodoros = Pomodoro.successful_and_completed.where("pomodoros.created_at BETWEEN '#{Date.today.beginning_of_day.utc}' AND '#{Date.today.end_of_day.utc}' AND user_id = ?", current_user.id).count
     
-    @upcoming_appointments = Activity.where(:user_id => current_user.id, :completed => false).where("deadline >= '#{Time.now.midnight}'").where(:event_type => true).order("activities.start_at ASC").limit(5)
+    @upcoming_appointments = Activity.where(:user_id => current_user.id, :completed => false).where("deadline >= '#{Date.today}'").where(:event_type => true).order("activities.start_at ASC").limit(5)
   end
   
   def mailer_set_url_options
@@ -46,6 +46,7 @@ class ApplicationController < ActionController::Base
   protected
 
     def search_conditions
+      
       cond_params = {
         :q_name     => "%#{params[:q_name]}%",
         :q_project  => params[:q_project],
@@ -55,7 +56,7 @@ class ApplicationController < ActionController::Base
       cond_strings = returning([]) do |strings|
       
         if params[:q_name]
-          strings << "(activities.name like :q_name)" unless (params[:q_name].blank? or params[:q_name] == "Activity.")
+          strings << "(activities.name like :q_name or activities.description like :q_name)" unless (params[:q_name].blank? or params[:q_name] == "Activity.")
         end
       
         if params[:q_project]

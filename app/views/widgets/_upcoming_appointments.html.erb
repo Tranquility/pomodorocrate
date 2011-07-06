@@ -1,49 +1,38 @@
-<% unless @upcoming_appointments.nil? || @upcoming_appointments.empty? %>
-	<aside>
-	
+<aside>
 		<section id="upcomingAppointments" class="contentBoxNav">
-			<nav>
-				<ul>
-					<li class="active"><a class="tabs">Upcoming appointments</a></li>
-				</ul>
-			</nav>
-			<div class="widgetBox">
-				
-				<ul class="activityList">
+		<% unless @upcoming_appointments.nil? || @upcoming_appointments.empty? %>
+		<nav>
+			<ul>
+				<li class="active"><a class="tabs">Upcoming appointments</a></li>
+			</ul>
+		</nav>
+		
+		<%= render :partial => 'widgets/toggable_button', :locals => { :widget_name => :upcomingAppointments } %>
+		
+		<div class="widgetBox">
+			<ul class="activityList">
 
-					<% @upcoming_appointments.each do |a| %>
+				<% @upcoming_appointments.each do |a| %>
 
-					<li class="<%= cycle("even", "odd") %>">
-						<div class="quickView">
-							<div class="activityName">
-								<% time_distance = (Date.today - a.deadline.to_date == 0 ? "Today" : distance_of_time_in_words(Date.today, a.deadline.to_date) + " from now" ) %>
-								<%= a.name %>
-								<span class="deadlineMarker"><%= time_distance %></span>
-								<span class="deadlineMarker">on <%= a.deadline.to_date.to_s(:rfc822) %></span>
-								<span class="deadlineMarker">from <%= hms_format a.start_at %> to <%= hms_format a.end_at %></span>
-								<%= in_progress_marker(@pomodoro, a) %>
-								<%= todotoday_marker(a) %>
-							</div>
+				<li class="<%= cycle("even", "odd") %> <%= a.priority if a.priority != :none %>">
+					<div class="quickView">
+						<div class="activityName">
+							<% time_distance = (Date.today - a.deadline.to_date == 0 ? "Today" : distance_of_time_in_words(Date.today, a.deadline.to_date) + " from now" ) %>
+							<%= a.name %>
+							<span class="deadlineMarker"><%= time_distance %></span>
+							<span class="deadlineMarker">on <%= a.deadline.to_date.to_s(:rfc822) %></span>
+							<span class="deadlineMarker <%= due_at_status(a.end_at, "", true) %>">from <%= hms_format a.start_at %> to <%= hms_format a.end_at %></span>
+							<%= in_progress_marker(@pomodoro, a) %>
+							<%= todotoday_marker(a) %>
 						</div>
+					</div>
 
-						<ul class="actionsBar">
-							<li><%= link_to("Show", activity_path(a), :class => :button) %></li>
-							<li><%= link_to("Clone", clone_activity_path(:id => a.id), :class => :button) %></li>
-							<% if @pomodoro.nil? and !a.todotoday.nil? %>
-								<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => :button, :remote => true) %></li>
-							<% end %>
-							<% if a.todotoday.nil? %>
-								<li><%= link_to("Do Today", todotodays_path(:activity_id => a), :method => :post, :class => :button, :remote => true) %></li>
-							<% end %>
-						</ul>
-						
-					</li>
-					<% end %>
-
-				</ul>
-				
-			</div>
-		</section>
-
-	</aside>
-<% end %>
+					<%= render :partial => 'widgets/activity_toolbar_small', :object => a, :as => :a %>
+					
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+	</section>
+</aside>

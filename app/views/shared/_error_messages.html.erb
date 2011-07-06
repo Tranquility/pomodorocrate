@@ -9,4 +9,6 @@
     <% end %>
     </ul>
   </div>
+
+	<%= javascript_tag "location.href = '#error_explanation'" unless (!defined?(anchor) or anchor.nil or !anchor) %>
 <% end %>

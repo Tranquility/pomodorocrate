@@ -1,0 +1,2 @@
+<span class="toggable <%= cookies[widget_name] == 'collapsed-true' ? :expandable : :collapsable %>" title="Click to hide / show widget"> </span>
+<%= javascript_tag ("$('\##{widget_name} .widgetBox').css('display', 'none');") if cookies[widget_name] == 'collapsed-true' and request.xml_http_request? %>

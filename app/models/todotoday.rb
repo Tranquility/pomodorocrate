@@ -17,7 +17,6 @@ class Todotoday < ActiveRecord::Base
   
   belongs_to :activity
   belongs_to :user
-  #has_one :project, :through => :activity
   
   attr_accessible :activity_id, :comments, :today, :user_id, :position
   
@@ -27,7 +26,7 @@ class Todotoday < ActiveRecord::Base
   validate  :user_must_own_activity
   validates_numericality_of :position, :only_integer => true
   
-  default_scope :order => "today ASC, position ASC", :conditions => { :today => Time.now.to_date }
+  default_scope :order => "today ASC, position ASC, created_at ASC", :conditions => { :today => Time.now.to_date }
   
   def user_must_own_activity
     errors.add(:activity, "is not valid") unless ( self.activity.user_id == user_id )

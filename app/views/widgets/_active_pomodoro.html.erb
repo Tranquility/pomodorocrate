@@ -19,7 +19,7 @@
 				<% end %>
 				
 				<div class="activity_details">
-					<%= link_to("&#9658; Details".html_safe, activity_path(@pomodoro.activity), :class => [:button, :details_button]) %>
+					<%= link_to("&#9658; Show".html_safe, activity_path(@pomodoro.activity), :class => [:button, :details_button], :title => "View activity details") %>
 				</div>
 				
 				<div class="pomodorosCount">
@@ -35,6 +35,5 @@
 
 	</aside>
 <% end %>
-
-<%= render "widgets/timed_break" %>
-<%= render "widgets/interruptions" %>
+<%= render "widgets/timed_break" -%>
+<%= render "widgets/interruptions" unless params[:render_interruptions] == 'false' -%>

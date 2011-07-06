@@ -1,0 +1,16 @@
+<% unless !@todotodays.empty? or @previous_todotodays.nil? %>
+<section class="group" id="previous_todotodays_list">
+	<h6>Recent unfinished Todo Todays</h6>
+	
+		<ol class="activityList withSeparator" id="previous_todotodays">
+	
+			<% @previous_todotodays.each do |ptd| %>
+			<% a = ptd.activity %>
+			<% next if a.nil? %>
+				<%= render :partial => "shared/activity", :locals => { :a => a, :td => ptd } %>
+			<% end %>
+	
+		</ol>
+
+</section>
+<% end %>

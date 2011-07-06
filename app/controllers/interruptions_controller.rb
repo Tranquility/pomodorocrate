@@ -30,6 +30,7 @@ class InterruptionsController < ApplicationController
       else
         flash[:error] = "The #{@interruption.kind} interruption recording has failed."
         
+        format.js   { render :text => 'alert("There was a problem contacting the server. Please try reloading the page.")' and return }
         format.html { redirect_to(todotodays_path) }
         format.xml  { render :xml => @interruption.errors, :status => :unprocessable_entity }
       end

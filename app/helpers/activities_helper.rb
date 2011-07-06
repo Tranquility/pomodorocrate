@@ -1,14 +1,22 @@
 module ActivitiesHelper
   
-  def due_at_status(date)
-    output = '<span class="'
+  def due_at_status(date, content = "", just_relative_time = false)
     
-    if date < Date.today then output += "past"
-    elsif date == Date.today then output += "present"
-    elsif date > Date.today then output += "future"
+    return nil unless date.instance_of? Date or date.instance_of? DateTime or date.instance_of? ActiveSupport::TimeWithZone
+    
+    output = '<span class="'
+    point_in_time = ''
+    use_time_for_comparing = (date.instance_of? DateTime or date.instance_of? ActiveSupport::TimeWithZone)
+    
+    if date     < (use_time_for_comparing ? DateTime.now : Date.today) then point_in_time = "past"
+    elsif date == (use_time_for_comparing ? DateTime.now : Date.today) then point_in_time = "present"
+    elsif date  > (use_time_for_comparing ? DateTime.now : Date.today) then point_in_time = "future"
     end
     
-    raw output += "\">#{date.to_date.to_s(:rfc822)}</span>"
+    return point_in_time if just_relative_time
+    
+    output += point_in_time
+    raw output += "\">#{content.blank? ? date.to_date.to_s(:rfc822) : content}</span>"
   end
   
 end

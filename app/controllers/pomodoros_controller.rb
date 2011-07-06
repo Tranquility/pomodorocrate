@@ -30,20 +30,38 @@ class PomodorosController < ApplicationController
   def create
     
     if pomodoro_in_progress?
-      flash[:error] = "A pomodoro is already in progress"
-      redirect_to(activities_path) and return
+      unless params[:autocomplete]
+        respond_to do |format|
+          format.js   { render :text => 'There was a problem contacting the server. Please try to reload the page.', :layout => false and return }
+          format.html {
+            flash[:error] = "A pomodoro is already in progress"
+            redirect_to(activities_path) and return
+          }
+        end
+      end
     end
     
     if break_in_progress?
-      Break.where( :completed => nil ).first.update_attributes(:completed => true)
-      @break = nil
+      unless params[:autocomplete]
+        Break.where( :completed => nil ).first.update_attributes(:completed => true)
+        @break = nil
+      end
     end
     
     @pomodoro = Pomodoro.new(:activity_id => params[:activity_id], :user_id => current_user.id, :duration => current_user.pomodoro_length)
+    
+    if params[:autocomplete]
+      @pomodoro.successful = true
+      @pomodoro.completed = true
+      @pomodoro.comments = 'Manually marked as completed.'
+    end
 
     respond_to do |format|
       if @pomodoro.save
-        format.js   { render 'widgets/active_pomodoro', :layout => false }
+        format.js   { 
+          render :text => 'OK', :layout => false and return if params[:autocomplete]
+          render 'widgets/active_pomodoro', :layout => false 
+        }
         format.html { redirect_to(todotodays_path, :success => 'The pomodoro was successfully started.') }
         format.xml  { render :xml => @pomodoro, :status => :created, :location => @pomodoro }
         format.json { render :json => @pomodoro, :status => :created, :location => @pomodoro }
@@ -85,6 +103,20 @@ class PomodorosController < ApplicationController
   end
 
   def destroy
+    @pomodoro = Pomodoro.find(params[:id])
+    current_pomodoro = Pomodoro.where( :completed => nil, :user_id => current_user.id ).first
+    
+    render :text => 'alert("You can not delete the running pomodoro - wait for it to complete or void it, before attempting to delete it.")' and return if @pomodoro == current_pomodoro
+    
+    if @pomodoro.user_id = current_user.id
+      if @pomodoro.destroy
+        respond_to do |format|
+          format.js {  }  
+          format.html { render :text => 'OK' }
+          format.xml  { head :ok }
+        end
+      end
+    end
   end
   
   # GET /pomodoros/update_current_form
@@ -106,8 +138,7 @@ class PomodorosController < ApplicationController
       unless @pomodoro.nil?
         format.html { render :layout => false }
       else
-        format.js   { head :ok }
-        format.html { head :ok }
+        format.html { render :text => '' and return }
       end
     end
   end

@@ -1,47 +1,36 @@
-<% unless @overdue_activities.nil? || @overdue_activities.empty? %>
-	<aside>
-	
-		<section id="overdueActivities" class="contentBoxNav">
-			<nav>
-				<ul>
-					<li class="active"><a class="tabs">Overdue deadlines</a></li>
-				</ul>
-			</nav>
-			<div class="widgetBox">
-				
-				<ul class="activityList">
+<aside>	
+	<section id="overdueActivities" class="contentBoxNav">
+		<% unless @overdue_activities.nil? || @overdue_activities.empty? %>
+		<nav>
+			<ul>
+				<li class="active"><a class="tabs">Overdue deadlines</a></li>
+			</ul>
+		</nav>
+		
+		<%= render :partial => 'widgets/toggable_button', :locals => { :widget_name => :overdueActivities } %>
+		
+		<div class="widgetBox">
+			<ul class="activityList">
 
-					<% @overdue_activities.each do |a| %>
+				<% @overdue_activities.each do |a| %>
 
-					<li class="<%= cycle("even", "odd") %>">
-						<div class="quickView">
-							<div class="activityName">
-								<% time_distance = (Date.today - a.deadline.to_date == 0 ? "Today" : distance_of_time_in_words(Date.today, a.deadline.to_date) + " ago" ) %>
-								<%= a.name %>
-								<span class="deadlineMarker"><%= time_distance %></span>
-								<%= in_progress_marker(@pomodoro, a) %>
-								<%= todotoday_marker(a) %>
-							</div>
+				<li class="<%= cycle("even", "odd") %> <%= a.priority if a.priority != :none %>">
+					<div class="quickView">
+						<div class="activityName">
+							<% time_distance = (Date.today - a.deadline.to_date == 0 ? "Today" : distance_of_time_in_words(Date.today, a.deadline.to_date) + " ago" ) %>
+							<%= a.name %>
+							<span class="deadlineMarker" title="<%= a.deadline.to_date.to_s(:rfc822) %>"><%= time_distance %></span>
+							<%= in_progress_marker(@pomodoro, a) %>
+							<%= todotoday_marker(a) %>
 						</div>
+					</div>
 
-						<ul class="actionsBar">
-							<li><%= link_to("Show", activity_path(a), :class => :button) %></li>
-							<li><%= link_to("Clone", clone_activity_path(:id => a.id), :class => :button) %></li>
-							<% if @pomodoro.nil? and !a.todotoday.nil? %>
-								<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => :button, :remote => true, 'data-type' => 'text') %></li>
-							<% end %>
-							<% if a.todotoday.nil? %>
-								<li><%= link_to("Do Today", todotodays_path(:activity_id => a), :method => :post, :class => :button, :remote => true, 'data-type' => 'text') %></li>
-							<% end %>
-						</ul>
-						
-					</li>
-					<% end %>
-
-				</ul>
-				
-			</div>
-		</section>
-
-	</aside>
-<% end %>
+					<%= render :partial => 'widgets/activity_toolbar_small', :object => a, :as => :a %>
+					
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+	</section>
+</aside>

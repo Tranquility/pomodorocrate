@@ -1,3 +1,10 @@
+var widgets = [];
+widgets['#activityStatus'] = 'widgets/activity_status';
+widgets['#recentActivities'] = 'widgets/recent_activities';
+widgets['#upcomingActivities'] = 'widgets/upcoming_activities';
+widgets['#overdueActivities'] = 'widgets/overdue_activities';
+widgets['#upcomingAppointments'] = 'widgets/upcoming_appointments';
+
 function updateMainListing() {
 	listId = currentActivityListId();
 	if( listId ) updateCurrentActivityList( listId );
@@ -18,7 +25,7 @@ function currentActivityListId() {
 }
 
 function updateCurrentActivityList(itemSelector) {
-	
+
 	if( ! itemSelector ) return;
 	
 	$.ajax({
@@ -29,6 +36,8 @@ function updateCurrentActivityList(itemSelector) {
 		success: function(msg){
 			if( msg != 'KO' ) {
 				updateActivitiesListing(itemSelector, msg);
+			} else {
+				window.location.href = base_url;
 			}
 		}
 	});
@@ -48,27 +57,28 @@ function setupRemoteHandlers() {
   });
 }
 
-function refreshWidget(itemSelector, actionName) {
+function refreshWidget(itemSelector, actionName, additional_data, callback) {
 	$.ajax({
 		type: "GET",
 		url: base_url + actionName,
-		data: "",
+		data: (additional_data ? additional_data : ""),
 		dataType: "text",
 		success: function(msg){
 			sectionId = $(msg).find('section').attr('id');
 			$('#' + sectionId).parent().replaceWith(msg);
+			hideEmptyWidgets();
+			
+			if( callback ) callback.call();
 		}
 	});
 }
 
 function reloadAllWidgets() {
-	widgets = new Array();
-	widgets['#activityStatus'] = 'widgets/activity_status';
-	widgets['#recentActivities'] = 'widgets/recent_activities';
-	widgets['#upcomingActivities'] = 'widgets/upcoming_activities';
-	widgets['#overdueActivities'] = 'widgets/overdue_activities';
-	
 	for( var itemSelector in widgets ) {
 		refreshWidget( itemSelector, widgets[itemSelector] );
 	}
+}
+
+function updateActivePomodoroWidget() {
+	refreshWidget( getCurrentPomodoroContainer(), 'widgets/active_pomodoro', 'render_interruptions=false', function() { if( typeof timer === 'undefined' ) decreaseTimer(); $('#pomodoro_comments').elastic(); } );
 }

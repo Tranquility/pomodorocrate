@@ -1,0 +1,4 @@
+updateMainListing();
+updateActivePomodoroWidget();
+$("#btn_pomodoros_" + <%= @pomodoro.activity.id.to_s %>).click();
+$("#btn_pomodoros_" + <%= @pomodoro.activity.id.to_s %>).html( "<%= pluralize(@pomodoro.activity.pomodoros.count, 'pomodoro') %>" );

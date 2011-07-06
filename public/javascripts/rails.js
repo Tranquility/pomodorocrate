@@ -102,7 +102,7 @@
         dataType = element.data('type') || ($.ajaxSettings && $.ajaxSettings.dataType);
 
       if (rails.fire(element, 'ajax:before')) {
-
+				
         if (element.is('form')) {
           method = element.attr('method');
           url = element.attr('action');

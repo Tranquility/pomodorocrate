@@ -28,6 +28,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.account = Account.find_by_name("beta") # hard coded beta
     @user.admin = false # block privilege escalation - no need for admins yet
+
+    #@user.setting = Setting.new
     
     if @user.save
       UserMailer.new_account_confirmation_email(@user).deliver
@@ -71,7 +73,6 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    # @user.admin = false # block privilege escalation - no need for admins yet
     
     if @user.id != current_user.id
       flash[:error] = "Illegal access attempt."
@@ -87,7 +88,6 @@ class UsersController < ApplicationController
   end
   
   def destroy
-    
     @user = User.find(params[:id])
     
     if @user.id != current_user.id
@@ -101,7 +101,6 @@ class UsersController < ApplicationController
   end
   
   def email_reset_password
-    
     @user = User.find_by_email(params[:user][:email])
     
     unless @user
@@ -124,6 +123,7 @@ class UsersController < ApplicationController
   
   def edit_password
     @user = User.find_by_reset_password_hash(params[:reset_password_hash])
+    
     if @user
       @user.update_attribute(:reset_password_hash, nil)
       
@@ -145,6 +145,30 @@ class UsersController < ApplicationController
       flash[:error] = "Profile update failed."
     end
     render 'edit'
+  end
+  
+  def settings
+    @user = User.find(params[:id])
+    
+    if @user.id != current_user.id
+      flash[:error] = "Illegal access attempt."
+      redirect_to activities_path and return
+    end
+    
+    if @user.setting.update_attributes( params[:setting] )
+      respond_to do |format|
+        format.js     {  }
+        format.html   {
+          flash[:success] = "Settings updated."
+          redirect_to edit_user_path(@user)
+        }
+        format.xml    { render :xml => @user.setting }
+        format.json   { render :json => @user.setting }
+      end
+    else
+      render 'edit'
+    end
+    
   end
   
   private

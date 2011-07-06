@@ -5,6 +5,7 @@ Ketchup::Application.routes.draw do
   get "widgets/recent_activities"
   get "widgets/upcoming_activities"
   get "widgets/overdue_activities"
+  get "widgets/upcoming_appointments"
 
   get "comments/index"
   get "comments/create"
@@ -12,30 +13,34 @@ Ketchup::Application.routes.draw do
 
   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
-  match 'pomodoros/update_current_form' => 'pomodoros#update_current_form'
-  match 'pomodoros/get_time_from_server' => 'pomodoros#get_time_from_server'
-  match 'pomodoros/current' => 'pomodoros#current'
+  match 'pomodoros/update_current_form'   => 'pomodoros#update_current_form'
+  match 'pomodoros/get_time_from_server'  => 'pomodoros#get_time_from_server'
+  match 'pomodoros/current'               => 'pomodoros#current'
   
-  match 'breaks/current' => 'breaks#current'
+  match 'breaks/current'                  => 'breaks#current'
   
-  match 'todotodays/save_sort'          => 'todotodays#save_sort'
+  match 'todotodays/save_sort'            => 'todotodays#save_sort'
 
-  resources :activities, :settings, :projects
-  resources :pomodoros,   :except => [:edit, :new, :show]
-  resources :users,       :except => [:index, :show, :destroy]
-  resources :breaks,      :only => [:create, :update]
-  resources :todotodays,  :only => [:index, :create, :destroy]
-  resources :analytics,   :only => [:index]
-  resources :sessions,    :only => [:new, :create, :destroy]
-  resources :contact_requests, :only => [:new, :create, :show]
-  resources :interruptions, :only => [:create]
-  resources :comments,    :only => [:index, :create, :destroy]
+  resources :activities, :projects
+  resources :pomodoros,         :except => [:edit, :new, :show]
+  resources :users,             :except => [:index, :show, :destroy]
+  resources :breaks,            :only => [:create, :update]
+  resources :todotodays,        :only => [:index, :create, :destroy]
+  resources :analytics,         :only => [:index]
+  resources :sessions,          :only => [:new, :create, :destroy]
+  resources :contact_requests,  :only => [:new, :create, :show]
+  resources :interruptions,     :only => [:create]
+  resources :comments,          :only => [:index, :create, :destroy]
+  resources :settings,          :only => [:edit, :update]
   
-  match 'activities/:id/clone'  => 'activities#clone',  :as => :clone_activity
-  match '/reset_password'       => 'sessions#reset_password',    :as => :reset_password
+  match 'activities/:id/clone'    => 'activities#clone',                :as => :clone_activity
+  match '/reset_password'         => 'sessions#reset_password',         :as => :reset_password
   
-  match '/email_reset_password'  => 'users#email_reset_password',    :as => :email_reset_password
-  match '/edit_password'        => 'users#edit_password',   :as => :edit_password
+  match '/email_reset_password'   => 'users#email_reset_password',      :as => :email_reset_password
+  match '/edit_password'          => 'users#edit_password',             :as => :edit_password
+  
+  match 'users/:id/settings'      => 'users#settings',                  :as => :edit_user_settings
+  
   #match 'users/confirm'         => 'users#confirm',     :as => :confirm_user
   #match 'users/:id/timezone'    => 'users#timezone',    :as => :timezone_user
   

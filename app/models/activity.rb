@@ -25,7 +25,7 @@ class Activity < ActiveRecord::Base
   belongs_to  :project
   belongs_to  :user
   
-  attr_accessible :name, :description, :estimated_pomodoros, :deadline, :completed, :project_id, :start_at, :end_at, :event_type, :unplanned, :tag_list
+  attr_accessible :name, :description, :estimated_pomodoros, :deadline, :completed, :project_id, :start_at, :end_at, :event_type, :unplanned, :tag_list, :priority
   attr_accessor :color
   
   validates :name,  :presence => true,
@@ -37,10 +37,13 @@ class Activity < ActiveRecord::Base
   validate  :deadline_can_not_be_in_the_past, :on => :create
   validate  :user_must_own_project
   validate  :start_at_must_be_smaller_than_end_at, :if => :event_type?
+  validates :priority, :inclusion => { :in => Ketchup::Application.config.activity_priority_list.values  }
   
-  default_scope :order => "activities.completed ASC, activities.deadline ASC"
+  default_scope :order => "activities.completed ASC, activities.deadline ASC, #{ActiveRecord::Base.connection.adapter_name.downcase.to_sym == :mysql ? "FIELD( priority, 'high', 'medium_high', 'medium', 'medium_low', 'low', 'none')" : "CASE WHEN priority = 'high' THEN 1 WHEN priority = 'medium_high' THEN 2 WHEN priority = 'medium' THEN 3 WHEN priority = 'medium_low' THEN 4 WHEN priority = 'low' THEN 5 WHEN priority = 'none' THEN 6 END"}"
+  scope :not_completed, lambda { |current_user| { :conditions => { :completed => false, :user_id => current_user.id } } }
   
-  before_save :prepare_calendar_dates
+  before_save   :prepare_calendar_dates
+  before_create :prepare_calendar_dates
   
   cattr_reader :per_page
   @@per_page = 40

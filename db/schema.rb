@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110625133053) do
+ActiveRecord::Schema.define(:version => 20110630180122) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -33,12 +33,14 @@ ActiveRecord::Schema.define(:version => 20110625133053) do
     t.boolean  "event_type",          :default => false
     t.boolean  "unplanned",           :default => false
     t.string   "cached_tag_list"
+    t.string   "priority",            :default => "none"
   end
 
   add_index "activities", ["completed"], :name => "index_activities_on_completed"
   add_index "activities", ["deadline"], :name => "index_activities_on_deadline"
   add_index "activities", ["end_at"], :name => "index_activities_on_end_at"
   add_index "activities", ["event_type"], :name => "index_activities_on_event_type"
+  add_index "activities", ["priority"], :name => "index_activities_on_priority"
   add_index "activities", ["project_id"], :name => "index_activities_on_project_id"
   add_index "activities", ["start_at"], :name => "index_activities_on_start_at"
   add_index "activities", ["unplanned"], :name => "index_activities_on_unplanned"
@@ -123,11 +125,23 @@ ActiveRecord::Schema.define(:version => 20110625133053) do
   add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
 
   create_table "settings", :force => true do |t|
-    t.string   "name"
-    t.string   "value"
+    t.boolean  "tooltips",                   :default => false
+    t.boolean  "ring_sound",                 :default => false
+    t.boolean  "tick_tack_sound",            :default => false
+    t.boolean  "voice_notifications",        :default => false
+    t.integer  "ring_sound_volume",          :default => 5
+    t.integer  "tick_tack_sound_volume",     :default => 5
+    t.integer  "voice_notifications_volume", :default => 5
+    t.boolean  "email_notifications",        :default => false
+    t.integer  "pomodoro_length",            :default => 25
+    t.integer  "short_break_length",         :default => 5
+    t.integer  "long_break_length",          :default => 25
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "settings", ["user_id"], :name => "index_settings_on_user_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

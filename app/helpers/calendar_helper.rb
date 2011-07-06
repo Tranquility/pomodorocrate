@@ -12,15 +12,20 @@ module CalendarHelper
       :month_name_text => I18n.localize(@shown_month, :format => "%B %Y"),
       :previous_month_text => "<< " + month_link(@shown_month.prev_month),
       :next_month_text => month_link(@shown_month.next_month) + " >>"
-      # :first_day_of_week => @first_day_of_week
+      #:first_day_of_week => @first_day_of_week
     }
   end
 
   def event_calendar
     # args is an argument hash containing :event, :day, and :options
     calendar event_calendar_opts do |args|
-      activity = args[:event]
-      %(<a href="/activities/#{activity.id}" title="#{h(activity.name)}"#{activity.completed ? ' class="activityCompleted"' : ''}>#{h(activity.name)}</a>)
+      activity = args[:event] 
+      
+      (css_class ||= Array.new).clear
+      css_class << :activityCompleted if activity.completed
+      css_class << activity.priority if activity.priority != :none
+      
+      %(<a href="/activities/#{activity.id}" title="#{h(activity.name)}" #{ ('class="' + css_class.join(' ') + '"') unless css_class.empty? }>#{h activity.name}</a>)
     end
   end
 end

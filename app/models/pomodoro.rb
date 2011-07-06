@@ -14,6 +14,8 @@
 
 class Pomodoro < ActiveRecord::Base
   
+  include SessionsHelper
+  
   belongs_to :activity
   belongs_to :user
   has_many  :interruptions, :dependent => :destroy
@@ -29,6 +31,7 @@ class Pomodoro < ActiveRecord::Base
   #validate :cant_exceed_ten_completed_pomodoros_per_activity
   
   scope :successful_and_completed, :conditions => { :successful => true, :completed => true }
+  scope :today, lambda { |current_user| { :conditions => { :created_at => Date.today.beginning_of_day..Date.today.end_of_day, :user_id => current_user.id } } }
   
   def cant_exceed_ten_completed_pomodoros_per_activity
     errors.add(:pomodoro, "count per activity was exceeded") if self.activity.pomodoros.successful_and_completed.count >= 10

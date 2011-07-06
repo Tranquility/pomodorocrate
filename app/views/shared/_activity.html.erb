@@ -1,4 +1,9 @@
-<li id="act_<%= a.id %>" data-activity="a_<%= a.id %>" <%= a.completed ? 'class="completed_task"'.html_safe : '' %>>
+<% 
+(css_class ||= Array.new).clear
+css_class << :completed_task if a.completed
+css_class << a.priority if a.priority != :none
+%>
+<li id="act_<%= a.id %>" data-activity="a_<%= a.id %>" <%= "class=#{css_class.join(' ')}" unless css_class.empty? %> >
 	<div class="quickView">
 		<%= form_for a, :remote => true, :html => { 'data-type' => 'text' } do |f| %>
 			
@@ -17,11 +22,11 @@
 			</div>
 			
 			<div class="pomodorosCount listPomodorosCount" style="width: <%= pomodoros_icons_width(a.pomodoros.successful_and_completed.count, a.estimated_pomodoros) + 20 %>px">
-				<% if params[:controller] == 'todotodays' %>
+				<% if params[:controller] == 'todotodays' and !a.todotoday.nil? %>
 					<div class="drag_handle" title="Drag to sort"><%= image_tag 'handle.png' %></div>
 				<% end %>
 				<div class="pomodoros_icons" style="width: <%= pomodoros_icons_width(a.pomodoros.successful_and_completed.count, a.estimated_pomodoros) %>px">
-					<%= pomodoros_completed_ratio(a.pomodoros.successful_and_completed.count, a.estimated_pomodoros) %>
+					<%= pomodoros_completed_ratio(a.pomodoros.successful_and_completed.count, a.estimated_pomodoros, a) %>
 				</div>
 			</div>
 		<% end %>
@@ -46,24 +51,24 @@
 		<ul class="actionsBar">
 			<% unless a.completed %>
 				<% if a.todotoday.nil? %>
-					<li><%= link_to( "Do Today", todotodays_path(:activity_id => a), :method => :post, :class => [:activity_toolbar_button, :dotoday], :remote => true, 'data-type' => 'text') %></li>
+					<li><%= link_to( "Do Today", todotodays_path(:activity_id => a), :method => :post, :class => [:activity_toolbar_button, :dotoday], :remote => true, 'data-type' => 'text', :title => "Add this activity to the Todo Today list") %></li>
 				<% elsif !in_progress?(@pomodoro, a) and @pomodoro.nil? %>
-					<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => [:activity_toolbar_button, :doitnow], :remote => true, 'data-type' => 'text') %></li>
+					<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => [:activity_toolbar_button, :doitnow], :remote => true, 'data-type' => 'text', :title => "Begin a new pomodoro for this activity") %></li>
 				<% end %>
 				
 				<% if !a.todotoday.nil? and params[:controller] == 'todotodays' and !td.nil? and !in_progress?(@pomodoro, a) %>
-					<li><%= link_to("Do another day", td, :confirm => "Are you sure?", :method => :delete, :class => [:activity_toolbar_button, :delete], :remote => true, 'data-type' => 'text') %></li>
+					<li><%= link_to("Do another day", td, :confirm => "Are you sure?", :method => :delete, :class => [:activity_toolbar_button, :delete], :remote => true, 'data-type' => 'text', :title => "Remove activity from the Todo Today list") %></li>
 				<% end %>
 			<% end %>
-			<li><%= link_to("Edit", edit_activity_path(a), :class => [:activity_toolbar_button, :edit]) %></li>
+			<li><%= link_to("Edit", edit_activity_path(a), :class => [:activity_toolbar_button, :edit], :title => "Edit activity") %></li>
 			<% if params[:controller] != 'todotodays' and !in_progress?(@pomodoro, a) %>
-				<li><%= link_to("Delete", a, :confirm => "Are you sure?", :method => :delete, :class => [:activity_toolbar_button, :delete], :remote => true, 'data-type' => 'text') %></li>
+				<li><%= link_to("Delete", a, :confirm => "Are you sure?", :method => :delete, :class => [:activity_toolbar_button, :delete], :remote => true, 'data-type' => 'text', :title => "Delete this activity") %></li>
 			<% end %>
-			<li><%= link_to("Clone", clone_activity_path(:id => a.id), :class => [:activity_toolbar_button, :clone]) %></li>
+			<li><%= link_to("Clone", clone_activity_path(:id => a.id), :class => [:activity_toolbar_button, :clone], :title => "Duplicate this activity") %></li>
 			<% if (count = a.pomodoros.count) > 0 %>
-				<li><%= link_to("#{pluralize(count, 'pomodoro')}", pomodoros_path(:activity => a.id), :class => [:activity_toolbar_button, :pomodoros_count], :remote => true) %></li>
+				<li><%= link_to("#{pluralize(count, 'pomodoro')}", pomodoros_path(:activity => a.id), :class => [:activity_toolbar_button, :pomodoros_count], :id => ('btn_pomodoros_' + a.id.to_s), :remote => true, :title => "Display the list of pomodoros for this activity. You can also delete pomodoros from the list.")  %></li>
 			<% end %>
-			<li><%= link_to("#{pluralize(a.comments.count, 'comment')}", comments_path(:activity => a.id), :class => [:activity_toolbar_button, :comments_count], :id => ('btn_comments_' + a.id.to_s), :remote => true) %></li>
+			<li><%= link_to("#{pluralize(a.comments.count, 'comment')}", comments_path(:activity => a.id), :class => [:activity_toolbar_button, :comments_count], :id => ('btn_comments_' + a.id.to_s), :remote => true, :title => "Display the list of comments, add a new comment or delete an existing comment.") %></li>
 		</ul>
 	</div>
 </li>

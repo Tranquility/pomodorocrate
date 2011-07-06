@@ -1,9 +1,11 @@
 <section class="group" id="todotodays_list">
+	
+	<%= render 'previous_todotoday_list' %>
+	
 	<h6>Today</h6>
 	
 <% unless @todotodays.empty? %>
-	
-	<% # render "shared/filter_toolbar" %>
+
 		<ol class="activityList withSeparator" id="todotodays">
 		
 			<% @todotodays.each do |td| %>

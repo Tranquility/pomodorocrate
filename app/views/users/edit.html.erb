@@ -3,12 +3,12 @@
 	<%= form_for(@user) do |f| %>
 	  <%= render 'shared/error_messages', :object => f.object %>
 		
-		<h6>User info</h6>
+		<h6>My Account</h6>
 		<section id="user_info">
 			
 			<div id="gravatar">
 				<%= gravatar_for @user, :size => 168 %>
-				<a href="http://gravatar.com/emails" class="submit">Change your avatar</a>
+				<a href="http://gravatar.com/emails" class="submit">Change my avatar</a>
 			</div>
 			
 			<div id="user_details">
@@ -35,41 +35,17 @@
 			</div>
 		</section>
 		
-		<h6>Notifications</h6>
-		<section id="notifications">
+		<div class="actions">
+	    <%= f.submit "Update account", :class => :submit %>
+	  </div>
+		
+		<h6>Account type</h6>
+		<section id="account_type">
 			<div class="field">
-		    <%= f.label :email_notifications %>
-		    <%= f.check_box :email_notifications %>
+		    <%= content_tag(:label, current_user.account.name.titleize) %>
 		  </div>
-			<div class="field">
-		    <%= f.label :voice_notifications %>
-		    <%= f.check_box :voice_notifications %>
-		  </div>
-			<div class="field">
-		    <%= f.label :tick_tack_sound %>
-		    <%= f.check_box :tick_tack_sound %>
-		  </div>
-			<div class="field">
-				<%= button_to_function "Test audio", "playTestSound()", :class => :submit %>
-			</div>
 		</section>
 	
-		<h6>Pomodoro settings</h6>
-		<section id="pomodoro_settings">
-			<div class="field" id="pomodoro_length">
-		    <%= f.label :pomodoro_length %><br />
-		    <%= f.text_field :pomodoro_length, :class => :numeric %>
-		  </div>
-			<div class="field" id="short_break_length">
-		    <%= f.label :short_break_length %><br />
-		    <%= f.text_field :short_break_length, :class => :numeric %>
-		  </div>
-			<div class="field" id="long_break_length">
-		    <%= f.label :long_break_length %><br />
-		    <%= f.text_field :long_break_length, :class => :numeric %>
-		  </div>
-		</section>
-		
 		<h6>API Key</h6>
 		<section id="api_key">
 			<% if @user.api_is_enabled? %>
@@ -86,17 +62,81 @@
 				    <%= link_to("Get a key", apikeys_path, :method => :post, :class => :button) %>
 				</div>
 			<% end %>
-		</section>
+		</section>	
+		
+	<% end %>
 	
-		<h6>Account type</h6>
-		<section id="account_type">
-			<div class="field">
-		    <%= content_tag(:label, current_user.account.name.titleize) %>
+	<%= form_for(@user.setting, :url => edit_user_settings_path(@user)) do |f| %>
+	  <%= render 'shared/error_messages', :object => f.object, :anchor => true %>
+	
+		<h6>Pomodoro settings</h6>
+		<section id="pomodoro_settings">
+			<div class="field" id="pomodoro_length">
+		    <%= f.label :pomodoro_length %><br />
+		    <%= f.text_field :pomodoro_length, :class => :numeric %>
+		  </div>
+			<div class="field" id="short_break_length">
+		    <%= f.label :short_break_length %><br />
+		    <%= f.text_field :short_break_length, :class => :numeric %>
+		  </div>
+			<div class="field" id="long_break_length">
+		    <%= f.label :long_break_length %><br />
+		    <%= f.text_field :long_break_length, :class => :numeric %>
 		  </div>
 		</section>
 	
-	  <div class="actions">
-			<%= hidden_field(:user, :settings_page, :value => 1) %>
+		<h6>Notifications</h6>
+		<section id="notifications">
+		
+			<div class="field" id="voice_notifications">
+		    <%= f.label :voice_notifications %>
+		    <%= f.check_box :voice_notifications %>
+		  </div>
+			<div class="field" id="voice_notifications_volume">
+		    <%= f.label :voice_notifications_volume %><br />
+		    <%= f.text_field :voice_notifications_volume, :class => [:numeric, :volume] %>
+		  </div>
+		
+			<div class="field" id="tick_tack_sound">
+		    <%= f.label :tick_tack_sound %>
+		    <%= f.check_box :tick_tack_sound %>
+		  </div>
+			<div class="field" id="tick_tack_sound_volume">
+		    <%= f.label :tick_tack_sound_volume %><br />
+		    <%= f.text_field :tick_tack_sound_volume, :class => [:numeric, :volume] %>
+		  </div>
+		
+			<div class="field" id="ring_sound">
+		    <%= f.label :ring_sound %>
+		    <%= f.check_box :ring_sound %>
+		  </div>
+			<div class="field" id="ring_sound_volume">
+		    <%= f.label :ring_sound_volume %><br />
+		    <%= f.text_field :ring_sound_volume, :class => [:numeric, :volume] %>
+		  </div>
+		
+			<div class="field">
+				<%= button_to_function "Test audio", "playTestSound()", :class => [:submit], :id => :speaker %>
+			</div>
+			
+			<br />
+			<div class="field">
+		    <%= f.label :email_notifications %>
+		    <%= f.check_box :email_notifications %>
+		  </div>
+		</section>
+		
+		<!--
+		<h6>More settings</h6>
+		<section id="general_settings">
+			<div class="field">
+		    <%#= f.label :tooltips %>
+		    <%#= f.check_box :tooltips %>
+		  </div>
+		</section>
+		-->
+		
+		<div class="actions">
 	    <%= f.submit "Update settings", :class => :submit %>
 	  </div>
 		

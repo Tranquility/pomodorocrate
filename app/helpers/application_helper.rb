@@ -1,12 +1,17 @@
 module ApplicationHelper
   
-  def pomodoros_as_image(nr_of_pomodoros, inactive = false)
+  def pomodoros_as_image(nr_of_pomodoros, inactive = false, activity = nil)
     output = ""
     return output if nr_of_pomodoros.nil?
     
+    image_data = image_tag("pomodoro" + (inactive ? "_not_started" : "_completed") + ".png", :size => "14x14", :title => inactive ? "Estimated but not yet completed pomodoro" : "Successfuly completed pomodoro" )
+    
     nr_of_pomodoros.times do |i|
-      output += image_tag("pomodoro" + (inactive ? "_not_started" : "_completed") + ".png", :size => "14x14" )
+      output += (link_to_if (i == 0 and !activity.nil? and !activity.completed), image_tag("pomodoro_complete_manually.png", :size => "14x14" ), pomodoros_path(:activity_id => activity, :autocomplete => true), {:method => 'post', :remote => true, "data-type" => :text, "title" => "Manually mark one pomodoro as successfuly completed", "data-action" => "create-update-pomodoro", :confirm => 'This will manually mark a pomodoro as successfully completed. Are you sure?'} do
+        image_data
+      end)
     end
+    
     raw output
   end
   
@@ -19,14 +24,14 @@ module ApplicationHelper
     pomodoros_count(completed_pomodoros, estimated_pomodoros) * 20 < 65 ? 65 : pomodoros_count(completed_pomodoros, estimated_pomodoros) * 20
   end
   
-  def pomodoros_completed_ratio(completed_pomodoros, estimated_pomodoros)
+  def pomodoros_completed_ratio(completed_pomodoros, estimated_pomodoros, activity = nil)
     output = pomodoros_as_image(completed_pomodoros)
     
     pomodoros_left = estimated_pomodoros - completed_pomodoros;
     
     return raw output if pomodoros_left < 0
     
-    raw output += pomodoros_as_image(pomodoros_left, true)
+    raw output += pomodoros_as_image(pomodoros_left, true, activity)
   end
   
   def is_current_page?(controller_name)

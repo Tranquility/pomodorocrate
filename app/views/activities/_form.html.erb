@@ -28,33 +28,33 @@
 	</div>
 	
 	<div class="field">
-	  <%= f.label :deadline %><br />
+	  <%= label_tag 'activity_deadline_1i', :deadline.to_s.titleize %><br />
 	  <%= f.date_select :deadline %>
 		<%= hidden_field "hiddendp", nil, :disabled => "disabled", :size => 10 %>
 	</div>
 	
 	<div class="field">
-	  <%= f.label :project %><br />
+	  <%= label_tag 'activity_project_id', :project.to_s.titleize %><br />
 	  <%= collection_select(:activity, :project_id, Project.where(:user_id => current_user, :completed => false), :id, :name) %>
 	</div>
 	
 	<div class="field">
-	  <%= f.label 'Appointment (time schedule)' %><br />
+	  <%= f.label :event_type, 'Appointment (time schedule)' %><br />
 	  <%= f.check_box :event_type %>
 	</div>
 	
 	<div class="field schedule <%= @activity.event_type ? '' : ' inactive' %>">
 	  <%= f.label :start_at %><br />
-	  <%= f.time_select :start_at %>
+	  <%= f.time_select :start_at, {:minute_step => 5} %>
 	</div>
 	
 	<div class="field schedule <%= @activity.event_type ? '' : ' inactive' %>">
 	  <%= f.label :end_at %><br />
-	  <%= f.time_select :end_at %>
+	  <%= f.time_select :end_at, {:minute_step => 5} %>
 	</div>
 	
 	<div class="field">
-	  <%= f.label :unplanned %><br />
+	  <%= f.label :unplanned, 'Unplanned and Urgent' %> <span class="inline_help" title="An activity that hasn't been planned and scheduled in advance, but it has occured unexpectedly and needs to be taken care of urgently. Track this kind of activities in the analitics section with the goal of having as few of them as possible."> ? </span><br />
 	  <%= f.check_box :unplanned %>
 	</div>
 	
@@ -64,7 +64,12 @@
 	</div>
 	
 	<div class="field">
-	  <%= f.label "#{:tag_list} (comma separated)" %><br />
+	  <%= f.label :priority %><br />
+	  <%= select( :activity, :priority, options_for_select( Ketchup::Application.config.activity_priority_list, @activity.priority ), {}, :class => @activity.priority ) %>
+	</div>
+	
+	<div class="field">
+	  <%= f.label :tag_list, "#{:tag_list.to_s.titleize} (comma separated)" %><br />
 	  <%= f.text_field :tag_list %>
 	</div>
 

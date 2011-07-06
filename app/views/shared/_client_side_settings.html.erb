@@ -1,0 +1,23 @@
+<script>
+	base_url = "<%= root_url %>";
+	
+	// notifications
+	voice_notifications = <%= current_user.nil? ? "false" : current_user.setting.voice_notifications %>;
+	tick_tack_sound = <%= current_user.nil? ? "false" : current_user.setting.tick_tack_sound %>;
+	ring_sound = <%= current_user.nil? ? "false" : current_user.setting.ring_sound %>;
+	
+	// tooltips
+	tooltips = <%= current_user.nil? ? "false" : current_user.setting.tooltips %>;
+	
+	// volume
+	ring_sound_volume = <%= current_user.nil? ? "false" : current_user.setting.ring_sound_volume.to_f / 10 %>;
+	tick_tack_sound_volume = <%= current_user.nil? ? "false" : current_user.setting.tick_tack_sound_volume.to_f / 10 %>;
+	voice_notifications_volume = <%= current_user.nil? ? "false" : current_user.setting.voice_notifications_volume.to_f / 10 %>;
+	
+	// show filter form expanded if in effect
+	filtering = <%= session[:filtered].nil? ? "false" : session[:filtered] %>;
+	
+	<% unless @start_date.nil? %>
+	chart_interval = <%= @graph_interval %>;
+	<% end %>
+</script>

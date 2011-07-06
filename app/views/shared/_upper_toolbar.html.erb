@@ -1,6 +1,6 @@
 <ul class="toolbar">
 	<% unless Project.where(:user_id => current_user).empty? %>
-		<li><%= link_to "New activity", new_activity_path, :class => [:toolbar_button] %></li>
+		<li><%= link_to "New activity", new_activity_path, :class => [:toolbar_button], :title => "Create a new activity" %></li>
 	<% end %>
-	<li><%= link_to "New project", new_project_path, :class => [:toolbar_button] %></li>
+	<li><%= link_to "New project", new_project_path, :class => [:toolbar_button], :title => "Create a new project" %></li>
 </ul>

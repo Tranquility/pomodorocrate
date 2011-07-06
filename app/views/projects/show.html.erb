@@ -42,9 +42,9 @@
 					<li><%= link_to("Delete", @project, :confirm => "Are you sure?", :method => :delete, :class => [:activity_toolbar_button, :delete]) %></li>
 				</ul>
 				<ul class="infoBar">
-					<li>Created at <%= @project.created_at.to_date %></li>
-					<li>Started at <%= @project.started_at %></li>
-					<li>Deadline <%= @project.deadline %></li>
+					<li title="Project creation date">Created at <%= @project.created_at.to_date.to_s(:rfc822) %></li>
+					<li title="Automatically picked as the date of the earliest activity of the project">Started at <%= @project.started_at %></li>
+					<li title="Automatically picked as the date of the latest activity of the project">Deadline <%= @project.deadline %></li>
 				</ul>
 			</div>
 		</li>

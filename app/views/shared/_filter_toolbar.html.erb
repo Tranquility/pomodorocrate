@@ -2,7 +2,7 @@
 
 <div class="row">
 	<%= label_tag(:q_name, "Activity.") %>
-	<%= text_field_tag(:q_name, params[:q_name]) %>
+	<%= text_field_tag(:q_name, params[:q_name], :title => "Filter by words contained in activity name or description") %>
 
 	<%= label_tag(:q_project, "Project:") %>
 	<% 
@@ -16,7 +16,7 @@
 
 <div class="row">
 	<%= label_tag(:q_tags, "Tags.") %>
-	<%= text_field_tag(:q_tags, params[:q_tags]) %>
+	<%= text_field_tag(:q_tags, params[:q_tags], :title => "Filter by activity tags") %>
 
 	<%= label_tag(:q_completed, "Completed:") %>
 	

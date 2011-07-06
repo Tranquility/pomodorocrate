@@ -1,15 +1,18 @@
+<% pomodoro_finished = (Time.now - @pomodoro.created_at < current_user.pomodoro_length.minutes) %>
 <%= form_for(@pomodoro, :url => pomodoro_path(@pomodoro), :remote => true, :html => { 'data-type' => 'text' }) do |f| %>
+
 	<%= hidden_field_tag("pomodoro[completed]", true) %>
-	<div class="field">
+	
+	<div class="field <%=:invisible if pomodoro_finished %>">
 		<%= f.label :comments, 'Leave a comment?'%>
 		<%= f.text_area :comments %>
 	</div>
 	
-	<% if Time.now - @pomodoro.created_at < current_user.pomodoro_length.minutes %>
+	<% if pomodoro_finished %>
 
 		<%= hidden_field_tag("pomodoro[successful]", false) %>
-		<div class="field">
-			<%= f.submit("Void", :id => :btn_void_pomodoro, :confirm => "Are you sure? You will lose all progress!") %>
+		<div class="field pomodoro_toolbar">
+			<%= f.submit("Void", :id => :btn_void_pomodoro, :confirm => "Are you sure? You will lose all progress!", 'data-prompt' => 'Leave a comment?', 'data-prompt-callback' => 'updateVoidComment', 'data-prompt-answer' => 'Urgent interruption', :tooltip => 'Cancel the current pomodoro') %>
 		</div>
 
 	<% else %>

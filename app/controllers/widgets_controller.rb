@@ -1,6 +1,10 @@
 class WidgetsController < ApplicationController
   
   def active_pomodoro
+    respond_to do |format|
+      format.js     { render :layout => false }
+      format.html   # index.html.erb
+    end
   end 
   
   def activity_status
@@ -30,5 +34,11 @@ class WidgetsController < ApplicationController
       format.html   # index.html.erb
     end
   end
-
+  
+  def upcoming_appointments
+    respond_to do |format|
+      format.js     { render :layout => false }
+      format.html   # index.html.erb
+    end
+  end
 end

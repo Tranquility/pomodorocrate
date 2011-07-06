@@ -2,7 +2,6 @@
 javascripts: 
 - base: 
   - jquery
-  - soundmanager2-nodebug-jsmin
   - rails
   - application
   - enhance
@@ -15,7 +14,7 @@ javascripts:
   - event_calendar
   - jquery.quickClear
   - ajaxify
-  - jquery.storage
+  - jquery.cookie
 - static:
   - jquery-1.6.1.min
   - jquery.fancybox-1.3.4.pack
