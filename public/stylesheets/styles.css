@@ -331,8 +331,8 @@ p.article, .article p {
 #about_pomodoro_crate strong { font: normal 18px MetaProBold, Tahoma, sans-serif; }
 #features .shortWrapper { padding-bottom: 34px; }
 .secondRow { margin-bottom: 34px; }
-.addthis_toolbox { width: 320px; float: right; margin-top: 2px; }
-.addthis_counter.addthis_pill_style { margin-top: 3px; }
+.addthis_toolbox { float: right; margin: 2px 0 0 300px; width: 320px; }
+.addthis_button_facebook_like { margin-top: -5px; }
 #signin_invite { font-size: 12px; margin: 0 0 0 80px; font-family: MetaProBold, Tahoma, sans-serif; }
 	#signin_invite a { color: #C93D2A; }
 	
@@ -486,5 +486,3 @@ label {
 .activeInput { outline: 1px solid #898989 !important; }
 
 .promoText .signUp:hover { background: url("../images/header_promo_btn_hover.png") no-repeat scroll left top transparent; }
-
-.addthis_button_facebook_like { margin-top: -1px; }
