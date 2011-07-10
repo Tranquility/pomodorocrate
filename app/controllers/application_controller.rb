@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     if Rails.env.production? and ActiveRecord::Base.connection.adapter_name.downcase.to_sym == :postgresql
       @recent_pomodoros = Pomodoro.successful_and_completed.select("activity_id, id, created_at, successful, completed").where(:user_id, current_user.id).group("activity_id, pomodoros.id, created_at, successful, completed").order("pomodoros.created_at DESC").limit(5)
     else
-      @recent_pomodoros = Pomodoro.group(:activity_id).order("created_at DESC").limit(5).find_all_by_user_id(current_user.id)
+      @recent_pomodoros = Pomodoro.joins(:activity).where('activities.completed' => false).group(:activity_id).order("created_at DESC").limit(5).find_all_by_user_id(current_user.id)
     end
     
     @upcoming_activities = Activity.where(:user_id => current_user.id, :completed => false).where("deadline >= '#{Date.today}'").order("activities.deadline ASC").limit(5)
