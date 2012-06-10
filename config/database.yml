@@ -19,6 +19,6 @@ production:
   adapter: mysql
   database: pomodorocrate
   encoding: utf8
-  username: pomodorocrate
-  password: P0m0d0r0P0m0d0r0
-  host: localhost
+  username: your_user
+  password: your_pass
+  host: your_host

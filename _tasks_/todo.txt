@@ -1,6 +1,0 @@
-* fix settings password issue
-* api
-* teams
-* ajax
-* sound volume
-* mobile version
