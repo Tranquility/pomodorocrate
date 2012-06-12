@@ -2,6 +2,9 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.3'
 
+gem 'json', '~> 1.7.3' # upgrade to not have Iconv deprecation message
+gem 'tzinfo', '~> 0.3.33' # avoid DateTime.new0 bug (not available on 1.9.x)
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 # gem 'sqlite3-ruby', '1.3.2', :require => 'sqlite3'
@@ -12,7 +15,7 @@ gem 'will_paginate', '3.0.pre2'
 gem 'jquery-rails', '>= 0.2.6'
 gem 'heroku'
 gem 'chronic'
-gem 'taps'
+#gem 'taps'
 gem 'activesupport'
 gem 'high_voltage'
 gem 'recaptcha', :require => 'recaptcha/rails' #, :git => 'git://github.com/ambethia/recaptcha.git'
@@ -22,17 +25,20 @@ gem 'event-calendar', :require => 'event_calendar'
 #gem 'scoped_search'
 #gem 'resource_search', '100.0', :git => 'git://github.com/rubaidh/resource_search'
 
+# jp: disabled spec-related dependencies, as initial version has no specs!
+# jp: disabled annotate-models, as it is optional + yanked from rubygems.org
+
 group :development do
-  gem 'rspec-rails', '2.3.0'
-	gem 'annotate-models', '1.0.4'
-	gem 'faker'
+#  gem 'rspec-rails', '2.3.0'
+#	gem 'annotate-models', '1.0.4'
+	gem 'faker', '~> 1.0.1'
 end
 
-group :test do
-  gem 'rspec-rails', '2.3.0'
-  gem 'webrat', '0.7.1'
-	gem 'factory_girl_rails', '1.0'
-end
+#group :test do
+#  gem 'rspec-rails', '2.3.0'
+#  gem 'webrat', '0.7.1'
+#	gem 'factory_girl_rails', '1.0'
+#end
 
 group :production do
 	#gem 'mysql'
