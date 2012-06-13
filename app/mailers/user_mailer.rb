@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => "notifications@pomodorocrate.com"
+  default :from => Rails.configuration.notification_email
   
   def new_account_confirmation_email(user)
     @user = user

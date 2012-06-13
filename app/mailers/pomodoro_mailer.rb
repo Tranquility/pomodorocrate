@@ -1,6 +1,6 @@
 class PomodoroMailer < ActionMailer::Base
   add_template_helper(ApplicationHelper)
-  default :from => "notifications@pomodorocrate.com"
+  default :from => Rails.configuration.notification_email
   
   def completed_pomodoro_email(user, pomodoro)
     @user = user
