@@ -1,45 +1,37 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.0.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-# gem 'sqlite3-ruby', '1.3.2', :require => 'sqlite3'
+
+gem 'json', '~> 1.7.3' # upgrade to not have Iconv deprecation message
+gem 'tzinfo', '~> 0.3.33' # avoid DateTime.new0 bug (not available on 1.9.x)
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
-gem 'gravatar_image_tag'
-gem 'will_paginate', '3.0.pre2'
-gem 'jquery-rails', '>= 0.2.6'
-gem 'heroku'
-gem 'chronic'
-gem 'taps'
-gem 'activesupport'
-gem 'high_voltage'
+gem 'gravatar_image_tag', '~> 1.1.2'
+gem 'will_paginate', '~> 3.0.3'
+gem 'jquery-rails', '~> 0.2.6'
+gem 'high_voltage', '~> 1.1.1'
 gem 'recaptcha', :require => 'recaptcha/rails' #, :git => 'git://github.com/ambethia/recaptcha.git'
 gem 'event-calendar', :require => 'event_calendar'
 
-#gem 'validatable'
-#gem 'scoped_search'
-#gem 'resource_search', '100.0', :git => 'git://github.com/rubaidh/resource_search'
-
 group :development do
-  gem 'rspec-rails', '2.3.0'
-	gem 'annotate-models', '1.0.4'
-	gem 'faker'
+  gem 'faker', '~> 1.0.1'
 end
 
-group :test do
-  gem 'rspec-rails', '2.3.0'
-  gem 'webrat', '0.7.1'
-	gem 'factory_girl_rails', '1.0'
-end
+#group :test do
+#  gem 'rspec-rails', '2.3.0'
+#  gem 'webrat', '0.7.1'
+#  gem 'factory_girl_rails', '1.0'
+#end
 
 group :production do
-	#gem 'mysql'
+  #gem 'mysql'
 end
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'

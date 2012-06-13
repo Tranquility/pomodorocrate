@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -126,16 +127,16 @@ ActiveRecord::Schema.define(:version => 20110630180122) do
 
   create_table "settings", :force => true do |t|
     t.boolean  "tooltips",                   :default => false
-    t.boolean  "ring_sound",                 :default => false
-    t.boolean  "tick_tack_sound",            :default => false
-    t.boolean  "voice_notifications",        :default => false
-    t.integer  "ring_sound_volume",          :default => 5
+    t.boolean  "ring_sound",                 :default => true
+    t.boolean  "tick_tack_sound",            :default => true
+    t.boolean  "voice_notifications",        :default => true
+    t.integer  "ring_sound_volume",          :default => 10
     t.integer  "tick_tack_sound_volume",     :default => 5
-    t.integer  "voice_notifications_volume", :default => 5
-    t.boolean  "email_notifications",        :default => false
+    t.integer  "voice_notifications_volume", :default => 10
+    t.boolean  "email_notifications",        :default => true
     t.integer  "pomodoro_length",            :default => 25
     t.integer  "short_break_length",         :default => 5
-    t.integer  "long_break_length",          :default => 25
+    t.integer  "long_break_length",          :default => 30
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
