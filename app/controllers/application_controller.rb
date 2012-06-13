@@ -18,10 +18,26 @@ class ApplicationController < ActionController::Base
     @pomodoro = Pomodoro.where( :completed => nil, :user_id => current_user.id ).last
     @break = Break.where( :user_id => current_user.id, :completed => nil ).first
     
-    if Rails.env.production? and ActiveRecord::Base.connection.adapter_name.downcase.to_sym == :postgresql
-      @recent_pomodoros = Pomodoro.successful_and_completed.select("activity_id, id, created_at, successful, completed").where(:user_id, current_user.id).group("activity_id, pomodoros.id, created_at, successful, completed").order("pomodoros.created_at DESC").limit(5)
+    # to list the current user's latest pomodoro per open activity we need to fallback to find_by_sql, as the intuitive method:
+    #   current_user.pomodoros.joins(:activity).where('activities.completed' => false).group(:activity_id).order(...).limit(...)
+    # will generate broken sql on stricter databases (we implicitly select pomodoro.* which is not included in the 'group' clause)
+    # the following sql should work on sqlite3, postgres and (probably) mysql, but let's be conservative and only enable for postgres
+    if ActiveRecord::Base.connection.adapter_name.downcase.to_sym == :postgresql
+      last_user_pomodoro_per_activity = %Q{
+        SELECT p1.activity_id, p1.id, p1.created_at, p1.successful, p1.completed
+        FROM pomodoros p1 INNER JOIN activities a ON p1.activity_id = a.id
+                          INNER JOIN pomodoros p2 ON p1.activity_id = p2.activity_id
+        WHERE p1.user_id = ? AND a.completed = ?
+        GROUP BY p1.activity_id, p1.id, p1.created_at, p1.successful, p1.completed
+        HAVING p1.created_at = MAX(p2.created_at)
+        ORDER BY p1.created_at DESC
+        LIMIT 5 ;
+      }
+      sanitized_sql = ActiveRecord::Base.send(:sanitize_sql, [last_user_pomodoro_per_activity, current_user.id, false], '') # hack
+      @recent_pomodoros = Pomodoro.find_by_sql(sanitized_sql)
     else
-      @recent_pomodoros = Pomodoro.joins(:activity).where('activities.completed' => false).group(:activity_id).order("created_at DESC").limit(5).find_all_by_user_id(current_user.id)
+      # original way, working with sqlite3 and mysql, but definitely broken with postgres.
+      @recent_pomodoros = current_user.pomodoros.joins(:activity).where('activities.completed' => false).group(:activity_id).order("created_at DESC").limit(5)
     end
     
     @upcoming_activities = Activity.where(:user_id => current_user.id, :completed => false).where("deadline >= '#{Date.today}'").order("activities.deadline ASC").limit(5)
