@@ -26,7 +26,10 @@ end
 #  gem 'factory_girl_rails', '1.0'
 #end
 
+# enable your favorite database adapter.
 group :production do
+  #gem 'sqlite3'
+  #gem 'pg'
   #gem 'mysql'
 end
 
