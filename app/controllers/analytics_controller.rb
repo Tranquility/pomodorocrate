@@ -69,7 +69,7 @@ class AnalyticsController < ApplicationController
     end
     
     def estimated_pomodoros(current_user, updated_at, activities_tag_filtering, project_filtering)
-      Activity.select(:estimated_pomodoros).where(:user_id => current_user.id, :updated_at => updated_at).where(project_filtering).group("date(activities.updated_at)").where(activities_tag_filtering).sum(:estimated_pomodoros)
+      unscoped_activities.select(:estimated_pomodoros).where(:user_id => current_user.id, :updated_at => updated_at).where(project_filtering).group("date(activities.updated_at)").where(activities_tag_filtering).sum(:estimated_pomodoros)
     end
     
     def worked_time(current_user, created_at, pomodoros_tags_filtering, project_filtering)
@@ -77,7 +77,7 @@ class AnalyticsController < ApplicationController
     end
     
     def activities(current_user, created_at, unplanned, activities_tag_filtering, project_filtering)
-      Activity.where(:user_id => current_user.id, :unplanned => unplanned, :created_at => created_at).where(project_filtering).where(activities_tag_filtering).count(:group => "date(activities.created_at)")
+      unscoped_activities.where(:user_id => current_user.id, :unplanned => unplanned, :created_at => created_at).where(project_filtering).where(activities_tag_filtering).count(:group => "date(activities.created_at)")
     end
     
     def interruptions(current_user, created_at, kind, pomodoros_tags_filtering, project_filtering)
@@ -85,4 +85,13 @@ class AnalyticsController < ApplicationController
       Interruption.joins(:pomodoro => :activity).where(:user_id => current_user.id, :kind => kind, :created_at => created_at).where(project_filtering).where(pomodoros_tags_filtering).count(:group => "date(interruptions.created_at)")
     end
 
+    def unscoped_activities
+      # when we request count(:group => 'DATE(created_at)') or other calculated expression
+      # postgres will complain about invalid sql. the reason is that Activity model has a
+      # default_scope that references columns that are not part of AREL-generated select
+      # (specifically the default_scope adds order by custom priority). some databases may
+      # tolerate the invalid sql by not postgres! => we kill default_scope with unscoped.
+      # XXX: all these calculations should be done in the model with a domain object.
+      Activity.unscoped
+    end
 end
