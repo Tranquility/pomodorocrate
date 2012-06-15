@@ -69,26 +69,25 @@ class ApplicationController < ActionController::Base
         :q_completed => params[:q_completed]
       }
 
-      cond_strings = returning([]) do |strings|
+      strings = []
       
-        if params[:q_name]
-          strings << "(activities.name like :q_name or activities.description like :q_name)" unless (params[:q_name].blank? or params[:q_name] == "Activity.")
-        end
-      
-        if params[:q_project]
-          strings << "(activities.project_id = :q_project)" unless (params[:q_project].blank? or params[:q_project] == "__none__" )
-        end
-        
-        if params[:q_completed]
-          strings << "(activities.completed = '" + (ActiveRecord::Base.connection.adapter_name.downcase.to_sym == :mysql ? '1' : 't') + "')" if params[:q_completed] == 'Yes'
-          strings << "(activities.completed = '" + (ActiveRecord::Base.connection.adapter_name.downcase.to_sym == :mysql ? '0' : 'f') + "')" if params[:q_completed] == 'No'
-        end
-        
-        # filter by logged user
-        strings << "user_id = #{current_user.id}"
-      
+      if params[:q_name]
+        strings << "(activities.name like :q_name or activities.description like :q_name)" unless (params[:q_name].blank? or params[:q_name] == "Activity.")
       end
-      cond_strings.any? ? [ cond_strings.join(' and '), cond_params ] : nil
+
+      if params[:q_project]
+        strings << "(activities.project_id = :q_project)" unless (params[:q_project].blank? or params[:q_project] == "__none__" )
+      end
+
+      if params[:q_completed]
+        strings << "(activities.completed = '" + (ActiveRecord::Base.connection.adapter_name.downcase.to_sym == :mysql ? '1' : 't') + "')" if params[:q_completed] == 'Yes'
+        strings << "(activities.completed = '" + (ActiveRecord::Base.connection.adapter_name.downcase.to_sym == :mysql ? '0' : 'f') + "')" if params[:q_completed] == 'No'
+      end
+
+      # filter by logged user
+      strings << "user_id = #{current_user.id}"
+
+      strings.any? ? [ strings.join(' and '), cond_params ] : nil
     end
     
     def authenticate

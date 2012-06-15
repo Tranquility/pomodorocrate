@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.13'
+gem 'rails', '3.2.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,10 +11,19 @@ gem 'tzinfo', '~> 0.3.33' # avoid DateTime.new0 bug (not available on 1.9.x)
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'gravatar_image_tag', '~> 1.1.2'
 gem 'will_paginate', '~> 3.0.3'
-gem 'jquery-rails', '~> 0.2.6'
 gem 'high_voltage', '~> 1.1.1'
 gem 'recaptcha', :require => 'recaptcha/rails' #, :git => 'git://github.com/ambethia/recaptcha.git'
 gem 'event-calendar', :require => 'event_calendar'
+gem 'rails_autolink' # auto_link support for Rails >= 3.1
+#gem 'jquery-rails' # manually included
+gem 'andand'
+
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'therubyracer', :platform => :ruby
+  gem 'uglifier', '>= 1.0.3'
+end
 
 group :development do
   gem 'faker', '~> 1.0.1'
