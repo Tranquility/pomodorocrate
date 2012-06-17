@@ -1,0 +1,80 @@
+#!/bin/sh
+set -u
+set -e
+
+# detect the absolute path of our deployment from $0
+app_root="$( cd $( dirname "${0}" )/.. && pwd -P )"
+
+# give us a chance to override environment by reading .env, if present
+[ -f "${app_root}/.env" ] && {
+  eval `cat .env | sed -E -e 's/^(\w+)=(.+)$/\1=\2 ; export \1/g'`
+}
+
+# environment variables to configure deploy:
+# - RAILS_ENV: rails environment (default: development)
+# - PORT: port to listen to (default: 3000)
+# - UNICORNS: number of unicorn slaves (default: 2), should be >= nr of cpus
+# - RAILS_RELATIVE_URL_ROOT: path to mount app (default: /)
+# these can be injected explicitly on command line or predefined into .env
+RAILS_ENV=${ENV:-development}
+PORT=${PORT:-3000}
+UNICORNS=${UNICORNS:-2}
+RAILS_RELATIVE_URL_ROOT=${RAILS_RELATIVE_URL_ROOT:-/}
+
+PID="${app_root}/tmp/pids/unicorn-${PORT}.pid"
+CMD="bundle exec unicorn -D -c config/unicorn-conf.rb -E ${RAILS_ENV}"
+
+old_pid="$PID.oldbin"
+
+cd $app_root || exit 1
+
+sig () {
+  test -s "$PID" && kill -$1 `cat $PID`
+}
+
+oldsig () {
+  test -s $old_pid && kill -$1 `cat $old_pid`
+}
+
+workersig () {
+  workerpid="${app_root}/tmp/pids/unicorn.$2.pid"
+
+  test -s "$workerpid" && kill -$1 `cat $workerpid`
+}
+
+case $1 in
+start)
+	sig 0 && echo >&2 "Already running" && exit 0
+	$CMD
+	;;
+stop)
+	sig QUIT && exit 0
+	echo >&2 "Not running"
+	;;
+force-stop)
+	sig TERM && exit 0
+	echo >&2 "Not running"
+	;;
+restart|reload)
+	sig HUP && echo reloaded OK && exit 0
+	echo >&2 "Couldn't reload, starting '$CMD' instead"
+	$CMD
+	;;
+upgrade)
+	sig USR2 && exit 0
+	echo >&2 "Couldn't upgrade, starting '$CMD' instead"
+	$CMD
+	;;
+kill_worker)
+	workersig QUIT $2 && exit 0
+	echo >&2 "Worker not running"
+	;;
+rotate)
+        sig USR1 && echo rotated logs OK && exit 0
+        echo >&2 "Couldn't rotate logs" && exit 1
+	;;
+*)
+	echo >&2 "Usage: $0 <start|stop|restart|upgrade|rotate|force-stop>"
+	exit 1
+	;;
+esac
