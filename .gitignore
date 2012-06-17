@@ -22,3 +22,4 @@ _documents_/
 _documents_/
 /vendor/bundle
 .idea/*
+/.env
