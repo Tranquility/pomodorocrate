@@ -35,6 +35,8 @@ GEM
     event-calendar (2.3.3)
     faker (1.0.1)
       i18n (~> 0.4)
+    foreman (0.47.0)
+      thor (>= 0.13.6)
     gravatar_image_tag (1.1.2)
     high_voltage (1.1.1)
     i18n (0.5.0)
@@ -92,6 +94,7 @@ PLATFORMS
 DEPENDENCIES
   event-calendar
   faker (~> 1.0.1)
+  foreman
   gravatar_image_tag (~> 1.1.2)
   high_voltage (~> 1.1.1)
   jquery-rails (~> 0.2.6)

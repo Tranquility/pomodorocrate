@@ -24,7 +24,7 @@ Quick run
 This will run PomodoroCrate in the development mode, using sqlite3 database in `db/development.db`
 
     $ bundle exec rake db:migrate
-    $ script/rails server -p 3000
+    $ bundle exec foreman start -p 3000
     $ tail -f log/development.log
 
 Finally, open `http://localhost:3000/` with your favorite browser.
@@ -41,10 +41,12 @@ These steps will setup to run `script/unicorn` in production mode. Configuration
     $ script/unicorn start
     $ tail -f log/unicorn.log log/production.log
 
+You may run `bundle exec foreman start` as an alternative to `script/unicorn`, as both methods load environment from the `.env` file.
+
 Finally, open `http://localhost:$PORT/` with your favorite browser. If you do not see any images or styles this is normal, as static assets are not served by the rails server in the production environment by default (they should instead be served directly by the frontend server).
 
 You should consider:
 
 * serving static resources using a web server such as [apache](http://httpd.apache.org/) or [nginx](http://wiki.nginx.org/) and proxy everything else to the application server.
 * using a real database rather than sqlite3; [mysql](http://www.mysql.com) and [postgresql](http://www.postgresql.org) are supported.
-* monitoring your PomodoroCrate server with tools like [monit](http://mmonit.com/monit).
+* monitoring your PomodoroCrate server with tools like [monit](http://mmonit.com/monit) (`bundle exec foreman export` may be useful).
