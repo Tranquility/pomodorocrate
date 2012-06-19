@@ -49,6 +49,9 @@ end
 # Use unicorn as the web server
 gem 'unicorn'
 
+# Use foreman to run in development
+gem 'foreman'
+
 # Deploy with Capistrano
 # gem 'capistrano'
 
