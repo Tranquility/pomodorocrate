@@ -24,6 +24,7 @@ Ketchup::Application.routes.draw do
   resources :activities, :projects
   resources :pomodoros,         :except => [:edit, :new, :show]
   resources :users,             :except => [:index, :show, :destroy]
+  match "breaks"                => 'breaks#create'
   resources :breaks,            :only => [:create, :update]
   resources :todotodays,        :only => [:index, :create, :destroy]
   resources :analytics,         :only => [:index]

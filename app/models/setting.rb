@@ -12,7 +12,11 @@
 
 class Setting < ActiveRecord::Base
   belongs_to :user
-  
+
+  attr_accessible :pomodoro_length, :short_break_length, :long_break_length, :voice_notifications,
+                  :voice_notifications_volume, :tick_tack_sound, :tick_tack_sound_volume, :ring_sound,
+                  :ring_sound_volume, :email_notifications
+
   validates_numericality_of :pomodoro_length, :only_integer => true,
                                               :greater_than_or_equal_to => 5,
                                               :less_than_or_equal_to => 60

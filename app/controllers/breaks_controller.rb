@@ -53,7 +53,9 @@ class BreaksController < ApplicationController
     return if break_in_progress?
     
     duration = params[:duration].nil? ? Break.duration : params[:duration]
-    @break = Break.new( :duration => duration, :user_id => current_user.id )
+    @break = Break.new
+    @break.duration = duration
+    @break.user_id = current_user.id
 
     respond_to do |format|
       if @break.save

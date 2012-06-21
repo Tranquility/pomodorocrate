@@ -97,9 +97,9 @@ $(function(){
    });
 
 	$('.pomodoros_icons a[data-method="post"][href^="/pomodoros?activity_id="] img').live('mouseover', function(){
-		this.src = '/images/pomodoro_completed.png';
+		this.src = '/assets/pomodoro_completed.png';
 	}).live('mouseout', function(){
-		this.src = '/images/pomodoro_complete_manually.png';
+		this.src = '/assets/pomodoro_complete_manually.png';
 	});
 });
 /**** END MANUALLY MARK POMODORO AS COMPLETED ****/
@@ -324,6 +324,7 @@ function stopCounting() {
 function stopAllSounds() {
 	if( typeof ticktack !== 'undefined' ) $(ticktack)[0].pause();
 	$.cookie('last_sound_played', null);
+    for( i = 0; i < played_sounds.length - 1; i++ ) played_sounds[i] = false;
 }
 
 function startCounting() {
@@ -475,7 +476,7 @@ function refreshTimeFromServer() {
 }
 
 function announceTimeLeft(minutes) {
-	
+
 	if(!voice_notifications || ($.cookie('last_sound_played') == minutes) ) return;
 	
 	minutes = parseInt(minutes);
@@ -646,7 +647,7 @@ $(function(){
 	  beforeShow: readSelected, onSelect: updateSelected, 
 		dateFormat: 'm/d/yy',
     minDate: new Date(), 
-    showOn: 'both', buttonImageOnly: true, buttonImage: base_url + 'images/calendar_empty.png'});
+    showOn: 'both', buttonImageOnly: true, buttonImage: base_url + 'assets/calendar_empty.png'});
 	
 	$( "#slider" ).slider({
 		value: parseInt($('#activity_estimated_pomodoros').val()) ? $('#activity_estimated_pomodoros').val() : 0,

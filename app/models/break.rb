@@ -11,6 +11,8 @@
 #
 
 class Break < ActiveRecord::Base
+
+  attr_accessible :completed, :duration
   
   def self.duration
     5
