@@ -6,10 +6,10 @@
 	<%= render 'shared/meta_tags' %>
 	
 	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <%= stylesheet_link_tag "application", :media => "all" %>
 	
-	<%= stylesheet_link_merged(:base).html_safe %>
-	
-	<!--[if IE]><%= stylesheet_link_tag "ie", 	:media => [:screen, :projection] %><![endif]-->
+  <!--[if IE]><%= stylesheet_link_tag "ie", 	:media => [:screen, :projection] %><![endif]-->
 	<!--[if IE 7]><%= stylesheet_link_tag "ie7", 	:media => [:screen, :projection] %><![endif]-->
 	
 	<%= favicon_link_tag %>

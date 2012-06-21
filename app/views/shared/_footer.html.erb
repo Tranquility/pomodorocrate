@@ -3,7 +3,7 @@
 
 <%= javascript_tag "var AUTH_TOKEN =  #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 
-<%= javascript_include_merged(:base).html_safe %>
+<%= javascript_include_tag "application" %>
 
 <!--[if lt IE 9]><%= javascript_include_tag 'jquery.corner', 'innershiv', 'ie' %><![endif]-->
 <!--[if IE 7]><%= javascript_include_tag 'ie7' %><![endif]-->

@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -17,6 +17,8 @@ gem 'event-calendar', :require => 'event_calendar'
 gem 'rails_autolink' # auto_link support for Rails >= 3.1
 gem 'jquery-rails' # manually included
 gem 'andand'
+gem 'acts-as-taggable-on', '~> 2.3.1'
+gem 'acts_as_list'
 
 # plugins which will be depricated in rails 4.0 - unfortunately the gem versions are not working
 # gem 'acts_as_list'
