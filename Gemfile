@@ -19,11 +19,7 @@ gem 'jquery-rails' # manually included
 gem 'andand'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'acts_as_list'
-
-# plugins which will be depricated in rails 4.0 - unfortunately the gem versions are not working
-# gem 'acts_as_list'
-# gem 'acts_as_taggable_on_steroids', '~> 1.2'
-# gem 'asset_packager', '~> 0.2.0'
+gem 'fancybox-rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

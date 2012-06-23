@@ -47,6 +47,8 @@ GEM
       multi_json (~> 1.0)
     faker (1.0.1)
       i18n (~> 0.4)
+    fancybox-rails (0.1.4)
+      railties (>= 3.1.0)
     gravatar_image_tag (1.1.2)
     high_voltage (1.1.1)
     hike (1.2.1)
@@ -133,6 +135,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   event-calendar
   faker (~> 1.0.1)
+  fancybox-rails
   gravatar_image_tag (~> 1.1.2)
   high_voltage (~> 1.1.1)
   jquery-rails

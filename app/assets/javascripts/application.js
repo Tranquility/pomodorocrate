@@ -18,12 +18,13 @@
 //= require jquery-ui-1.8.9.custom.min
 //= require jquery.inline_label.min
 //= require visualize.jQuery
-//= require jquery.fancybox-1.3.4.pack
+//= require fancybox
 //= require jquery.elastic.source
 //= require event_calendar
 //= require jquery.quickClear
 //= require ajaxify
 //= require jquery.cookie
+
 
 var played_sounds = [];
 played_sounds[23] = false;
@@ -506,12 +507,12 @@ function announceTimeLeft(minutes) {
 	minutes = parseInt(minutes);
 	if(played_sounds[minutes] !== undefined && !played_sounds[minutes]) {
 		
-		minutes_file = base_url + "sounds/text-to-speech/" + (parseInt(minutes) +1) + ".";
+		minutes_file = "/assets/text-to-speech/" + (parseInt(minutes) +1) + ".";
 		if(minutes == 0 && $('#pomodoro_submit[value="Complete"]').length == 0) {
-			minutes_file = base_url + "sounds/text-to-speech/0.";
+			minutes_file = "/assets/text-to-speech/0.";
 			
 			if( ring_sound ) {
-				ring_file = base_url + "sounds/clocks/alarm_clock.";
+				ring_file = "/assets/clocks/alarm_clock.";
 				playAudioFile(ring_file, ring_sound_volume);
 			}
 		} 
@@ -891,7 +892,7 @@ function playTickTack() {
 	
 	if( ! tick_tack_sound || ! counting_in_progress) return;
 	
-	sound_file = base_url + "sounds/clocks/egg_timer.";
+	sound_file = "/assets/clocks/egg_timer.";
 	
 	soundType = "";
 	if($.support.audio.ogg) {
@@ -926,7 +927,7 @@ $(function(){
 
 function playTestSound() {
 	
-	sound_file = base_url + "sounds/others/tada.";
+	sound_file = "/assets/others/tada.";
 	
 	soundType = "";
 	if($.support.audio.ogg) {
