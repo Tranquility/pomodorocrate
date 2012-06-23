@@ -35,7 +35,6 @@ played_sounds[4] = false;
 played_sounds[2] = false;
 played_sounds[0] = false;
 
-var clock_audio;
 var counting_in_progress = false;
 var time_since_server_time_read = 0;
 var ticktack;
@@ -349,7 +348,9 @@ function stopCounting() {
 function stopAllSounds() {
 	if( typeof ticktack !== 'undefined' ) $(ticktack)[0].pause();
 	$.cookie('last_sound_played', null);
-    for( i = 0; i < played_sounds.length - 1; i++ ) played_sounds[i] = false;
+    for( i = 0; i < played_sounds.length; i++ ) {
+        played_sounds[i] = false;
+    }
 }
 
 function startCounting() {
@@ -501,10 +502,10 @@ function refreshTimeFromServer() {
 }
 
 function announceTimeLeft(minutes) {
-
 	if(!voice_notifications || ($.cookie('last_sound_played') == minutes) ) return;
 	
 	minutes = parseInt(minutes);
+
 	if(played_sounds[minutes] !== undefined && !played_sounds[minutes]) {
 		
 		minutes_file = "/assets/text-to-speech/" + (parseInt(minutes) +1) + ".";
