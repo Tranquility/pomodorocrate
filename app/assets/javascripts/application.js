@@ -11,11 +11,11 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require rails
+//= require jquery_ujs
 //= require_self
 //= require enhance
 //= require excanvas
-//= require jquery-ui-1.8.9.custom.min
+//= require jquery.ui.all
 //= require jquery.inline_label.min
 //= require visualize.jQuery
 //= require fancybox

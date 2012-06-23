@@ -16,6 +16,7 @@ gem 'recaptcha', :require => 'recaptcha/rails' #, :git => 'git://github.com/ambe
 gem 'event-calendar', :require => 'event_calendar'
 gem 'rails_autolink' # auto_link support for Rails >= 3.1
 gem 'jquery-rails' # manually included
+gem 'jquery-ui-rails'
 gem 'andand'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'acts_as_list'
