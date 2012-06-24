@@ -11,7 +11,7 @@ class AnalyticsController < ApplicationController
     pomodoros_tags_filtering = ''
     activities_tag_filtering = ''
     if params[:q_tags] and params[:q_tags] != 'Tags.' and !params[:q_tags].blank? 
-      activities = Activity.find_tagged_with(params[:q_tags])
+      activities = Activity.tagged_with(params[:q_tags])
       
       pomodoros_tags_filtering = 'pomodoros.activity_id IN (?)', activities.collect { |a| a.id }
       activities_tag_filtering = 'activities.id IN (?)', activities.collect { |a| a.id }

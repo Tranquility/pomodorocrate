@@ -9,7 +9,7 @@ class ActivitiesController < ApplicationController
   def index
     
     if params[:q_tags] and params[:q_tags] != 'Tags.' and !params[:q_tags].blank? 
-      @activities = Activity.find_tagged_with(params[:q_tags]).paginate :page => params[:page], :conditions => search_conditions
+      @activities = Activity.tagged_with(params[:q_tags]).paginate :page => params[:page], :conditions => search_conditions
     else
       @activities = Activity.paginate :page => params[:page], :conditions => search_conditions
     end
