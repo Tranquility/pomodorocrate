@@ -9,13 +9,13 @@
 					<li class="active"><a class="tabs">Timed break</a></li>
 				</ul>
 			</nav>
-			<div class="widgetBox timer">
-				<ul class="breakButtons">
-					<li id="shortBreak" title="Click to start a new short break">
+			<div class="widgetBox timer container-fluid">
+				<ul class="breakButtons row-fluid">
+					<li id="shortBreak" title="Click to start a new short break" class="span5 offset2">
 						<%= link_to("#{current_user.short_break_length}", breaks_path(:duration => current_user.short_break_length), :method => :post, :remote => true, 'data-type' => 'text') %> min
 						<span>break</span>
 					</li>
-					<li id="longBreak"title="Click to start a new long break">
+					<li id="longBreak"title="Click to start a new long break" class="span5">
 						<%= link_to("#{current_user.long_break_length}", breaks_path(:duration => current_user.long_break_length), :method => :post, :remote => true, 'data-type' => 'text') %> min
 						<span>break</span>
 					</li>
@@ -27,7 +27,7 @@
 
 <% elsif !@break.nil? %>
 
-	<aside>
+	<aside class="row-fluid">
 	
 		<section id="activePomodoro" class="contentBoxNav">
 			<nav>

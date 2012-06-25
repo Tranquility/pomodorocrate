@@ -11,7 +11,7 @@
 	$.fn.quickClear = function(options) {
 
 		var defaults = {
-			clearImg : "<img src=\"assets/clear.png\" />",
+			clearImg : '<img src="<%= asset_path('clear.png') %>" />',
 			container: "<span class=\"clearBtnContainer\"></span>",
 			padding : 5
 		};

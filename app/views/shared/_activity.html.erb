@@ -48,7 +48,7 @@ css_class << a.priority if a.priority != :none
 			<% end %>
 		</ul>
 
-		<ul class="actionsBar">
+		<ul class="actionsBar btn-group">
 			<% unless a.completed %>
 				<% if a.todotoday.nil? %>
 					<li><%= link_to( "Do Today", todotodays_path(:activity_id => a), :method => :post, :class => [:activity_toolbar_button, :dotoday], :remote => true, 'data-type' => 'text', :title => "Add this activity to the Todo Today list (schedule it for today)") %></li>

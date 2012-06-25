@@ -12,7 +12,7 @@ class CalendarController < ApplicationController
     #@event_strips = Activity.event_strips_for_month(@shown_month)
     
     if params[:q_tags] and params[:q_tags] != 'Tags.' and !params[:q_tags].blank? 
-      activities = Activity.find_tagged_with(params[:q_tags])
+      activities = Activity.tagged_with(params[:q_tags])
       activities_tag_filtering = 'activities.id IN (?)', activities.collect { |a| a.id }
       
       @event_strips = Activity.where(activities_tag_filtering).event_strips_for_month(@shown_month, :conditions => search_conditions)

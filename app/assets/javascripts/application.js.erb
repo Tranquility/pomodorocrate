@@ -121,9 +121,9 @@ $(function(){
    });
 
 	$('.pomodoros_icons a[data-method="post"][href^="/pomodoros?activity_id="] img').live('mouseover', function(){
-		this.src = '/assets/pomodoro_completed.png';
+		this.src = "<%= asset_path('pomodoro_completed.png') %>";
 	}).live('mouseout', function(){
-		this.src = '/assets/pomodoro_complete_manually.png';
+		this.src = "<%= asset_path('pomodoro_complete_manually.png') %>";
 	});
 });
 /**** END MANUALLY MARK POMODORO AS COMPLETED ****/
@@ -506,19 +506,25 @@ function announceTimeLeft(minutes) {
 	
 	minutes = parseInt(minutes);
 
-	if(played_sounds[minutes] !== undefined && !played_sounds[minutes]) {
-		
-		minutes_file = "/assets/text-to-speech/" + (parseInt(minutes) +1) + ".";
+	if( played_sounds[minutes] !== undefined && !played_sounds[minutes] ) {
+
+		all_minutes_files = [];
+		<% [0, 2, 4, 9, 14, 19, 23].each do |i| %>
+		all_minutes_files[<%= i %>] = { ogg: "<%= asset_path( 'text-to-speech/%d.ogg' % (i+1).to_s ) %>", mp3: "<%= asset_path('text-to-speech/%d.mp3' % (i+1).to_s ) %>" };
+		<% end %>
+
+		minutes_files = all_minutes_files[minutes];
+
 		if(minutes == 0 && $('#pomodoro_submit[value="Complete"]').length == 0) {
-			minutes_file = "/assets/text-to-speech/0.";
+			minutes_files = { ogg: "<%= asset_path('text-to-speech/0.ogg') %>", mp3: "<%= asset_path('text-to-speech/0.mp3') %>" };
 			
 			if( ring_sound ) {
-				ring_file = "/assets/clocks/alarm_clock.";
-				playAudioFile(ring_file, ring_sound_volume);
+				ring_files = { ogg: "<%= asset_path('clocks/alarm_clock.ogg') %>", mp3: "<%= asset_path('clocks/alarm_clock.mp3') %>" };
+				playAudioFile(ring_files, ring_sound_volume);
 			}
 		} 
-		
-		playAudioFile(minutes_file, voice_notifications_volume);
+
+		playAudioFile( minutes_files, voice_notifications_volume );
 		
 		played_sounds[minutes] = true;
 		
@@ -526,8 +532,7 @@ function announceTimeLeft(minutes) {
 	} 
 }
 
-function playAudioFile(minutes_file, sound_volume) {
-	//console.log(sound_file);
+function playAudioFile(sound_files, sound_volume) {
 	soundType = "";
 	if($.support.audio.ogg) {
 		soundType = "ogg"
@@ -535,8 +540,8 @@ function playAudioFile(minutes_file, sound_volume) {
 		soundType = "mp3"
 	}
 	
-	if( soundType ) {
-		audio = new Audio(minutes_file + soundType);
+	if( soundType && sound_files[soundType] !== undefined ) {
+		audio = new Audio(sound_files[soundType]);
 		audio.volume = sound_volume;
 		$(audio).attr('preload', 'auto');
 		audio.play();
@@ -673,7 +678,7 @@ $(function(){
 	  beforeShow: readSelected, onSelect: updateSelected, 
 		dateFormat: 'm/d/yy',
     minDate: new Date(), 
-    showOn: 'both', buttonImageOnly: true, buttonImage: base_url + 'assets/calendar_empty.png'});
+    showOn: 'both', buttonImageOnly: true, buttonImage: "<%= asset_path('calendar_empty.png') %>"});
 	
 	$( "#slider" ).slider({
 		value: parseInt($('#activity_estimated_pomodoros').val()) ? $('#activity_estimated_pomodoros').val() : 0,
@@ -892,8 +897,8 @@ $(function(){
 function playTickTack() {
 	
 	if( ! tick_tack_sound || ! counting_in_progress) return;
-	
-	sound_file = "/assets/clocks/egg_timer.";
+
+	sound_files = { ogg: "<%= asset_path('clocks/egg_timer.ogg') %>", mp3: "<%= asset_path('clocks/egg_timer.mp3') %>" }
 	
 	soundType = "";
 	if($.support.audio.ogg) {
@@ -903,7 +908,7 @@ function playTickTack() {
 	}
 	
 	if( soundType ) {
-		ticktack = new Audio(sound_file + soundType);
+		ticktack = new Audio(sound_files[soundType]);
 		if( tick_tack_sound_volume !== false ) ticktack.volume = tick_tack_sound_volume;
 		$(ticktack).attr('preload', 'auto');
 		$(ticktack).bind('ended', function() {
@@ -928,7 +933,7 @@ $(function(){
 
 function playTestSound() {
 	
-	sound_file = "/assets/others/tada.";
+	sound_files = { ogg: "<%= asset_path('others/tada.ogg') %>", mp3:  "<%= asset_path('others/tada.mp3') %>" }
 	
 	soundType = "";
 	if($.support.audio.ogg) {
@@ -938,7 +943,7 @@ function playTestSound() {
 	}
 	
 	if( soundType ) {
-		audio = new Audio(sound_file + soundType);
+		audio = new Audio(sound_files[soundType]);
 		$(audio).attr('preload', 'auto');
 		$(audio).bind('ended', function() {
 			alert('Finished playing - did you hear the sound?');
@@ -947,3 +952,12 @@ function playTestSound() {
 		$(audio)[0].play();
 	}
 }
+
+/* debug */
+/*
+$(function(){
+  $( window ).resize( function(){
+    console.log( $( window ).width() + ':' + $( window ).height() );
+  });
+});
+*/

@@ -1,30 +1,20 @@
 class ActsAsTaggableOnMigration < ActiveRecord::Migration
   def self.up
-    create_table :tags do |t|
-      t.string :name
-    end
+    # You should make sure that the column created is
+    # long enough to store the required class names.
+    add_column :taggings, :tagger_id, :integer
+    add_column :taggings, :tagger_type, :integer
+    # limit is created to prevent mysql error o index lenght for myisam table type.
+    # http://bit.ly/vgW2Ql
+    add_column :taggings, :context, :string, :limit => 128
 
-    create_table :taggings do |t|
-      t.references :tag
-
-      # You should make sure that the column created is
-      # long enough to store the required class names.
-      t.references :taggable, :polymorphic => true
-      t.references :tagger, :polymorphic => true
-
-      # limit is created to prevent mysql error o index lenght for myisam table type.
-      # http://bit.ly/vgW2Ql
-      t.string :context, :limit => 128
-
-      t.datetime :created_at
-    end
-
-    add_index :taggings, :tag_id
+    remove_index :taggings, [:taggable_id, :taggable_type]
     add_index :taggings, [:taggable_id, :taggable_type, :context]
   end
 
   def self.down
-    drop_table :taggings
-    drop_table :tags
+    remove_index :taggings, [:taggable_id, :taggable_type, :context]
+    add_index :taggings, [:taggable_id, :taggable_type]
+    remove_columns :taggings, :context, :tagger_type, :tagger_id
   end
 end

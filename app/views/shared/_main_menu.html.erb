@@ -4,6 +4,6 @@
 		<li <%= is_current_page?(:todotodays) ? 'class=active' : '' %>><%= link_to "Todo Today", todotodays_path, :class => "tabs"%></li>
 		<li <%= is_current_page?(:projects) ? 'class=active' : '' %>><%= link_to "Projects", projects_path, :class => "tabs"%></li>
 		<li <%= is_current_page?(:calendar) ? 'class=active' : '' %>><%= link_to "Calendar", calendar_path, :class => "tabs"%></li>
-		<li <%= is_current_page?(:analytics) ? 'class=active' : '' %>><%= link_to "Analytics", analytics_path, :class => "tabs"%></li>
+		<li class="<%= is_current_page?(:analytics) ? 'active' : '' %> hidden-tablet hidden-phone"><%= link_to "Analytics", analytics_path, :class => [ 'tabs' ]%></li>
 	</ul>
 </nav>
