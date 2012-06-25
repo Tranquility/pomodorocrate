@@ -1,6 +1,5 @@
-<% pomodoro_finished = (Time.now - @pomodoro.created_at < current_user.pomodoro_length.minutes) %>
 <%= form_for(@pomodoro, :url => pomodoro_path(@pomodoro), :remote => true, :html => { 'data-type' => 'text' }) do |f| %>
-
+	<% pomodoro_finished = (Time.now - @pomodoro.created_at < current_user.pomodoro_length.minutes) %>
 	<%= hidden_field_tag("pomodoro[completed]", true) %>
 	
 	<div class="field <%=:invisible if pomodoro_finished %>">
@@ -28,4 +27,4 @@
 	<% end %>
 
 	<%= link_to("Edit activity", edit_activity_path(@pomodoro.activity), :id => :btn_edit_current_pomodoro) %>
-<% end %>
+<% end if @pomodoro %>

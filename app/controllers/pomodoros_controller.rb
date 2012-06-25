@@ -121,8 +121,12 @@ class PomodorosController < ApplicationController
   
   # GET /pomodoros/update_current_form
   def update_current_form
-    PomodoroMailer.completed_pomodoro_email(current_user, @pomodoro).deliver if @pomodoro.user.email_notifications
-    
+    # XXX julien: this action is also called after end of timed break, when there is no @pomodoro.
+    # XXX the template should *not* assume that it renders a @pomodoro, it may also be a break.
+    if @pomodoro && @pomodoro.user.email_notifications
+      PomodoroMailer.completed_pomodoro_email(current_user, @pomodoro).deliver
+    end
+
     respond_to do |format|
       format.html { render :layout => false }
       format.xml  { head :ok }

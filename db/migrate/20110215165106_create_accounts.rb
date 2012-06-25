@@ -7,7 +7,10 @@ class CreateAccounts < ActiveRecord::Migration
     end
     
     %w(free single team enterprise).each do |a|
-      Account.create(:name => a)
+      # XXX this is actually seed data
+      account = Account.new
+      account.name = a
+      account.save!
     end
     
   end
