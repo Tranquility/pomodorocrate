@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(:version => 20120621211541) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "activities", :force => true do |t|
@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(:version => 20120621211541) do
     t.integer  "estimated_pomodoros"
     t.date     "deadline"
     t.boolean  "completed"
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "project_id"
     t.integer  "user_id"
     t.datetime "start_at"
@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(:version => 20120621211541) do
   create_table "breaks", :force => true do |t|
     t.boolean  "completed"
     t.integer  "duration",   :default => 5
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
   end
 
@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(:version => 20120621211541) do
     t.text     "content"
     t.integer  "activity_id"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "comments", ["activity_id"], :name => "index_comments_on_activity_id"
@@ -75,21 +75,21 @@ ActiveRecord::Schema.define(:version => 20120621211541) do
     t.boolean  "feature_request"
     t.boolean  "suggestion"
     t.integer  "user_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text     "debug_info"
   end
 
   create_table "contacts", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "interruptions", :force => true do |t|
     t.string   "kind"
     t.integer  "pomodoro_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
   end
 
@@ -97,8 +97,8 @@ ActiveRecord::Schema.define(:version => 20120621211541) do
 
   create_table "pomodoros", :force => true do |t|
     t.integer  "activity_id"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "successful"
     t.text     "comments"
     t.boolean  "completed"
@@ -115,8 +115,8 @@ ActiveRecord::Schema.define(:version => 20120621211541) do
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
     t.boolean  "completed",   :default => false
   end
@@ -138,8 +138,8 @@ ActiveRecord::Schema.define(:version => 20120621211541) do
     t.integer  "short_break_length",         :default => 5
     t.integer  "long_break_length",          :default => 30
     t.integer  "user_id"
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "settings", ["user_id"], :name => "index_settings_on_user_id"
@@ -164,8 +164,8 @@ ActiveRecord::Schema.define(:version => 20120621211541) do
   create_table "todotodays", :force => true do |t|
     t.text     "comments"
     t.integer  "activity_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "today"
     t.integer  "user_id"
     t.integer  "position"
@@ -180,8 +180,8 @@ ActiveRecord::Schema.define(:version => 20120621211541) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "encrypted_password"
     t.string   "salt"
     t.boolean  "admin",               :default => false
