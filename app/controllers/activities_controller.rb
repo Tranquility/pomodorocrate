@@ -147,11 +147,9 @@ class ActivitiesController < ApplicationController
   
   def clone
     @activity = Activity.where(:user_id => current_user.id).find(params[:id])
-    @activity.id = nil
-    @activity.deadline = Date.today if @activity.deadline < Date.today
+    @clone = @activity.dup
+    @clone.deadline = Date.today if @clone.deadline < Date.today
     
-    @clone = @activity.clone
-
     respond_to do |format|
       if @clone.save
         format.html   { redirect_to(@clone, :notice => 'Activity cloned') }
