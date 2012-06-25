@@ -14,17 +14,17 @@ body { 	background: #e5e2d2; color: #898989;
 	 	font-family: Arial, Verdana, sans-serif; font-size: 12px; }
 
 #site { margin: 0 auto; width: 980px; }
-#page { background: url(bg_app_texture.jpg) #fff;
+#page { background: image-url("bg_app_texture.jpg") #fff;
         float: left; margin-bottom: 20px; padding: 5px 15px 15px 15px; width: 960px;
         font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 12px; }
 
 header { 	border-bottom: 10px solid #edecea; height: 50px; margin: -5px 0 0 -15px; padding: 0 15px; width: 960px;
 	 		background: #696558; }
 	#logo { display: block; width: 160px; }
-		#logo h2 { 	background: url("logo_pomodoro_crate.png") top left no-repeat;
+		#logo h2 { 	background: image-url("logo_pomodoro_crate.png") top left no-repeat;
                     text-indent: -999px;
                     height: 82px; margin-bottom: 8px; overflow: hidden; width: 158px; }
-			#logo h2:hover { 	background: url("logo_pomodoro_crate_hover.png") top left no-repeat; }
+			#logo h2:hover { 	background: image-url("logo_pomodoro_crate_hover.png") top left no-repeat; }
 	header nav { float: right; }
 		header nav ul { display: inline; float: left; list-style: none; margin-top: -83px; }
 			header nav ul li { display: inline; float: left; padding-top: 5px; }
@@ -112,7 +112,7 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 .widgetBox { 	background: #fff; border-top: 1px solid #918c77; }
 	.widgetBox .pomodorosCount { 	border-top: 1px solid #d6d4c9; border-bottom: 1px solid #d6d4c9; 
 		 							text-align: center;}
-	.widgetBox .submit, .formContainer .submit, .toolbar .submit { 	background: url(icon_apply.png) 8px center no-repeat #e24630; color: #ffe1dd;
+	.widgetBox .submit, .formContainer .submit, .toolbar .submit { 	background: image-url("icon_apply.png") 8px center no-repeat #e24630; color: #ffe1dd;
                                                                     font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 11px; font-weight: normal; letter-spacing: 1px;
                                                                     text-align: right; text-decoration: none; text-shadow: 1px 1px 0px #a52618; text-transform: uppercase;
                                                                     height: 34px; padding: 4px 8px 4px 28px;
@@ -134,7 +134,7 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 	 				font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 15px;
 					-moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; }
 	.flash.notice { background-color: #858174; color: #E5E2D2; }
-	.flash.error { 	background: url(icon_forbidden.png) 6px 7px no-repeat #ec533e; color: #f7cfca;
+	.flash.error { 	background: image-url("icon_forbidden.png") 6px 7px no-repeat #ec533e; color: #f7cfca;
 		 							padding-left: 32px; }
 	.flash.success { background-color: #8cab77; color: #ccf7b0; }
 		
@@ -157,7 +157,7 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
 								
 	.signUpForm input[type=text], .signUpForm input[type=password] { width: 250px !important; }
 
-.activity_name { 	background: url(bg_timer.png) top left repeat-x #f1efe5; color: #858174; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 13px;
+.activity_name { 	background: image-url("bg_timer.png") top left repeat-x #f1efe5; color: #858174; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 13px;
  									padding: 16px 12px 12px; }
 .activity_details { background-color: #f1efe5; color: #a39e89; font-weight: normal; font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 13px; word-wrap: break-word;
 	 									max-height: 300px; overflow-x: hidden; overflow-y: auto; padding: 2px 12px 14px; }
@@ -235,7 +235,7 @@ aside { float: right; margin-bottom: 12px; padding: 1px; width: 233px;
                             -moz-border-radius-bottomleft: 5px; border-bottom-left-radius: 5px; }
 	.breakButtons li a { color: #e5e2d2; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 50px; line-height: 50px; text-decoration: none; }
 
-.breakButtonHover { background: url(break_hover_marker.png) top center no-repeat; }
+.breakButtonHover { background: image-url("break_hover_marker.png") top center no-repeat; }
 
 .pagination { padding: 6px 16px; }
 
@@ -309,7 +309,7 @@ a.button { 	color: #ef4832;
 			.pagination a:hover { color: #E24630; text-decoration: none; }
 			
 a.toolbar_button { 	display: block; height: 24px; padding: 8px 0 0 36px; width: 105px;
-                    background: url(icon_add.png) 4px center no-repeat #858174;
+                    background: image-url("icon_add.png") 4px center no-repeat #858174;
                     color: #e4dfbf; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 11px; letter-spacing: 1px; text-decoration: none; text-transform: uppercase; text-align: center;
                     -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; }
 	a.toolbar_button:hover { background-color: #7a776a; color: #ece2c3; }
@@ -331,13 +331,13 @@ a.toolbar_button { 	display: block; height: 24px; padding: 8px 0 0 36px; width: 
                             -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px;
                             /*text-shadow: 1px 1px 0px #817c6c;*/ }
 	.activity_toolbar_button:hover { background-color: #9a9788; }
-.dotoday { background: url(icon_do_today.png) 8px center no-repeat #b4b09f; }
-.doitnow { background: url(icon_do_it_now.png) 8px center no-repeat #b4b09f; }
-.edit { background: url(icon_edit.png) 8px center no-repeat #b4b09f; }
-.delete { background: url(icon_delete.png) 8px center no-repeat #b4b09f; }
-.clone { background: url(icon_clone.png) 8px center no-repeat #b4b09f; padding-left: 36px; }
-.pomodoros_count { background: url(icon_pomodoro.png) 8px center no-repeat #b4b09f; padding-left: 30px; }
-.comments_count { background: url(icon_comment.png) 8px center no-repeat #b4b09f; padding-left: 30px; }
+.dotoday { background: image-url("icon_do_today.png") 8px center no-repeat #b4b09f; }
+.doitnow { background: image-url("icon_do_it_now.png") 8px center no-repeat #b4b09f; }
+.edit { background: image-url("icon_edit.png") 8px center no-repeat #b4b09f; }
+.delete { background: image-url("icon_delete.png") 8px center no-repeat #b4b09f; }
+.clone { background: image-url("icon_clone.png") 8px center no-repeat #b4b09f; padding-left: 36px; }
+.pomodoros_count { background: image-url("icon_pomodoro.png") 8px center no-repeat #b4b09f; padding-left: 30px; }
+.comments_count { background: image-url("icon_comment.png") 8px center no-repeat #b4b09f; padding-left: 30px; }
 
 li.completed_task, li.completed_project { background-color: #f5f3ea; }
 
@@ -348,10 +348,10 @@ li.completed_task, li.completed_project { background-color: #f5f3ea; }
                                             font-family: MetaProNormal, Arial, Verdana, sans-serif; }
 #currentPomodoroForm .button { margin-top: -30px; margin-right: 12px; }
 
-#btn_void_pomodoro { background: url(icon_void_pomodoro.png) left center no-repeat; color: #a39e89; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 12px; text-transform: uppercase;
+#btn_void_pomodoro { background: image-url("icon_void_pomodoro.png") left center no-repeat; color: #a39e89; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 12px; text-transform: uppercase;
                      border: 0; padding-left: 18px;
                      cursor: pointer; }
-#btn_edit_current_pomodoro { background: url(icon_edit_pomodoro.png) 6px center no-repeat; color: #a39e89; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 12px; text-transform: uppercase; text-decoration: none;
+#btn_edit_current_pomodoro { background: image-url("icon_edit_pomodoro.png") 6px center no-repeat; color: #a39e89; font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 12px; text-transform: uppercase; text-decoration: none;
                             border: 0; float: right; margin-top: -26px; margin-right: 12px; padding-left: 28px;
                             cursor: pointer; }
 												
@@ -365,9 +365,9 @@ li.completed_task, li.completed_project { background-color: #f5f3ea; }
 
 .time_is_up {   color: #ef4832;
                 margin-bottom: 10px; padding-bottom: 52px;
-                background: url(time_is_up.png) bottom center no-repeat;}
+                background: image-url("time_is_up.png") bottom center no-repeat;}
 							
-#pomodoro_submit { 	background-image: url(icon_complete_pomodoro.png);
+#pomodoro_submit { 	background-image: image-url("icon_complete_pomodoro.png");
 	 				width: 96px; }
 	
 label { font-family: MetaProNormal, Arial, Verdana, sans-serif; }
@@ -384,9 +384,9 @@ form.edit_user, form.edit_setting { width: auto !important; padding: 0 !importan
                 cursor: move; }
 	
 #gravatar { float: left; height: 205px; margin: 0 22px 70px 10px; width: 200px;
-	 		background: url(gravatar_bg.jpg) top left no-repeat; }
+	 		background: image-url("gravatar_bg.jpg") top left no-repeat; }
 	#gravatar a.submit { 	float: left; height: 21px; margin: 30px 0 0 12px; padding: 7px 11px 4px 45px;
-                            background: url(icon_change_avatar.png) 14px center no-repeat #e24630;
+                            background: image-url("icon_change_avatar.png") 14px center no-repeat #e24630;
                             font-size: 12px; }
 	
 img.gravatar { float: left; margin: 19px 0 0 16px; }
@@ -401,7 +401,7 @@ img.gravatar { float: left; margin: 19px 0 0 16px; }
 	
 .edit_user .actions, .edit_setting .actions { border-top: 1px solid #c8c5b7; padding: 12px 28px;
 	 																						text-align: right; }
-	#user_submit, #setting_submit { background: url(icon_update_user.png) 12px center no-repeat #e24630;
+	#user_submit, #setting_submit { background: image-url("icon_update_user.png") 12px center no-repeat #e24630;
 		 															height: 34px; padding: 9px 10px 20px 40px; }
 
 #user_details { overflow: hidden; width: 460px; }
@@ -413,7 +413,7 @@ img.gravatar { float: left; margin: 19px 0 0 16px; }
 	 									text-align: right;
 	 									float: right; }
 	
-#pomodoro_settings input.numeric, #notifications input.numeric { background: url(bg_input.png) center center no-repeat #fff !important; }
+#pomodoro_settings input.numeric, #notifications input.numeric { background: image-url("bg_input.png") center center no-repeat #fff !important; }
 
 #contact_request_content { height: 200px; width: 456px; }
 #contact_request_submit { float: right; margin-top: -10px; }
@@ -479,7 +479,7 @@ a.video_demo { color: #898989; font-family: MetaProBold, Arial, Verdana, sans-se
 #externalInterruptions { float: right; margin-top: -79px; }
 #internalInterruptions { border-right: 1px solid #918C77; }
 .interruption_button { 	display: block; float: left; height: 30px; margin: 6px; overflow: hidden; padding: 4px; width: 30px;
-	 											background: url("icon_add.png") no-repeat center center #858174;
+	 											background: image-url("icon_add.png") no-repeat center center #858174;
 	 											text-indent: -999px; 
 												-moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; }
 	.interruption_button:hover { background-color: #7A776A; }
@@ -524,8 +524,8 @@ a.video_demo { color: #898989; font-family: MetaProBold, Arial, Verdana, sans-se
 	 						cursor: pointer; }
 	#sidebar .toggable { 	display: block; float: right; height: 16px; margin: -24px 8px 0 0; overflow: hidden; width: 16px;
 		 										text-indent: 999px; }
-.expandable { background: url(expand.png) center right no-repeat; }
-.collapsable 	{ background: url(collapse.png) center right no-repeat; }
+.expandable { background: image-url("expand.png") center right no-repeat; }
+.collapsable 	{ background: image-url("collapse.png") center right no-repeat; }
 
 .collapsed_toolbar { height: 34px !important; overflow: hidden; }
 
@@ -545,7 +545,7 @@ a.video_demo { color: #898989; font-family: MetaProBold, Arial, Verdana, sans-se
 #commentsList #comment_submit { margin-top: 4px; padding-left: 0px; }
 #commentsList .delete_comment, #pomodorosList .delete_pomodoro { 	text-indent: -999px;
 	 																																display: none; float: right; height: 10px; margin: -15px -5px 0 10px; overflow: hidden; width: 10px;
-																																	background: url(clear.png) top left no-repeat; }
+																																	background: image-url("clear.png") top left no-repeat; }
 #commentsList li, #pomodorosList li { padding: 6px 10px;
 	 																		font-size: 12px; }
 	#commentsList li strong { font-family: MetaProBold, Arial, Verdana, sans-serif; font-weight: normal; font-size: 12px; }
@@ -553,14 +553,14 @@ a.video_demo { color: #898989; font-family: MetaProBold, Arial, Verdana, sans-se
 	
 	
 #tooltip { display: none; height: 20px; padding: 2px 5px 2px 38px; position: absolute; 
-					background: url(bg_tooltip_small.png) 4px center no-repeat #fff; color: #c83d2b; opacity: 0.8;
+					background: image-url("bg_tooltip_small.png") 4px center no-repeat #fff; color: #c83d2b; opacity: 0.8;
 					font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 12px; }
 					
 #loader { display: none; height: 32px; overflow: hidden; padding: 2px; position: absolute; width: 32px;
-					background: url(loading_feedback.gif) center center no-repeat transparent; opacity: 0.8;
+					background: image-url("loading_feedback.gif") center center no-repeat transparent; opacity: 0.8;
 					font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 12px; text-indent: -9999px;}
 					
-#speaker { 	background: url(bg_speaker.jpg) center left no-repeat #fff;
+#speaker { 	background: image-url("bg_speaker.jpg") center left no-repeat #fff;
 	 					border: 2px solid #b9b9b9; height: 42px; padding-left: 36px; 
 						color: #b9b9b9; text-shadow: none; }
 						

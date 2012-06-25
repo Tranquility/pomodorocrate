@@ -1,5 +1,5 @@
 #site { width: 494px !important; }
-#login_page { background: url(bg_app_texture.jpg) #fff;
+#login_page { background: image-url("bg_app_texture.jpg") #fff;
 							float: left; margin-bottom: 20px; margin-top: 30px; padding: 5px 15px 15px 15px; width: 494px;
 							 -moz-border-radius: 10px !important; border-radius: 10px !important; }
 	#login_page header { 	margin-bottom: 32px; width: 494px;
@@ -19,13 +19,13 @@
 	#login_page .formContainer label { font-size: 15px; }
 	#login_page .actions { min-height: 20px; padding: 10px 0; width: 468px; }
 	.login { 	float: right; height: 35px !important; margin-top: -10px; width: 122px;
-		 				background: url(icon_go.png) 26px 12px no-repeat #E24630 !important;
+		 				background: image-url("icon_go.png") 26px 12px no-repeat #E24630 !important;
 						font-size: 12px !important; text-align: center !important; }
 						
 	.signup { float: left; margin-top: 20px; width: 100%;
 		 				text-align: center; }
 		.signup a { display: block; height: 101px; margin: 0 auto; overflow: hidden; width: 102px;
 								text-indent: -9999px;
-								background: url(btn_sign_up.png) top left no-repeat; }
+								background: image-url("btn_sign_up.png") top left no-repeat; }
 								
 	#login_page #new_user { width: 470px; }
