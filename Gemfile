@@ -21,6 +21,7 @@ gem 'andand'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'acts_as_list'
 gem 'fancybox-rails'
+gem 'twitter-bootstrap-rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

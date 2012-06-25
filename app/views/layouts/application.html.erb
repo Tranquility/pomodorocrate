@@ -3,16 +3,20 @@
 		<% flash.each do |key, value| %>
 			<%= content_tag(:div, value, :class => "flash #{key}") %>
 		<% end %>
-		
-		<section id="content" class="contentBoxNav">
-			
-			<%= render "shared/main_menu" %>
-			
-			<%= yield %>
-			
-		</section>
-		
-		<%= render "shared/sidebar" %>
+
+    <section id="content_area" class="row-fluid">
+
+      <section id="content" class="contentBoxNav content-fluid span9">
+
+        <%= render "shared/main_menu" %>
+
+        <%= yield %>
+
+      </section>
+
+      <%= render "shared/sidebar" %>
+
+    </section>
 		
 	</div>
 </div>

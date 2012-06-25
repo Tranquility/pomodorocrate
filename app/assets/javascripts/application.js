@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require_self
 //= require enhance
 //= require excanvas
@@ -24,7 +25,6 @@
 //= require jquery.quickClear
 //= require ajaxify
 //= require jquery.cookie
-
 
 var played_sounds = [];
 played_sounds[23] = false;
@@ -648,7 +648,7 @@ $(document).ready(function(){
 // Run the script on DOM ready:
 $(function(){
 	if( $('#analytics_index').length ) {
-		
+
 		$('.pie').visualize({type: 'pie', width: '629px'});
 		
 		if( typeof(chart_interval) === 'undefined' || chart_interval < 20 ) {

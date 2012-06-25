@@ -1,6 +1,6 @@
 <span id="title" class="toggable expandable">Filter </span>
 
-<div class="row">
+<div class="pomo_row">
 	<%= label_tag(:q_name, "Activity.") %>
 	<%= text_field_tag(:q_name, params[:q_name], :title => "Filter by words contained in activity name or description") %>
 
@@ -14,7 +14,7 @@
   <%= select_tag(:q_project, options_for_select(projects, params[:q_project])) %>
 </div>
 
-<div class="row">
+<div class="pomo_row">
 	<%= label_tag(:q_tags, "Tags.") %>
 	<%= text_field_tag(:q_tags, params[:q_tags], :title => "Filter by activity tags") %>
 
@@ -30,6 +30,6 @@
 	<%= radio_button_tag :q_completed, 'All', (params[:q_completed] == 'All' or params[:q_completed].nil?) %>
 </div>
 
-<div class="row submit_row">
+<div class="pomo_row submit_row">
 	<%= submit_tag("Filter", :class => [:submit, :filter]) %>
 </div>

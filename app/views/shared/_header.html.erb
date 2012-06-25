@@ -17,9 +17,11 @@
 </head>
 
 <body>
-<div id="site">
-	<div id="page" class="boxShadow">
-		<header>
-			<%= render "shared/logo" %>
-			<%= render "shared/menu" %>
+<div id="site" class="container-fluid">
+	<div id="page" class="boxShadow container-fluid">
+		<header class="row-fluid navbar navbar-fixed-top">
+        <div class="container-fluid">
+			    <%= render "shared/logo" %>
+			    <%= render "shared/menu" %>
+        </div>
 		</header>
