@@ -25,6 +25,7 @@
 //= require jquery.quickClear
 //= require ajaxify
 //= require jquery.cookie
+//= require responsive
 
 var played_sounds = [];
 played_sounds[23] = false;
@@ -954,10 +955,12 @@ function playTestSound() {
 }
 
 /* debug */
-/*
+
 $(function(){
   $( window ).resize( function(){
+    if ( $( window ).width() <= 480 ) $( '#page' ).css( 'min-width', $( window ).width() - 120 );
+    else $( '#page' ).css( 'min-width', 960 );
+
     console.log( $( window ).width() + ':' + $( window ).height() );
   });
 });
-*/

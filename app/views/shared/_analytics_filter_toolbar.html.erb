@@ -3,7 +3,7 @@
 	<%= form_tag(analytics_path, :method => "get") do %>
 		<span id="title" class="toggable expandable">Filter </span>
 		
-		<div class="row">
+		<div class="pomo_row">
 			
 	  	<%= label_tag(:q_interval, "Time interval:") %>
 			<% 
@@ -16,7 +16,7 @@
 		
 		</div>
 		
-		<div class="row">
+		<div class="pomo_row">
 			<%= label_tag(:q_project, "Project:") %>
 			<% 
 			projects = [["..Any..", "__none__"]] 

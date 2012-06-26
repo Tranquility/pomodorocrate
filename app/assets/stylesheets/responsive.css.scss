@@ -6,8 +6,17 @@
   #timedBreak .widgetBox { height: auto; }
   #sidebar { float: left; margin-top: 12px; }
   #logo h2, #logo h2:hover { background: image-url("logo_pomodoro_crate_mobile.png") top left no-repeat; margin-left: 0; }
-  .activity_toolbar_button { font-size: 0; width: 0; height: 24px; display: block; float: left; margin-right: 10px; }
+  .activity_toolbar_button { font-size: 0; width: 0; height: 24px; display: block; float: left; margin-right: 10px; background-position: center center; }
   .hidden-tablet { display: none !important; }
   .navbar-fixed-top { margin-left: -15px; margin-right: 0; }
   #content_area { margin-top: 34px !important; }
+
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+  #content_area { margin-top: 34px !important; }
+  #logo h2, #logo h2:hover { margin-left: -20px; }
+
 }
