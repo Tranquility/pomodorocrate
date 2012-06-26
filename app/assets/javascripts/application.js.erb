@@ -510,7 +510,7 @@ function announceTimeLeft(minutes) {
 
 		all_minutes_files = [];
 		<% [0, 2, 4, 9, 14, 19, 23].each do |i| %>
-		all_minutes_files[<%= i %>] = { ogg: "<%= asset_path( 'text-to-speech/%d.ogg' % (i+1).to_s ) %>", mp3: "<%= asset_path('text-to-speech/%d.mp3' % (i+1).to_s ) %>" };
+		all_minutes_files[<%= i %>] = { ogg: "<%= asset_path( 'text-to-speech/%d.ogg' % (i+1) ) %>", mp3: "<%= asset_path('text-to-speech/%d.mp3' % (i+1) ) %>" };
 		<% end %>
 
 		minutes_files = all_minutes_files[minutes];
@@ -907,7 +907,7 @@ function playTickTack() {
 		soundType = "mp3"
 	}
 	
-	if( soundType ) {
+	if( soundType && sound_files[soundType] !== undefined ) {
 		ticktack = new Audio(sound_files[soundType]);
 		if( tick_tack_sound_volume !== false ) ticktack.volume = tick_tack_sound_volume;
 		$(ticktack).attr('preload', 'auto');
@@ -942,7 +942,7 @@ function playTestSound() {
 		soundType = "mp3"
 	}
 	
-	if( soundType ) {
+	if( soundType && sound_files[soundType] !== undefined ) {
 		audio = new Audio(sound_files[soundType]);
 		$(audio).attr('preload', 'auto');
 		$(audio).bind('ended', function() {
