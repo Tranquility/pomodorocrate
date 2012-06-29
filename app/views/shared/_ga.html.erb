@@ -1,8 +1,8 @@
-<% unless Rails.env == 'development' %>
+<% unless Rails.env == 'development' || Rails.configuration.ga_account.blank? || Rails.configuration.ga_domain.blank? %> 
 <script type="text/javascript">
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-21673864-1']);
-  _gaq.push(['_setDomainName', '.pomodorocrate.com']);
+  _gaq.push(['_setAccount', <%= Rails.configuration.ga_account.to_json.html_safe %>]);
+  _gaq.push(['_setDomainName', <%= Rails.configuration.ga_domain.to_json.html_safe %>]);
   _gaq.push(['_trackPageview']);
 
   (function() {

@@ -6,8 +6,9 @@ set -e
 app_root="$( cd $( dirname "${0}" )/.. && pwd -P )"
 
 # give us a chance to override environment by reading .env, if present
+# lines starting with # will be ignored, as they are assumed to be comments.
 [ -f "${app_root}/.env" ] && {
-  eval `cat .env | sed -E -e 's/^(\w+)=(.+)$/\1=\2 ; export \1/g'`
+  eval `cat .env | sed -E -e 's/^(\w+)=(.+)$/\1=\2 ; export \1/g' -e 's/^#.*$//g'`
 }
 
 # environment variables to configure deploy:

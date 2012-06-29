@@ -50,3 +50,7 @@ You should consider:
 * serving static resources using a web server such as [apache](http://httpd.apache.org/) or [nginx](http://wiki.nginx.org/) and proxy everything else to the application server.
 * using a real database rather than sqlite3; [mysql](http://www.mysql.com) and [postgresql](http://www.postgresql.org) are supported.
 * monitoring your PomodoroCrate server with tools like [monit](http://mmonit.com/monit) (`bundle exec foreman export` may be useful).
+
+Tip:
+
+* to enable Google Analytics in production, set `GA_ACCOUNT` and `GA_DOMAIN` environment variables in your `.env` file.
