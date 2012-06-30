@@ -17,7 +17,8 @@ app_root="$( cd $( dirname "${0}" )/.. && pwd -P )"
 # - UNICORNS: number of unicorn slaves (default: 2), should be >= nr of cpus
 # - RAILS_RELATIVE_URL_ROOT: path to mount app (default: /)
 # these can be injected explicitly on command line or predefined into .env
-RAILS_ENV=${RAILS_ENV:-development}
+RACK_ENV=${RACK_ENV:-development}
+RAILS_ENV=${RAILS_ENV:-${RACK_ENV}}
 PORT=${PORT:-3000}
 UNICORNS=${UNICORNS:-2}
 RAILS_RELATIVE_URL_ROOT=${RAILS_RELATIVE_URL_ROOT:-/}
