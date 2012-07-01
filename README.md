@@ -19,6 +19,15 @@ You will need ruby (1.9.3 recommended) and the 'bundle' gem installed.
     $ cd pomodorocrate
     $ bundle install --path vendor/bundle
 
+Initial setup
+-------------
+You should really configure email adresses and smtp servers before running PomodoroCrate.
+If you don't, then placeholders will be used and mails for signin or feedback may never arrive.
+
+To configure, copy `.env.sample` to `.env` and configure at least the `DEFAULT_EMAIL` variable.
+If you use a local SMTP server, set `SMTP_ADDRESS='localhost'` and you should be good to go.
+If you use an external SMTP server such as gmail follow the instructions in the `.env` comments.
+
 Quick run
 ---------
 This will run PomodoroCrate in the development mode, using sqlite3 database in `db/development.db`
@@ -37,7 +46,7 @@ These steps will setup to run `script/unicorn` in production mode. Configuration
     # edit Gemfile to enable the adapter for your favorite database (default: sqlite3)
     # edit config/database.yml to configure for your production database
     $ RAILS_ENV=production bundle exec rake db:migrate
-    $ cp .env.sample .env # tailor to your environment (environment, ports, relative root..)
+    $ # edit `.env` to tailor it to your environment (environment, ports, relative root, smtp etc..)
     $ script/unicorn start
     $ tail -f log/unicorn.log log/production.log
 
