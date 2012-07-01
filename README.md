@@ -21,8 +21,11 @@ You will need ruby (1.9.3 recommended) and the 'bundle' gem installed.
 
 Initial setup
 -------------
-You need to configure email adress for Pomodorocrate or the application won't run the first time.
-Copy `.env.sample` to `.env` and configure at least the `EMAIL_DEFAULT` variable.
+You should really configure email adresses and smtp servers before running PomodoroCrate.
+If you don't, then placeholders will be used and mails for signin or feedback may never arrive.
+
+To configure, copy `.env.sample` to `.env` and configure at least the `DEFAULT_EMAIL` variable.
+If you use a local SMTP server, set `SMTP_ADDRESS='localhost'` and you should be good to go.
 If you use an external SMTP server such as gmail follow the instructions in the `.env` comments.
 
 Quick run
