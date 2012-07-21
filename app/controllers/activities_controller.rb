@@ -69,6 +69,10 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.save
+
+        Todotoday.create( :activity_id => @activity.id, :today => Date.today, :user_id => current_user.id,
+                          :position => ( Todotoday.where(:user_id => current_user.id).count + 1) ) if params[:activity][:do_today]
+
         format.html   { redirect_to(@activity, :notice => 'Activity was successfully created.') }
         format.xml    { render :xml => @activity, :status => :created, :location => @activity }
         format.json   { render :json => @activity, :status => :created, :location => @activity }

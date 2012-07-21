@@ -65,7 +65,7 @@ function refreshWidget(itemSelector, actionName, additional_data, callback) {
 		dataType: "text",
 		success: function(msg){
 			sectionId = $(msg).find('section').attr('id');
-			$('#' + sectionId).parent().replaceWith(msg);
+            $('#' + sectionId).parent().replaceWith(msg);
 			hideEmptyWidgets();
 			
 			if( callback ) callback.call();

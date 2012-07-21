@@ -20,14 +20,8 @@ class TodotodaysController < ApplicationController
   # POST /dummies
   # POST /dummies.xml
   def create
-
-    if Todotoday.where(:user_id => current_user.id).count > 0 
-      position = Todotoday.where(:user_id => current_user.id).count + 1
-    else 
-      position = 1
-    end
-    
-    @todotoday = Todotoday.new(:activity_id => params[:activity_id], :today => Date.today, :user_id => current_user.id, :position => position)
+    @todotoday = Todotoday.new(:activity_id => params[:activity_id], :today => Date.today, :user_id => current_user.id,
+                               :position => ( Todotoday.where(:user_id => current_user.id).count + 1) )
 
     respond_to do |format|
       if @todotoday.save

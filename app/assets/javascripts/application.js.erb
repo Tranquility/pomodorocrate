@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require buzz
 //= require_self
 //= require enhance
 //= require excanvas
@@ -347,11 +348,14 @@ function stopCounting() {
 }
 
 function stopAllSounds() {
-	if( typeof ticktack !== 'undefined' ) $(ticktack)[0].pause();
+	if( typeof( ticktack ) !== 'undefined' ) {
+    ticktack.stop();
+    ticktack = undefined;
+  }
 	$.cookie('last_sound_played', null);
-    for( i = 0; i < played_sounds.length; i++ ) {
-        played_sounds[i] = false;
-    }
+  for( i = 0; i < played_sounds.length; i++ ) {
+    if( typeof( played_sounds[i] ) !== 'undefined' ) played_sounds[i] = false;
+  }
 }
 
 function startCounting() {
@@ -423,16 +427,21 @@ function decreaseTimer() {
 			$.ajax({
 				type: "GET",
 				url: base_url + "pomodoros/update_current_form",
-				dataType: "text/html",
+				dataType: "text",
 				data: "",
 				success: function(html){
+
 					$('#currentPomodoroForm').html(html);
 					$('#pomodoro_comments').elastic();
 					
 					if( typeof timer !== 'undefined' ) {
 						clearTimeout(timer);
 					}
-				}
+				},
+        error: function(xhr, ajaxOptions, thrownError){
+          console.log(xhr.status);
+          console.log(thrownError);
+        }
 			});
 		}
 		
@@ -488,7 +497,7 @@ function refreshTimeFromServer() {
 		$.ajax({
 			type: "GET",
 			url: base_url + "pomodoros/get_time_from_server",
-			dataType: "text/html",
+			dataType: "text",
 			success: function(html){
 				if( html ) {
 					$(".timer .time").attr("data-seconds", html);
@@ -507,7 +516,7 @@ function announceTimeLeft(minutes) {
 	
 	minutes = parseInt(minutes);
 
-	if( played_sounds[minutes] !== undefined && !played_sounds[minutes] ) {
+	if( typeof( played_sounds[minutes] ) !== 'undefined' && ! played_sounds[minutes] ) {
 
 		all_minutes_files = [];
 		<% [0, 2, 4, 9, 14, 19, 23].each do |i| %>
@@ -523,7 +532,7 @@ function announceTimeLeft(minutes) {
 				ring_files = { ogg: "<%= asset_path('clocks/alarm_clock.ogg') %>", mp3: "<%= asset_path('clocks/alarm_clock.mp3') %>" };
 				playAudioFile(ring_files, ring_sound_volume);
 			}
-		} 
+		}
 
 		playAudioFile( minutes_files, voice_notifications_volume );
 		
@@ -841,7 +850,7 @@ function draggableTodoItems() {
 				type: "POST",
 				url: base_url + "todotodays/save_sort",
 				data: $('#todotodays').sortable("serialize"), 
-				dataType: "text/html",
+				dataType: "text",
 				success: function(html){
 					
 				}
@@ -899,6 +908,7 @@ function playTickTack() {
 	
 	if( ! tick_tack_sound || ! counting_in_progress) return;
 
+  /*
 	sound_files = { ogg: "<%= asset_path('clocks/egg_timer.ogg') %>", mp3: "<%= asset_path('clocks/egg_timer.mp3') %>" }
 	
 	soundType = "";
@@ -907,17 +917,49 @@ function playTickTack() {
 	} else if($.support.audio.mp3) {
 		soundType = "mp3"
 	}
+	*/
 	
-	if( soundType && sound_files[soundType] !== undefined ) {
+	//if( soundType && sound_files[soundType] !== undefined ) {
+
+  if( typeof( ticktack ) === 'undefined' ) {
+
+    ticktack = new buzz.sound( "<%= asset_path('clocks/egg_timer') %>", {
+      formats: [ "ogg", "mp3" ],
+      preload: true,
+      autoload: true,
+      loop: false
+    });
+
+    ticktack.play();
+    if( tick_tack_sound_volume !== false ) ticktack.setVolume(tick_tack_sound_volume * 100);
+
+    ticktack.bind("ended", function(e) {
+      ticktack = undefined;
+      playTickTack();
+    });
+    /*
+    ticktack.bind("timeupdate", function(e) {
+      var timer = buzz.toTimer(this.getTime());
+      console.log(timer);
+    });
+    */
+  }
+
+    /*
 		ticktack = new Audio(sound_files[soundType]);
 		if( tick_tack_sound_volume !== false ) ticktack.volume = tick_tack_sound_volume;
 		$(ticktack).attr('preload', 'auto');
-		$(ticktack).bind('ended', function() {
-			if(counting_in_progress) this.play();
+    $(ticktack).attr('loop', 'true');
+		$(ticktack).on('ended', function() {
+			if(counting_in_progress) {
+        this.currentTime = 0;
+        this.play();
+      }
 		});
 		
 		$(ticktack)[0].play();
-	}
+		*/
+	//}
 }
 
 $(function(){

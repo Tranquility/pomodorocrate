@@ -26,8 +26,8 @@ class Activity < ActiveRecord::Base
   belongs_to  :user
   
   attr_accessible :name, :description, :estimated_pomodoros, :deadline, :completed, :project_id, :start_at, :end_at,
-                  :event_type, :unplanned, :tag_list, :priority
-  attr_accessor :color
+                  :event_type, :unplanned, :tag_list, :priority, :do_today
+  attr_accessor :color, :do_today
   
   validates :name,  :presence => true,
                     :length => { :maximum => 100 }

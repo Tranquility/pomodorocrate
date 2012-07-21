@@ -36,7 +36,7 @@ a.top_nav { color: #c4bca2; font-family: MetaProNormal, Arial, sans-serif; font-
             -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; }
 	a.top_nav:hover { background: #4e4b41; color: #ece2c3; text-shadow: 1px 1px 0px #333; }
 
-#content_area { margin-top: 84px; }
+#content_area { margin-top: 68px; }
 				
 #content { 	background-color: #96917d;
             /* float: left; */ padding: 1px; /* min-width: 710px; */ }
@@ -48,7 +48,7 @@ a.top_nav { color: #c4bca2; font-family: MetaProNormal, Arial, sans-serif; font-
 			.contentBoxNav nav ul li.active { background: #a39e89; }
 				.contentBoxNav nav ul li.active a.tabs { 	color: #faf9f4; font-family: MetaProBold, Arial, Verdana, sans-serif; }
 				
-	#content.no_sidebar { width: 960px; }
+	#content.no_sidebar { width: 100%; }
 				
 .toolbar { 	background: #a39e89; list-style: none;
 						clear: both; height: 44px; width: 100%; }
@@ -126,12 +126,12 @@ aside { float: right; margin-bottom: 12px; padding: 1px; min-width: 233px;
 		 				  white-space: nowrap; }
 	.widgetBox a.details_button {   font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 10px;
 		 						    margin-top: -2px !important; }
-.time { color: #a39e89; font-family: MetaPlusMediumCapsRegular, Arial, Verdana, sans-serif; font-size: 84px; font-weight: bold; line-height: 74px; letter-spacing: -2px; text-align: center;
+.time { color: #a39e89; font-family: MetaPlusMediumCapsRegular, Arial, Verdana, sans-serif; font-size: 84px; font-weight: normal; line-height: 74px; letter-spacing: -2px; text-align: center;
  		display: block; padding: 12px 0; /* width: 209px; */ }
 
 .tickbox { margin-top: 10px; }
 
-.flash { 	margin-bottom: 10px; margin-top: 30px; padding: 6px 10px;
+.flash { 	margin-bottom: 10px; margin-top: 70px; padding: 6px 10px;
 	 				background: transparent;
 	 				font-family: MetaProBold, Arial, Verdana, sans-serif; font-size: 15px;
 					-moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; }
@@ -139,6 +139,8 @@ aside { float: right; margin-bottom: 12px; padding: 1px; min-width: 233px;
 	.flash.error { 	background: image-url("icon_forbidden.png") 6px 7px no-repeat #ec533e; color: #f7cfca;
 		 							padding-left: 32px; }
 	.flash.success { background-color: #8cab77; color: #ccf7b0; }
+
+.flash + #content_area { margin-top: 14px !important; }
 		
 .formContainer { background: #fff; }
 	.formContainer form { padding: 6px 12px; }
@@ -170,7 +172,7 @@ aside { float: right; margin-bottom: 12px; padding: 1px; min-width: 233px;
 .future { font-family: MetaProNormal, Arial, Verdana, sans-serif; }
 
 .pageContainer { 	background: #fff; padding: 6px 12px;
-	 								font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 14px; }
+	 				font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 14px; }
 .withSeparator { border-top: 2px solid #E7E7E7; }
 
 .widgetBox .actionsBar { clear: both; height: 6px; margin-top: 20px; }
@@ -210,7 +212,7 @@ aside { float: right; margin-bottom: 12px; padding: 1px; min-width: 233px;
 .explanation { 	color: #ef4832; font-size: 28px; font-weight: bold;
 	 			display: block; float: left; margin: -3px 6px 0 0;}
 	
-.activeInput { outline: 1px solid #898989 !important; }
+.activeInput { outline: 0px solid #898989 !important; }
 
 #activityFilter label { margin-left: 16px; 
 	 					font-family: MetaProBold, Arial, Verdana, sans-serif; }
@@ -258,7 +260,7 @@ nav .name img { margin: 0 4px -5px 0; }
 
 #slider { float: right; margin: 10px 430px 0 0; width: 200px; }
 
-#content.no_sidebar #slider { margin-right: 676px; }
+#content.no_sidebar #slider { /* margin-right: 676px; */ }
 #content.no_sidebar #setting_pomodoro_length_slider { margin-right: 676px; }
 #content.no_sidebar #setting_short_break_length_slider, #content.no_sidebar #setting_long_break_length_slider, 
 #content.no_sidebar #setting_voice_notifications_volume_slider, #content.no_sidebar #setting_tick_tack_sound_volume_slider, 

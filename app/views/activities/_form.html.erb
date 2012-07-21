@@ -57,7 +57,14 @@
 	  <%= f.label :unplanned, 'Unplanned and Urgent' %> <span class="inline_help" title="An activity that hasn't been planned and scheduled in advance, but it has occured unexpectedly and needs to be taken care of urgently. Track this kind of activities in the analitics section with the goal of having as few of them as possible."> ? </span><br />
 	  <%= f.check_box :unplanned %>
 	</div>
-	
+
+  <% unless @activity.persisted? %>
+    <div class="field">
+      <%= f.label 'Todo today' %><br />
+      <%= f.check_box :do_today %>
+    </div>
+  <% end %>
+
 	<div class="field">
 	  <%= f.label :completed %><br />
 	  <%= f.check_box :completed %>
