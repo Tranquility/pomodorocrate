@@ -1,0 +1,39 @@
+//= require jquery
+//= require fancybox
+//= require jquery.easing-1.3.pack
+//= require_self
+//= require jquery.elastic.source
+
+$(document).ready(function() {
+
+  $('textarea').elastic();
+
+  $('.thumbnail').mouseenter(function() {
+    $(this).prepend('<div class="hoverArea"><div class="hoverIcon"></div></div>');
+  }).mouseleave(function() {
+      $(this).find('.hoverArea').remove();
+    })
+
+  $("a.thumbnail").fancybox({
+    'transitionIn'	:	'elastic',
+    'transitionOut'	:	'elastic',
+    'speedIn'		:	600,
+    'speedOut'		:	200,
+    'overlayShow'	:	true,
+    'titlePosition' : 'outside'
+  });
+
+  $('input, select, textarea, submit, button, checkbox').focus(function() {
+    $(this).addClass("activeInput");
+  });
+  $('input, select, textarea, submit, button, checkbox').blur(function() {
+    $(this).removeClass("activeInput");
+  });
+
+  if( $('.formContainer form input[type=text]').size() > 0 ) {
+    $('.formContainer form input[type=text]:first').focus();
+  } else {
+    $('.formContainer form textarea:first').focus();
+  }
+
+});

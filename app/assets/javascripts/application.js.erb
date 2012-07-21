@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require buzz
+//= require tinycon
 //= require_self
 //= require enhance
 //= require excanvas
@@ -466,6 +467,8 @@ function decreaseTimer() {
 		announceTimeLeft(0);
 	}
 
+  Tinycon.setBubble( minutes + 1 );
+
 	if(minutes < 10) minutes = '0' + minutes;
 	if(seconds < 10) seconds = '0' + seconds;
 
@@ -484,6 +487,7 @@ function decreaseTimer() {
 
 function resetPageTitle() {
 	document.title = ( document.title.replace(/\[(.*)\]/, '') );
+  Tinycon.setBubble(0);
 }
 
 function refreshTimeFromServer() {
@@ -995,6 +999,18 @@ function playTestSound() {
 		$(audio)[0].play();
 	}
 }
+
+/* DYNAMICALLY UPDATED FAVICON */
+$(function(){
+  Tinycon.setOptions({
+    width: 7,
+    height: 8,
+    font: '10px arial',
+    colour: '#fff',
+    background: '#e24630',
+    fallback: false
+  });
+});
 
 /* debug */
 /*

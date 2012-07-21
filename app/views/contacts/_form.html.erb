@@ -1,14 +1,6 @@
 <section class="group formContainer signUpForm" id="contact_form">
-	
-	<% if flash.nil? %>
-		<h6>Looking forward to hearing from you.</h6>
-	<% else %>
-		<h6>
-		<% flash.each do |key, value| %>
-			<strong><%= content_tag(:div, value, :class => "flash #{key}") %></strong>
-		<% end %>
-		</h6>
-	<% end %>
+
+  <h6>Looking forward to hearing from you.</h6>
 	
 	<% if @contact.errors.any? %>
     <div id="error_explanation">
