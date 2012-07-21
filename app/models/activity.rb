@@ -66,11 +66,11 @@ class Activity < ActiveRecord::Base
     def prepare_calendar_dates
       self.start_at = self.start_at.nil? ? DateTime.parse( Date.today.to_s ) : self.start_at.to_datetime
       self.start_at = DateTime.parse( "#{self.deadline.year}-#{self.deadline.month}-#{self.deadline.day} #{self.start_at.hour}:#{self.start_at.min}") 
-      self.start_at -= (self.start_at.utc_offset / 3600).hours
+      self.start_at -= self.start_at.utc_offset.seconds
       
       self.end_at = self.end_at.nil? ? DateTime.parse( Date.today.to_s ) : self.end_at.to_datetime
       self.end_at = DateTime.parse( "#{self.deadline.year}-#{self.deadline.month}-#{self.deadline.day} #{self.end_at.hour}:#{self.end_at.min}")
-      self.end_at -= (self.end_at.utc_offset / 3600).hours
+      self.end_at -= self.end_at.utc_offset.seconds
     end
-  
+
 end
