@@ -27,7 +27,10 @@ class TodotodaysController < ApplicationController
       if @todotoday.save
         flash[:success] = "Activity has been scheduled for today"
         
-        format.html { redirect_to(request.env["HTTP_REFERER"]) }
+        format.html {
+          redirect_to(request.env["HTTP_REFERER"]) unless request.xhr?
+          render :text => 'OK' if request.xhr?
+        }
         format.xml  { render :xml => @todotoday.to_xml(:include => [:activity]), :status => :created, :location => @todotoday }
         format.json { render :json => @todotoday.to_json(:include => [:activity]), :status => :created, :location => @todotoday }
       else

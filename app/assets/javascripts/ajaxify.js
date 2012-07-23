@@ -25,7 +25,7 @@ function currentActivityListId() {
 }
 
 function updateCurrentActivityList(itemSelector) {
-
+    
 	if( ! itemSelector ) return;
 	
 	$.ajax({
@@ -34,11 +34,11 @@ function updateCurrentActivityList(itemSelector) {
 		data: "",
 		dataType: "text",
 		success: function(msg){
-			if( msg != 'KO' ) {
-				updateActivitiesListing(itemSelector, msg);
-			} else {
-				window.location.href = base_url;
-			}
+            if( msg != 'KO' ) {
+                updateActivitiesListing(itemSelector, msg);
+            } else {
+                window.location.href = base_url;
+            }
 		}
 	});
 }

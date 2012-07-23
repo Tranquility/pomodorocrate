@@ -16,7 +16,7 @@ class ActivitiesController < ApplicationController
     
     respond_to do |format|
       format.js     {  }
-      format.html   # index.html.erb
+      format.html   {  }
       format.xml    { render :xml => @activities }
       format.json   { render :json => @activities }
     end
