@@ -25,7 +25,7 @@ function currentActivityListId() {
 }
 
 function updateCurrentActivityList(itemSelector) {
-    
+
 	if( ! itemSelector ) return;
 	
 	$.ajax({

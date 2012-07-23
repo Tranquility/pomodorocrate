@@ -50,6 +50,7 @@ class ActivitiesController < ApplicationController
   def new
     @activity = Activity.new
     @activity.project_id = session[:project_id] unless session[:project_id].nil?
+    @activity.do_today = false
     
     respond_to do |format|
       format.js     {  }
@@ -70,8 +71,10 @@ class ActivitiesController < ApplicationController
     respond_to do |format|
       if @activity.save
 
-        Todotoday.create( :activity_id => @activity.id, :today => Date.today, :user_id => current_user.id,
-                          :position => ( Todotoday.where(:user_id => current_user.id).count + 1) ) if params[:activity][:do_today]
+        if @activity.do_today != "0" # why is it not converted to bool? probably because it's virtual attribute
+          Todotoday.create( :activity_id => @activity.id, :today => Date.today, :user_id => current_user.id,
+                            :position => ( Todotoday.where(:user_id => current_user.id).count + 1) )
+        end
 
         format.html   { redirect_to(@activity, :notice => 'Activity was successfully created.') }
         format.xml    { render :xml => @activity, :status => :created, :location => @activity }

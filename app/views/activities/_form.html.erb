@@ -60,7 +60,7 @@
 
   <% unless @activity.persisted? %>
     <div class="field">
-      <%= f.label 'Todo today' %><br />
+      <%= f.label :do_today %><br />
       <%= f.check_box :do_today %>
     </div>
   <% end %>
