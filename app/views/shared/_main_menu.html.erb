@@ -1,9 +1,8 @@
 <nav>
 	<ul>
-		<li <%= is_current_page?(:activities) ? 'class=active' : '' %>><%= link_to "Activities", activities_path, :class => "tabs"%></li>
-		<li <%= is_current_page?(:todotodays) ? 'class=active' : '' %>><%= link_to "Todo Today", todotodays_path, :class => "tabs"%></li>
-		<li <%= is_current_page?(:projects) ? 'class=active' : '' %>><%= link_to "Projects", projects_path, :class => "tabs"%></li>
-		<li <%= is_current_page?(:calendar) ? 'class=active' : '' %>><%= link_to "Calendar", calendar_path, :class => "tabs"%></li>
-		<li class="<%= is_current_page?(:analytics) ? 'active' : '' %> hidden-tablet hidden-phone"><%= link_to "Analytics", analytics_path, :class => [ 'tabs' ]%></li>
+		<li <%= is_current_page?(:activities) ? 'class=active' : '' %>><%= link_to( raw( "Activities #{ overdue_activities_badge }" ), activities_path, :class => %w[tabs ico-activities] )%></li>
+		<li <%= is_current_page?(:todotodays) ? 'class=active' : '' %>><%= link_to( raw( "Today #{ remaining_todo_todays } #{ overdue_todo_todays }" ), todotodays_path, :class => %w[tabs ico-today] )%></li>
+		<li <%= is_current_page?(:projects) ? 'class=active' : '' %>><%= link_to( raw( "Projects" ), projects_path, :class => %w[tabs ico-projects] )%></li>
+		<li class="<%= is_current_page?(:analytics) ? 'active' : '' %> hidden-tablet hidden-phone"><%= link_to( raw( "Analytics" ), analytics_path, :class => %w[tabs ico-analytics] )%></li>
 	</ul>
 </nav>

@@ -81,7 +81,7 @@
 	</div>
 
   <div class="actions">
-    <%= f.submit nil, :class => :submit %> or 
-		<%= link_to "Cancel", activities_path, :method => :get, :class => :button %>
+    <%= f.submit nil, :class => [:btn, 'btn-primary'] %>
+		<%= link_to "Cancel", activities_path, :method => :get, :class => [:btn, 'btn-danger'] %>
   </div>
 <% end %>

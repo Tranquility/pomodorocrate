@@ -4,13 +4,14 @@
 		<section id="activePomodoro" class="contentBoxNav">
 			<nav>
 				<ul>
-					<li class="active"><a class="tabs">Active pomodoro</a></li>
+					<li class="active"><a class="tabs">Active beat</a></li>
 				</ul>
 			</nav>
 			<div class="widgetBox timer">
 			
 				<span class="time" data-seconds="<%= (current_user.pomodoro_length * 60) - ((Time.now - @pomodoro.created_at)).to_i %>"><% current_user.pomodoro_length - ((Time.now - @pomodoro.created_at) / 60).to_i %></span>
-				<div class="activity_name"><%= @pomodoro.activity.name %></div>
+
+        <div class="activity_name"><%= @pomodoro.activity.name %></div>
 				
 				<% unless @pomodoro.activity.description.blank? %>
 					<div class="activity_details">

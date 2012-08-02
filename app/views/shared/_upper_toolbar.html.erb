@@ -1,6 +1,12 @@
 <ul class="toolbar">
 	<% unless Project.where(:user_id => current_user).empty? %>
-		<li><%= link_to "New activity", new_activity_path, :class => [:toolbar_button], :title => "Create a new activity" %></li>
+		<li><%= link_to raw( "#{ content_tag( :i, '', :class => 'icon-plus' ) } New activity" ), new_activity_path, :class => [:toolbar_button], :title => "Create a new activity" %></li>
 	<% end %>
-	<li><%= link_to "New project", new_project_path, :class => [:toolbar_button], :title => "Create a new project" %></li>
+	<li><%= link_to raw( "#{ content_tag( :i, '', :class => 'icon-plus' ) } New project" ), new_project_path, :class => [:toolbar_button], :title => "Create a new project" %></li>
+  <li><%= link_to raw( "#{ content_tag( :i, '', :class => 'icon-check' ) } Filter" ), '#filter', :class => [:toolbar_button, :toggable, :expandable], :title => "Filter" %></li>
 </ul>
+
+<div class="btn-group pull-right" title="View by" id="view_by_toolbar">
+  <button class="btn by_date" title="View by date">Date</button>
+  <button class="btn by_calendar" title="View by calendar">Calendar</button>
+</div>

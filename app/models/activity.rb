@@ -42,12 +42,13 @@ class Activity < ActiveRecord::Base
   
   default_scope :order => "activities.completed ASC, activities.deadline ASC, #{ActiveRecord::Base.connection.adapter_name.downcase.to_sym == :mysql ? "FIELD( priority, 'high', 'medium_high', 'medium', 'medium_low', 'low', 'none')" : "CASE WHEN priority = 'high' THEN 1 WHEN priority = 'medium_high' THEN 2 WHEN priority = 'medium' THEN 3 WHEN priority = 'medium_low' THEN 4 WHEN priority = 'low' THEN 5 WHEN priority = 'none' THEN 6 END"}"
   scope :not_completed, lambda { |current_user| { :conditions => { :completed => false, :user_id => current_user.id } } }
+  scope :overdue, lambda { |current_user| where( :completed => false ).where( :user_id => current_user.id ).where( "end_at < ?", Date.today ) }
   
   before_save   :prepare_calendar_dates
   before_create :prepare_calendar_dates
   
   cattr_reader :per_page
-  @@per_page = 40
+  @@per_page = 50
   
   def deadline_can_not_be_in_the_past
     errors.add(:deadline, "can't be in the past") unless ( deadline == Date.today or deadline.future? )

@@ -78,6 +78,15 @@
   left: 0;
   width: 100%;
   overflow: hidden;
+    background: #cccccc; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ededed 0%, #dadada 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ededed), color-stop(100%,#dadada)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ededed 0%,#dadada 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ededed 0%,#dadada 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ededed 0%,#dadada 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ededed 0%,#dadada 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#dadada',GradientType=0 ); /* IE6-9 */
+
 }
 
 /* Background */
@@ -106,14 +115,14 @@
 
 /* Day header */
 .ec-day-header {
-  color: #444;
+  color: #687ca5;
   text-align: right;
   padding: 0 5px;
   line-height: 16px;
   border-top: 1px solid #d5d5d5;
   border-left: 1px solid #d5d5d5;
   border-bottom: 1px dotted #bbbbbb;
-  background-color: #ecede2;
+  background-color: #cfcfcf;
   overflow: hidden;
 }
 
@@ -122,7 +131,8 @@ a.ec-day-link {
 }
 
 .ec-today-header {
-  background-color: #d7d7ba;
+  background-color: #687ca5;
+  color: #fff;
 }
 
 .ec-weekend-day-header {
@@ -130,8 +140,8 @@ a.ec-day-link {
 }
 
 .ec-other-month-header {
-  background-color: #efefef;
-  color: #777;
+  background-color: transparent;
+  color: #adb0b1;
 }
 
 .ec-other-month-bg {
@@ -235,3 +245,6 @@ a.ec-day-link {
   -khtml-border-radius: 2px;
   -moz-border-radius: 2px;
 }
+
+.ec-calendar-header th { background-color: #dde0e0 !important; border-bottom: 1px solid #bec0c1; color: #9ca0a1; text-shadow: 1px 1px 0px #f7f7f7; }
+.ec-day-names th { background: #dde0e0; border-top: 1px solid #ecf0f1; border-bottom: 1px solid #bec0c1; color: #9ca0a1; text-shadow: 1px 1px 0px #f7f7f7; }

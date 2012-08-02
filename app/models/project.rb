@@ -16,10 +16,11 @@ class Project < ActiveRecord::Base
   has_many :todotodays, :through => :activities
   belongs_to :user
   
-  attr_accessible :name, :description, :completed
+  attr_accessible :name, :description, :completed, :color
   
   validates :name,  :presence => true,
                     :length => { :maximum => 100 }
+  validates :color, :length => { :maximum => 7 }
                     # :uniqueness => true
                     
   default_scope :order => "completed ASC, projects.name ASC"
@@ -63,6 +64,10 @@ class Project < ActiveRecord::Base
   
   def activity_in_progress
 
+  end
+
+  def self.default_color
+    '#dfe2e2'
   end
   
 end

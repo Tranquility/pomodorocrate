@@ -28,6 +28,7 @@
 //= require ajaxify
 //= require jquery.cookie
 //= require responsive
+//= require bootstrap_components/bootstrap-colorpicker
 
 var played_sounds = [];
 played_sounds[23] = false;
@@ -145,9 +146,9 @@ $(function(){
 	
 	$('#pomodoro_successful').live('change', function(){
 		if( $(this).is(':checked') ) {
-			$('#pomodoro_submit').val('Complete');
+			$('#pomodoro_submit').val('Complete').removeClass('btn-danger');
 		} else {
-			$('#pomodoro_submit').val('Void!').effect("pulsate", { times:1 }, 1000);
+			$('#pomodoro_submit').val('Void!').addClass('btn-danger').effect("pulsate", { times:1 }, 1000);
 		}
 	});
 })
@@ -640,7 +641,7 @@ $(document).ready(function(){
 		$(this).removeClass("activeInput");
 	});
 	
-	$('#activityFilter .toggable, #activityFilterAnalytics .toggable').click(function(){
+	$('#activityFilter .toggable, #activityFilterAnalytics .toggable, a.toolbar_button.toggable').click(function(){
 		if ( $(this).hasClass('expandable') ) {
 			$(this).addClass('collapsable');
 			$(this).removeClass('expandable');
@@ -725,7 +726,8 @@ function updateSelected(date) {
     $('#activity_deadline_1i').val( dateParts[2] ); 
 }
 
-// nonsemantic 
+// nonsemantic
+/*
 $(function(){
 	$('#site').wrap('<div id="nonsemanticBg" />');
 	
@@ -733,6 +735,7 @@ $(function(){
 		$('#content').addClass( 'no_sidebar' );
 	}
 });
+*/
 
 // tags auto-complete
 $(function() {
@@ -906,6 +909,22 @@ $(function(){
 
 $(function(){
 	$('.video_demo').attr('target', '_blank');
+});
+
+$(function(){
+  $('.color-picker').colorpicker().on('changeColor', function(ev){
+    $(this).val( ev.color.toHex() );
+    $(this).css( 'border', "1px solid " + ev.color.toHex() );
+  });
+});
+
+$(function(){
+  $('.by_calendar').on('click', function(){
+    location.href = "/calendar"
+  });
+  $('.by_date').on('click', function(){
+    location.href = "/activities"
+  });
 });
 
 function playTickTack() {

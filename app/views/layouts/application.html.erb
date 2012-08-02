@@ -1,8 +1,8 @@
-		<%= render 'shared/header' %>
-		
-		<% flash.each do |key, value| %>
-			<%= content_tag(:div, value, :class => "flash #{key}") %>
-		<% end %>
+    <%= render 'shared/header' %>
+
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, :class => "flash alert alert-#{key}") %>
+    <% end %>
 
     <section id="content_area" class="row-fluid">
 
