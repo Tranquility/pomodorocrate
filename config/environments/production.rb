@@ -70,7 +70,7 @@ Ketchup::Application.configure do
     :password             => ENV['SMTP_PASSWORD'],
     :authentication       => ENV['SMTP_AUTHENTICATION'],
     :enable_starttls_auto => ENV['SMTP_ENABLE_STARTTLS_AUTO'] != 'false', # default: true
-  }
+  }.delete_if { |k, v| v.blank? }
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
