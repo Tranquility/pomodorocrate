@@ -1,5 +1,5 @@
 <section class="group formContainer signUpForm">
-	<h6>Hello! <strong>Get in touch</strong> with us!</h6>
+	<h6>Hello!</h6>
 	
 	<%= form_for(@contact_request) do |f| %>
 
@@ -27,7 +27,7 @@
 	  </div>
 
 	  <div class="actions">
-	    <%= f.submit "Get in touch!", :class => [:submit] %>
+	    <%= f.submit "Get in touch!", :class => %w[btn btn-primary] %>
       <%= link_to "Nevermind...", activities_path, :class => :button %>
 	  </div>
 	<% end %>

@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require buzz
 //= require tinycon
 //= require_self
 //= require enhance
@@ -346,12 +345,17 @@ function stopCounting() {
 		clearTimeout(timer);
 	}
 	stopAllSounds();
+  resetBubble();
 	resetPageTitle();
+}
+
+function resetBubble() {
+  Tinycon.setBubble(0);
 }
 
 function stopAllSounds() {
 	if( typeof( ticktack ) !== 'undefined' ) {
-    ticktack.stop();
+    ticktack.pause();
     ticktack = undefined;
   }
 	$.cookie('last_sound_played', null);
@@ -421,6 +425,7 @@ function decreaseTimer() {
 	if(currentTime <= 0){
 		
 		stopCounting();
+    Tinycon.setBubble( 0 );
 		
 		currentTime = 0;
 		$('.time').addClass('time_is_up');
@@ -488,7 +493,6 @@ function decreaseTimer() {
 
 function resetPageTitle() {
 	document.title = ( document.title.replace(/\[(.*)\]/, '') );
-  Tinycon.setBubble(0);
 }
 
 function refreshTimeFromServer() {
@@ -539,6 +543,7 @@ function announceTimeLeft(minutes) {
 			}
 		}
 
+    playTickTack();
 		playAudioFile( minutes_files, voice_notifications_volume );
 		
 		played_sounds[minutes] = true;
@@ -669,12 +674,14 @@ $(document).ready(function(){
 $(function(){
 	if( $('#analytics_index').length ) {
 
-		$('.pie').visualize({type: 'pie', width: '629px'});
+    container_width = $('#analytics_index').width() - 80;
+
+		$('.pie').visualize({ type: 'pie', width: container_width });
 		
 		if( typeof(chart_interval) === 'undefined' || chart_interval < 20 ) {
-			$('.bar').visualize({type: 'bar', width: '629px'});
+			$('.bar').visualize({ type: 'bar', width: container_width });
 		} else {
-			$('.bar').visualize({type: 'line', width: '629px'});
+			$('.bar').visualize({ type: 'line', width: container_width });
 		}
 		
 		//$('.area').visualize({type: 'area', width: '629px'});
@@ -871,13 +878,13 @@ $(function(){
 		padding: 0,
 		margin: 0,
 		scrolling: 'no',
-		width: 580,
+		width: 560,
 		height: 560,
 		centerOnScroll: true,
 		transitionIn: 'none',
 		transitionOut: 'none',
 		overlayOpacity: 1,
-		overlayColor: '#E5E2D2',
+		overlayColor: '#fff',
 		hideOnOverlayClick: false
 	});
 	
@@ -928,61 +935,32 @@ $(function(){
 });
 
 function playTickTack() {
-	
-	if( ! tick_tack_sound || ! counting_in_progress) return;
 
-  /*
-	sound_files = { ogg: "<%= asset_path('clocks/egg_timer.ogg') %>", mp3: "<%= asset_path('clocks/egg_timer.mp3') %>" }
-	
-	soundType = "";
-	if($.support.audio.ogg) {
-		soundType = "ogg"
-	} else if($.support.audio.mp3) {
-		soundType = "mp3"
-	}
-	*/
-	
-	//if( soundType && sound_files[soundType] !== undefined ) {
+  if( ! tick_tack_sound || ! counting_in_progress) return;
 
-  if( typeof( ticktack ) === 'undefined' ) {
+  sound_files = { ogg: "<%= asset_path('clocks/egg_timer.ogg') %>", mp3: "<%= asset_path('clocks/egg_timer.mp3') %>" }
 
-    ticktack = new buzz.sound( "<%= asset_path('clocks/egg_timer') %>", {
-      formats: [ "ogg", "mp3" ],
-      preload: true,
-      autoload: true,
-      loop: false
-    });
-
-    ticktack.play();
-    if( tick_tack_sound_volume !== false ) ticktack.setVolume(tick_tack_sound_volume * 100);
-
-    ticktack.bind("ended", function(e) {
-      ticktack = undefined;
-      playTickTack();
-    });
-    /*
-    ticktack.bind("timeupdate", function(e) {
-      var timer = buzz.toTimer(this.getTime());
-      console.log(timer);
-    });
-    */
+  soundType = "";
+  if($.support.audio.ogg) {
+    soundType = "ogg"
+  } else if($.support.audio.mp3) {
+    soundType = "mp3"
   }
 
+  if( soundType && sound_files[soundType] !== undefined ) {
+    ticktack = new Audio(sound_files[soundType]);
+    if( tick_tack_sound_volume !== false ) ticktack.volume = tick_tack_sound_volume;
     /*
-		ticktack = new Audio(sound_files[soundType]);
-		if( tick_tack_sound_volume !== false ) ticktack.volume = tick_tack_sound_volume;
-		$(ticktack).attr('preload', 'auto');
-    $(ticktack).attr('loop', 'true');
-		$(ticktack).on('ended', function() {
-			if(counting_in_progress) {
-        this.currentTime = 0;
-        this.play();
+    ticktack.addEventListener('ended', function() {
+      if(counting_in_progress) {
+        ticktack.load( sound_files[soundType] )
+        // ticktack.currentTime = 0;
+        ticktack.play();
       }
-		});
-		
-		$(ticktack)[0].play();
-		*/
-	//}
+    }, false);
+    */
+    ticktack.play();
+  }
 }
 
 $(function(){

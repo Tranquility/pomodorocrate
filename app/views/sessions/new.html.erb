@@ -12,7 +12,11 @@
 	  </div>
 	  <div class="actions">
 			<%= link_to "Forgot your password?", reset_password_path, :class => :button %>
-	    <%= f.submit "Sign in", :class => [:submit, :login] %>
+      |
+      <%= link_to "Sign up", signup_path, :class => :button %>
+      |
+      <%= link_to "Home", root_path, :class => :button %>
+	    <%= f.submit "Sign in", :class => %w[btn btn-primary pull-right] %>
 	  </div>
 	<% end %>
 	

@@ -1,0 +1,26 @@
+<%= render 'shared/header' %>
+
+<% flash.each do |key, value| %>
+  <%= content_tag(:div, value, :class => "flash alert alert-#{key}") %>
+<% end %>
+
+<section class="row" id="home-page">
+  <p>
+    <strong>Rhapsody</strong> is a productivity app <br/>which helps you get the most out of your time.
+  </p>
+  <br/>
+  <p>
+    It is also an early beta.
+  </p>
+  <br/><br/><br/>
+  <p>
+    If you are curious
+    <br/>
+    <%= link_to( 'Sign up', signup_path, :class => %w[btn btn-primary] ) %> or <%= link_to( 'Login', signin_path, :class => %w[btn btn-primary] ) %>
+  </p>
+</section>
+
+</div>
+</div>
+
+<%= render "shared/footer" %>

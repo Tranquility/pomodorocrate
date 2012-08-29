@@ -1,7 +1,6 @@
 <div class="toolbar collapsed_toolbar" id="activityFilterAnalytics">
 	
 	<%= form_tag(analytics_path, :method => "get") do %>
-		<span id="title" class="toggable expandable">Filter </span>
 		
 		<div class="pomo_row">
 			
@@ -25,8 +24,8 @@
 			end
 			%>
 		  <%= select_tag(:q_project, options_for_select(projects, params[:q_project])) %>
-		
-			<%= submit_tag("Filter", :class => [:submit, :filter], :id => :analytics_filter_submit) %>
+      <br/>
+			<%= submit_tag("Filter", :class => %w[btn btn-primary], :id => :analytics_filter_submit) %>
 		</div>
 		
 	<% end %>
