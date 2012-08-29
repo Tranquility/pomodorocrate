@@ -11,7 +11,7 @@
 
 		<%= hidden_field_tag("pomodoro[successful]", false) %>
 		<div class="field pomodoro_toolbar">
-			<%= f.submit("Void", :id => :btn_void_pomodoro, :confirm => "Are you sure? You will lose all progress!", 'data-prompt' => 'Leave a comment?', 'data-prompt-callback' => 'updateVoidComment', 'data-prompt-answer' => 'Urgent interruption', :tooltip => 'Cancel the current pomodoro') %>
+			<%= f.submit("Void", :id => :btn_void_pomodoro, :confirm => "Are you sure? You will lose all progress!", 'data-prompt' => 'Leave a comment?', 'data-prompt-callback' => 'updateVoidComment', 'data-prompt-answer' => 'Urgent interruption', :tooltip => 'Cancel the current pomodoro', :class => %w[btn btn-danger] ) %>
 		</div>
 
 	<% else %>
@@ -21,7 +21,7 @@
 			<%= f.check_box :successful, :checked => true, :class => :tickbox %>
 		</div>
 		<div class="field">
-			<%= f.submit("Complete", :class => :submit) %>
+			<%= f.submit("Complete", :class => %w[btn btn-primary]) %>
 		</div>
 
 	<% end %>

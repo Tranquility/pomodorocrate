@@ -8,7 +8,7 @@
 			
 			<div id="gravatar">
 				<%= gravatar_for @user, :size => 168 %>
-				<a href="http://gravatar.com/emails" class="submit">Change my avatar</a>
+				<a href="http://gravatar.com/emails" class="btn">Change avatar</a>
 			</div>
 			
 			<div id="user_details">
@@ -36,7 +36,7 @@
 		</section>
 		
 		<div class="actions">
-	    <%= f.submit "Update account", :class => :submit %>
+	    <%= f.submit "Update account", :class => %w[btn btn-primary] %>
 	  </div>
 		
 		<h6>Account type</h6>
@@ -90,33 +90,25 @@
 		
 			<div class="field" id="voice_notifications">
 		    <%= f.label :voice_notifications %>
-		    <%= f.check_box :voice_notifications %>
-		  </div>
-			<div class="field" id="voice_notifications_volume">
-		    <%= f.label :voice_notifications_volume %><br />
+		    <%= f.check_box :voice_notifications %><br/>
 		    <%= f.text_field :voice_notifications_volume, :class => [:numeric, :volume] %>
 		  </div>
 		
 			<div class="field" id="tick_tack_sound">
 		    <%= f.label :tick_tack_sound %>
-		    <%= f.check_box :tick_tack_sound %>
-		  </div>
-			<div class="field" id="tick_tack_sound_volume">
-		    <%= f.label :tick_tack_sound_volume %><br />
+		    <%= f.check_box :tick_tack_sound %><br/>
 		    <%= f.text_field :tick_tack_sound_volume, :class => [:numeric, :volume] %>
 		  </div>
 		
 			<div class="field" id="ring_sound">
 		    <%= f.label :ring_sound %>
-		    <%= f.check_box :ring_sound %>
-		  </div>
-			<div class="field" id="ring_sound_volume">
-		    <%= f.label :ring_sound_volume %><br />
+		    <%= f.check_box :ring_sound %><br/>
 		    <%= f.text_field :ring_sound_volume, :class => [:numeric, :volume] %>
 		  </div>
 		
 			<div class="field">
-				<%= button_to_function "Test audio", "playTestSound()", :class => [:submit], :id => :speaker %>
+        <br/>
+				<%= button_to_function "Test audio", "playTestSound()", :class => %w[btn btn-default], :id => :speaker %>
 			</div>
 			
 			<br />
@@ -137,7 +129,7 @@
 		-->
 		
 		<div class="actions">
-	    <%= f.submit "Update settings", :class => :submit %>
+	    <%= f.submit "Update settings", :class => %w[btn btn-primary] %>
 	  </div>
 		
 	<% end %>

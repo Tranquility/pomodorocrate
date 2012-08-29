@@ -11,10 +11,7 @@
 		</section>
 		
 	</div>
-	
-	<div class="signup">
-		<%= link_to "Sign up now!", signup_path if params[:controller] == 'sessions' and (params[:action] == 'new' or params[:action] == 'create' or params[:action ] == 'reset_password') %>
-	</div>
+
 </div>
 
 <%= render "shared/footer" %>

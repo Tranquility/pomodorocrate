@@ -1,6 +1,6 @@
 module CalendarHelper
   def month_link(month_date)
-    link_to(I18n.localize(month_date, :format => "%B"), url_for({:month => month_date.month, :year => month_date.year, :q_name => params[:q_name], :q_project => params[:q_project], :q_tags => params[:q_tags], :q_completed => params[:q_completed] }), :class => :button)
+    link_to(I18n.localize(month_date, :format => "%B"), url_for({:month => month_date.month, :year => month_date.year, :q_name => params[:q_name], :q_project => params[:q_project], :q_tags => params[:q_tags], :q_completed => params[:q_completed] }), :class => %w[btn])
   end
   
   # custom options for this calendar
@@ -10,8 +10,8 @@ module CalendarHelper
       :month => @month,
       :event_strips => @event_strips,
       :month_name_text => I18n.localize(@shown_month, :format => "%B %Y"),
-      :previous_month_text => "<< " + month_link(@shown_month.prev_month),
-      :next_month_text => month_link(@shown_month.next_month) + " >>"
+      :previous_month_text => month_link(@shown_month.prev_month),
+      :next_month_text => month_link(@shown_month.next_month)
       #:first_day_of_week => @first_day_of_week
     }
   end

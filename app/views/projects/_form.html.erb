@@ -21,13 +21,18 @@
     <%= f.text_area :description %>
   </div>
 
+  <div class="field">
+    <%= f.label :color %><br />
+    <%= f.text_field :color, :class => %w[color-picker], :readonly => :readonly, :style => "border: 1px solid #{ @project.color ||= Project.default_color }" %>
+  </div>
+
 	<div class="field">
 	  <%= f.label :completed %><br />
 	  <%= f.check_box :completed %>
 	</div>
 
   <div class="actions">
-    <%= f.submit nil, :class => :submit %> or 
-		<%= link_to "Cancel", projects_path, :method => :get, :class => :button %>
+    <%= f.submit nil, :class => %w[btn btn-primary] %>
+		<%= link_to "Cancel", projects_path, :method => :get, :class => %w[btn btn-danger] %>
   </div>
 <% end %>

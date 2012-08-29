@@ -42,14 +42,15 @@
 				<div class="detailsView">
 					<%= text_format(project.description) %>
 
+          <ul class="infoBar">
+            <li class="clear_me">CREATED AT: <%= project.created_at.to_date.to_s(:rfc822) %></li>
+            <li class="clear_me">STARTED AT: <%= project.started_at %></li>
+            <li>DEADLINE: <%= project.deadline %></li>
+          </ul>
+
 					<ul class="actionsBar">
 						<li><%= link_to("Edit", edit_project_path(project), :class => [:activity_toolbar_button, :edit]) %></li>
 						<li><%= link_to("Delete", project, :confirm => "Are you sure?", :method => :delete, :class => [:activity_toolbar_button, :delete]) %></li>
-					</ul>
-					<ul class="infoBar">
-						<li class="clear_me">CREATED AT: <%= project.created_at.to_date.to_s(:rfc822) %></li>
-						<li class="clear_me">STARTED AT: <%= project.started_at %></li>
-						<li>DEADLINE: <%= project.deadline %></li>
 					</ul>
 				</div>
 			</li>
