@@ -2,7 +2,7 @@
 ## or modify the lines below at your own risk.
 ## To send email you should also check your SMTP_* variables.
 
-default_email = ENV['DEFAULT_EMAIL'] || 'ketchup@localhost'
+default_email = ENV['DEFAULT_EMAIL'] || 'rhapsodyapp@gmail.com'
 Ketchup::Application.config.admin_email = ENV['ADMIN_EMAIL'] || default_email
 Ketchup::Application.config.contact_email = ENV['CONTACT_EMAIL'] || default_email
 Ketchup::Application.config.support_email = ENV['SUPPORT_EMAIL'] || default_email
