@@ -1,5 +1,5 @@
 <table class="analytics bar">
-	<caption>Completed pomodoros / worked time (hours) - last <%= pluralize( ((@end_date -1.day) - @start_date).to_i, 'day') %></caption>
+	<caption>Completed beats / worked time (hours) - last <%= pluralize( ((@end_date -1.day) - @start_date).to_i, 'day') %></caption>
 	
 	<thead>
 		<tr>
@@ -12,7 +12,7 @@
 	
 	<tbody>
 		<tr>
-			<th scope="col">Completed pomodoros</th>
+			<th scope="col">Completed beats</th>
 			<% (@start_date..@end_date).each do |d| %>
 				<td class="values"><%= @complete_pomodoros[d.to_s].blank? ? 0 : @complete_pomodoros[d.to_s] %></td>
 			<% end %>

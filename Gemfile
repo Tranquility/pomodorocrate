@@ -8,7 +8,6 @@ gem 'rails', '3.2.6'
 gem 'json', '~> 1.7.3' # upgrade to not have Iconv deprecation message
 gem 'tzinfo', '~> 0.3.33' # avoid DateTime.new0 bug (not available on 1.9.x)
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'gravatar_image_tag', '~> 1.1.2'
 gem 'will_paginate', '~> 3.0.3'
 gem 'high_voltage', '~> 1.1.1'
@@ -34,6 +33,7 @@ group :assets do
 end
 
 group :development do
+  gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'faker', '~> 1.0.1'
 end
 
@@ -47,14 +47,14 @@ end
 group :production do
   #gem 'sqlite3'
   #gem 'pg'
-  #gem 'mysql'
+  gem 'mysql'
 end
 
 # Use unicorn as the web server
-gem 'unicorn'
+# gem 'unicorn'
 
 # Use foreman to run in development
-gem 'foreman'
+# gem 'foreman'
 
 # Deploy with Capistrano
 # gem 'capistrano'

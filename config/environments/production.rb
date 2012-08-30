@@ -58,18 +58,18 @@ Ketchup::Application.configure do
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   config.assets.precompile += %w( *.js *.css *.png )
 
-  # Disable delivery errors, bad email addresses will be ignored
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+
   config.action_mailer.smtp_settings = {
     # configure as possible by setting these environment variables in .env
     # all variables are optional (default is to assume presence of local sendmail).
-    :address              => ENV['SMTP_ADDRESS'],
-    :port                 => ENV['SMTP_PORT'],
-    :domain               => ENV['SMTP_DOMAIN'],
-    :user_name            => ENV['SMTP_USER_NAME'],
-    :password             => ENV['SMTP_PASSWORD'],
-    :authentication       => ENV['SMTP_AUTHENTICATION'],
-    :enable_starttls_auto => ENV['SMTP_ENABLE_STARTTLS_AUTO'] != 'false', # default: true
+    :address              => 'smtp.gmail.com',
+    :port                 => 587,
+    :domain               => 'gmail.com',
+    :user_name            => '<username>@gmail.com',
+    :password             => '<password>',
+    :authentication       => 'plain',
+    :enable_starttls_auto => 'true', # default: true
   }
 
   # Disable delivery errors, bad email addresses will be ignored

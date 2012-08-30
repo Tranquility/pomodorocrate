@@ -1,27 +1,17 @@
-Pomodoro Crate
+Rhapsody
 ===============
-
-What is it?
-----------
-First version of the Pomodoro Crate app - my first Rails app, used as a learning device. Far from perfect but does a good job.
-
-Open sourcing it due to multiple requests and lack of time to maintain it.
-
-Please push back your fixes and additions.
-
-[http://pomodorocrate.com](http://pomodorocrate.com)
 
 Installation
 ------------
 You will need ruby (1.9.3 recommended) and the 'bundle' gem installed.
 
-    $ git clone git://github.com/reveloper/pomodorocrate.git
-    $ cd pomodorocrate
+    $ git clone git://github.com/reveloper/rhapsody.git
+    $ cd rhapsody
     $ bundle install --path vendor/bundle
 
 Initial setup
 -------------
-You should really configure email adresses and smtp servers before running PomodoroCrate.
+You should really configure email adresses and smtp servers before running Rhapsody.
 If you don't, then placeholders will be used and mails for signin or feedback may never arrive.
 
 To configure, copy `.env.sample` to `.env` and configure at least the `DEFAULT_EMAIL` variable.
@@ -30,7 +20,7 @@ If you use an external SMTP server such as gmail follow the instructions in the 
 
 Quick run
 ---------
-This will run PomodoroCrate in the development mode, using sqlite3 database in `db/development.db`
+This will run Rhapsody in the development mode, using sqlite3 database in `db/development.db`
 
     $ bundle exec rake db:migrate
     $ bundle exec foreman start -p 3000
@@ -58,7 +48,7 @@ You should consider:
 
 * serving static resources using a web server such as [apache](http://httpd.apache.org/) or [nginx](http://wiki.nginx.org/) and proxy everything else to the application server.
 * using a real database rather than sqlite3; [mysql](http://www.mysql.com) and [postgresql](http://www.postgresql.org) are supported.
-* monitoring your PomodoroCrate server with tools like [monit](http://mmonit.com/monit) (`bundle exec foreman export` may be useful).
+* monitoring your Rhapsody server with tools like [monit](http://mmonit.com/monit) (`bundle exec foreman export` may be useful).
 
 Tip:
 

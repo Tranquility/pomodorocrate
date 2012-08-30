@@ -64,7 +64,7 @@
 				We haven't found any activities.
 			</p>
 			<p class="pageContainer">
-				Use the <%= link_to_unless(Project.where(:user_id => current_user).empty?, "New activity", new_activity_path, :class => :button) %> button to add some and start enjoying the pomodoro technique.
+				Use the <%= link_to_unless(Project.where(:user_id => current_user).empty?, "New activity", new_activity_path, :class => :button) %> button to add some and start enjoying your new found productivity.
 			</p>
 		<% end %>
 	</section>

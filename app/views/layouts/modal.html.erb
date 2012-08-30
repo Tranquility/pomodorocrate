@@ -1,7 +1,7 @@
 		<%= render 'shared/modal_header' %>
 		
 		<% flash.each do |key, value| %>
-			<%= content_tag(:div, value, :class => "flash #{key}") %>
+			<%= content_tag(:div, value, :class => "flash alert alert-#{key}") %>
 		<% end %>
 		
 		<section id="content" class="contentBoxNav">

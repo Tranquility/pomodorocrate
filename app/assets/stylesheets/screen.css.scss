@@ -14,9 +14,11 @@ body { 	background: #fff; color: #898989;
 	 	font-family: Arial, Verdana, sans-serif; font-size: 12px; }
 
 #site { background-color: #fff; margin: 0 auto; /* min-width: 980px; */ padding: 0px; }
-#page { background: #fafafa;
+.home-page #site { background-color: transparent; }
+#page { background: #fff;
         /* float: left; */ margin-bottom: 20px; padding: 5px 15px 15px 15px; min-width: 960px;
         font-family: MetaProNormal, Arial, Verdana, sans-serif; font-size: 12px; }
+.home-page #page { background-color: transparent !important; }
 
 header { 	border-bottom: 2px solid #bec0c1; height: 50px; margin: -5px 0 0 0; padding: 0; /* min-width: 960px; */
 	 		background: #ebebeb; }
@@ -772,3 +774,9 @@ select.none {  }
 #home-page { margin-top: 60px; padding: 0 40px; }
 #home-page p { font-family: MetaPro, Arial, Verdana, sans-serif; font-size: 30px; line-height: 40px; text-align: center; }
 #home-page p strong { color: #8191b2; font-family: MetaProBold; font-weight: normal; }
+
+body.home-page { background: image-url("background_site.jpg") center 300px no-repeat #fff !important; height: 100%; text-align: center; }
+body.home-page h1 { color: #8191b2; font-family: MetaProBold; font-weight: normal; font-size: 122px; margin-top: 40px; padding-bottom: 20px; text-transform: uppercase; }
+body.home-page h2 { font-family: MetaProBold; font-weight: normal; font-size: 20px; margin-top: 10px; text-transform: uppercase; }
+
+body.home-page p.actions .btn { font-family: MetaPro, Arial, Verdana, sans-serif; width: 120px; }

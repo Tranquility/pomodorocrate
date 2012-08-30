@@ -37,7 +37,7 @@ class UsersController < ApplicationController
       respond_to do |format|
         format.html { 
           sign_in @user
-          flash[:success] = "Welcome to Pomodoro Crate!"
+          flash[:success] = "Welcome to Rhapsody!"
           redirect_to edit_user_path(@user)
         }
         format.xml  { render :xml => @user, :status => :created, :location => @user }

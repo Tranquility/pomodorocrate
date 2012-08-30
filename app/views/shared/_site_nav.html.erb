@@ -1,6 +1,6 @@
 <nav class="menus">
 
-	<p><%= link_to 'Pomodoro Crate - Agile time management based on the Pomodoro Technique', root_path, :id => :logo, :title => 'Pomodoro Crate - Agile time management based on the Pomodoro Technique' -%></p>
+	<p><%= link_to 'Rhapsody - Agile time management', root_path, :id => :logo, :title => 'Rhapsody - Agile time management' -%></p>
 
 	<menu id="mainMenu">
 		<li><%= link_to 'Home', root_path -%></li>
@@ -13,7 +13,7 @@
 		<% if signed_in? %>
 			<%= link_to "Sign out", signout_path, :method => :delete %>
 		<% else %>
-			<%= link_to "Sign in", signin_path, :title => 'Go ahead and roll some Pomodoros' %>
+			<%= link_to "Sign in", signin_path %>
 		<% end %>
 		</li>
 	</ul>

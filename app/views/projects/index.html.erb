@@ -11,7 +11,8 @@
 					<div class="quickView">
 						<div class="activityName">
 							<%= content_tag_for(:span, project, :class => (project.completed ? 'projectCompleted' : "") ) do %>
-								<%= project.name %>
+								<span style="background-color: <%= project.color ||= Project.default_color %>;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <%= project.name %>
 							<% end %>
 							<% # in_progress_marker(@pomodoro, project.activities.first) %>
 							<% # todotoday_marker(project.activities.first) %>
@@ -21,16 +22,16 @@
 							
 							<div class="projectDetails" title="<%= pluralize(project.completed_pomodoros, 'pomodoro') %> completed">
 								<%= project.completed_pomodoros %>
-								<span class="explanation"><%= image_tag "pomodoro_completed.png", :alt => "Completed pomodoros" %></span>
+								<span class="explanation"><%= image_tag "pomodoro_completed.png", :alt => "Completed beats" %></span>
 							</div>
 
 							<% left_pomodoros = project.total_pomodoros - project.completed_pomodoros %>
 							<div class="projectDetails" title="<%= pluralize(left_pomodoros, 'pomodoro') %> left">
 								<%= left_pomodoros >= 0 ? left_pomodoros : 0 %>
-								<span class="explanation"><%= image_tag "pomodoro_not_started.png", :alt => "Left pomodoros" %></span>
+								<span class="explanation"><%= image_tag "pomodoro_not_started.png", :alt => "Remaining beats" %></span>
 							</div>
 
-							<div class="projectDetails" title="Project completeness - completed pomodoros vs remaining estimated pomodoros">
+							<div class="projectDetails" title="Project completeness - completed beats vs remaining estimated beats">
 								<%= project.completness %>%
 							</div>
 						

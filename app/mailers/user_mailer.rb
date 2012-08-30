@@ -4,7 +4,7 @@ class UserMailer < ActionMailer::Base
   def new_account_confirmation_email(user)
     @user = user
     mail( :to => @user.email,
-          :subject => "Welcome to Pomodoro Crate!")
+          :subject => "Welcome to Rhapsody!")
   end
   
   def reset_password_email(user, url)

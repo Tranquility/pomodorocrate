@@ -21,7 +21,7 @@ module ActivitiesHelper
 
   def overdue_activities_badge
     activities_count = Activity.overdue( @current_user ).length
-    raw( content_tag :span, activities_count, :class => ['badge', 'badge-important'] ) if activities_count > 0
+    raw( content_tag :span, activities_count, :class => ['badge', 'badge-important'], :title => 'Overdue' ) if activities_count > 0
   end
   
 end

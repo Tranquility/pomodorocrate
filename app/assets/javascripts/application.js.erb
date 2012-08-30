@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require tinycon
 //= require_self
 //= require enhance
 //= require excanvas
@@ -26,7 +25,6 @@
 //= require jquery.quickClear
 //= require ajaxify
 //= require jquery.cookie
-//= require responsive
 //= require bootstrap_components/bootstrap-colorpicker
 
 var played_sounds = [];
@@ -345,12 +343,7 @@ function stopCounting() {
 		clearTimeout(timer);
 	}
 	stopAllSounds();
-  resetBubble();
 	resetPageTitle();
-}
-
-function resetBubble() {
-  Tinycon.setBubble(0);
 }
 
 function stopAllSounds() {
@@ -425,7 +418,6 @@ function decreaseTimer() {
 	if(currentTime <= 0){
 		
 		stopCounting();
-    Tinycon.setBubble( 0 );
 		
 		currentTime = 0;
 		$('.time').addClass('time_is_up');
@@ -472,8 +464,6 @@ function decreaseTimer() {
 	} else if(currentTime == 0) {
 		announceTimeLeft(0);
 	}
-
-  Tinycon.setBubble( minutes + 1 );
 
 	if(minutes < 10) minutes = '0' + minutes;
 	if(seconds < 10) seconds = '0' + seconds;
@@ -997,23 +987,15 @@ function playTestSound() {
 	}
 }
 
-/* DYNAMICALLY UPDATED FAVICON */
-$(function(){
-  Tinycon.setOptions({
-    width: 7,
-    height: 8,
-    font: '10px arial',
-    colour: '#fff',
-    background: '#e24630',
-    fallback: false
-  });
-});
-
 $(function(){
   $( window ).resize( function(){
     if ( $( window ).width() <= 480 ) $( '#page' ).css( 'min-width', $( window ).width() - 120 );
     else $( '#page' ).css( 'min-width', 960 );
-
     //console.log( $( window ).width() + ':' + $( window ).height() );
   });
+
+  $('[title]').tooltip();
+  if( $('#activityFilter').length == 0 ) {
+    $('[href="#filter"]').hide();
+  }
 });

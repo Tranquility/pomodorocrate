@@ -6,7 +6,7 @@
 
     <section id="content_area" class="row-fluid">
 
-      <section id="content" class="contentBoxNav content-fluid span9">
+      <section id="content" class="contentBoxNav content-fluid <%= current_user.activities.count > 0 ? 'span9' : 'span12' %>">
 
         <%= render "shared/main_menu" %>
 
@@ -14,7 +14,9 @@
 
       </section>
 
-      <%= render "shared/sidebar" %>
+      <% if current_user.activities.count > 0 %>
+        <%= render "shared/sidebar" %>
+      <% end %>
 
     </section>
 		
