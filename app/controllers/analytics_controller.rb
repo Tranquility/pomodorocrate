@@ -29,6 +29,8 @@ class AnalyticsController < ApplicationController
     
     @complete_pomodoros = self.complete_pomodoros(current_user, @start_date..@end_date, true, pomodoros_tags_filtering, project_filtering)
     @void_pomodoros = self.complete_pomodoros(current_user, @start_date..@end_date, false, pomodoros_tags_filtering, project_filtering)
+
+    puts @complete_pomodoros
     
     @estimated_pomodoros = self.estimated_pomodoros(current_user, @start_date..@end_date, activities_tag_filtering, project_filtering)
     
@@ -65,24 +67,24 @@ class AnalyticsController < ApplicationController
   protected
     
     def complete_pomodoros(current_user, created_at, successful, pomodoros_tags_filtering, project_filtering)
-      Pomodoro.joins(:activity => :project).where(:user_id => current_user.id, :completed => true, :successful => successful, :created_at => created_at).where(project_filtering).where(pomodoros_tags_filtering).count(:group => "date(pomodoros.created_at)")
+      Pomodoro.joins(:activity => :project).where(:user_id => current_user.id, :completed => true, :successful => successful, :created_at => created_at).where(project_filtering).where(pomodoros_tags_filtering).count(:group => "CONVERT( DATE ( pomodoros.created_at ), CHAR )")
     end
     
     def estimated_pomodoros(current_user, updated_at, activities_tag_filtering, project_filtering)
-      unscoped_activities.select(:estimated_pomodoros).where(:user_id => current_user.id, :updated_at => updated_at).where(project_filtering).group("date(activities.updated_at)").where(activities_tag_filtering).sum(:estimated_pomodoros)
+      unscoped_activities.select(:estimated_pomodoros).where(:user_id => current_user.id, :updated_at => updated_at).where(project_filtering).group("CONVERT( DATE ( activities.updated_at ), CHAR )").where(activities_tag_filtering).sum(:estimated_pomodoros)
     end
     
     def worked_time(current_user, created_at, pomodoros_tags_filtering, project_filtering)
-      Pomodoro.joins(:activity => :project).where(:user_id => current_user.id, :completed => true, :successful => true, :created_at => created_at).where(project_filtering).where(pomodoros_tags_filtering).group("date(pomodoros.created_at)").sum(:duration)
+      Pomodoro.joins(:activity => :project).where(:user_id => current_user.id, :completed => true, :successful => true, :created_at => created_at).where(project_filtering).where(pomodoros_tags_filtering).group("CONVERT( DATE ( pomodoros.created_at ), CHAR )").sum(:duration)
     end
     
     def activities(current_user, created_at, unplanned, activities_tag_filtering, project_filtering)
-      unscoped_activities.where(:user_id => current_user.id, :unplanned => unplanned, :created_at => created_at).where(project_filtering).where(activities_tag_filtering).count(:group => "date(activities.created_at)")
+      unscoped_activities.where(:user_id => current_user.id, :unplanned => unplanned, :created_at => created_at).where(project_filtering).where(activities_tag_filtering).count(:group => "CONVERT( DATE ( activities.created_at ), CHAR )")
     end
     
     def interruptions(current_user, created_at, kind, pomodoros_tags_filtering, project_filtering)
-      return Interruption.joins(:pomodoro => :activity).where(:user_id => current_user.id, :kind => kind, :created_at => created_at).where(project_filtering).where(pomodoros_tags_filtering).count(:group => "date(interruptions.created_at)") if pomodoros_tags_filtering.blank?
-      Interruption.joins(:pomodoro => :activity).where(:user_id => current_user.id, :kind => kind, :created_at => created_at).where(project_filtering).where(pomodoros_tags_filtering).count(:group => "date(interruptions.created_at)")
+      return Interruption.joins(:pomodoro => :activity).where(:user_id => current_user.id, :kind => kind, :created_at => created_at).where(project_filtering).where(pomodoros_tags_filtering).count(:group => "CONVERT( DATE ( interruptions.created_at ), CHAR )") if pomodoros_tags_filtering.blank?
+      Interruption.joins(:pomodoro => :activity).where(:user_id => current_user.id, :kind => kind, :created_at => created_at).where(project_filtering).where(pomodoros_tags_filtering).count(:group => "CONVERT( DATE ( interruptions.created_at ), CHAR )")
     end
 
     def unscoped_activities

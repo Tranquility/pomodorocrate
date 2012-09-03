@@ -61,7 +61,7 @@ class ApplicationController < ActionController::Base
   
   protected
 
-    def search_conditions
+    def search_conditions( table_name = 'activities' )
       
       cond_params = {
         :q_name     => "%#{params[:q_name]}%",
@@ -85,7 +85,7 @@ class ApplicationController < ActionController::Base
       end
 
       # filter by logged user
-      strings << "user_id = #{current_user.id}"
+      strings << "#{ table_name }.user_id = #{ current_user.id }"
 
       strings.any? ? [ strings.join(' and '), cond_params ] : nil
     end

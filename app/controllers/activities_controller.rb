@@ -7,11 +7,13 @@ class ActivitiesController < ApplicationController
   # GET /dummies
   # GET /dummies.xml
   def index
-    
+
+    relation = Activity.joins( :project ).where( 'projects.completed' => false )
+
     if params[:q_tags] and params[:q_tags] != 'Tags.' and !params[:q_tags].blank? 
-      @activities = Activity.tagged_with(params[:q_tags]).paginate :page => params[:page], :conditions => search_conditions
+      @activities = relation.tagged_with(params[:q_tags]).paginate( :page => params[:page], :conditions => search_conditions )
     else
-      @activities = Activity.paginate :page => params[:page], :conditions => search_conditions
+      @activities = relation.paginate( :page => params[:page], :conditions => search_conditions )
     end
     
     respond_to do |format|

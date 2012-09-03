@@ -6,7 +6,7 @@ class TodotodaysController < ApplicationController
   # GET /dummies
   # GET /dummies.xml
   def index
-    @todotodays = Todotoday.where(:today => Date.today).paginate :page => params[:page], :conditions => search_conditions
+    @todotodays = Todotoday.where(:today => Date.today).paginate( :page => params[:page], :conditions => search_conditions( :todotodays ) )
     #@previous_todotodays =  Todotoday.unscoped.joins(:activity).group("todotodays.activity_id").where(:today => (Time.now.midnight - 7.days)..(Time.now.midnight - 1.day)).where('activities.completed' => false).where(:user_id => current_user.id).order("today DESC, position ASC, todotodays.created_at DESC").limit(5) if @todotodays.empty?
    
    respond_to do |format|

@@ -7,6 +7,7 @@
 			<div>
 				<div class="quickView">
 					<div class="activityName">
+            <span style="background-color: <%= @project.color ||= Project.default_color %>;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
 						<%= @project.name %>
 						<% # in_progress_marker(@pomodoro, project.activities.first) %>
 						<% # todotoday_marker(project.activities.first) %>
@@ -16,13 +17,13 @@
 						
 						<div class="projectDetails" title="<%= pluralize(@project.completed_pomodoros, 'pomodoro') %> completed">
 							<%= @project.completed_pomodoros %>
-							<span class="explanation">&#9679;</span>
+              <span class="explanation"><%= image_tag "pomodoro_completed.png", :alt => "Completed beats" %></span>
 						</div>
 						
 						<% left_pomodoros = @project.total_pomodoros - @project.completed_pomodoros %>
 						<div class="projectDetails" title="<%= pluralize(left_pomodoros, 'pomodoro') %> left">
 							<%= left_pomodoros %>
-							<span class="explanation">&#9675;</span>
+              <span class="explanation"><%= image_tag "pomodoro_not_started.png", :alt => "Remaining beats" %></span>
 						</div>
 						
 						<div class="projectDetails" title="Project completness">
