@@ -47,7 +47,8 @@ end
 group :production do
   #gem 'sqlite3'
   #gem 'pg'
-  gem 'mysql'
+  gem 'mysql2'
+  gem 'activerecord-mysql2-adapter'
 end
 
 # Use unicorn as the web server

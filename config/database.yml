@@ -5,11 +5,11 @@ defaults_sqlite3: &defaults_sqlite3
 
 # also ncomment the "gem 'mysql'" line in Gemfile if you use this.
 defaults_mysql: &defaults_mysql
-  adapter: mysql
+  adapter: mysql2
   encoding: utf8
   username: your_user
   password: your_pass
-  host: your_host
+  host: localhost
 
 # also uncomment the "gem 'pg'" line in Gemfile if you use this.
 defaults_postgres: &defaults_postgres
@@ -34,6 +34,6 @@ test:
   <<: *defaults_sqlite3
 
 production:
-  database: pomodorocrate
+  database: rhapsody
   <<: *defaults_mysql
 #  <<: *defaults_postgres

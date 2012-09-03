@@ -6,6 +6,13 @@
 
 <section class="row" id="home-page">
 
+  <% if params[:pomodoro_user] %>
+    <%= image_tag "old_pomodoro_crate_logo.jpg" %>
+    <h2>has become</h2>
+  <% else %>
+    <br/><br/>
+  <% end %>
+
   <h1>
     <strong>Rhapsody</strong>
   </h1>
