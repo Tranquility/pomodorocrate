@@ -13,14 +13,14 @@
 					<h5>Internal</h5>
 					<div class="interruptions_count" id="internal_count">
             <%= link_to("[+] Add internal interruption", interruptions_path(:kind => :internal), :method => :post, :class => :interruption_button, :title => 'Add internal interruption', :remote => true) %>
-            <%= (@pomodoro.interruptions.nil? or @pomodoro.interruptions.blank?) ? 0 : @pomodoro.interruptions.find_all_by_kind(:internal).count %>
+            <span><%= (@pomodoro.interruptions.nil? or @pomodoro.interruptions.blank?) ? 0 : @pomodoro.interruptions.find_all_by_kind(:internal).count %></span>
           </div>
 				</div>
 				<div id="externalInterruptions" class="interruptions_types span6">
 					<h5>External</h5>
 					<div class="interruptions_count" id="external_count">
             <%= link_to("[+] Add external interruption", interruptions_path(:kind => :external), :method => :post, :class => :interruption_button, :title => 'Add external interruption', :remote => true) %>
-            <%= (@pomodoro.interruptions.nil? or @pomodoro.interruptions.blank?) ? 0 : @pomodoro.interruptions.find_all_by_kind(:external).count %>
+            <span><%= (@pomodoro.interruptions.nil? or @pomodoro.interruptions.blank?) ? 0 : @pomodoro.interruptions.find_all_by_kind(:external).count %></span>
           </div>
 				</div>
 			</section>

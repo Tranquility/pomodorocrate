@@ -203,6 +203,7 @@ $(function(){
 
 /**** GENERIC AJAX START ****/
 $(document).ajaxStart(function(e){
+  removeTooltips();
 	loadingFeedback(e, 'Loading. Please wait...');
 });
 /**** END GENERIC AJAX START ****/
@@ -211,6 +212,7 @@ $(document).ajaxStart(function(e){
 $(document).ajaxComplete(function(){
 	ajaxifyPagination();
 	draggableTodoItems(); // make todo today items draggable
+  addTooltips();
 	removeLoadingFeedback(); // remove loader
 });
 /**** END GENERIC AJAX COMPLETE ****/
@@ -335,6 +337,14 @@ function loadingFeedback(e, message) {
 function removeLoadingFeedback() {
 	$("#loader").remove();
 	$("body").unbind('mousemove', loadingFeedbackHandler);
+}
+
+function removeTooltips() {
+  $('*').tooltip('hide');
+}
+
+function addTooltips() {
+  $('[title]').tooltip();
 }
 
 function stopCounting() {
@@ -987,6 +997,7 @@ function playTestSound() {
 	}
 }
 
+/* GENERIC ON LOAD EVENTS */
 $(function(){
   $( window ).resize( function(){
     if ( $( window ).width() <= 480 ) $( '#page' ).css( 'min-width', $( window ).width() - 120 );
@@ -994,8 +1005,10 @@ $(function(){
     //console.log( $( window ).width() + ':' + $( window ).height() );
   });
 
-  $('[title]').tooltip();
+  addTooltips();
+
   if( $('#activityFilter').length == 0 ) {
     $('[href="#filter"]').hide();
   }
 });
+/* END GENERIC ON LOAD EVENTS */

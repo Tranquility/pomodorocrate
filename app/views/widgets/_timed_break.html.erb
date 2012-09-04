@@ -40,7 +40,7 @@
 				<%= form_for(@break, :url => break_path(@break), :remote => true, :html => {'data-type' => 'text'} ) do |f| %>
 					<%= hidden_field_tag("break[completed]", true) %>
 					<div class="field break_toolbar">
-						<%= f.submit("End break", :class => :submit) %>
+						<%= f.submit("End break", :class => 'btn btn-danger') %>
 					</div>
 				<% end %>
 			</div>

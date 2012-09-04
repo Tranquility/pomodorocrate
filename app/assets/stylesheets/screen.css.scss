@@ -566,8 +566,9 @@ a.video_demo { color: #898989; font-family: MetaProBold, Arial, Verdana, sans-se
                         text-indent: -999px;
                         -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; }
 	.interruption_button:hover { background-color: #7A776A; }
-.interruptions_count { 	display: block; float: left; height: 56px; margin: 2px 6px; overflow: hidden; padding: 4px; width: 90%;
-                        color: #afb1b1; text-shadow: 1px 1px 3px #777; font-family: MetaPlusMediumCapsRegular, Arial, Verdana, sans-serif; font-size: 60px; line-height: 36px; text-align: center; }
+.interruptions_count { display: block; float: left; height: 56px; margin: 2px 6px; overflow: hidden; padding: 4px; width: 90%;
+                       line-height: 36px; text-align: center; }
+  .interruptions_count span { color: #afb1b1; text-shadow: 1px 1px 3px #777; font-family: MetaPlusMediumCapsRegular, Arial, Verdana, sans-serif; font-size: 60px;  }
 	
 .pomodoroActivityName .pomodoro { font-family: MetaProBold, Arial, Verdana, sans-serif; font-weight: normal; }
 	.pomodoroActivityName .pomodoro .pomodoroDate { font-family: MetaProNormal, Arial, Verdana, sans-serif; font-weight: normal; text-transform: capitalize; }
