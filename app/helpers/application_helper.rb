@@ -7,7 +7,7 @@ module ApplicationHelper
     image_data = image_tag("pomodoro" + (inactive ? "_not_started" : "_completed") + ".png", :size => "12x12", :title => inactive ? "Estimated but not yet completed beats" : "Successfuly completed beats" )
 
     nr_of_pomodoros.times do |i|
-      output += (link_to_if (i == 0 and !activity.nil? and !activity.completed), image_tag("pomodoro_complete_manually.png", :size => "12x12" ), pomodoros_path(:activity_id => activity, :autocomplete => true), {:method => 'post', :remote => true, "data-type" => :text, "title" => "Manually mark one beat as successfuly completed", "data-action" => "create-update-pomodoro", :confirm => 'This will manually mark a beat as successfully completed. Are you sure?'} do
+      output += (link_to_if (i == 0 and !activity.nil? and !activity.completed), image_tag("pomodoro_complete_manually.png", :size => "12x12" ), pomodoros_path(:activity_id => activity, :autocomplete => true), {:method => 'post', :remote => true, "data-type" => :text, "title" => "Manually mark one beat as successfuly completed", "data-action" => "create-update-pomodoro", :data => { :confirm => 'This will manually mark a beat as successfully completed. Are you sure?' } } do
         image_data
       end)
     end
@@ -45,7 +45,7 @@ module ApplicationHelper
   
   def in_progress_marker(pomodoro, activity)
     #return raw '<span class="inProgressMarker">in progress</span>' unless pomodoro.nil? or pomodoro.activity != activity
-    return raw '<i class="ico-in-progress" title="In progress"></i>' unless pomodoro.nil? or pomodoro.activity != activity
+    return raw '<i class="ico-in-progress" title="In progress" data-placement="right"></i>' unless pomodoro.nil? or pomodoro.activity != activity
 		return
   end
   
@@ -55,7 +55,7 @@ module ApplicationHelper
   
   def todotoday_marker(activity)
     # return raw '<span class="todotodayMarker">todo today</span>' unless activity.todotoday.nil? or activity.completed
-    return raw '<i class="ico-in-today" title="Today"></i>' unless activity.todotoday.nil? or activity.completed
+    return raw '<i class="ico-in-today" title="To be done today" data-placement="right"></i>' unless activity.todotoday.nil? or activity.completed
   end
   
   def text_format(text)

@@ -59,12 +59,12 @@ css_class << a.priority if a.priority != :none
 				<% end %>
 				
 				<% if !a.todotoday.nil? and params[:controller] == 'todotodays' and !td.nil? and !in_progress?(@pomodoro, a) %>
-					<li><%= link_to("Do another day", td, :confirm => "Are you sure you want to remove the activity from this today's schedule?", :method => :delete, :class => [:activity_toolbar_button, :delete], :remote => true, 'data-type' => 'text', :title => "Remove activity from the Todo Today list (remove it from today's schedule)") %></li>
+					<li><%= link_to("Do another day", td, :data => { :confirm => "Are you sure you want to remove the activity from this today's schedule?" }, :method => :delete, :class => [:activity_toolbar_button, :delete], :remote => true, 'data-type' => 'text', :title => "Remove activity from the Todo Today list (remove it from today's schedule)") %></li>
 				<% end %>
 			<% end %>
 			<li><%= link_to("Edit", edit_activity_path(a), :class => [:activity_toolbar_button, :edit], :title => "Edit activity details") %></li>
 			<% if params[:controller] != 'todotodays' and !in_progress?(@pomodoro, a) %>
-				<li><%= link_to("Delete", a, :confirm => "Are you sure you want to delete this activity? This can not be undone.", :method => :delete, :class => [:activity_toolbar_button, :delete], :remote => true, 'data-type' => 'text', :title => "Delete this activity") %></li>
+				<li><%= link_to("Delete", a, :data => { :confirm => "Are you sure you want to delete this activity? This can not be undone." }, :method => :delete, :class => [:activity_toolbar_button, :delete], :remote => true, 'data-type' => 'text', :title => "Delete this activity") %></li>
 			<% end %>
 			<li><%= link_to("Clone", clone_activity_path(:id => a.id), :class => [:activity_toolbar_button, :clone], :title => "Duplicate this activity") %></li>
 			<% if (count = a.pomodoros.count) > 0 %>
