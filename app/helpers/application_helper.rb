@@ -21,7 +21,7 @@ module ApplicationHelper
   end
   
   def pomodoros_icons_width(completed_pomodoros, estimated_pomodoros)
-    pomodoros_count(completed_pomodoros, estimated_pomodoros) * 18 < 65 ? 65 : pomodoros_count(completed_pomodoros, estimated_pomodoros) * 18
+    pomodoros_count(completed_pomodoros, estimated_pomodoros) * 14 < 60 ? 60 : pomodoros_count(completed_pomodoros, estimated_pomodoros) * 14
   end
   
   def pomodoros_completed_ratio(completed_pomodoros, estimated_pomodoros, activity = nil)
@@ -34,8 +34,8 @@ module ApplicationHelper
     raw output += pomodoros_as_image(pomodoros_left, true, activity)
   end
   
-  def is_current_page?(controller_name)
-    return true if controller_name.to_s == request.path_parameters[:controller]
+  def is_current_page?( controller_name, action_name = 'index' )
+    return true if controller_name.to_s == request.path_parameters[:controller] and action_name.to_s == request.path_parameters[:action]
     false
   end
   
@@ -71,6 +71,22 @@ module ApplicationHelper
     dts = DateTime.parse(datetime.to_s) 
     output = (dts.hour < 10 ? '0' << dts.hour.to_s : dts.hour).to_s << ":" << (dts.minute < 10 ? '0' << dts.minute.to_s : dts.minute).to_s
     #output << (dts.second < 10 ? '0' << dts.second : dts.second) if seconds
+  end
+
+  def active_view_class?( sort_by )
+    active = case sort_by
+      when :date
+        true if params[:controller] != 'calendar' and ( params[:sort_by].nil? or params[:sort_by].blank? )
+      when :priority
+        true if params[:controller] != 'calendar' and params[:sort_by] == 'priority'
+      when :calendar
+        true if params[:controller] == 'calendar'
+      when :project
+        true if params[:controller] != 'calendar' and params[:sort_by] == 'project'
+      else ''
+    end
+
+    active ? 'btn-info active' : ''
   end
 
 end

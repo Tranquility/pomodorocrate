@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120731191629) do
+ActiveRecord::Schema.define(:version => 20120905192840) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -31,18 +31,22 @@ ActiveRecord::Schema.define(:version => 20120731191629) do
     t.integer  "user_id"
     t.datetime "start_at"
     t.datetime "end_at"
-    t.boolean  "event_type",          :default => false
-    t.boolean  "unplanned",           :default => false
+    t.boolean  "event_type",            :default => false
+    t.boolean  "unplanned",             :default => false
     t.string   "cached_tag_list"
-    t.string   "priority",            :default => "none"
+    t.string   "priority",              :default => "none"
+    t.string   "created_at_local_time"
+    t.boolean  "someday"
   end
 
   add_index "activities", ["completed"], :name => "index_activities_on_completed"
+  add_index "activities", ["created_at_local_time"], :name => "index_activities_on_created_at_local_time"
   add_index "activities", ["deadline"], :name => "index_activities_on_deadline"
   add_index "activities", ["end_at"], :name => "index_activities_on_end_at"
   add_index "activities", ["event_type"], :name => "index_activities_on_event_type"
   add_index "activities", ["priority"], :name => "index_activities_on_priority"
   add_index "activities", ["project_id"], :name => "index_activities_on_project_id"
+  add_index "activities", ["someday"], :name => "index_activities_on_someday"
   add_index "activities", ["start_at"], :name => "index_activities_on_start_at"
   add_index "activities", ["unplanned"], :name => "index_activities_on_unplanned"
   add_index "activities", ["user_id"], :name => "index_activities_on_user_id"
@@ -86,8 +90,8 @@ ActiveRecord::Schema.define(:version => 20120731191629) do
   end
 
   create_table "dummies", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "interruptions", :force => true do |t|
@@ -96,8 +100,10 @@ ActiveRecord::Schema.define(:version => 20120731191629) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "created_at_local_time"
   end
 
+  add_index "interruptions", ["created_at_local_time"], :name => "index_interruptions_on_created_at_local_time"
   add_index "interruptions", ["user_id"], :name => "index_interruptions_on_user_id"
 
   create_table "pomodoros", :force => true do |t|
@@ -108,12 +114,14 @@ ActiveRecord::Schema.define(:version => 20120731191629) do
     t.text     "comments"
     t.boolean  "completed"
     t.integer  "user_id"
-    t.integer  "duration",    :default => 25
+    t.integer  "duration",              :default => 25
+    t.string   "created_at_local_time"
   end
 
   add_index "pomodoros", ["activity_id"], :name => "index_pomodoros_on_activity_id"
   add_index "pomodoros", ["completed"], :name => "index_pomodoros_on_completed"
   add_index "pomodoros", ["created_at"], :name => "index_pomodoros_on_created_at"
+  add_index "pomodoros", ["created_at_local_time"], :name => "index_pomodoros_on_created_at_local_time"
   add_index "pomodoros", ["successful"], :name => "index_pomodoros_on_successful"
   add_index "pomodoros", ["user_id"], :name => "index_pomodoros_on_user_id"
 
@@ -154,10 +162,10 @@ ActiveRecord::Schema.define(:version => 20120731191629) do
     t.integer  "tag_id"
     t.integer  "taggable_id"
     t.string   "taggable_type"
-    t.integer  "tagger_id"
-    t.string   "tagger_type"
-    t.string   "context",       :limit => 128
     t.datetime "created_at"
+    t.integer  "tagger_id"
+    t.integer  "tagger_type"
+    t.string   "context",       :limit => 128
   end
 
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"

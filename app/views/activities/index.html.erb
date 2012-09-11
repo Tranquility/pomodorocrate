@@ -1,4 +1,10 @@
 <%= render "shared/upper_toolbar" %>
 <%= render "shared/activities_filter_toolbar" %>
 
-<%= render "activities_list" %>
+<% if params[:sort_by] == 'project' %>
+  <%= render "activities_list_by_project" %>
+<% elsif params[:sort_by] == 'priority' %>
+  <%= render "activities_list_by_priority" %>
+<% else %>
+  <%= render "activities_list" %>
+<% end %>

@@ -40,8 +40,8 @@ class ApplicationController < ActionController::Base
       @recent_pomodoros = current_user.pomodoros.joins(:activity).where('activities.completed' => false).group(:activity_id).order("created_at DESC").limit(5)
     end
     
-    @upcoming_activities = Activity.where(:user_id => current_user.id, :completed => false).where("deadline >= '#{Date.today}'").order("activities.deadline ASC").limit(5)
-    @overdue_activities = Activity.where("deadline < '#{Date.today}'").where(:user_id => current_user.id, :completed => false).limit(5)
+    @upcoming_activities = Activity.not_completed( current_user ).scheduled( current_user ).upcoming( current_user ).order("activities.deadline ASC").limit(5)
+    @overdue_activities = Activity.not_completed( current_user ).scheduled( current_user ).overdue( current_user ).order("activities.deadline ASC").limit(5)
     
     @today_remaining_pomodoros = 0
     Todotoday.find_all_by_user_id(current_user.id).each do |t|

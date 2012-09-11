@@ -1,4 +1,8 @@
-    <%= render 'shared/header' %>
+<%= render 'shared/header' %>
+
+<div id="site" class="container-fluid">
+
+  <div id="page" class="container-fluid">
 
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, :class => "flash alert alert-#{key}") %>
@@ -6,7 +10,7 @@
 
     <section id="content_area" class="row-fluid">
 
-      <section id="content" class="contentBoxNav content-fluid <%= current_user.activities.count > 0 ? 'span9' : 'span12' %>">
+      <section id="content" class="contentBoxNav row-fluid <%= current_user.activities.count > 0 ? 'span9' : 'span12' %>">
 
         <%= render "shared/main_menu" %>
 
@@ -19,8 +23,9 @@
       <% end %>
 
     </section>
-		
+
 	</div>
+
 </div>
 
 <%= render "shared/footer" %>

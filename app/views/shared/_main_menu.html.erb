@@ -1,8 +1,10 @@
 <nav>
 	<ul>
-		<li <%= is_current_page?(:activities) ? 'class=active' : '' %>><%= link_to( raw( "Activities #{ overdue_activities_badge }" ), activities_path, :class => %w[tabs ico-activities] )%></li>
-		<li <%= is_current_page?(:todotodays) ? 'class=active' : '' %>><%= link_to( raw( "Today #{ remaining_todo_todays } #{ overdue_todo_todays }" ), todotodays_path, :class => %w[tabs ico-today] )%></li>
-		<li <%= is_current_page?(:projects) ? 'class=active' : '' %>><%= link_to( raw( "Projects" ), projects_path, :class => %w[tabs ico-projects] )%></li>
-		<li class="<%= is_current_page?(:analytics) ? 'active' : '' %> hidden-tablet hidden-phone"><%= link_to( raw( "Analytics" ), analytics_path, :class => %w[tabs ico-analytics] )%></li>
+    <li <%= is_current_page?(:todotodays) ? 'class=active' : '' %>><%= link_to( raw( "Today #{ remaining_todo_todays } #{ overdue_todo_todays }" ), todotodays_path, :class => %w[tabs ico-today], :title => 'Activities you want to work on today', 'data-placement' => 'right' )%></li>
+    <li <%= is_current_page?( :activities, :next ) ? 'class=active' : '' %>><%= link_to( raw( "Upcoming #{ total_next_activities_badge }" ), next_activities_path, :class => %w[tabs ico-next], :title => 'Activities scheduled this week', 'data-placement' => 'right' )%></li>
+    <li <%= is_current_page?(:activities) ? 'class=active' : '' %>><%= link_to( raw( "Scheduled #{ overdue_activities_badge } #{ total_activities_badge }" ), activities_path, :class => %w[tabs ico-activities], :title => 'Activities with deadlines', 'data-placement' => 'right' )%></li>
+    <li <%= is_current_page?( :activities, :someday ) ? 'class=active' : '' %>><%= link_to( raw( "Backlogged #{ total_someday_activities_badge }" ), someday_activities_path, :class => %w[tabs ico-backlogged], :title => 'Activities without deadlines', 'data-placement' => 'right' )%></li>
+    <li <%= is_current_page?(:projects) ? 'class=active' : '' %>><%= link_to( raw( "Projects" ), projects_path, :class => %w[tabs ico-projects] )%></li>
+		<li class="<%= is_current_page?(:analytics) ? 'active' : '' %>"><%= link_to( raw( "Analytics" ), analytics_path, :class => %w[tabs ico-analytics], :title => 'Smart stats about your work', 'data-placement' => 'right' )%></li>
 	</ul>
 </nav>

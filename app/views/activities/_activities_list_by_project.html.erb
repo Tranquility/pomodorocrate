@@ -1,0 +1,34 @@
+<% unless @activities.empty? %>
+
+  <section class="group" id="activities_list">
+
+    <% prev_project = "" %>
+    <% opened_ul = false %>
+
+    <% @activities.each do |a| %>
+
+      <% if a.project.name != prev_project %>
+
+        <% unless prev_project.blank? %>
+          </ul>
+        <% end %>
+
+        <h6><%= a.project.name %></h6>
+
+        <ul class="activityList">
+          <% prev_project = a.project.name %>
+          <% opened_ul = true %>
+      <% end %>
+
+      <%= render :partial => "shared/activity", :locals => { :a => a } %>
+
+    <% end %>
+    </ul>
+
+  </section>
+
+  <%= will_paginate @activities %>
+
+<% else %>
+  <%= render 'no_activities' %>
+<% end %>

@@ -7,14 +7,10 @@ class ActivitiesController < ApplicationController
   # GET /dummies
   # GET /dummies.xml
   def index
+    @activities = Activity.scheduled( current_user ).joins( :project ).where( 'projects.completed' => false ).paginate( :page => params[:page], :conditions => search_conditions )
 
-    relation = Activity.joins( :project ).where( 'projects.completed' => false )
-
-    if params[:q_tags] and params[:q_tags] != 'Tags.' and !params[:q_tags].blank? 
-      @activities = relation.tagged_with(params[:q_tags]).paginate( :page => params[:page], :conditions => search_conditions )
-    else
-      @activities = relation.paginate( :page => params[:page], :conditions => search_conditions )
-    end
+    filter_by_tags
+    user_sorting
     
     respond_to do |format|
       format.js     {  }
@@ -52,7 +48,8 @@ class ActivitiesController < ApplicationController
   def new
     @activity = Activity.new
     @activity.project_id = session[:project_id] unless session[:project_id].nil?
-    @activity.do_today = false
+    @activity.do_today = true
+    @activity.someday = true
     
     respond_to do |format|
       format.js     {  }
@@ -171,6 +168,34 @@ class ActivitiesController < ApplicationController
       end
     end
   end
+
+  def next
+    @activities = Activity.scheduled( current_user ).upcoming( current_user ).joins( :project ).where( 'projects.completed' => false ).paginate( :page => params[:page], :conditions => search_conditions )
+
+    filter_by_tags
+    user_sorting
+
+    respond_to do |format|
+      format.js     { render :action => "index" }
+      format.html   { render :action => "index" }
+      format.xml    { render :xml => @activities }
+      format.json   { render :json => @activities }
+    end
+  end
+
+  def someday
+    @activities = Activity.unscheduled( current_user ).joins( :project ).where( 'projects.completed' => false ).paginate( :page => params[:page], :conditions => search_conditions )
+
+    filter_by_tags
+    user_sorting
+
+    respond_to do |format|
+      format.js     { render :action => "index" }
+      format.html   { render :action => "index" }
+      format.xml    { render :xml => @activities }
+      format.json   { render :json => @activities }
+    end
+  end
   
   private
   
@@ -228,6 +253,7 @@ class ActivitiesController < ApplicationController
       end
       
       session[:page] = params[:page] if params[:page]
+      session[:sort_by] = params[:sort_by] if params[:sort_by]
     end
     
     def load_persisted_settings
@@ -237,6 +263,23 @@ class ActivitiesController < ApplicationController
       params[:q_tags] = session[:q_tags] if session[:q_tags]
       
       params[:page] = session[:page] if session[:page]
+      params[:sort_by] = session[:sort_by] if session[:sort_by]
+    end
+
+    def filter_by_tags
+      if params[:q_tags] and params[:q_tags] != 'Tags.' and !params[:q_tags].blank?
+        @activities = @activities.tagged_with(params[:q_tags])
+      end
+    end
+
+    def user_sorting
+      if params[:sort_by] == 'project'
+        @activities = @activities.project_order
+      elsif params[:sort_by] == 'priority'
+        @activities = @activities.priority_order
+      else
+        @activities = @activities.default_order
+      end
     end
   
 end

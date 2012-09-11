@@ -1,6 +1,6 @@
 <div class="toolbar collapsed_toolbar<%= session[:filtered].nil? or !session[:filtered] ? '' : ' active_filtering'%>" id="activityFilter">
 
-	<%= form_tag(activities_path, :method => "get", :remote => true, 'data-type' => 'text') do %>
+	<%= form_tag( url_for, :method => "get", :remote => true, 'data-type' => 'text' ) do %>
 		<%= render "shared/filter_toolbar" %>
 	<% end %>
 

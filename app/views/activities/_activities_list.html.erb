@@ -9,6 +9,7 @@
 		<% @activities.each do |a| %>
 		
 			<% unless a.completed %>
+
 				<% if distance_of_time_in_words(Date.today, a.deadline.to_date) != prev_deadline %>
 				
 					<% unless prev_deadline.blank? %>
@@ -23,22 +24,26 @@
 								<%= (Time.now > a.deadline) ? " ago".titleize : " from now".titleize %>
 						<% end %>
 					</h6>
+
 					<ul class="activityList">
 					<% prev_deadline = distance_of_time_in_words(Date.today, a.deadline.to_date) %>
 					<% opened_ul = true %>
 				<% end %>
+
 			<% else %>
+
 				<% unless completed_activities %>
 					<%= "</ul>".html_safe if opened_ul %>
 					<h6>Completed</h6>
 					<ul class="activityList">
 					<% completed_activities = true %>
 				<% end %>
+
 			<% end %>
 			
 			<%= render :partial => "shared/activity", :locals => { :a => a } %>
 			
-	<% end %>
+	  <% end %>
 					</ul>
 		
 	</section>
@@ -46,26 +51,5 @@
 	<%= will_paginate @activities %>
 	
 <% else %>
-	<section class="group"  id="activities_list">
-		<h6>Activities</h6>
-		
-		<% if Project.where(:user_id => current_user).empty? %>
-			<p class="pageContainer">
-				You haven't added any activities yet.
-			</p>
-			<p class="pageContainer">
-				Before you can do that, please create your first project - you will use it to easily group and filter your activities by it.
-			</p>
-			<p class="pageContainer">
-				Use the <%= link_to "New project", new_project_path, :class => :button %> button to add your first project.
-			</p>
-		<% else %>
-			<p class="pageContainer">
-				We haven't found any activities.
-			</p>
-			<p class="pageContainer">
-				Use the <%= link_to_unless(Project.where(:user_id => current_user).empty?, "New activity", new_activity_path, :class => :button) %> button to add some and start enjoying your new found productivity.
-			</p>
-		<% end %>
-	</section>
+	<%= render 'no_activities' %>
 <% end %>

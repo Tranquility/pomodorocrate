@@ -11,6 +11,9 @@ Ketchup::Application.routes.draw do
   get "comments/create"
   get "comments/destroy"
 
+  get 'activities/next'           => 'activities#next',                 :as => :next_activities
+  get 'activities/someday'        => 'activities#someday',              :as => :someday_activities
+
   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
   match 'pomodoros/update_current_form'   => 'pomodoros#update_current_form'
@@ -33,8 +36,9 @@ Ketchup::Application.routes.draw do
   resources :interruptions,     :only => [:create]
   resources :comments,          :only => [:index, :create, :destroy]
   resources :settings,          :only => [:edit, :update]
-  
+
   match 'activities/:id/clone'    => 'activities#clone',                :as => :clone_activity
+
   match '/reset_password'         => 'sessions#reset_password',         :as => :reset_password
   
   match '/email_reset_password'   => 'users#email_reset_password',      :as => :email_reset_password

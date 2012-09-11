@@ -22,12 +22,17 @@
 	</div>
 	
 	<div class="field numeric">
-	  <%= f.label :estimated_pomodoros %><br />
+	  <%= f.label :estimated_pomodoros, 'Estimated beats' %><br />
 	  <%= f.text_field :estimated_pomodoros, :size => 1, :class => :numeric %>
 		<div id="slider"></div>
 	</div>
+
+  <div class="field">
+    <%= f.label :someday, 'Backlogged (no deadline)' %><br />
+    <%= f.check_box :someday %>
+  </div>
 	
-	<div class="field">
+	<div class="field activity_deadline">
 	  <%= label_tag 'activity_deadline_1i', :deadline.to_s.titleize %><br />
 	  <%= f.date_select :deadline %>
 		<%= hidden_field "hiddendp", nil, :disabled => "disabled", :size => 10 %>

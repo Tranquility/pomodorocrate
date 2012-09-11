@@ -715,7 +715,20 @@ $(function(){
 	$( "#activity_estimated_pomodoros" ).val( $( "#slider" ).slider( "value" ) );
 	
 	$('a.external').attr('target', '_blank');
-})
+
+  $( '#activity_someday').on( 'change', function(){
+    deadlineInputs();
+  });
+  deadlineInputs();
+});
+
+function deadlineInputs() {
+  if( $( '#activity_someday' ).is( ':checked' ) ) {
+    $( '.activity_deadline').hide();
+  } else {
+    $( '.activity_deadline').show();
+  }
+}
      
 // Prepare to show a date picker linked to three select controls 
 function readSelected() { 
@@ -930,7 +943,13 @@ $(function(){
     location.href = "/calendar"
   });
   $('.by_date').on('click', function(){
-    location.href = "/activities"
+    location.href = "?sort_by="
+  });
+  $('.by_project').on('click', function(){
+    location.href = "?sort_by=project"
+  });
+  $('.by_priority').on('click', function(){
+    location.href = "?sort_by=priority"
   });
 });
 

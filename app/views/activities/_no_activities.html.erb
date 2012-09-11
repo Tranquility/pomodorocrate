@@ -1,0 +1,32 @@
+<section class="group"  id="activities_list">
+  <h6>Activities</h6>
+
+  <% if Project.where(:user_id => current_user).empty? %>
+    <p class="pageContainer">
+      You haven't added any activities yet.
+    </p>
+    <p class="pageContainer">
+      Before you can do that, please create your first project - you will use it to easily group and filter your activities by it.
+    </p>
+    <p class="pageContainer">
+      Use the <%= link_to "New project", new_project_path, :class => :button %> button to add your first project.
+    </p>
+  <% else %>
+    <% if params[:action] == 'index' %>
+      <p class="pageContainer">
+        You have no activities.
+      </p>
+      <p class="pageContainer">
+        Use the <%= link_to_unless(Project.where(:user_id => current_user).empty?, "New activity", new_activity_path, :class => :button) %> button to add some and start enjoying your new found productivity.
+      </p>
+    <% elsif params[:action] == 'next' %>
+      <p class="pageContainer">
+        Hurray! There are no activities scheduled for the upcoming week.
+      </p>
+    <% elsif params[:action] == 'someday' %>
+      <p class="pageContainer">
+        There are no backlogged activities yet.
+      </p>
+    <% end %>
+  <% end %>
+</section>

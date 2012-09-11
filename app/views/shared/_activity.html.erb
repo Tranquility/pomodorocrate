@@ -7,7 +7,7 @@ css_class << a.priority if a.priority != :none
 	<div class="quickView">
 		<%= form_for a, :remote => true, :html => { 'data-type' => 'text' } do |f| %>
 			
-			<div class="activityName" title="Click to show / hide activity details" style="width: <%= 690 - pomodoros_icons_width(a.pomodoros.successful_and_completed.count, a.estimated_pomodoros) %>px">
+			<div class="activityName" title="Click to show / hide activity details" style="width: <%= 740 - pomodoros_icons_width(a.pomodoros.successful_and_completed.count, a.estimated_pomodoros) %>px">
 				<%= hidden_field "activity", :completed, :value => (a.completed ? false : true) %>
 				<%= hidden_field "activity", "force_update", :value => :true %>
 				<%= image_submit_tag (a.completed ? "checkbox_ticked.png" : "checkbox.png"), :class => "checkbox", :title => "Click to complete / reopen activity" %>
@@ -36,17 +36,19 @@ css_class << a.priority if a.priority != :none
 
 	<div class="detailsView">
 		<%= text_format(a.description) %>
-		
-		<ul class="infoBar">
-			<li><%= raw a.completed ? "Completed" : "Due at: #{due_at_status a.deadline}" %></li>
-			<% if a.event_type? %>
-				<li class="clear_me">Start at: <%= hms_format a.start_at %></li>
-				<li>End at: <%= hms_format a.end_at %></li>
-			<% end %>
-			<% unless a.tag_list.blank? %>
-				<li>Tags: <%= raw a.tag_list.map{ |t| "<span class='label'>#{ t }</span>" }.join(' ') %></li>
-			<% end %>
-		</ul>
+
+    <% if activity_has_info_bar( a ) %>
+      <ul class="infoBar">
+        <%= raw activity_completed_status( a ) %>
+        <% if a.event_type? %>
+          <li class="clear_me">Start at: <%= hms_format a.start_at %></li>
+          <li>End at: <%= hms_format a.end_at %></li>
+        <% end %>
+        <% unless a.tag_list.blank? %>
+          <li>Tags: <%= raw a.tag_list.map{ |t| "<span class='label'>#{ t }</span>" }.join(' ') %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
 		<ul class="actionsBar btn-group">
 			<% unless a.completed %>
