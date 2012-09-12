@@ -4,11 +4,12 @@
 		
 		<% prev_deadline = "" %>
 		<% completed_activities = false %>
+    <% someday_activities = false %>
 		<% opened_ul = false %>
 		
 		<% @activities.each do |a| %>
 		
-			<% unless a.completed %>
+			<% unless a.completed? or a.someday? %>
 
 				<% if distance_of_time_in_words(Date.today, a.deadline.to_date) != prev_deadline %>
 				
@@ -32,12 +33,25 @@
 
 			<% else %>
 
-				<% unless completed_activities %>
-					<%= "</ul>".html_safe if opened_ul %>
-					<h6>Completed</h6>
-					<ul class="activityList">
-					<% completed_activities = true %>
-				<% end %>
+        <% if a.completed? %>
+
+          <% unless completed_activities %>
+            <%= "</ul>".html_safe if opened_ul %>
+            <h6>Completed</h6>
+            <ul class="activityList">
+            <% completed_activities = true %>
+          <% end %>
+
+        <% elsif a.someday? %>
+
+          <% unless someday_activities %>
+            <%= "</ul>".html_safe if opened_ul %>
+            <h6>Someday</h6>
+            <ul class="activityList">
+              <% someday_activities = true %>
+          <% end %>
+
+        <% end %>
 
 			<% end %>
 			
