@@ -1,3 +1,4 @@
+<% puts "Break nil: #{ @break.nil? ? 'Yep' : 'Nope' }" %>
 <% unless Activity.not_completed(current_user).empty? %>
 <% if @break.nil? and @pomodoro.nil? %>
 	

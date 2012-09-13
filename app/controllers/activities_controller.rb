@@ -255,13 +255,13 @@ class ActivitiesController < ApplicationController
       session[:page] = params[:page] if params[:page]
       session[:sort_by] = params[:sort_by] if params[:sort_by]
     end
-    
+
     def load_persisted_settings
       params[:q_name] = session[:q_name] if session[:q_name]
       params[:q_project] = session[:q_project] if session[:q_project]
       params[:q_completed] = session[:q_completed] if session[:q_completed]
       params[:q_tags] = session[:q_tags] if session[:q_tags]
-      
+
       params[:page] = session[:page] if session[:page]
       params[:sort_by] = session[:sort_by] if session[:sort_by]
     end

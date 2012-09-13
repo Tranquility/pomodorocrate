@@ -1,10 +1,10 @@
 <ul class="actionsBar">
-	<li><%= link_to("Show", activity_path(a), :class => :button, :title => "View activity details") %></li>
-	<li><%= link_to("Clone", clone_activity_path(:id => a.id), :class => :button, :title => "Duplicate this activity") %></li>
+	<li><%= link_to("Show", activity_path(a), :class => :button, :title => "View activity details", 'data-placement' => 'left') -%></li>
+	<li><%= link_to("Clone", clone_activity_path(:id => a.id), :class => :button, :title => "Duplicate this activity") -%></li>
 	<% if @pomodoro.nil? and !a.todotoday.nil? and !a.completed %>
-		<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => :button, :remote => true, 'data-type' => 'text', :title => "Begin a new pomodoro for this activity") %></li>
+		<li><%= link_to("Do it now", pomodoros_path(:activity_id => a), :method => :post, :class => :button, :remote => true, 'data-type' => 'text', :title => "Begin a new pomodoro for this activity") -%></li>
 	<% end %>
 	<% if a.todotoday.nil? and !a.completed %>
-		<li><%= link_to("Do Today", todotodays_path(:activity_id => a), :method => :post, :class => :button, :remote => true, 'data-type' => 'text', :title => "Add this activity to the Todo Today list") %></li>
+		<li><%= link_to("Do Today", todotodays_path(:activity_id => a), :method => :post, :class => :button, :remote => true, 'data-type' => 'text', :title => "Add this activity to the Todo Today list") -%></li>
 	<% end %>
 </ul>

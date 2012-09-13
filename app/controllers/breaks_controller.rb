@@ -59,11 +59,15 @@ class BreaksController < ApplicationController
 
     respond_to do |format|
       if @break.save
+        puts "Break saved!"
+
+        format.text { render 'widgets/timed_break.html.erb', :layout => false }
         format.js   { render 'widgets/timed_break', :layout => false }
         format.html { redirect_to(activities_path, :notice => 'Break was successfully created.') }
         format.xml  { render :xml => @break, :status => :created, :location => @break }
         format.json { render :json => @break, :status => :created, :location => @break }
       else
+        format.text { render :text => 'KO' }
         format.js   { render :text => 'KO' }
         format.html { render :action => "new" }
         format.xml  { render :xml => @break.errors, :status => :unprocessable_entity }
