@@ -48,7 +48,7 @@ class Activity < ActiveRecord::Base
 
   scope :not_completed, lambda { |current_user| { :conditions => { :completed => false, :user_id => current_user.id } } }
   scope :overdue, lambda { |current_user| where( :completed => false ).where( :user_id => current_user.id ).where( "end_at < ?", Date.today ) }
-  scope :scheduled, lambda { |current_user| where( '( someday = 0 OR someday IS NULL )' ).where( :user_id => current_user.id ) }
+  scope :scheduled, lambda { |current_user| where( '( NOT someday OR someday IS NULL )' ).where( :user_id => current_user.id ) }
   scope :unscheduled, lambda { |current_user| { :conditions => { :someday => true, :user_id => current_user.id } } }
   scope :upcoming, lambda { |current_user| { :conditions => { :deadline => ( Date.today.to_date )..( 1.week.from_now.to_date ), :user_id => current_user.id } } }
   

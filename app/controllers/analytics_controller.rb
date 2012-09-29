@@ -65,26 +65,26 @@ class AnalyticsController < ApplicationController
   end
   
   protected
-    
+
     def complete_pomodoros(current_user, created_at, successful, pomodoros_tags_filtering, project_filtering)
-      Pomodoro.joins(:activity => :project).where(:user_id => current_user.id, :completed => true, :successful => successful, :created_at => created_at).where(project_filtering).where(pomodoros_tags_filtering).count(:group => "CONVERT( DATE ( pomodoros.created_at ), CHAR )")
+      Pomodoro.joins(:activity => :project).where(:user_id => current_user.id, :completed => true, :successful => successful, :created_at => created_at).where(project_filtering).where(pomodoros_tags_filtering).count(:group => convert_date("pomodoros.created_at"))
     end
     
     def estimated_pomodoros(current_user, updated_at, activities_tag_filtering, project_filtering)
-      unscoped_activities.select(:estimated_pomodoros).where(:user_id => current_user.id, :updated_at => updated_at).where(project_filtering).group("CONVERT( DATE ( activities.updated_at ), CHAR )").where(activities_tag_filtering).sum(:estimated_pomodoros)
+      unscoped_activities.select(:estimated_pomodoros).where(:user_id => current_user.id, :updated_at => updated_at).where(project_filtering).group(convert_date("activities.updated_at")).where(activities_tag_filtering).sum(:estimated_pomodoros)
     end
     
     def worked_time(current_user, created_at, pomodoros_tags_filtering, project_filtering)
-      Pomodoro.joins(:activity => :project).where(:user_id => current_user.id, :completed => true, :successful => true, :created_at => created_at).where(project_filtering).where(pomodoros_tags_filtering).group("CONVERT( DATE ( pomodoros.created_at ), CHAR )").sum(:duration)
+      Pomodoro.joins(:activity => :project).where(:user_id => current_user.id, :completed => true, :successful => true, :created_at => created_at).where(project_filtering).where(pomodoros_tags_filtering).group(convert_date("pomodoros.created_at")).sum(:duration)
     end
     
     def activities(current_user, created_at, unplanned, activities_tag_filtering, project_filtering)
-      unscoped_activities.where(:user_id => current_user.id, :unplanned => unplanned, :created_at => created_at).where(project_filtering).where(activities_tag_filtering).count(:group => "CONVERT( DATE ( activities.created_at ), CHAR )")
+      unscoped_activities.where(:user_id => current_user.id, :unplanned => unplanned, :created_at => created_at).where(project_filtering).where(activities_tag_filtering).count(:group => convert_date("activities.created_at"))
     end
     
     def interruptions(current_user, created_at, kind, pomodoros_tags_filtering, project_filtering)
-      return Interruption.joins(:pomodoro => :activity).where(:user_id => current_user.id, :kind => kind, :created_at => created_at).where(project_filtering).where(pomodoros_tags_filtering).count(:group => "CONVERT( DATE ( interruptions.created_at ), CHAR )") if pomodoros_tags_filtering.blank?
-      Interruption.joins(:pomodoro => :activity).where(:user_id => current_user.id, :kind => kind, :created_at => created_at).where(project_filtering).where(pomodoros_tags_filtering).count(:group => "CONVERT( DATE ( interruptions.created_at ), CHAR )")
+      return Interruption.joins(:pomodoro => :activity).where(:user_id => current_user.id, :kind => kind, :created_at => created_at).where(project_filtering).where(pomodoros_tags_filtering).count(:group => convert_date("interruptions.created_at")) if pomodoros_tags_filtering.blank?
+      Interruption.joins(:pomodoro => :activity).where(:user_id => current_user.id, :kind => kind, :created_at => created_at).where(project_filtering).where(pomodoros_tags_filtering).count(:group => convert_date("interruptions.created_at"))
     end
 
     def unscoped_activities
@@ -95,5 +95,16 @@ class AnalyticsController < ApplicationController
       # tolerate the invalid sql by not postgres! => we kill default_scope with unscoped.
       # XXX: all these calculations should be done in the model with a domain object.
       Activity.unscoped
+    end
+
+  private
+    def convert_date(field)
+      # XXX can you explain the reason why now have to cast dates to *char for SQL group?
+      # if the point is to group by calendar day, can't just DATE( #{field} ) just work?
+      if ActiveRecord::Base.connection.adapter_name.downcase.to_sym == :postgresql
+        "CAST( DATE ( #{field} ) AS VARCHAR )" # postgres
+      else
+        "CONVERT( DATE ( #{field} ), CHAR )" # mysql
+      end
     end
 end
