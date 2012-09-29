@@ -63,14 +63,14 @@ Ketchup::Application.configure do
   config.action_mailer.smtp_settings = {
     # configure as possible by setting these environment variables in .env
     # all variables are optional (default is to assume presence of local sendmail).
-    :address              => 'smtp.gmail.com',
-    :port                 => 587,
-    :domain               => 'gmail.com',
-    :user_name            => '<username>@gmail.com',
-    :password             => '<password>',
-    :authentication       => 'plain',
-    :enable_starttls_auto => 'true', # default: true
-  }
+    :address              => ENV['SMTP_ADDRESS'],
+    :port                 => ENV['SMTP_PORT'],
+    :domain               => ENV['SMTP_DOMAIN'],
+    :user_name            => ENV['SMTP_USER_NAME'],
+    :password             => ENV['SMTP_PASSWORD'],
+    :authentication       => ENV['SMTP_AUTHENTICATION'],
+    :enable_starttls_auto => ENV['SMTP_ENABLE_STARTTLS_AUTO'] != 'false', # default: true
+  }.delete_if { |k, v| v.blank? }
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
