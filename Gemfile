@@ -22,8 +22,8 @@ gem 'acts_as_list'
 gem 'fancybox-rails'
 gem 'twitter-bootstrap-rails'
 
-gem 'exception_notification'
-gem 'newrelic_rpm'
+#gem 'exception_notification'
+#gem 'newrelic_rpm'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -35,6 +35,7 @@ end
 group :development do
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'faker', '~> 1.0.1'
+  gem 'pg'
 end
 
 #group :test do
@@ -47,7 +48,7 @@ end
 group :production do
   #gem 'sqlite3'
   #gem 'pg'
-  gem 'mysql2'
+  #gem 'mysql2'
   #gem 'activerecord-mysql2-adapter'
 end
 
